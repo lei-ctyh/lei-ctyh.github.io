@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>好文推荐 | 知了</title><meta name="author" content="Zhang Lei"><meta name="copyright" content="Zhang Lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="VMware 虚拟机网络配置最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com) 什么是分布式，分布式和集群的区别又是什么什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客 什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com) 理解 IntellijID">
+<meta property="og:type" content="article">
+<meta property="og:title" content="好文推荐">
+<meta property="og:url" content="https://lei-ctyh.github.io/2024/12/09/Inbox/%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90/index.html">
+<meta property="og:site_name" content="知了">
+<meta property="og:description" content="VMware 虚拟机网络配置最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com) 什么是分布式，分布式和集群的区别又是什么什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客 什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com) 理解 IntellijID">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800">
+<meta property="article:published_time" content="2024-12-09T13:48:30.825Z">
+<meta property="article:modified_time" content="2024-12-08T18:16:40.000Z">
+<meta property="article:author" content="Zhang Lei">
+<meta property="article:tag" content="持续更新">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lei-ctyh.github.io/2024/12/09/Inbox/%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '好文推荐',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://bing.img.run/uhd.php);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">知了</span></a><a class="nav-page-title" href="/"><span class="site-name">好文推荐</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">好文推荐</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-09T13:48:30.825Z" title="发表于 2024-12-09 21:48:30">2024-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-08T18:16:40.000Z" title="更新于 2024-12-09 02:16:40">2024-12-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><img src="/assets/%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90/MediaCreationTool_22H2.exe"></p>
+<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
+<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
+<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
+<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;zhanglei&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;2468341590@qq.com&quot;</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;2468341590@qq.com&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
+<h2 id="解决-Git-链接-Ssh-22-端口被禁用问题"><a href="#解决-Git-链接-Ssh-22-端口被禁用问题" class="headerlink" title="解决 Git 链接 Ssh 22 端口被禁用问题"></a>解决 Git 链接 Ssh 22 端口被禁用问题</h2><p><a target="_blank" rel="noopener" href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
+<p>创建下图中的 config 文件，并填写下方内容。</p>
+<p><img src="/assets/%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90/file-20241205205009931.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line"></span><br><span class="line">    Hostname ssh.github.com</span><br><span class="line"></span><br><span class="line">    Port 443</span><br><span class="line"></span><br><span class="line">    User git</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
+<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a target="_blank" rel="noopener" href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
+<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
+<p>前提是已经安装了多线程下载工具</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
+<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
+<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
+<p>GitHub 代码推送 kex_exchange_identification 报错</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
+<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
+<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
+<h2 id="Url-中以数组形式传递参数会报异常的问题"><a href="#Url-中以数组形式传递参数会报异常的问题" class="headerlink" title="Url 中以数组形式传递参数会报异常的问题"></a>Url 中以数组形式传递参数会报异常的问题</h2><h3 id="解决-Springboot-项目请求接口无效字符问题-Invalid-Character-Found-in-the-Request-Target"><a href="#解决-Springboot-项目请求接口无效字符问题-Invalid-Character-Found-in-the-Request-Target" class="headerlink" title="解决 Springboot 项目请求接口无效字符问题 Invalid Character Found in the Request Target."></a>解决 Springboot 项目请求接口无效字符问题 Invalid Character Found in the Request Target.</h3><h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
+<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
+<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
+<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
+<p><a target="_blank" rel="noopener" href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
+<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
+<li>代码编写阶段<ul>
+<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
+<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
+</ul>
+</li>
+<li>编译&#x2F;解释阶段<ul>
+<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
+<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
+</ul>
+</li>
+<li>运行时阶段<ul>
+<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
+</ul>
+</li>
+<li>网络传输阶段<ul>
+<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
+<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
+</ul>
+</li>
+<li>总结<ul>
+<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
+<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
+</blockquote>
+<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;  </span><br><span class="line">    <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;  </span><br><span class="line">    <span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;  </span><br><span class="line">    <span class="comment">// 在GBK编码的控制台下能够显示正确  </span></span><br><span class="line">    outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));  </span><br><span class="line">    <span class="comment">// 在UTF-8编码的控制台下能够显示正确  </span></span><br><span class="line">    outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
+<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
+<p>如何理解 Python 中的模块，包的概念</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io">Zhang Lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io/2024/12/09/Inbox/%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90/">https://lei-ctyh.github.io/2024/12/09/Inbox/%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lei-ctyh.github.io" target="_blank">知了</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/">持续更新</a></div><div class="post-share"><div class="social-share" data-image="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/12/09/Inbox/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/" title="利息计算方式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">利息计算方式</div></div><div class="info-2"><div class="info-item-1"> 😀不会算就上科技 贷款计算器最新2024 - 贷款利息计算 (bmcx.com)  还款方式的划分 等额本息 (常见)  等额本息还款是&#x3D;&#x3D;指借款人每月偿还的月供是相等的&#x3D;&#x3D;，每月月供&#x3D;（贷款本金 + 贷款总利息）÷贷款期限（月），由于每月剩余未还本金不同，所以每月月供中的利息不同，还款初期，月供中利息占比多，本金占比少，随着每月还款，月供中的本金占比越来越多，利息占比越来越少，这种还款方式适合收入稳定的群体。 等额本金 (常见)  等额本金还款是&#x3D;&#x3D;指借款人每月偿还的本金是相同的&#x3D;&#x3D;，每月月供中利息随着本金的减少而逐月减少，因此等额本金还款方式下，月供是呈递减状态的，等额本金与等额本息还款相比，等额本金产生的贷款总利息会少一些，但是等额本金还款方式下，还款初期压力比较到，这种还款方式适合目前高收入人群。 按期还本付息 ...</div></div></div></a><a class="pagination-related" href="/2024/12/09/Inbox/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Hexo/" title="如何使用Hexo"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">如何使用Hexo</div></div><div class="info-2"><div class="info-item-1">开始使用安装安装 Git安装 git 安装 Node.js安装 node Node.js 版本限制 建议自己选择 hexo 的最新稳定版     Hexo 版本 最低版本 (Node.js 版本) 最高版本 (Node.js 版本)    7.0+ 14.0.0 latest   6.2+ 12.13.0 latest   6.0+ 12.13.0 18.5.0   5.0+ 10.13.0 12.0.0   4.1 - 4.2 8.10 10.0.0   4.0 8.6 8.10.0   3.3 - 3.9 6.9 8.0.0   3.2 - 3.3 0.12 未知   3.0 - 3.1 0.10 或 iojs 未知   0.0.1 - 2.8 0.10 未知   安装 Hexo 脚手架 使用 npm 安装 hexo，安装的时候网络可能需要点特殊要求，多试几次  1npm install hexo  创建 Github Pages 仓库 填写子集的仓库地址 设置仓库为公开 添加 readme...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zhang Lei</div><div class="author-info-description">路漫漫其修远兮，吾将上下而求索</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lei-ctyh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2468341590@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #hdhfbb;"></i></a><a class="social-icon" href="https://www.cnblogs.com/aaalei" target="_blank" title="CnBlog"><i class="fa-solid fa-rss" style="color: #hdhfbb;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">该网站由 lei-ctyh 维护，欢迎访问！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VMware-%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">VMware 虚拟机网络配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%B8%83%E5%BC%8F%EF%BC%8C%E5%88%86%E5%B8%83%E5%BC%8F%E5%92%8C%E9%9B%86%E7%BE%A4%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8F%88%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.</span> <span class="toc-text">什么是分布式，分布式和集群的区别又是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%A7%A3-IntellijIDEA-%E7%9A%84%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%92%8C-Web-%E9%83%A8%E7%BD%B2"><span class="toc-number">3.</span> <span class="toc-text">理解 IntellijIDEA 的项目配置和 Web 部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github-%E9%85%8D%E7%BD%AE-Ssh-Key-%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.</span> <span class="toc-text">Github 配置 Ssh Key 的步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3-Git-%E9%93%BE%E6%8E%A5-Ssh-22-%E7%AB%AF%E5%8F%A3%E8%A2%AB%E7%A6%81%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">解决 Git 链接 Ssh 22 端口被禁用问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-VirtualBox-%E6%90%AD%E5%BB%BA-Linux-%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E5%8F%B2%E4%B8%8A%E6%9C%80%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3%E6%95%99%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E7%94%BB%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">7.</span> <span class="toc-text">怎么画业务流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-IDM-%E4%B8%8B%E8%BD%BD%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">8.</span> <span class="toc-text">如何使用 IDM 下载百度网盘的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%94%BB-UML"><span class="toc-number">9.</span> <span class="toc-text">如何画 UML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E5%92%8C-MVC-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">10.</span> <span class="toc-text">三层架构和 MVC 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8-Windows-%E4%B8%8B%E7%95%99%E5%AD%98-Tomcat-%E7%9A%84-Catalina-%E6%97%A5%E5%BF%97"><span class="toc-number">11.</span> <span class="toc-text">如何在 Windows 下留存 Tomcat 的 Catalina 日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-HTMl-%E7%9A%84%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0"><span class="toc-number">12.</span> <span class="toc-text">关于 HTMl 的行内元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B-Mysql-%E6%89%A7%E8%A1%8C%E5%8E%86%E5%8F%B2-SQL"><span class="toc-number">13.</span> <span class="toc-text">如何查看 Mysql 执行历史 SQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Url-%E4%B8%AD%E4%BB%A5%E6%95%B0%E7%BB%84%E5%BD%A2%E5%BC%8F%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0%E4%BC%9A%E6%8A%A5%E5%BC%82%E5%B8%B8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">14.</span> <span class="toc-text">Url 中以数组形式传递参数会报异常的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3-Springboot-%E9%A1%B9%E7%9B%AE%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E6%97%A0%E6%95%88%E5%AD%97%E7%AC%A6%E9%97%AE%E9%A2%98-Invalid-Character-Found-in-the-Request-Target"><span class="toc-number">14.1.</span> <span class="toc-text">解决 Springboot 项目请求接口无效字符问题 Invalid Character Found in the Request Target.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-%E6%8F%90%E9%86%92%E4%BB%93%E5%BA%93%E6%89%80%E6%9C%89%E6%9D%83%E5%BC%82%E5%B8%B8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">15.</span> <span class="toc-text">Git 提醒仓库所有权异常的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AA%E5%8F%96%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9D%A1-Sql-%E5%AE%9E%E7%8E%B0"><span class="toc-number">16.</span> <span class="toc-text">只取重复数据的第一条 Sql 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8D%95%E4%BD%8D"><span class="toc-number">17.</span> <span class="toc-text">计算机单位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E5%AD%97%E7%AC%A6%E9%9B%86%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">18.</span> <span class="toc-text">编码字符集的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E4%BB%8E%E4%BB%A3%E7%A0%81%E5%88%B0%E7%A8%8B%E5%BA%8F%E5%88%B0%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E6%B5%81%E7%A8%8B"><span class="toc-number">18.1.</span> <span class="toc-text">如何理解从代码到程序到网络的字符编码流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85-JRebel-%E6%8F%92%E4%BB%B6"><span class="toc-number">19.</span> <span class="toc-text">如何安装 JRebel 插件</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/Inbox/kk%E9%9F%B3%E6%A0%87/" title="kk音标">kk音标</a><time datetime="2024-12-09T13:48:30.825Z" title="发表于 2024-12-09 21:48:30">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/Inbox/%E4%B8%AD%E6%96%87%E5%8C%B9%E9%85%8D%E6%AD%A3%E5%88%99/" title="无标题">无标题</a><time datetime="2024-12-09T13:48:30.825Z" title="发表于 2024-12-09 21:48:30">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/Inbox/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/" title="利息计算方式">利息计算方式</a><time datetime="2024-12-09T13:48:30.825Z" title="发表于 2024-12-09 21:48:30">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/Inbox/%E5%A5%BD%E6%96%87%E6%8E%A8%E8%8D%90/" title="好文推荐">好文推荐</a><time datetime="2024-12-09T13:48:30.825Z" title="发表于 2024-12-09 21:48:30">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/Inbox/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Hexo/" title="如何使用Hexo">如何使用Hexo</a><time datetime="2024-12-09T13:48:30.825Z" title="发表于 2024-12-09 21:48:30">2024-12-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By Zhang Lei</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
