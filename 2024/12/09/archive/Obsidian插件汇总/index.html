@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>知了 | 知了</title><meta name="author" content="Zhang Lei"><meta name="copyright" content="Zhang Lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Webpage HTML Export ❗❗❗ 该插件必须置顶, 强烈推荐  插件简介导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣 插件配置 该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了嵌入配置，仅在此处列举比较关键的几项配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知了">
+<meta property="og:url" content="https://lei-ctyh.github.io/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="知了">
+<meta property="og:description" content="Webpage HTML Export ❗❗❗ 该插件必须置顶, 强烈推荐  插件简介导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣 插件配置 该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了嵌入配置，仅在此处列举比较关键的几项配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800">
+<meta property="article:published_time" content="2024-12-09T14:24:02.653Z">
+<meta property="article:modified_time" content="2024-04-18T06:39:00.000Z">
+<meta property="article:author" content="Zhang Lei">
+<meta property="article:tag" content="工具&#x2F;obsidian">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lei-ctyh.github.io/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '知了',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://bing.img.run/uhd.php);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">知了</span></a><a class="nav-page-title" href="/"><span class="site-name">知了</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-09T14:24:02.653Z" title="发表于 2024-12-09 22:24:02">2024-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-18T06:39:00.000Z" title="更新于 2024-04-18 14:39:00">2024-04-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
+<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
+</blockquote>
+<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了<a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
+</blockquote>
+<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
+<p>Page Feature 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
+<blockquote>
+<p>Page Feature 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
+<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
+<p>Page Behaviors 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
+<blockquote>
+<p>Page Behaviors 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
+<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
+<ul>
+<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
+<li>原理：该插件在生成<code>html</code>时，会根据下面的参数来判断是否把<code>js</code>和<code>css</code> 代码导入到<code>html</code>。这些<code>js</code>和<code>css</code>配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个<code>js</code>和<code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
+</ul>
+<blockquote>
+<p>Embedding options 英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
+<blockquote>
+<p>Embedding options 中文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的使用可以参考下 GIF</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
+<p>😀 导出时建议选择独立文档<br><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
+<h2 id="Clear-images-Settings"><a href="#Clear-images-Settings" class="headerlink" title="Clear images Settings"></a>Clear images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
+<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
+<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
+<blockquote>
+<p>开启了删除日志, 成功删除后会有如下界面</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
+<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
+</blockquote>
+<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
+<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
+<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian的15.13版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
+</blockquote>
+<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>直接按照下图配置即可, 没什么按需调整的选项</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
+<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的集团使用可参考下 GIF 以及表格</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
+<table>
+<thead>
+<tr>
+<th>热键</th>
+<th>行为</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tab</td>
+<td>下一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>前一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>下一行</td>
+<td>跳转至下一行, 没有下一行则新增</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + D</td>
+<td>打开表格帮助面板</td>
+<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
+</tr>
+</tbody></table>
+<h2 id="Markdown-prettifier"><a href="#Markdown-prettifier" class="headerlink" title="Markdown prettifier"></a>Markdown prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>该插件主要</p>
+</blockquote>
+<h2 id="mousewheel-image-zoom"><a href="#mousewheel-image-zoom" class="headerlink" title="mousewheel-image-zoom"></a>mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
+<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
+<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置-&gt;选项-&gt;外观下关闭快速调整字体大小功能</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io">Zhang Lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/">https://lei-ctyh.github.io/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lei-ctyh.github.io" target="_blank">知了</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7-obsidian/">工具/obsidian</a></div><div class="post-share"><div class="social-share" data-image="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/12/09/archive/Maven%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">一、Maven 简介1、为什么学习 Maven1.1、Maven 是一个依赖管理工具jar 包的规模 随着我们使用越来越多的框架，或者框架封装程度越来越高，项目中使用的 jar 包也越来越多。项目中，一个模块里面用到上百个 jar 包是非常正常的。 比如下面的例子，我们只用到 SpringBoot、SpringCloud 框架中的三个功能：  Nacos 服务注册发现 Web 框架环境 视图模板技术 Thymeleaf  最终却导入了 106 个 jar 包：  org.springframework.security:spring-security-rsa:jar:1.0.9.RELEASE:compilecom.netflix.ribbon:...</div></div></div></a><a class="pagination-related" href="/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1"> 以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行  使用 dba 账号登录12sqlplus/nologconn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;   sys dba 的账号, 一般是 sys, 或者 system 1234 对应账号的密码, 安装数据库的时候有设置  示例图 创建表空间1CREATE TABLESPACE &#123;ykspace&#125; DATAFILE &#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27; SIZE 1000M AUTOEXTEND ON NEXT 100M EXTENT MANAGEMENT LOCAL UNIFORM SIZE 256K;   ykspace 是表空间名称  &#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39; 表空间所在路径, 已办基于 Orecal...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zhang Lei</div><div class="author-info-description">路漫漫其修远兮，吾将上下而求索</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lei-ctyh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2468341590@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #hdhfbb;"></i></a><a class="social-icon" href="https://www.cnblogs.com/aaalei" target="_blank" title="CnBlog"><i class="fa-solid fa-rss" style="color: #hdhfbb;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">该网站由 lei-ctyh 维护，欢迎访问！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpage-HTML-Export"><span class="toc-number">1.</span> <span class="toc-text">Webpage HTML Export</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">插件简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">插件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">页面功能配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E8%A1%8C%E4%B8%BA%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">页面行为配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.3.</span> <span class="toc-text">嵌入配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">插件使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clear-images-Settings"><span class="toc-number">2.</span> <span class="toc-text">Clear images Settings</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%80%E4%BB%8B-1"><span class="toc-number">2.1.</span> <span class="toc-text">插件简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-1"><span class="toc-number">2.2.</span> <span class="toc-text">插件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8-1"><span class="toc-number">2.3.</span> <span class="toc-text">插件使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Custom-Attachment-Location"><span class="toc-number">3.</span> <span class="toc-text">Custom Attachment Location</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%80%E4%BB%8B-2"><span class="toc-number">3.1.</span> <span class="toc-text">插件简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-2"><span class="toc-number">3.2.</span> <span class="toc-text">插件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8-2"><span class="toc-number">3.3.</span> <span class="toc-text">插件使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Tables-Plugin"><span class="toc-number">4.</span> <span class="toc-text">Advanced Tables Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%80%E4%BB%8B-3"><span class="toc-number">4.1.</span> <span class="toc-text">插件简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-3"><span class="toc-number">4.2.</span> <span class="toc-text">插件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8-3"><span class="toc-number">4.3.</span> <span class="toc-text">插件使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-prettifier"><span class="toc-number">5.</span> <span class="toc-text">Markdown prettifier</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%80%E4%BB%8B-4"><span class="toc-number">5.1.</span> <span class="toc-text">插件简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mousewheel-image-zoom"><span class="toc-number">6.</span> <span class="toc-text">mousewheel-image-zoom</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E7%AE%80%E4%BB%8B-5"><span class="toc-number">6.1.</span> <span class="toc-text">插件简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE-4"><span class="toc-number">6.2.</span> <span class="toc-text">插件配置</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/home/%E5%AF%86%E7%A0%81%E6%9C%AC%F0%9F%94%92/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:03.093Z" title="发表于 2024-12-09 22:24:03">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/home/%E7%94%B5%E8%84%91%E6%B8%85%E5%8D%95/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:03.093Z" title="发表于 2024-12-09 22:24:03">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/home/%F0%9F%91%AA%E7%BB%93%E5%A9%9A%E5%89%8D%E7%9A%84%F0%9F%92%AF%E4%BB%B6%E4%BA%8B/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:03.093Z" title="发表于 2024-12-09 22:24:03">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:02.993Z" title="发表于 2024-12-09 22:24:02">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/archive/obsidian-sync-cnblog/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:02.993Z" title="发表于 2024-12-09 22:24:02">2024-12-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By Zhang Lei</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>知了 | 知了</title><meta name="author" content="Zhang Lei"><meta name="copyright" content="Zhang Lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="123title: 再看一眼会爆炸这是我的密码本, 除了我tnnd谁都不能动  LEI 👍   应用名称 用户名 密码 URL 备注      appStore &#x32;&#x34;&#54;&#56;&#51;&#52;&#x31;&#53;&#57;&#48;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109; 首字母大写       github &#50;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知了">
+<meta property="og:url" content="https://lei-ctyh.github.io/2024/12/09/home/%E5%AF%86%E7%A0%81%E6%9C%AC%F0%9F%94%92/index.html">
+<meta property="og:site_name" content="知了">
+<meta property="og:description" content="123title: 再看一眼会爆炸这是我的密码本, 除了我tnnd谁都不能动  LEI 👍   应用名称 用户名 密码 URL 备注      appStore &#x32;&#x34;&#54;&#56;&#51;&#52;&#x31;&#53;&#57;&#48;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109; 首字母大写       github &#50;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800">
+<meta property="article:published_time" content="2024-12-09T14:24:03.093Z">
+<meta property="article:modified_time" content="2024-03-27T14:03:00.000Z">
+<meta property="article:author" content="Zhang Lei">
+<meta property="article:tag" content="张磊, 网络日志, 博客, 个人网站">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lei-ctyh.github.io/2024/12/09/home/%E5%AF%86%E7%A0%81%E6%9C%AC%F0%9F%94%92/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '知了',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://bing.img.run/uhd.php);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">知了</span></a><a class="nav-page-title" href="/"><span class="site-name">知了</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-09T14:24:03.093Z" title="发表于 2024-12-09 22:24:03">2024-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-27T14:03:00.000Z" title="更新于 2024-03-27 22:03:00">2024-03-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 再看一眼会爆炸</span><br><span class="line"></span><br><span class="line">这是我的密码本, 除了我tnnd谁都不能动</span><br></pre></td></tr></table></figure>
+
+<h2 id="LEI-👍"><a href="#LEI-👍" class="headerlink" title="LEI 👍"></a>LEI 👍</h2><table>
+<thead>
+<tr>
+<th align="left">应用名称</th>
+<th>用户名</th>
+<th>密码</th>
+<th>URL</th>
+<th>备注</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">appStore</td>
+<td><a href="mailto:&#x32;&#x34;&#54;&#56;&#51;&#52;&#x31;&#53;&#57;&#48;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;">&#x32;&#x34;&#54;&#56;&#51;&#52;&#x31;&#53;&#57;&#48;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;</a></td>
+<td>首字母大写</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">github</td>
+<td><a href="mailto:&#50;&#x34;&#x36;&#x38;&#x33;&#52;&#49;&#x35;&#x39;&#48;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;">&#50;&#x34;&#x36;&#x38;&#x33;&#52;&#49;&#x35;&#x39;&#48;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/lei-ctyh/">lei-ctyh (ZhangGithub)</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">gitee</td>
+<td><a href="mailto:&#50;&#x34;&#54;&#56;&#x33;&#52;&#x31;&#53;&#x39;&#48;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#50;&#x34;&#54;&#56;&#x33;&#52;&#x31;&#53;&#x39;&#48;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/">工作台 - Gitee.com</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">JetBrains 全家桶</td>
+<td>zhanglei0910</td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://account.jetbrains.com/">https://account.jetbrains.com/</a></td>
+<td><a target="_blank" rel="noopener" href="http://81.71.64.76:8083/jetbrains/aftersales/code/bff324e7-5188-4c19-8f95-2019e8ef5f32">JetBrains 全家桶正版激活码系统</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">sourceTree</td>
+<td><a href="mailto:&#50;&#x34;&#54;&#x38;&#51;&#x34;&#49;&#53;&#57;&#48;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#50;&#x34;&#54;&#x38;&#51;&#x34;&#49;&#53;&#57;&#48;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a></td>
+<td>首字母大写</td>
+<td><a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">SourceTree 官网</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">博客园</td>
+<td><a href="mailto:&#50;&#52;&#54;&#56;&#x33;&#52;&#x31;&#x35;&#x39;&#x30;&#x40;&#113;&#113;&#46;&#x63;&#111;&#x6d;">&#50;&#52;&#54;&#56;&#x33;&#52;&#x31;&#x35;&#x39;&#x30;&#x40;&#113;&#113;&#46;&#x63;&#111;&#x6d;</a></td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/aaalei/">张 Blog - 博客园 (cnblogs.com)</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">坚果云</td>
+<td><a href="mailto:&#50;&#52;&#54;&#56;&#51;&#52;&#49;&#x35;&#57;&#x30;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#50;&#52;&#54;&#56;&#51;&#52;&#49;&#x35;&#57;&#x30;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://www.jianguoyun.com/s/downloads">https://www.jianguoyun.com/s/downloads</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">齐工大教育邮箱</td>
+<td>201808180016</td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="http://mail.stu.qlu.edu.cn/">http://mail.stu.qlu.edu.cn/</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">DCloud</td>
+<td><a href="mailto:&#x32;&#52;&#54;&#x33;&#52;&#49;&#53;&#57;&#x30;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#109;">&#x32;&#52;&#54;&#x33;&#52;&#49;&#53;&#57;&#x30;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#109;</a></td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/quickstart.html">uni-app 快速上手uni-app 官网 (dcloud.net.cn)</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">Goole 账号</td>
+<td><a href="mailto:&#x6c;&#101;&#x69;&#x31;&#x33;&#x32;&#53;&#x36;&#x36;&#x34;&#x30;&#x35;&#50;&#49;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x6c;&#101;&#x69;&#x31;&#x33;&#x32;&#53;&#x36;&#x36;&#x34;&#x30;&#x35;&#50;&#49;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></td>
+<td>默认</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">宝塔账号</td>
+<td>13256610521</td>
+<td><code>首字母大写(默认)</code>+<code>!</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">阿里云镜像服务访问</td>
+<td>阿里云账号</td>
+<td>(z-m)+ 身份证</td>
+<td><a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instance/credentials">容器镜像服务 (aliyun.com)</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">LeetCode</td>
+<td>13256610521</td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://leetcode.cn/accounts/password/reset/key/done/">leetcode.cn&#x2F;accounts&#x2F;password&#x2F;reset&#x2F;key&#x2F;done&#x2F;</a></td>
+<td>使用 vscode 下的插件是必须要用手机号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">英伟达驱动</td>
+<td><a href="mailto:&#50;&#52;&#54;&#x38;&#x33;&#52;&#49;&#x35;&#x39;&#48;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;">&#50;&#52;&#54;&#x38;&#x33;&#52;&#49;&#x35;&#x39;&#48;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td><code>首字母大写(默认)</code>+<code>!</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="MENG"><a href="#MENG" class="headerlink" title="MENG"></a>MENG</h2><table>
+<thead>
+<tr>
+<th>应用名称</th>
+<th>用户名</th>
+<th>密码</th>
+<th>URL</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>QQ</td>
+<td>3133402472</td>
+<td>@121585ttamd</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>学习通</td>
+<td>18864874427</td>
+<td>Wym123456</td>
+<td><a target="_blank" rel="noopener" href="https://v3.chaoxing.com/toJcLogin">登录 (chaoxing.com)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Esc 云服务器</td>
+<td>root</td>
+<td>Zxcvbnm5113!</td>
+<td>8.130.89.252</td>
+<td>到期时间为 2023&#x2F;06&#x2F;18</td>
+</tr>
+</tbody></table>
+<h2 id="HJSOFT"><a href="#HJSOFT" class="headerlink" title="HJSOFT"></a>HJSOFT</h2><table>
+<thead>
+<tr>
+<th>应用名称</th>
+<th>用户名</th>
+<th>密码</th>
+<th>URL</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Her</td>
+<td>zhanglei</td>
+<td>wl5dzuz2</td>
+<td><a target="_blank" rel="noopener" href="http://www.hjsoft.com.cn:8089/">http://www.hjsoft.com.cn:8089</a></td>
+<td></td>
+</tr>
+<tr>
+<td>BJGit</td>
+<td><a href="mailto:&#x7a;&#104;&#x61;&#110;&#x67;&#108;&#x65;&#105;&#x40;&#104;&#106;&#x73;&#111;&#x66;&#116;&#46;&#x63;&#111;&#x6d;&#x2e;&#x63;&#x6e;">&#x7a;&#104;&#x61;&#110;&#x67;&#108;&#x65;&#105;&#x40;&#104;&#106;&#x73;&#111;&#x66;&#116;&#46;&#x63;&#111;&#x6d;&#x2e;&#x63;&#x6e;</a></td>
+<td>zhanglei29464</td>
+<td><a target="_blank" rel="noopener" href="http://jn.hjsoft.com.cn:8088/">http://jn.hjsoft.com.cn:8088</a></td>
+<td>原北京 git 地址, 现服务迁移到济南了</td>
+</tr>
+<tr>
+<td>禅道</td>
+<td>zhanglei</td>
+<td>1qaz2WSX</td>
+<td><a target="_blank" rel="noopener" href="http://jn.hjsoft.com.cn:8880/">http://jn.hjsoft.com.cn:8880</a></td>
+<td></td>
+</tr>
+<tr>
+<td>JNGit</td>
+<td><a href="mailto:&#x7a;&#104;&#97;&#110;&#x67;&#108;&#x65;&#x69;&#64;&#104;&#106;&#x73;&#111;&#x66;&#x74;&#x2e;&#x63;&#x6f;&#x6d;&#46;&#x63;&#x6e;">&#x7a;&#104;&#97;&#110;&#x67;&#108;&#x65;&#x69;&#64;&#104;&#106;&#x73;&#111;&#x66;&#x74;&#x2e;&#x63;&#x6f;&#x6d;&#46;&#x63;&#x6e;</a></td>
+<td>zhanglei123</td>
+<td><a target="_blank" rel="noopener" href="http://www.sdhjsoft.com.cn:9080/">http://www.sdhjsoft.com.cn:9080/</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.sdhjsoft.com.cn:9080/ehrHelp/CommonUsageMethods/-/wikis/home">http://www.sdhjsoft.com.cn:9080/ehrHelp/CommonUsageMethods/-/wikis/home</a></td>
+</tr>
+<tr>
+<td>宏景云</td>
+<td>lei13256610521</td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://www.hjhrcloud.com/mh/home">https://www.hjhrcloud.com/mh/home</a></td>
+<td></td>
+</tr>
+<tr>
+<td>宏景学堂</td>
+<td>zhanglei</td>
+<td>123456</td>
+<td><a target="_blank" rel="noopener" href="http://hjxt.hjsoft.com.cn/login.htm">http://hjxt.hjsoft.com.cn/login.htm</a></td>
+<td></td>
+</tr>
+<tr>
+<td>KM 平台</td>
+<td>zhanglei</td>
+<td>zhanglei123</td>
+<td><a target="_blank" rel="noopener" href="http://km.hjsoft.com.cn/login.jsp">http://km.hjsoft.com.cn/login.jsp</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Maven 地址</td>
+<td>zhanglei</td>
+<td>zhanglei29464</td>
+<td><a target="_blank" rel="noopener" href="http://jn.hjsoft.com.cn:8081/">http://jn.hjsoft.com.cn:8081/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>前端项目搭建教程</td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="http://svn.hjsoft.com.cn:1024/ui/%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/#npm%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96">http://svn.hjsoft.com.cn:1024/ui/%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/#npm%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96</a></td>
+<td></td>
+</tr>
+<tr>
+<td>公测环境</td>
+<td>su</td>
+<td>gqys@0318</td>
+<td><a target="_blank" rel="noopener" href="https://svn.hjsoft.com.cn:8088/module/frame/index.html">人力与人才信息管理系统 (hjsoft.com.cn)</a></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="TOOL"><a href="#TOOL" class="headerlink" title="TOOL"></a>TOOL</h2><table>
+<thead>
+<tr>
+<th>应用名称</th>
+<th>用户名</th>
+<th>密码</th>
+<th>URL</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>比心云</td>
+<td><a href="mailto:&#50;&#x34;&#54;&#x38;&#x33;&#52;&#x31;&#x35;&#57;&#x30;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#50;&#x34;&#54;&#x38;&#x33;&#52;&#x31;&#x35;&#57;&#x30;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td>zxcvbnm5113</td>
+<td><a target="_blank" rel="noopener" href="https://www.bixiny.ltd/index.php#/login">https://www.bixiny.ltd/index.php#/login</a></td>
+<td></td>
+</tr>
+<tr>
+<td>外国接码平台</td>
+<td><a href="mailto:&#x6c;&#101;&#105;&#49;&#x33;&#50;&#53;&#54;&#x36;&#x31;&#x30;&#x35;&#x32;&#x31;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x6c;&#101;&#105;&#49;&#x33;&#50;&#53;&#54;&#x36;&#x31;&#x30;&#x35;&#x32;&#x31;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></td>
+<td>首字母大写</td>
+<td><a target="_blank" rel="noopener" href="https://sms-activate.org/getNumber">https://sms-activate.org/getNumber</a></td>
+<td></td>
+</tr>
+<tr>
+<td>chartgptOutlook</td>
+<td><a href="mailto:&#x6c;&#x65;&#105;&#49;&#x33;&#x32;&#53;&#54;&#54;&#x31;&#48;&#53;&#50;&#x31;&#64;&#x6f;&#117;&#116;&#108;&#x6f;&#x6f;&#107;&#x2e;&#x63;&#x6f;&#x6d;">&#x6c;&#x65;&#105;&#49;&#x33;&#x32;&#53;&#54;&#54;&#x31;&#48;&#53;&#50;&#x31;&#64;&#x6f;&#117;&#116;&#108;&#x6f;&#x6f;&#107;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td>微软账户接入</td>
+<td><a target="_blank" rel="noopener" href="https://openai.com/">https://openai.com/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>影届网络</td>
+<td><a href="mailto:&#50;&#52;&#54;&#x38;&#51;&#52;&#x31;&#x35;&#57;&#48;&#x40;&#113;&#x71;&#46;&#99;&#111;&#x6d;">&#50;&#52;&#54;&#x38;&#51;&#52;&#x31;&#x35;&#57;&#48;&#x40;&#113;&#x71;&#46;&#99;&#111;&#x6d;</a></td>
+<td>qwertyuiop</td>
+<td><a target="_blank" rel="noopener" href="https://my.shw.im/#/login">https://my.shw.im/#/login</a></td>
+<td></td>
+</tr>
+<tr>
+<td>chartgptGogle</td>
+<td><a href="mailto:&#x6c;&#101;&#105;&#x31;&#x33;&#50;&#x35;&#x36;&#54;&#x34;&#48;&#53;&#50;&#x31;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;">&#x6c;&#101;&#105;&#x31;&#x33;&#50;&#x35;&#x36;&#54;&#x34;&#48;&#53;&#50;&#x31;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;</a></td>
+<td>谷歌账号接入</td>
+<td><a target="_blank" rel="noopener" href="https://openai.com/">https://openai.com/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>AWS toolkit</td>
+<td><a href="mailto:&#x32;&#52;&#54;&#x38;&#51;&#x34;&#49;&#x35;&#57;&#48;&#x40;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;">&#x32;&#52;&#54;&#x38;&#51;&#x34;&#49;&#x35;&#57;&#48;&#x40;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;</a></td>
+<td>Zxcvbnm5113!</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Orecal 官网</td>
+<td><a href="mailto:&#50;&#x34;&#54;&#56;&#51;&#x34;&#49;&#53;&#x39;&#48;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;">&#50;&#x34;&#54;&#56;&#51;&#x34;&#49;&#53;&#x39;&#48;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td>首字母大写, 结尾感叹号</td>
+<td><a target="_blank" rel="noopener" href="https://login.oracle.com/">https://login.oracle.com/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>NATAPP</td>
+<td>13256610521</td>
+<td>默认</td>
+<td><a target="_blank" rel="noopener" href="https://natapp.cn/">https://natapp.cn/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>正则转换地址</td>
+<td><a target="_blank" rel="noopener" href="https://regex101.com/codegen?language=java">regex101: build, test, and debug regex</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>HELLO 算法</td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://www.hello-algo.com/">Hello 算法 (hello-algo.com)</a></td>
+<td>项目取自 GitHub 开源项目 HELLO 算法</td>
+</tr>
+<tr>
+<td>测试 API</td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://jsonplaceholder.typicode.com/">JSONPlaceholder - 免费假 REST API (typicode.com)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>在线简历</td>
+<td></td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="https://www.polebrief.com/edit">在线编辑简历_极简 PoleBrief 在线编辑简历</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="LEARN"><a href="#LEARN" class="headerlink" title="LEARN"></a>LEARN</h2><table>
+<thead>
+<tr>
+<th>应用名称</th>
+<th>用户名</th>
+<th>密码</th>
+<th align="left">URL</th>
+<th>备注</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>作业空间</td>
+<td></td>
+<td></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://gitcode.net/CreativeAlliance">https://gitcode.net/CreativeAlliance</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>小册地址</td>
+<td></td>
+<td></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://gitcode.net/KnowledgePlanet/Lottery/-/wikis/home">Home · Wiki · KnowledgePlanet &#x2F; Lottery · GitCode</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Git 分支学习</td>
+<td></td>
+<td></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN">https://learngitbranching.js.org/?locale=zh_CN</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Git 命令查询</td>
+<td></td>
+<td></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://gitexplorer.com/">https://gitexplorer.com/</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BUG 虫洞站</td>
+<td></td>
+<td></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://bugstack.cn/md/other/guide-to-reading.html">https://bugstack.cn/md/other/guide-to-reading.html</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>springBoot2</td>
+<td></td>
+<td></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.yuque.com/atguigu/springboot">SpringBoot2 核心技术与响应式编程 (yuque.com)</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hollis 八股</td>
+<td></td>
+<td></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.yuque.com/hollis666/rkhvxv">Java 8 Gu S (yuque.com)</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>JavaGuide</td>
+<td></td>
+<td></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://javaguide.cn/home.html"> JavaGuide(Java 面试 + 学习指南)</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io">Zhang Lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io/2024/12/09/home/%E5%AF%86%E7%A0%81%E6%9C%AC%F0%9F%94%92/">https://lei-ctyh.github.io/2024/12/09/home/%E5%AF%86%E7%A0%81%E6%9C%AC%F0%9F%94%92/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lei-ctyh.github.io" target="_blank">知了</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2024/12/09/home/%E7%94%B5%E8%84%91%E6%B8%85%E5%8D%95/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">DELL   软件名称 下载地址 安装路径 备注信息 类型    Alienware Command Center 5.x 适用于 Dell G15 5520 的支持 Dell 中国驱动程序和下载 默认路径 需要安装匹配的驱动才可以 驱动软件   坚果云 免费网盘云盘试用 (jianguoyun.com) 默认路径 QQ 邮箱登录 效率软件   Coodesker 蓝奏云下载链接 C:\software\Coodesker 桌面管理工具，不过 2.0 版本的就开始收费类 效率软件   Verge 也可以从比心云官网下载 C:\software\Clash Verge 新版的 Clash wash 效率软件   Obsidian Obsidian - Sharpen your thinking 默认路径 安装软件可能需要 VPN 效率软件   搜狗输入法 搜狗输入法 - 首页 (sogou.com) C:\software\SogouInput 登录 QQ 号，同步输入习惯 必备软件   uTools uTools 官网 -...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zhang Lei</div><div class="author-info-description">路漫漫其修远兮，吾将上下而求索</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lei-ctyh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2468341590@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #hdhfbb;"></i></a><a class="social-icon" href="https://www.cnblogs.com/aaalei" target="_blank" title="CnBlog"><i class="fa-solid fa-rss" style="color: #hdhfbb;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">该网站由 lei-ctyh 维护，欢迎访问！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LEI-%F0%9F%91%8D"><span class="toc-number">1.</span> <span class="toc-text">LEI 👍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MENG"><span class="toc-number">2.</span> <span class="toc-text">MENG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HJSOFT"><span class="toc-number">3.</span> <span class="toc-text">HJSOFT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TOOL"><span class="toc-number">4.</span> <span class="toc-text">TOOL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LEARN"><span class="toc-number">5.</span> <span class="toc-text">LEARN</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/home/%E5%AF%86%E7%A0%81%E6%9C%AC%F0%9F%94%92/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:03.093Z" title="发表于 2024-12-09 22:24:03">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/home/%E7%94%B5%E8%84%91%E6%B8%85%E5%8D%95/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:03.093Z" title="发表于 2024-12-09 22:24:03">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/home/%F0%9F%91%AA%E7%BB%93%E5%A9%9A%E5%89%8D%E7%9A%84%F0%9F%92%AF%E4%BB%B6%E4%BA%8B/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:03.093Z" title="发表于 2024-12-09 22:24:03">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:02.993Z" title="发表于 2024-12-09 22:24:02">2024-12-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/archive/obsidian-sync-cnblog/" title="无标题">无标题</a><time datetime="2024-12-09T14:24:02.993Z" title="发表于 2024-12-09 22:24:02">2024-12-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By Zhang Lei</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
