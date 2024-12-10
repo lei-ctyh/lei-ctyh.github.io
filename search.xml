@@ -2312,9 +2312,8 @@
     <title>HashMart开发文档</title>
     <url>/2024/12/09/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><blockquote>
-<p>推荐您使用宝塔搭建本系统，本系统也以宝塔为例演示如何搭建，其他环境，请根据您的实际情况自行安装。大家啊圣诞节啊快进到阿萨江口街道卡</p>
+<p>推荐您使用宝塔搭建本系统，本系统也以宝塔为例演示如何搭建，其他环境，请根据您的实际情况自行安装。<br>宝塔环境的安装，请参考  <a href="https://bt.cn/new/download.html">https://bt.cn/new/download.html</a></p>
 </blockquote>
-<p>宝塔环境的安装，请参考  <a href="https://bt.cn/new/download.html">https://bt.cn/new/download.html</a></p>
 <h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><p>服务器环境推荐使用 linux centos，版本任意。软件环境</p>
 <table>
 <thead>
