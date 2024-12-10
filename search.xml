@@ -1748,6 +1748,135 @@
       </tags>
   </entry>
   <entry>
+    <title>Obsidian插件汇总</title>
+    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
+<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
+</blockquote>
+<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
+</blockquote>
+<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
+<p>Page Feature 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
+<blockquote>
+<p>Page Feature 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
+<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
+<p>Page Behaviors 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
+<blockquote>
+<p>Page Behaviors 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
+<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
+<ul>
+<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
+<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
+</ul>
+<blockquote>
+<p>Embedding options 英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
+<blockquote>
+<p>Embedding options 中文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的使用可以参考下 GIF</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
+<p>😀 导出时建议选择独立文档</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
+<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
+<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
+<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
+<blockquote>
+<p>开启了删除日志, 成功删除后会有如下界面</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
+<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
+</blockquote>
+<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
+<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
+<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
+</blockquote>
+<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>直接按照下图配置即可, 没什么按需调整的选项</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
+<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的集团使用可参考下 GIF 以及表格</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
+<table>
+<thead>
+<tr>
+<th>热键</th>
+<th>行为</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tab</td>
+<td>下一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>前一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>下一行</td>
+<td>跳转至下一行, 没有下一行则新增</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + D</td>
+<td>打开表格帮助面板</td>
+<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
+</tr>
+</tbody></table>
+<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>该插件主要</p>
+</blockquote>
+<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
+<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
+<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
+]]></content>
+      <tags>
+        <tag>工具/obsidian</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Maven依赖管理项目构建工具</title>
     <url>/2024/12/09/archive/Maven%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="一、Maven-简介"><a href="#一、Maven-简介" class="headerlink" title="一、Maven 简介"></a>一、Maven 简介</h2><h3 id="1、为什么学习-Maven"><a href="#1、为什么学习-Maven" class="headerlink" title="1、为什么学习 Maven"></a>1、为什么学习 Maven</h3><h4 id="1-1、Maven-是一个依赖管理工具"><a href="#1-1、Maven-是一个依赖管理工具" class="headerlink" title="1.1、Maven 是一个依赖管理工具"></a>1.1、Maven 是一个依赖管理工具</h4><p><strong>jar 包的规模</strong></p>
@@ -2432,135 +2561,6 @@
 ]]></content>
       <tags>
         <tag>后端/Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Obsidian插件汇总</title>
-    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
-<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
-</blockquote>
-<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
-<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
-</blockquote>
-<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
-<p>Page Feature 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
-<blockquote>
-<p>Page Feature 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
-<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
-<p>Page Behaviors 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
-<blockquote>
-<p>Page Behaviors 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
-<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
-<ul>
-<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
-<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
-</ul>
-<blockquote>
-<p>Embedding options 英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
-<blockquote>
-<p>Embedding options 中文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
-<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的使用可以参考下 GIF</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
-<p>😀 导出时建议选择独立文档</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
-<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
-<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
-<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
-<blockquote>
-<p>开启了删除日志, 成功删除后会有如下界面</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
-<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
-</blockquote>
-<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
-<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
-<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
-</blockquote>
-<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>直接按照下图配置即可, 没什么按需调整的选项</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
-<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的集团使用可参考下 GIF 以及表格</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
-<table>
-<thead>
-<tr>
-<th>热键</th>
-<th>行为</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Tab</td>
-<td>下一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Shift + Tab</td>
-<td>前一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>下一行</td>
-<td>跳转至下一行, 没有下一行则新增</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + D</td>
-<td>打开表格帮助面板</td>
-<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
-</tr>
-</tbody></table>
-<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>该插件主要</p>
-</blockquote>
-<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
-<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
-<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
-]]></content>
-      <tags>
-        <tag>工具/obsidian</tag>
       </tags>
   </entry>
   <entry>
@@ -4725,13 +4725,13 @@
       </tags>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
