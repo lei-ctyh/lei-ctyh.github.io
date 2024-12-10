@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>相对路径的使用 | 知了</title><meta name="author" content="Zhang Lei"><meta name="copyright" content="Zhang Lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content=".&#x2F; 和 ..&#x2F; 都是用于表示文件路径的相对路径标记。  .&#x2F;： 表示当前目录。使用 .&#x2F; 可以明确指示路径从当前目录开始。 例如，如果当前路径是 &#x2F;home&#x2F;user&#x2F;，那么 .&#x2F;file.txt 就表示 &#x2F;home&#x2F;user&#x2F;file.txt。  ..&#x2F;： 表示上一级目录。使用 ..&#x2F; 可以向上移动一级目录。 例如，如果当前路径是 &#x2F;home&#x2F;user&#x2F;，那么 ..&#x2F;folder&#x2F;file.t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="相对路径的使用">
+<meta property="og:url" content="https://lei-ctyh.github.io/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="知了">
+<meta property="og:description" content=".&#x2F; 和 ..&#x2F; 都是用于表示文件路径的相对路径标记。  .&#x2F;： 表示当前目录。使用 .&#x2F; 可以明确指示路径从当前目录开始。 例如，如果当前路径是 &#x2F;home&#x2F;user&#x2F;，那么 .&#x2F;file.txt 就表示 &#x2F;home&#x2F;user&#x2F;file.txt。  ..&#x2F;： 表示上一级目录。使用 ..&#x2F; 可以向上移动一级目录。 例如，如果当前路径是 &#x2F;home&#x2F;user&#x2F;，那么 ..&#x2F;folder&#x2F;file.t">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800">
+<meta property="article:published_time" content="2024-12-10T01:24:50.000Z">
+<meta property="article:modified_time" content="2024-12-10T02:04:21.000Z">
+<meta property="article:author" content="Zhang Lei">
+<meta property="article:tag" content="运维&#x2F;linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800"><link rel="shortcut icon" href="/images/icon/favicon-32x32.png"><link rel="canonical" href="https://lei-ctyh.github.io/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '相对路径的使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://bing.img.run/uhd.php);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">知了</span></a><a class="nav-page-title" href="/"><span class="site-name">相对路径的使用</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">相对路径的使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-10T01:24:50.000Z" title="发表于 2024-12-10 09:24:50">2024-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-10T02:04:21.000Z" title="更新于 2024-12-10 10:04:21">2024-12-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
+<ol>
+<li><p><strong><code>./</code>：</strong> 表示当前目录。使用 <code>./</code> 可以明确指示路径从当前目录开始。</p>
+<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>./file.txt</code> 就表示 <code>/home/user/file.txt</code>。</p>
+</li>
+<li><p><strong><code>../</code>：</strong> 表示上一级目录。使用 <code>../</code> 可以向上移动一级目录。</p>
+<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>../folder/file.txt</code> 就表示 <code>/home/folder/file.txt</code>。</p>
+</li>
+</ol>
+<p>示例：</p>
+<p>假设有如下的文件结构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/home/user/</span><br><span class="line">|-- current-folder/</span><br><span class="line">|   |-- script.js</span><br><span class="line">|   |-- image.jpg</span><br><span class="line">|</span><br><span class="line">|-- parent-folder/</span><br><span class="line">    |-- document.txt</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>如果 <code>script.js</code> 中包含 <code>./image.jpg</code>，那么这个路径指向的是 <code>/home/user/current-folder/image.jpg</code>。</p>
+</li>
+<li><p>如果 <code>script.js</code> 中包含 <code>../parent-folder/document.txt</code>，那么这个路径指向的是 <code>/home/user/parent-folder/document.txt</code>。</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io">Zhang Lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/">https://lei-ctyh.github.io/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lei-ctyh.github.io" target="_blank">知了</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4-linux/">运维/linux</a></div><div class="post-share"><div class="social-share" data-image="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="HashMart开发文档"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">HashMart开发文档</div></div><div class="info-2"><div class="info-item-1">1、环境准备 推荐您使用宝塔搭建本系统，本系统也以宝塔为例演示如何搭建，其他环境，请根据您的实际情况自行安装。宝塔环境的安装，请参考  https://bt.cn/new/download.html  软件环境服务器环境推荐使用 linux centos，版本任意。软件环境    软件 版本    PHP 7.2+   MySQL 5.7   Nginx 1.22.1(比较新的版本即可)   PHP 扩展需要安装的有：fileinfo、redis  域名下面是示例    域名 用途    demo.hashmart.com.cn 程序后台访问和接口层访问    解析域名指向需要安装的服务器  前端环境准备 开发工具 HBuilder X 3.7.6 -alpha 微信开发者工具 前端 node 版本 v14.15.0 2、安装后台程序1、访问码云 (gitee) 下载程序源码...</div></div></div></a><a class="pagination-related" href="/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/" title="Dbeaver工具手册"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Dbeaver工具手册</div></div><div class="info-2"><div class="info-item-1">安装 SQL Formatter 插件 由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化  前置准备系统需要安装 nodejs 环境 1node -v   下载插件新建希望插件安装的文件夹，并在文件夹下执行如下命令 1npm install sql-formatter   配置 Dbeaver  12#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项node &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot; -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; $&#123;file&#125;  Configuration Options...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/" title="Linux 卸载openjdk 安装oraclejdk"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="info-item-2">Linux 卸载openjdk 安装oraclejdk</div></div><div class="info-2"><div class="info-item-1">目标卸载 openjdk 并且安装 oracle 的 jdk 卸载 Openjdk 如果有项目在运行，请先停止项目  查看现有版本1java -version   查询所有跟 Java 相关的安装的 Rpm 包 查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件  1rpm -qa | grep java |grep -v noarch   卸载所有跟 Openjdk 相关的包123456# rpm -e --nodeps 需要删除的软件rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64rpm -e --nodeps...</div></div></div></a><a class="pagination-related" href="/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" title="Linux常用命令汇总"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="info-item-2">Linux常用命令汇总</div></div><div class="info-2"><div class="info-item-1">前言 👍 本篇文章是为了巩固和记录一些 linux 下的常用指令，相当于是自己的一本工具书。本文参考以下网站   Linux 命令大全(手册) – 真正好用的 Linux 命令在线查询网站 (linuxcool.com) 第 0 章 咱们先来谈谈为什么要学习 Linux 系统 | 《Linux 就该这么学》 (linuxprobe.com)  修改 Hosts 文件 修改 hosts 文件需要拥有对该文件的读写权限  1sudo vim /etc/hosts   刷新 DNS 缓存, 使其立即生效。额，当前步骤好像不做也不会失败。  12345 /etc/init.d/network restart    # 重启网络  or  /etc/init.d/net.eth0 restart   # 这个就是重启网卡了  查看 Jdk 版本，路径及配置环境变量查看 JDK 版本1java -version   查看 JDK 安装目录1which java   查看环境变量1echo $JAVA_HOME  配置环境变量 进入环境变量的文件, 需要 sudo 或者 root...</div></div></div></a><a class="pagination-related" href="/2024/12/09/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" title="Virtualbox7安装及使用详细步骤"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="info-item-2">Virtualbox7安装及使用详细步骤</div></div><div class="info-2"><div class="info-item-1">前期准备 Virtualbox 软件安装包 Downloads – Oracle VM VirtualBox    centerOS7 镜像 centos-7-isos-x86_64 安装包下载_开源镜像站-阿里云 (aliyun.com)   安装 Virtualbox 使用管理员身份运行 VirtualBox-7.0.14-161095-Win.exe    进入向导界面, 点击下一步    点击 浏览 按钮，自定义安装路径，点击下一步    此时会出现警告，这是由于安装时会增加虚拟网卡，属于正常现象，点击按钮 是 即可    点击安装    稍等片刻即可    点击完成，此时会自动打开   创建虚拟电脑 在欢迎页点击新建    切换为专家模式    填写虚拟电脑名称和系统类型, 参照下图, 名称和文件夹可以按需填写    分配硬件信息, 我这分配的运存为 4G, 4 个处理器,可以按照自己的电脑实际情况填写    分配 50GB 的硬盘, 可以按需分配, 不要勾选 预先分配全部空间,...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zhang Lei</div><div class="author-info-description">路漫漫其修远兮，吾将上下而求索</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lei-ctyh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2468341590@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #hdhfbb;"></i></a><a class="social-icon" href="https://www.cnblogs.com/aaalei" target="_blank" title="CnBlog"><i class="fa-solid fa-rss" style="color: #hdhfbb;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">该网站由 lei-ctyh 维护，欢迎访问！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/" title="HashMart开发文档">HashMart开发文档</a><time datetime="2024-12-10T01:24:50.000Z" title="发表于 2024-12-10 09:24:50">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="相对路径的使用">相对路径的使用</a><time datetime="2024-12-10T01:24:50.000Z" title="发表于 2024-12-10 09:24:50">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/" title="Dbeaver工具手册">Dbeaver工具手册</a><time datetime="2024-12-10T01:24:46.000Z" title="发表于 2024-12-10 09:24:46">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/" title="好文推荐">好文推荐</a><time datetime="2024-12-10T01:24:45.000Z" title="发表于 2024-12-10 09:24:45">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/09/archive/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/" title="利息计算方式">利息计算方式</a><time datetime="2024-12-09T01:59:51.000Z" title="发表于 2024-12-09 09:59:51">2024-12-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By Zhang Lei</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
