@@ -4694,6 +4694,12 @@
       </tags>
   </entry>
   <entry>
+    <title>测试这玩意的使用</title>
+    <url>/2024/12/13/archive/%E6%B5%8B%E8%AF%95%E8%BF%99%E7%8E%A9%E6%84%8F%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><span style="background:rgba(240, 107, 5, 0.2)"><font color="#2DC26B">过段时间啊活动时间卡</font></span></p>
+]]></content>
+  </entry>
+  <entry>
     <title>相对路径的使用</title>
     <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
