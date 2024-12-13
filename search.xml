@@ -4600,7 +4600,7 @@
       </tags>
   </entry>
   <entry>
-    <title>好文推荐</title>
+    <title>文章推荐</title>
     <url>/2024/12/10/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
     <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
 <h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
@@ -4687,6 +4687,7 @@
 <h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
 <h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
 <h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
+<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
 ]]></content>
       <tags>
         <tag>持续更新</tag>
