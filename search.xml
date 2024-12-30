@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>手写Spring</title>
+    <url>/2024/12/30/%E6%89%8B%E5%86%99Spring/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>从开始学习 Java，在江湖上就一直流传着 Spring 的威名，到后面真正的去学习他，了解他，感觉无论是看视频，还是看其他人的比较，都是照本宣科的学习，没有自己更加深层的理解。<br>偶然间看到廖雪峰老师的手写 Spring 教程，就想着能否按照廖雪峰老师的教程，一步一步的去实现一个简版的 Spring 框架，从而加深自己对该方面的理解</p>
+</blockquote>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>以 Spring 框架为原型，专注于实现 Spring 的核心功能，编写一个迷你版的 Spring 框架，我们把它命名为 Summer Framework，与 Spring 主要区别在于，它俩的图标有所不同</p>
+<table>
+<thead>
+<tr>
+<th>Spring Framework</th>
+<th>Summer Frameword</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="/assets/%E6%89%8B%E5%86%99Spring/file-20241230212601427.png"></td>
+<td><img src="/assets/%E6%89%8B%E5%86%99Spring/file-20241230212538801.png"></td>
+</tr>
+</tbody></table>
+<p>Summer Framework 设计目标如下：</p>
+<ul>
+<li>context 模块：实现 ApplicationContext 容器与 Bean 的管理；</li>
+<li>aop 模块：实现 AOP 功能；</li>
+<li>jdbc 模块：实现 JdbcTemplate，以及声明式事务管理；</li>
+<li>web 模块：实现 Web MVC 和 REST API；</li>
+<li>boot 模块：实现一个简化版的“Spring Boot”，用于打包运行。</li>
+</ul>
+<h2 id="实现-IoC-容器"><a href="#实现-IoC-容器" class="headerlink" title="实现 IoC 容器"></a>实现 IoC 容器</h2><p>Spring 的核心就是能管理一组 Bean，并能自动配置依赖关系的 IoC 容器。而我们的 Summer Framework 的核心 context 模块就是要实现 IoC 容器</p>
+<p><strong>设计目标</strong></p>
+<p>Spring 的 IoC 容器分为两类：BeanFactory 和 ApplicationContext，前者总是延迟创建 Bean，而后者则在启动时初始化所有 Bean。实际使用时，99% 都采用 ApplicationContext，廖雪峰老师在只实现了 ApplicationContext，我们也是先不支持 BeanFactory，等后续完成后，回过头来再实现该功能。</p>
+<p>早期的 Spring 容器采用 XML 来配置 Bean，后期又加入了自动扫描包的功能，即通过 <code>&lt;context:component-scan base-package=&quot;org.example&quot;/&gt;</code> 的配置。再后来，又加入了 Annotation 配置，并通过 <code>@ComponentScan</code> 注解实现自动扫描。如果使用 Spring Boot，则 99% 都采用 <code>@ComponentScan</code> 注解方式配置，因此，Summer Framework 也仅实现 Annotation 配置 +<code>@ComponentScan</code> 扫描方式完成容器的配置。</p>
+<p>此外，Summer Framework 仅支持 Singleton 类型的 Bean，不支持 Prototype 类型的 Bean，因为实际使用中，99% 都采用 Singleton。依赖注入则与 Spring 保持一致，支持构造方法、Setter 方法与字段注入。支持 <code>@Configuration</code> 和 <code>BeanPostProcessor</code>。至于 Spring 的其他功能，例如，层级容器、MessageSource、一个 Bean 允许多个名字等功能，一概不支持！</p>
+<p>下表列出了 Spring Framework 和 Summer Framework 在 IoC 容器方面的异同：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>Spring Framework</th>
+<th>Summer Framework</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IoC 容器</td>
+<td>支持 BeanFactory 和 ApplicationContext</td>
+<td>仅支持 ApplicationContext</td>
+</tr>
+<tr>
+<td>配置方式</td>
+<td>支持 XML 与 Annotation</td>
+<td>仅支持 Annotation</td>
+</tr>
+<tr>
+<td>扫描方式</td>
+<td>支持按包名扫描</td>
+<td>支持按包名扫描</td>
+</tr>
+<tr>
+<td>Bean 类型</td>
+<td>支持 Singleton 和 Prototype</td>
+<td>仅支持 Singleton</td>
+</tr>
+<tr>
+<td>Bean 工厂</td>
+<td>支持 FactoryBean 和@Bean 注解</td>
+<td>仅支持@Bean 注解</td>
+</tr>
+<tr>
+<td>定制 Bean</td>
+<td>支持 BeanPostProcessor</td>
+<td>支持 BeanPostProcessor</td>
+</tr>
+<tr>
+<td>依赖注入</td>
+<td>支持构造方法、Setter 方法与字段</td>
+<td>支持构造方法、Setter 方法与字段</td>
+</tr>
+<tr>
+<td>多容器</td>
+<td>支持父子容器</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<p><strong>注解配置</strong></p>
+<p>从使用者的角度看，使用 IoC 容器时，需要定义一个入口配置，它通常长这样：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>AppConfig</code> 只是一个配置类，它的目的是通过 <code>@ComponentScan</code> 来标识要扫描的 Bean 的包。如果没有明确写出包名，那么将基于 <code>AppConfig</code> 所在包进行扫描，如果明确写出了包名，则在指定的包下进行扫描。</p>
+<p>在扫描过程中，凡是带有注解 <code>@Component</code> 的类，将被添加到 IoC 容器进行管理：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们用到的许多第三方组件也经常会纳入 IoC 容器管理。这些第三方组件是不可能带有 <code>@Component</code> 注解的，<span style="background:#ffc000">引入第三方 Bean 只能通过工厂模式，即在 <code>@Configuration</code> 工厂类中定义带 <code>@Bean</code> 的工厂方法</span>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DbConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    DataSource <span class="title function_">createDataSource</span><span class="params">(...)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">HikariDataSource</span>(...);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    JdbcTemplate <span class="title function_">createJdbcTemplate</span><span class="params">(...)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JdbcTemplate</span>(...);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>基于 Annotation 配置的 IoC 容器基本用法就是上面所述。下面，我们就一步一步来实现 IoC 容器。</p>
+<h3 id="实现-ResourceResolver"><a href="#实现-ResourceResolver" class="headerlink" title="实现 ResourceResolver"></a>实现 ResourceResolver</h3><p>在编写 IoC 容器之前，我们首先要实现 <code>@ComponentScan</code>，即解决“在指定包下扫描所有 Class”的问题。</p>
+<p>Java 的 ClassLoader 机制可以在指定的 Classpath 中根据类名加载指定的 Class，但遗憾的是，给出一个包名，例如，<code>org.example</code>，它并不能获取到该包下的所有 Class，也不能获取子包。要在 Classpath 中扫描指定包名下的所有 Class，包括子包，实际上是在 Classpath 中搜索所有文件，找出文件名匹配的 <code>.class</code> 文件。例如，Classpath 中搜索的文件 <code>org/example/Hello.class</code> 就符合包名 <code>org.example</code>，我们需要根据文件路径把它变为 <code>org.example.Hello</code>，就相当于获得了类名。因此，搜索 Class 变成了搜索文件。</p>
+<p>我们先定义一个 <code>Resource</code> 类型表示文件：</p>
+<p><strong>record</strong> 类是 Java16 的新特性，具体的特点参见该文章 <a href="https://www.jianshu.com/p/bf99938a369b">Java 16 新特性：record类 - 简书</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">Resource</span><span class="params">(String path, String name)</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再仿造 Spring 提供一个 <code>ResourceResolver</code>，定义 <code>scan()</code> 方法来获取扫描到的 <code>Resource</code>：</p>
+<p>TODO</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://liaoxuefeng.com/books/summerframework/introduction/index.html">简介 - 手写Spring - 廖雪峰的官方网站</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>后端/SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ActiveMQ</title>
     <url>/2024/12/09/archive/ActiveMQ/</url>
     <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
