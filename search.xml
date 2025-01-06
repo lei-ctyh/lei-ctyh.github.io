@@ -3896,6 +3896,72 @@
       </tags>
   </entry>
   <entry>
+    <title>docker安装kafka集群</title>
+    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
+    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
+<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
+<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
+</ul>
+<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
+<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
+<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
+<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
+</ul>
+<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
+<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看所有的 topic 名字</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
+<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
+<blockquote>
+<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
+        <tag>运维/docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Virtualbox7安装及使用详细步骤</title>
     <url>/2024/12/09/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
@@ -4164,72 +4230,6 @@
       <tags>
         <tag>运维/linux</tag>
         <tag>工具/virtualbox</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker安装kafka集群</title>
-    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
-    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
-<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
-<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
-</ul>
-<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
-<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
-<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
-<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
-</ul>
-<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
-<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看所有的 topic 名字</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
-
-<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
-<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
-<blockquote>
-<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/kafka</tag>
-        <tag>运维/docker</tag>
       </tags>
   </entry>
   <entry>
