@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Dbeaver工具手册</title>
+    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
+<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
+</blockquote>
+<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
+<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
+<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
+</ul>
+<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
+<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
+<li>选择中要复制的代码</li>
+<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
+</ol>
+<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
+<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
+<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
+<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
+]]></content>
+      <tags>
+        <tag>工具/dbeaver</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ActiveMQ</title>
     <url>/2024/12/09/archive/ActiveMQ/</url>
     <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
@@ -137,61 +192,6 @@
 <li>官网：<a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Dbeaver工具手册</title>
-    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
-<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
-</blockquote>
-<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
-<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
-<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
-</ul>
-<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
-<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
-<li>选择中要复制的代码</li>
-<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
-</ol>
-<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
-<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
-<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
-<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
-]]></content>
-      <tags>
-        <tag>工具/dbeaver</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker小册</title>
@@ -2653,6 +2653,127 @@
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库基本概念</title>
+    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<blockquote>
+<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
+</blockquote>
+<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
+<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
+<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库 DROP DATABASE 订单库;     -- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
+<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
+<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 SET search_path TO VIP货架;     -- 告诉仓库员：“以后默认找这个货架”</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
+<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
+<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 GRANT 进货权限 TO 库管员;                -- 给权限</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
+<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
+<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 INSERT INTO 订单表 VALUES (1001, 99.9);         -- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
+<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
+<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 GRANT SELECT ON ALL TABLES TO 只读角色;   -- 给职位配权限 GRANT 只读角色 TO 财务员;                 -- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
+<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
+</li>
+<li><p><strong>常见钥匙</strong>：</p>
+<ul>
+<li><code>SELECT</code>：查看货物（读数据）。</li>
+<li><code>INSERT</code>：放新货物（写数据）。</li>
+<li><code>DELETE</code>：扔货物（删数据）。</li>
+<li><code>UPDATE</code>：改货物（改数据）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">  <span class="comment">-- 给钥匙：“允许财务员查订单表” REVOKE DELETE ON 订单表 FROM 库管员; -- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
+<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
+</li>
+<li><p><strong>常见扩展</strong>：</p>
+<ul>
+<li><code>PostGIS</code>：地理数据处理。</li>
+<li><code>pgcrypto</code>：数据加密。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>拆解</strong>：</p>
+<ul>
+<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
+<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
+<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="search-path"><a href="#search-path" class="headerlink" title="search_path"></a>search_path</h2><p>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> search_path;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
+<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
+<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
+</ol>
+<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
+]]></content>
+      <tags>
+        <tag>数据</tag>
+        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
