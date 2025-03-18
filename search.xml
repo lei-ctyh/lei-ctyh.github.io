@@ -2656,7 +2656,7 @@
       </tags>
   </entry>
   <entry>
-    <title>数据库基本概念</title>
+    <title>PGSQL基本概念</title>
     <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<blockquote>
 <p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
@@ -2671,7 +2671,7 @@
 </ul>
 </li>
 <li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库 DROP DATABASE 订单库;     -- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
 <li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
@@ -2683,7 +2683,10 @@
 </ul>
 </li>
 <li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 SET search_path TO VIP货架;     -- 告诉仓库员：“以后默认找这个货架”</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
+</li>
 </ul>
 <h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
 <li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
@@ -2695,7 +2698,7 @@
 </ul>
 </li>
 <li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 GRANT 进货权限 TO 库管员;                -- 给权限</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
 <li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
@@ -2707,7 +2710,7 @@
 </ul>
 </li>
 <li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 INSERT INTO 订单表 VALUES (1001, 99.9);         -- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
 <li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
@@ -2719,7 +2722,7 @@
 </ul>
 </li>
 <li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 GRANT SELECT ON ALL TABLES TO 只读角色;   -- 给职位配权限 GRANT 只读角色 TO 财务员;                 -- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
 <li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
@@ -2733,7 +2736,7 @@
 </ul>
 </li>
 <li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">  <span class="comment">-- 给钥匙：“允许财务员查订单表” REVOKE DELETE ON 订单表 FROM 库管员; -- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
 <li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
@@ -2759,9 +2762,6 @@
 </ul>
 </li>
 </ul>
-<h2 id="search-path"><a href="#search-path" class="headerlink" title="search_path"></a>search_path</h2><p>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> search_path;</span><br></pre></td></tr></table></figure>
-
 <h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
 
 <h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
