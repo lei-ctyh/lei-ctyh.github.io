@@ -1748,6 +1748,36 @@
       </tags>
   </entry>
   <entry>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Maven依赖管理项目构建工具</title>
     <url>/2024/12/09/archive/Maven%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="一、Maven-简介"><a href="#一、Maven-简介" class="headerlink" title="一、Maven 简介"></a>一、Maven 简介</h2><h3 id="1、为什么学习-Maven"><a href="#1、为什么学习-Maven" class="headerlink" title="1、为什么学习 Maven"></a>1、为什么学习 Maven</h3><h4 id="1-1、Maven-是一个依赖管理工具"><a href="#1-1、Maven-是一个依赖管理工具" class="headerlink" title="1.1、Maven 是一个依赖管理工具"></a>1.1、Maven 是一个依赖管理工具</h4><p><strong>jar 包的规模</strong></p>
@@ -2432,36 +2462,6 @@
 ]]></content>
       <tags>
         <tag>后端/Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -4934,33 +4934,6 @@
       </tags>
   </entry>
   <entry>
-    <title>相对路径的使用</title>
-    <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
-<ol>
-<li><p><strong><code>./</code>：</strong> 表示当前目录。使用 <code>./</code> 可以明确指示路径从当前目录开始。</p>
-<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>./file.txt</code> 就表示 <code>/home/user/file.txt</code>。</p>
-</li>
-<li><p><strong><code>../</code>：</strong> 表示上一级目录。使用 <code>../</code> 可以向上移动一级目录。</p>
-<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>../folder/file.txt</code> 就表示 <code>/home/folder/file.txt</code>。</p>
-</li>
-</ol>
-<p>示例：</p>
-<p>假设有如下的文件结构：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/user/</span><br><span class="line">|-- current-folder/</span><br><span class="line">|   |-- script.js</span><br><span class="line">|   |-- image.jpg</span><br><span class="line">|</span><br><span class="line">|-- parent-folder/</span><br><span class="line">    |-- document.txt</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>如果 <code>script.js</code> 中包含 <code>./image.jpg</code>，那么这个路径指向的是 <code>/home/user/current-folder/image.jpg</code>。</p>
-</li>
-<li><p>如果 <code>script.js</code> 中包含 <code>../parent-folder/document.txt</code>，那么这个路径指向的是 <code>/home/user/parent-folder/document.txt</code>。</p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>文章推荐</title>
     <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
     <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
@@ -5040,6 +5013,33 @@
 ]]></content>
       <tags>
         <tag>持续更新</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>相对路径的使用</title>
+    <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
+<ol>
+<li><p><strong><code>./</code>：</strong> 表示当前目录。使用 <code>./</code> 可以明确指示路径从当前目录开始。</p>
+<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>./file.txt</code> 就表示 <code>/home/user/file.txt</code>。</p>
+</li>
+<li><p><strong><code>../</code>：</strong> 表示上一级目录。使用 <code>../</code> 可以向上移动一级目录。</p>
+<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>../folder/file.txt</code> 就表示 <code>/home/folder/file.txt</code>。</p>
+</li>
+</ol>
+<p>示例：</p>
+<p>假设有如下的文件结构：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/user/</span><br><span class="line">|-- current-folder/</span><br><span class="line">|   |-- script.js</span><br><span class="line">|   |-- image.jpg</span><br><span class="line">|</span><br><span class="line">|-- parent-folder/</span><br><span class="line">    |-- document.txt</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>如果 <code>script.js</code> 中包含 <code>./image.jpg</code>，那么这个路径指向的是 <code>/home/user/current-folder/image.jpg</code>。</p>
+</li>
+<li><p>如果 <code>script.js</code> 中包含 <code>../parent-folder/document.txt</code>，那么这个路径指向的是 <code>/home/user/parent-folder/document.txt</code>。</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
