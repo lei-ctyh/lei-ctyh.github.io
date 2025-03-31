@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>舆情分析项目分析</title>
-    <url>/2025/03/31/%E8%88%86%E6%83%85%E5%88%86%E6%9E%90%E9%A1%B9%E7%9B%AE%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h2 id="一、项目架构"><a href="#一、项目架构" class="headerlink" title="一、项目架构"></a>一、项目架构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">舆情分析系统</span><br><span class="line">├── 数据采集层</span><br><span class="line">│   ├── TikTok.py        # 抖音评论爬虫</span><br><span class="line">│   ├── weibo.py         # 微博评论爬虫</span><br><span class="line">│   ├── zhihu.py         # 知乎回答爬虫</span><br><span class="line">├── 数据处理层</span><br><span class="line">│   ├── 合并.py          # 多平台数据合并</span><br><span class="line">│   ├── 数据清洗.py      # 文本预处理</span><br><span class="line">├── 分析层</span><br><span class="line">│   ├── 情感分析.py      # BERT情感分类</span><br><span class="line">│   ├── gpu_test.py      # GPU可用性测试</span><br><span class="line">├── 可视化层</span><br><span class="line">│   ├── 可视化.py        # Streamlit交互仪表盘</span><br><span class="line">├── 数据文件</span><br><span class="line">│   ├── 原始数据</span><br><span class="line">│   │   ├── TikTok.csv   # 抖音评论（含用户信息）</span><br><span class="line">│   │   ├── weibo.csv    # 微博评论（纯文本）</span><br><span class="line">│   │   └── zhihu.csv    # 知乎回答（含元数据）</span><br><span class="line">│   ├── 中间数据</span><br><span class="line">│   │   ├── merged_comments.csv      # 合并后数据</span><br><span class="line">│   │   └── processed_comments.csv   # 清洗后数据</span><br><span class="line">│   └── 结果数据</span><br><span class="line">│       └── sentiment_results.csv    # 情感分析结果</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、核心模块解析"><a href="#二、核心模块解析" class="headerlink" title="二、核心模块解析"></a>二、核心模块解析</h3><h4 id="1-数据采集"><a href="#1-数据采集" class="headerlink" title="1. 数据采集"></a>1. 数据采集</h4><ul>
-<li>平台覆盖：抖音、微博、知乎三大中文社交平台</li>
-<li>数据特征：<ul>
-<li>TikTok：包含用户昵称、地区、时间戳等元数据</li>
-<li>微博：以短文本祈祷类评论为主（” 愿平安 “ 高频出现）</li>
-<li>知乎：包含专业地质讨论（如断裂带分析）和时政评论</li>
-</ul>
-</li>
-</ul>
-<p>嗯，用户让我帮忙梳理整个项目，我需要先仔细看看提供的各个代码片段和数据文件，理解每个部分的作用和它们之间的关系。首先，用户提供了多个Python脚本，包括数据合并、数据清洗、情感分析、可视化，还有一些测试GPU的代码，以及多个CSV数据文件，比如TikTok.csv、weibo.csv、zhihu.csv，还有处理后的merged_comments.csv、processed_comments.csv和sentiment_results.csv。看起来这是一个社交媒体评论分析的项目，主要针对缅甸地震事件，从不同平台抓取评论，进行清洗、情感分析，最后可视化结果。</p>
-<p>首先，我需要理清每个脚本的功能。合并.py的作用可能是将不同来源的数据合并成一个文件。看代码，用户用pandas读取了TikTok和知乎的CSV文件，提取了第4列（iloc[:,3]），但注意到第5行可能有个错误，因为weibo变量没有定义，这里可能是个笔误，导致合并时会出错。这可能是一个潜在的问题，用户需要检查是否遗漏了读取weibo.csv的代码。</p>
-<p>接下来是数据清洗.py，这里使用了jieba分词，停用词处理，正则表达式清洗文本。处理后的数据保存为processed_comments.csv，包含原始评论、清洗后的文本和分词结果。例如，处理前的评论可能包含表情符号或HTML标签，清洗后去除了这些无关内容，方便后续分析。</p>
-<p>情感分析.py使用了BERT模型进行情感分类，将结果保存到sentiment_results.csv，包含每条评论的正、中、负面概率及最终标签。这里可能需要检查模型是否加载正确，特别是GPU的使用情况，用户提供了gpu_test.py来测试CUDA是否可用，确保情感分析时能利用GPU加速。</p>
-<p>可视化.py用Streamlit创建了交互式仪表盘，展示词云、情感分布、高频词和示例评论。用户可能希望展示分析结果，帮助理解舆论倾向。需要注意的是，可视化部分是否正确地读取了情感分析的结果，并且各个图表是否正确生成，比如词云可能需要处理中文乱码问题，或者停用词未完全过滤的情况。</p>
-<p>数据文件方面，merged_comments.csv合并了三个平台的评论，但检查发现可能存在空行或格式问题，比如某些行的评论内容为空。processed_comments.csv显示清洗后的数据，但部分分词可能不准确，比如“龙族伤亡”可能被错误切分，需要检查停用词表和分词逻辑。sentiment_results.csv中的情感标签分布是否合理，比如正面评论是否占多数，或者是否存在分类错误的情况。</p>
-<p>另外，各个平台的原始数据格式不同，比如TikTok.csv包含昵称、地区、日期和评论，而weibo.csv似乎只有评论内容，zhihu.csv的结构更复杂，包含性别、时间、地点、评论内容和点赞数。在合并时，可能只提取了评论内容，忽略了其他元数据，但用户是否需要在分析中考虑这些因素呢？比如按地区或时间分析情感趋势，可能需要保留更多字段。</p>
-<p>在代码中，合并.py的第8行使用了pd.concat，但weibo变量未定义，这会导致错误。用户可能忘记导入weibo.csv，或者变量名拼写错误。需要确认是否在代码中正确读取了weibo的数据，比如添加类似tiktok和zhihu的读取步骤。</p>
-<p>情感分析部分，用户是否正确地处理了文本长度，因为BERT模型有最大长度限制，过长的评论可能被截断。此外，情感分析的结果是否有验证，比如人工检查部分样本是否正确分类，确保模型准确率。</p>
-<p>可视化部分，可能需要调整布局，使图表更直观。比如情感分布使用饼图还是柱状图，词云的大小和颜色设置是否合适。另外，示例评论部分是否正确地过滤了对应情感标签的评论，是否存在重复显示的情况。</p>
-<p>数据清洗阶段，是否处理了重复评论？比如merged_comments.csv中是否有重复条目，清洗时是否去重。此外，分词后的结果是否进行了词性过滤，比如只保留名词和动词，提高关键词提取的准确性。</p>
-<p>最后，项目整体流程是否顺畅，从数据采集、清洗、分析到可视化的每个步骤是否衔接正确，中间文件是否正常生成。例如，合并后的文件是否正确传递给清洗脚本，清洗后的数据是否作为情感分析的输入，分析结果是否被可视化脚本读取。</p>
-<p>总结下来，用户的项目流程大致正确，但需要注意代码中的错误（如缺失weibo数据读取），数据清洗和分词的准确性，情感分析模型的性能，以及可视化展示的友好性。此外，数据中的一些特殊字符或空行可能需要进一步处理，确保分析结果的可靠性。</p>
-</think>
-
-<p>这个项目是一个针对缅甸地震事件的社交媒体舆情分析系统，整合了多平台数据采集、文本清洗、情感分析和可视化全流程。以下是对项目的结构化梳理：</p>
-]]></content>
-  </entry>
-  <entry>
     <title>ActiveMQ</title>
     <url>/2024/12/09/archive/ActiveMQ/</url>
     <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
@@ -171,59 +139,20 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Dbeaver工具手册</title>
-    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
-<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
-</blockquote>
-<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+    <title>舆情分析项目分析</title>
+    <url>/2025/03/31/%E8%88%86%E6%83%85%E5%88%86%E6%9E%90%E9%A1%B9%E7%9B%AE%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h2 id="一、项目架构"><a href="#一、项目架构" class="headerlink" title="一、项目架构"></a>一、项目架构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">舆情分析系统</span><br><span class="line">├── 数据采集层</span><br><span class="line">│   ├── TikTok.py        # 抖音评论爬虫</span><br><span class="line">│   ├── weibo.py         # 微博评论爬虫</span><br><span class="line">│   ├── zhihu.py         # 知乎回答爬虫</span><br><span class="line">├── 数据处理层</span><br><span class="line">│   ├── 合并.py          # 多平台数据合并</span><br><span class="line">│   ├── 数据清洗.py      # 文本预处理</span><br><span class="line">├── 分析层</span><br><span class="line">│   ├── 情感分析.py      # BERT情感分类</span><br><span class="line">│   ├── gpu_test.py      # GPU可用性测试</span><br><span class="line">├── 可视化层</span><br><span class="line">│   ├── 可视化.py        # Streamlit交互仪表盘</span><br><span class="line">├── 数据文件</span><br><span class="line">│   ├── 原始数据</span><br><span class="line">│   │   ├── TikTok.csv   # 抖音评论（含用户信息-昵称、地区、日期、评论）</span><br><span class="line">│   │   ├── weibo.csv    # 微博评论（纯文本-只有评论）</span><br><span class="line">│   │   └── zhihu.csv    # 知乎回答（含元数据-性别、发布时间、IP、评论内容、下方评论回复数）</span><br><span class="line">│   ├── 中间数据</span><br><span class="line">│   │   ├── merged_comments.csv      # 合并后数据</span><br><span class="line">│   │   └── processed_comments.csv   # 清洗后数据</span><br><span class="line">│   └── 结果数据</span><br><span class="line">│       └── sentiment_results.csv    # 情感分析结果</span><br></pre></td></tr></table></figure>
 
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
-<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
-<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
+<h3 id="二、核心模块解析"><a href="#二、核心模块解析" class="headerlink" title="二、核心模块解析"></a>二、核心模块解析</h3><h4 id="1-数据采集"><a href="#1-数据采集" class="headerlink" title="1. 数据采集"></a>1. 数据采集</h4><ul>
+<li>平台覆盖：抖音、微博、知乎三大中文社交平台</li>
+<li>数据特征：<ul>
+<li>TikTok：包含用户昵称、地区、时间戳等元数据</li>
+<li>微博：以短文本祈祷类评论为主（” 愿平安 “ 高频出现）</li>
+<li>知乎：包含专业地质讨论（如断裂带分析）和时政评论</li>
 </ul>
-<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
-<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
-<li>选择中要复制的代码</li>
-<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
-</ol>
-<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
-<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
-<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
-<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
+</li>
+</ul>
 ]]></content>
-      <tags>
-        <tag>工具/dbeaver</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker小册</title>
@@ -1513,6 +1442,61 @@
       </tags>
   </entry>
   <entry>
+    <title>Dbeaver工具手册</title>
+    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
+<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
+</blockquote>
+<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
+<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
+<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
+</ul>
+<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
+<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
+<li>选择中要复制的代码</li>
+<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
+</ol>
+<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
+<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
+<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
+<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
+]]></content>
+      <tags>
+        <tag>工具/dbeaver</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kafka常用命令总结</title>
     <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
@@ -1777,6 +1761,165 @@
       <tags>
         <tag>运维/linux</tag>
         <tag>持续更新</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Obsidian插件汇总</title>
+    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
+<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
+</blockquote>
+<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
+</blockquote>
+<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
+<p>Page Feature 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
+<blockquote>
+<p>Page Feature 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
+<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
+<p>Page Behaviors 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
+<blockquote>
+<p>Page Behaviors 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
+<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
+<ul>
+<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
+<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
+</ul>
+<blockquote>
+<p>Embedding options 英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
+<blockquote>
+<p>Embedding options 中文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的使用可以参考下 GIF</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
+<p>😀 导出时建议选择独立文档</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
+<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
+<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
+<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
+<blockquote>
+<p>开启了删除日志, 成功删除后会有如下界面</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
+<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
+</blockquote>
+<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
+<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
+<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
+</blockquote>
+<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>直接按照下图配置即可, 没什么按需调整的选项</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
+<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的集团使用可参考下 GIF 以及表格</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
+<table>
+<thead>
+<tr>
+<th>热键</th>
+<th>行为</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tab</td>
+<td>下一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>前一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>下一行</td>
+<td>跳转至下一行, 没有下一行则新增</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + D</td>
+<td>打开表格帮助面板</td>
+<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
+</tr>
+</tbody></table>
+<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>该插件主要</p>
+</blockquote>
+<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
+<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
+<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
+]]></content>
+      <tags>
+        <tag>工具/obsidian</tag>
       </tags>
   </entry>
   <entry>
@@ -2467,227 +2610,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Obsidian插件汇总</title>
-    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
-<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
-</blockquote>
-<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
-<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
-</blockquote>
-<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
-<p>Page Feature 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
-<blockquote>
-<p>Page Feature 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
-<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
-<p>Page Behaviors 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
-<blockquote>
-<p>Page Behaviors 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
-<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
-<ul>
-<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
-<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
-</ul>
-<blockquote>
-<p>Embedding options 英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
-<blockquote>
-<p>Embedding options 中文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
-<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的使用可以参考下 GIF</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
-<p>😀 导出时建议选择独立文档</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
-<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
-<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
-<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
-<blockquote>
-<p>开启了删除日志, 成功删除后会有如下界面</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
-<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
-</blockquote>
-<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
-<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
-<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
-</blockquote>
-<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>直接按照下图配置即可, 没什么按需调整的选项</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
-<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的集团使用可参考下 GIF 以及表格</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
-<table>
-<thead>
-<tr>
-<th>热键</th>
-<th>行为</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Tab</td>
-<td>下一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Shift + Tab</td>
-<td>前一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>下一行</td>
-<td>跳转至下一行, 没有下一行则新增</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + D</td>
-<td>打开表格帮助面板</td>
-<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
-</tr>
-</tbody></table>
-<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>该插件主要</p>
-</blockquote>
-<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
-<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
-<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
-]]></content>
-      <tags>
-        <tag>工具/obsidian</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
-</blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
-</li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
-</li>
-</ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
-</ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 被授权的用户名</li>
-</ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
-</ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
-</ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PGSQL基本概念</title>
     <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<blockquote>
@@ -2806,6 +2728,68 @@
       <tags>
         <tag>数据</tag>
         <tag>数据/数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
+</ul>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
+</ul>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -4386,113 +4370,6 @@
       </tags>
   </entry>
   <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>利息计算方式</title>
     <url>/2024/12/09/archive/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
@@ -4936,6 +4813,113 @@
       </tags>
   </entry>
   <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何避免代码的深层嵌套</title>
     <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
     <content><![CDATA[<blockquote>
@@ -5075,13 +5059,13 @@
       </tags>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
