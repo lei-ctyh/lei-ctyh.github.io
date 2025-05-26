@@ -5038,13 +5038,22 @@
       </tags>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
+    <title>线程的几种状态</title>
+    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mindmap</span><br><span class="line">	(线程的几种状态)</span><br><span class="line">		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)</span><br><span class="line">		(运行态-是就绪态和运行中的统称)</span><br><span class="line">			(就绪态-未抢占到cpu时间片)</span><br><span class="line">			(运行中-抢占到了时间片) </span><br><span class="line">		(阻塞态)</span><br><span class="line">		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)</span><br><span class="line">		(超时等待-指定时间后，可以自行返回)</span><br><span class="line">		(终止态度-线程执行完毕)</span><br><span class="line">		</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>后端/Java/八股</tag>
+      </tags>
   </entry>
   <entry>
     <title>友情链接</title>
     <url>/link/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
