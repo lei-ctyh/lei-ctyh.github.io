@@ -2465,135 +2465,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Obsidian插件汇总</title>
-    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
-<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
-</blockquote>
-<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
-<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
-</blockquote>
-<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
-<p>Page Feature 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
-<blockquote>
-<p>Page Feature 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
-<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
-<p>Page Behaviors 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
-<blockquote>
-<p>Page Behaviors 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
-<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
-<ul>
-<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
-<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
-</ul>
-<blockquote>
-<p>Embedding options 英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
-<blockquote>
-<p>Embedding options 中文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
-<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的使用可以参考下 GIF</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
-<p>😀 导出时建议选择独立文档</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
-<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
-<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
-<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
-<blockquote>
-<p>开启了删除日志, 成功删除后会有如下界面</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
-<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
-</blockquote>
-<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
-<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
-<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
-</blockquote>
-<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>直接按照下图配置即可, 没什么按需调整的选项</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
-<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的集团使用可参考下 GIF 以及表格</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
-<table>
-<thead>
-<tr>
-<th>热键</th>
-<th>行为</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Tab</td>
-<td>下一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Shift + Tab</td>
-<td>前一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>下一行</td>
-<td>跳转至下一行, 没有下一行则新增</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + D</td>
-<td>打开表格帮助面板</td>
-<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
-</tr>
-</tbody></table>
-<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>该插件主要</p>
-</blockquote>
-<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
-<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
-<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
-]]></content>
-      <tags>
-        <tag>工具/obsidian</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Orecal数据库还原</title>
     <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
     <content><![CDATA[<blockquote>
@@ -2653,6 +2524,127 @@
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PGSQL基本概念</title>
+    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<blockquote>
+<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
+</blockquote>
+<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
+<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
+<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
+<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
+<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
+</li>
+</ul>
+<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
+<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
+<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
+<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
+<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
+<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
+<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
+<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
+</li>
+<li><p><strong>常见钥匙</strong>：</p>
+<ul>
+<li><code>SELECT</code>：查看货物（读数据）。</li>
+<li><code>INSERT</code>：放新货物（写数据）。</li>
+<li><code>DELETE</code>：扔货物（删数据）。</li>
+<li><code>UPDATE</code>：改货物（改数据）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
+<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
+</li>
+<li><p><strong>常见扩展</strong>：</p>
+<ul>
+<li><code>PostGIS</code>：地理数据处理。</li>
+<li><code>pgcrypto</code>：数据加密。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>拆解</strong>：</p>
+<ul>
+<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
+<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
+<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
+<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
+<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
+</ol>
+<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
+]]></content>
+      <tags>
+        <tag>数据</tag>
+        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -3710,127 +3702,6 @@
 ]]></content>
       <tags>
         <tag>数据/redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PGSQL基本概念</title>
-    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<blockquote>
-<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
-</blockquote>
-<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
-<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
-<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
-<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
-<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
-</li>
-</ul>
-<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
-<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
-<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
-<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
-<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
-<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
-<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
-<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
-</li>
-<li><p><strong>常见钥匙</strong>：</p>
-<ul>
-<li><code>SELECT</code>：查看货物（读数据）。</li>
-<li><code>INSERT</code>：放新货物（写数据）。</li>
-<li><code>DELETE</code>：扔货物（删数据）。</li>
-<li><code>UPDATE</code>：改货物（改数据）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
-<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
-</li>
-<li><p><strong>常见扩展</strong>：</p>
-<ul>
-<li><code>PostGIS</code>：地理数据处理。</li>
-<li><code>pgcrypto</code>：数据加密。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
-<li><p><strong>示例</strong>：</p>
-  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>拆解</strong>：</p>
-<ul>
-<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
-<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
-<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
-<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
-<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
-<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
-</ol>
-<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
-]]></content>
-      <tags>
-        <tag>数据</tag>
-        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -5055,13 +4926,190 @@
 
 </code></pre>
 
-<pre><code class="highlight mermaid">graph TD
-A--&gt;B
-
-
-</code></pre>]]></content>
+<pre><code class="highlight mermaid">stateDiagram-v2
+    [*] --&gt; NEW : 创建线程对象
+    
+    NEW --&gt; RUNNABLE : start()方法
+    
+    RUNNABLE --&gt; BLOCKED : 等待获取锁
+    BLOCKED --&gt; RUNNABLE : 获取到锁
+    
+    RUNNABLE --&gt; WAITING : wait()/join()/park()
+    WAITING --&gt; RUNNABLE : notify()/notifyAll()/unpark()
+    
+    RUNNABLE --&gt; TIMED_WAITING : sleep()/wait(timeout)/join(timeout)
+    TIMED_WAITING --&gt; RUNNABLE : 时间到期或被唤醒
+    
+    RUNNABLE --&gt; TERMINATED : 执行完成或异常终止
+    
+    NEW --&gt; TERMINATED : 线程异常
+    BLOCKED --&gt; TERMINATED : 线程被强制终止
+    WAITING --&gt; TERMINATED : 线程被强制终止
+    TIMED_WAITING --&gt; TERMINATED : 线程被强制终止
+    
+    TERMINATED --&gt; [*]
+    
+    note right of NEW
+        新建状态
+        线程对象被创建但未调用start()
+    end note
+    
+    note right of RUNNABLE
+        可运行状态
+        包含READY和RUNNING两个子状态
+    end note
+    
+    note right of BLOCKED
+        阻塞状态
+        等待监视器锁
+    end note
+    
+    note right of WAITING
+        等待状态
+        无限期等待其他线程执行特定操作
+    end note
+    
+    note right of TIMED_WAITING
+        超时等待状态
+        在指定时间内等待其他线程执行特定操作
+    end note
+    
+    note right of TERMINATED
+        终止状态
+        线程执行完毕
+    end note</code></pre>
+]]></content>
       <tags>
         <tag>后端/Java/八股</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Obsidian插件汇总</title>
+    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
+<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
+</blockquote>
+<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
+</blockquote>
+<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
+<p>Page Feature 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
+<blockquote>
+<p>Page Feature 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
+<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
+<p>Page Behaviors 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
+<blockquote>
+<p>Page Behaviors 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
+<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
+<ul>
+<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
+<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
+</ul>
+<blockquote>
+<p>Embedding options 英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
+<blockquote>
+<p>Embedding options 中文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的使用可以参考下 GIF</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
+<p>😀 导出时建议选择独立文档</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
+<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
+<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
+<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
+<blockquote>
+<p>开启了删除日志, 成功删除后会有如下界面</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
+<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
+</blockquote>
+<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
+<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
+<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
+</blockquote>
+<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>直接按照下图配置即可, 没什么按需调整的选项</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
+<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的集团使用可参考下 GIF 以及表格</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
+<table>
+<thead>
+<tr>
+<th>热键</th>
+<th>行为</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tab</td>
+<td>下一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>前一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>下一行</td>
+<td>跳转至下一行, 没有下一行则新增</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + D</td>
+<td>打开表格帮助面板</td>
+<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
+</tr>
+</tbody></table>
+<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>该插件主要</p>
+</blockquote>
+<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
+<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
+<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
+]]></content>
+      <tags>
+        <tag>工具/obsidian</tag>
       </tags>
   </entry>
   <entry>
