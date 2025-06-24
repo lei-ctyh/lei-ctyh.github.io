@@ -194,260 +194,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HashMart开发文档</title>
-    <url>/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><blockquote>
-<p>推荐您使用宝塔搭建本系统，本系统也以宝塔为例演示如何搭建，其他环境，请根据您的实际情况自行安装。<br>宝塔环境的安装，请参考  <a href="https://bt.cn/new/download.html">https://bt.cn/new/download.html</a></p>
-</blockquote>
-<h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><p>服务器环境推荐使用 linux centos，版本任意。软件环境</p>
-<table>
-<thead>
-<tr>
-<th>软件</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>PHP</td>
-<td>7.2+</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>5.7</td>
-</tr>
-<tr>
-<td>Nginx</td>
-<td>1.22.1(比较新的版本即可)</td>
-</tr>
-</tbody></table>
-<p>PHP 扩展需要安装的有：<code>fileinfo</code>、<code>redis</code></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/89a314b662ce2038fd5cff4494c17979f6b5995103d2f5465d7a4cfa45c14700.png"></p>
-<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>下面是示例</p>
-<table>
-<thead>
-<tr>
-<th>域名</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>demo.hashmart.com.cn</td>
-<td>程序后台访问和接口层访问</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>解析域名指向需要安装的服务器</p>
-</blockquote>
-<p>前端环境准备</p>
-<p>开发工具 HBuilder X 3.7.6 -alpha 微信开发者工具</p>
-<p>前端 node 版本 v14.15.0</p>
-<h2 id="2、安装后台程序"><a href="#2、安装后台程序" class="headerlink" title="2、安装后台程序"></a>2、安装后台程序</h2><p>1、访问码云 (gitee) 下载程序源码  <a href="https://gitee.com/kitego/hashmart">https://gitee.com/kitego/hashmart</a></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/ef7b5f6e59265760a0a6ab3853320df27f9f176f82427e5bd8778af5ff691139.png" alt="|490"></p>
-<p>下载好源码解压好，备用</p>
-<p>2、下面介绍一下每个目录的用途</p>
-<table>
-<thead>
-<tr>
-<th>目录</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>api</td>
-<td>整个系统的接口层源码</td>
-</tr>
-<tr>
-<td>screenshoot</td>
-<td>readme 数据的静态截图文件（与系统无关）</td>
-</tr>
-<tr>
-<td>web&#x2F;admin</td>
-<td>web 下的 admin 目录是放的管理端后台的 vue 源码</td>
-</tr>
-<tr>
-<td>web&#x2F;uniapp</td>
-<td>web 下的 uniapp 目录是放的移动端前端的 uniapp 源码</td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3、打开宝塔新建网站，输入域名 `demo.hashmart.com.cn`(示例域名，您的根据实际情况来)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/ed4e5ca44c14613b881b48f94e42305ea522dd2998545a88774380a2df1fee44.png"></p>
-<p>4、上传源码包中的 <code>api</code>  目录中的内容到  <code>/www/wwwroot/demo.hashmart.com.cn</code>  下</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/135758e9ed66ba46161c5094289f84e174eaf8ffc082fea4a4dd2fafec7489b4.png"></p>
-<p>点击网站后的设置</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/0d7c627eb55aae4c0da5b185e7f93f91115cc61bb495b5d4cac851cf9234bc9e.png"></p>
-<p>配置网站的运行目录为  <code>public</code></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/65ae3f0fd958efedd64abf768b0012caad07a2ede68ab71b6026143a2c0a9eb0.png"></p>
-<p>并且设置网站的伪静态</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/bbd8a6b80f92f16a024eaa1ebe1863130fa1a65032a099c16c01d501510d2fb4.png"></p>
-<p>由于系统采用了三方字体，因此要配置这些字体可跨域，网站 –&gt; 设置中</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/3108d522e15e8d0d1f689b7662fa4fe3d8162491f766b3637046b84131e73b20.png"></p>
-<p>添加如下的配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location ~* .(eot|ttf|woff|woff2|svg)$ &#123;</span><br><span class="line">    add_header Access-Control-Allow-Origin *;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5、打开浏览器访问  <code>demo.hashmart.com.cn</code>，进入安装页面</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/d7118892b0250b6944caa40d6437ad35590b8f7c8356ceda766c81bf94fb5383.png"></p>
-<p>同意协议进入下一步</p>
-<p>6、系统检测扩展环境以及目录读写权限，没问题点击下一步</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/3eee60a539200c854d05545d384eb3b1b3965cbcd3fe11719dda6952a2d733c3.png"></p>
-<p>7、填写对应的数据库账号信息、管理员密码，点击下一步</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/af504fd6e23639cf132610bf45ad43e92210e2f940f2db5286918d482df86062.png"></p>
-<p>8、等待数据库的安装</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/754409f05e60b8aa55c32bf22d2155f0d1ea98188233d0c467e69b59dcc0c7de.png"></p>
-<p>9、安装成功</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/a2d7891df8156af46d8d3b87f660904ffef7ac9b4dad5da916add88d53f7b16e.png"></p>
-<blockquote>
-<p>建议您安装完成后，删除  <code>app/install</code>  目录，防止被别人重复安装。</p>
-</blockquote>
-<p>10、点击访问后台、输入刚才自己录入的 管理员密码，比如上例我们填写的  <code>admin123</code></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/5ded17548e54a5e502082a4d68407b7f36014abbe3ea17f7e79a62dd55ec0faa.png"></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/4b0e7d8d4bf447424edf1617e9b675996215a52077997eda9f27425ee80a52bb.png"></p>
-<blockquote>
-<p>为了方便搭建的使用，本系统已经把 admin 管理后台的源码编译好后放在了  <code>api</code>  目录的 public 下的  <code>backend</code> 下。如果你想自己修改编译后台，可以参考  <code>常见问题 &gt;&gt; 如何自己编译后台</code></p>
-</blockquote>
-<p>配置定时任务</p>
-<blockquote>
-<p>定时任务主要是处理一些超时未支付的订单</p>
-</blockquote>
-<p>软件中心搜索 supervisor，并安装</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/f4188d7d144ec88d2b14a32f44cc984e14dd6f546caa8ad7a30dbfa8dc7a83e8.png"></p>
-<p>点击配置</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/12788b754d58438239f1fe3c62b96755710b578bc3f187a91b22c8c0724df1be.png"></p>
-<p>宝塔安装  <code>守护进程管理器</code>, 新建定时任务，目录选择 后台程序 所在目录，命令输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php think crontab start</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/2e6430c948f1270ce3410b42d64a8a559c3f9fb90871a146903a69a2b832f6f5.png"></p>
-<p>录入定时任务</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/f27da02625a616cf346794533529de5aa976f4fb175c714949a8fee761aeac0b.png"></p>
-<p>录入如下的 2 条规则</p>
-<table>
-<thead>
-<tr>
-<th>规则名</th>
-<th>命令</th>
-<th>时间</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>盲盒订单超时检测</td>
-<td>php think blindboxOrder</td>
-<td>每隔 N 分钟 – 10 分</td>
-</tr>
-<tr>
-<td>余额充值订单超时检测</td>
-<td>php think balanceOrder</td>
-<td>每隔 N 分钟 – 10 分钟</td>
-</tr>
-</tbody></table>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/992bbcdfccd3a71cfb6bda3cfc1f67a640cc537ebd937de028887c234d55305d.png"></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/330debd415e7ac21b76afe34d09575b2d228ebbe53b5aace5b0eaf00c9c65635.png"></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/88e7499c39164f2820978734adb42dba5f5766cbfbed3e4583d47f607e374fbd.png"></p>
-<h2 id="3、编译小程序"><a href="#3、编译小程序" class="headerlink" title="3、编译小程序"></a>3、编译小程序</h2><p>1、使用 hbuilderx 打开刚才下载的源码目录下的 uniapp 文件夹,或者进入文件夹直接拖动文件夹到 hbuilderx</p>
-<p>目录地址 源码&gt;web&gt;uniapp</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/976909435dfd6501b19350a839e5aa5ebdbf6ee770c501ddb9eb337b8edc36d6.png"></p>
-<p>2、 打开编辑器终端，输入命令行代码  <code>npm i</code>,输入后按回车键，终端开始下载项目所需依赖包</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/eeb143dbcaba2b7c5bdd4f125237fa7da83472535f1468b9b3275ae93bf57fcf.png"></p>
-<p>3、进行相应的配置， 打开目录下的 <code>manifest.json</code>  文件 ,找到微信小程序配置，在微信小程序 AppID 内输入自己真实的微信小程序 AppID</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/21a98c630157f1beee04b82a8df7dc00b6976d081ba6d52faf3c2923e5084bad.png"></p>
-<p>4、若找不到自己的微信小程序 AppID,打开浏览器，输入“微信公众平台”，进入官网，登录，找到‘开发&gt;开发管理’，点击 ‘开发设置’ ，下方显示 AppID ,复制粘贴。</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/961ce9d990398c9656750593b9316bfdc66c1ac8d16acd0ec158356e5d233a18.png"></p>
-<p>5、请求接口地址修改 打开此文件修改为自己的请求接口地址, “apiroot” 是接口请求地址 “imgroot” 为静态图片地址</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/144f6b73051454e75bf836cd4f3d426021222bc93b59f5123a266a6b58ae9047.png"></p>
-<p>6、运行到微信小程序，运行前将目录下的  <code>uniCloud</code>  文件夹删除 （注意：备份一下这个文件，运行 app 时要用到）</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/1e31abe3c6ce3c3026db55e3333c33ad3684f1e2b300710dc3d81e69c19c1e8d.png"></p>
-<p>7、选中项目，点击上方 ‘’ 运行&gt;运行到小程序模拟器&gt;微信开发者工具</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/335cf0ad2ce83ca28d759e51658c501d64f1a52136f00dc0b474c3be560493fb.png"></p>
-<p>8、运行成功，可选择不登录，点击红色框内按钮进入首页</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/66b3491923b18a1af576e32876875dfaeb21a5bc77081cdb3696993adbb2a635.png"></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/4ecf1d6c25fcdeaaa6c9eee642adc08f1c962f705cde93e7c53801f598f9e25a.png"></p>
-<p>9、微信一键登录，点击右上角详情，修改 appid（修改为自己的微信小程序 appid,若不知道看第 4 步），</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/03c0dffa5318f8c23e09408ad5085cb250071e90f96461f2ea00855f0065e38e.png"></p>
-<p>此处若不填写或者填写不正确的 appid 直接登录会报错。填写正确的 appid 即可登录</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/2e8a1d8904ae9319d8fac91fd1434c76f25ea3c576d8baccaad437b00271b1f0.png"></p>
-<p>10、发行小程序，编译完自己想要增加或者修改的页面后，保存文件，点击   <code>发行&gt;小程序-微信</code>,在弹框内填写相应的信息，小程序名称填自己的小程序名称，AppId 同第三条</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/6015d18e023dd85cfd36f4d0c1b10110ea49e9a9c01200fd4b4b9cdab596acc3.png"></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/0a65a27130a0ea49ab0534ff841539c497d7f4feaf471cacf60d2763ac8e8fca.png"></p>
-<p>11、信息填写完毕，点击“发行”，终端控制台执行编译发行，编译成功后会自动打开微信开发者工具，</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/c924c88fbf5fd5b4c3e3d17b818108591b48bab5dca18f9e05e707999879dd38.png"></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/7a30ebdee04681301961139a836ac96de104e6184b3f5f6ac3ca222791771716.png"></p>
-<p>12、在弹出的微信开发者工具中，点击“详情&gt;本地设置&gt;调试基础库”，选择版本（注意不要选择“灰度中”的版本号），然后点击“上传”，填写版本号，再点击上传即可上传体验版本</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/8b4d93dba3ad610c7fa39a25aab7301f5ab6f9c0279f0f470da1c45b7f927b5c.png"></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/c9d192d6d11484b7381addccf8994344af7b8df86f91c7a18e144a08379a7ea1.png"></p>
-<p>13、若需要上传正式版小程序，登录微信公众平台，提交审核即可</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/5380f3d48f2bf8056fbd8fee7694928ec4b0ded4e6177e59c17872bfa80e5174.png"></p>
-<h2 id="4、编译-App"><a href="#4、编译-App" class="headerlink" title="4、编译 App"></a>4、编译 App</h2><p>1、将我们在小程序删除并备份的   <code>uniCloud</code> 文件夹放在项目的根目录下</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/91ed5dc6553e065fe6069f34d73c3f7097519e66cd6422b00a91deaaeaeedc8f.png"></p>
-<p>2、打开 目录下的 ‘manifest.json’ 文件，点击“基础配置”，填写自己的 uni-app 应用标识，以及应用名称</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/55b7c11461b932f6c864974132ba5d160259916ddb88562e202bcb06c42eeecd.png"></p>
-<p>3、点击 “app 图标配置”，配置自己的 app 图标,点击“浏览”，选择自己要设置的 app 图标，然后点击自动生成所有图标并替换即可</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/c1d61db96afb25abe3f495c04e5ed98e44c61a0a1684644beea5a515eb794a04.png"></p>
-<p>4、打开 unCloud&gt;cloudfunctions&gt;getPhoneNumberHash&gt;index.js 配置相关信息，可从后台获取相应信息或者此文件内直接填写相应的值</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/94462b02a1dff78af9f61688bcf70cede71d134d45bd96c1f0e53329706ae5d7.png"></p>
-<p>5、若 4 内相应参数在后台获取，则登录安装好的后台系统，点击菜单 ‘系统&gt;uniapp 配置’ 填写自己的 uniapp 的相应参数</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/f457567734d32df8d85673710a7150b819561b93b9d92ca5ddc267e8156f4497.png"></p>
-<p>6、云函数 url 化，打开 unicloud 后台（<a href="https://unicloud.dcloud.net.cn/">https://unicloud.dcloud.net.cn/</a>），登录 uniapp 管理员账号</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/2b027c2e414908a7653b0366d1c526858374fd108f2745522f403c8549666c24.png"></p>
-<p>7、找到相应的 app,然后点击“详情”进入此 app 的详情内容，在左侧菜单找到 “云函数&#x2F;云对象&gt;函数&#x2F;对象列表”，在右侧云函数列表找到相应的云函数</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/01623a8c0bf59d0e43ff30117a1fef48f0e091e31120908441c1fe52d26b385e.png"></p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/56ea76b7ac3626a8c350c471fdb5c0d015cb7f2b217f49ee7929ce1dcd09b462.png"></p>
-<p>点击“详情”进入云函数详情页，在最下方找到云函数地址复制粘贴到后台 uniapp 配置内的云函数 url 化</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/5fd25ea7fab8f5a0ac2619cfd27f6efe9b5aee960ba3ec237be9c01819a14b4f.png"></p>
-<p>8、unicloud 云函数关联云空间，右键项目下的 unicloud 文件</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/7e507b71ccee12cbeaee8243b95e780ce47e44e7807b11365a558ebc24346095.png"></p>
-<p>9、弹框内选择自己的云空间，然后点击“关联”即可</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/3a5dffcdca5bba55b85ffae6d0b28e790a7128026b3f9762ac8dc4efd8f93469.png"></p>
-<p>关联成功</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/9519ff23369e0947e53d3f5fd54b803c67f4a9e50427f756cae991075ce9bb19.png"></p>
-<p>10、运行 app，选中项目，然后点击运行&gt;运行到手机或模拟器&gt;运行到 android app 基座</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/e3b913a09e25d4b4d03f5fae99e787635e31d073033d2b1eb5f6a86d8a5f2c36.png"></p>
-<p>此时需要一台安卓手机并打开开发者模式，数据线连接电脑和手机，保证手机跟电脑处于同一局域网下</p>
-<p>点击勾选基座，运行</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/744c2a18d4659921379cdb8701b7431a2ccf8809f863e68f5ede5ea0291f834a.png"></p>
-<p>11、运行过程中终端状态</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/139b60debf1fdecf85c3ae2d94053d255a3cf67ad58e54680898f0e92bf836f7.png"></p>
-<p>12、运行成功会在手机上自动安装一个调试基座 app,并打开</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/6bda15b701cff4f34b8ee9ba61ebb9f110900fd319d65c078fcfd480bcd55cde.png"></p>
-<p>13、打包发行前配置，打开目录下的 ‘manifest.json’ 文件，填写相应参数，（注意：后续升级时所填写应用版本名称要大于上一次设置的值）</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/036730acbb677b1d599e723f70f26a148d72a63fc5e6fcb6fdd707f5998c6fbc.png"></p>
-<p>14、发行 app,选中项目，点击上方“发行&gt;原生 App- 云打包”</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/536daba7005bc4defa241515e9088467072f6d3fdc24cb615d021dd2540a8e9b.png"></p>
-<p>15、在弹出的云打包弹框内填写相应的信息，然后点击下方“打包按钮”</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/40475d8ad2b642196b692cc5cc23f8ee0460db013f29a66ff0ee9e2e0d4e1c69.png"></p>
-<p>16、弹框打包校验，点击继续打包</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/29e5c0cb9193afdddc2339a72017d9ad9c9a330f4e67932c565f4c825fcc3c4e.png"></p>
-<p>17、打包时终端状态，打包时间有时会稍长，请略微等待</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/8a9871ddcb2402f532cbff7aaed2fe45d9be5d6f571b34e3e28040fa56df961c.png"></p>
-<p>打包成功状态</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/91fd6919b6fd1651e07a7ed841fef827b618994070ee81417d125c9176991566.png"></p>
-<p>18、点击链接下载安装包，传到手机上即可安装下载</p>
-<p>19、登录 uni-admin 后台，找到“系统管理&gt;app 升级中心”，选择对应的 app,点击发布新版，选择原生 app 安装包</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/1eeec26312b66ca4c2150ae8f7a25581786fd7ced7fc7bc70829259a7bc7ea47.png"></p>
-<p>进入详情，更新标题及更新内容自行填写，版本号填写与 13 条内相同的应用版本名称，选择文件 选择刚才下载的安装包，强制更新打开则表示上线发行后，再次进入此 app 则必须更新下载新版本才可继续使用，上线发行打开则表示点击发布后立即替换为最新的版本。所有信息配置好后点击发布即可</p>
-<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/4b85dbc9f83fb20e624558caa575ba61fd6b0bc1265e99aad86988d25f24568d.png"></p>
-<h2 id="5、基础配置"><a href="#5、基础配置" class="headerlink" title="5、基础配置"></a>5、基础配置</h2><blockquote>
-<p>请务必配置好如下的项目，否则系统无法正常运行。</p>
-</blockquote>
-<h3 id="1、配置存储引擎"><a href="#1、配置存储引擎" class="headerlink" title="1、配置存储引擎"></a>1、配置存储引擎</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/82407025c5fd425e98e7973d9152e7da8f5f2ead22762764235def8da2758361.png"></p>
-<blockquote>
-<p>如果您不想配置这些账号，可以点击本地存储</p>
-</blockquote>
-<h3 id="2、配置支付参数"><a href="#2、配置支付参数" class="headerlink" title="2、配置支付参数"></a>2、配置支付参数</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/ad578d19a207a5b7920181793ac47c8a39fa50822f2d2e1f35ac449af0b43787.png"></p>
-<blockquote>
-<p>如果没有配置支付参数，则系统无法完成支付</p>
-</blockquote>
-<h3 id="3、小程序配置"><a href="#3、小程序配置" class="headerlink" title="3、小程序配置"></a>3、小程序配置</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/93756c25b55734a5cb738a359d419e8c67834835412362597a2aa766189d3cac.png"></p>
-<h3 id="4、短信配置"><a href="#4、短信配置" class="headerlink" title="4、短信配置"></a>4、短信配置</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/baeb56251a4573cf0646b37acdb3290b04feb34d2284721d4c1ae87d5ba2b492.png"></p>
-<h3 id="5、物流查询配置"><a href="#5、物流查询配置" class="headerlink" title="5、物流查询配置"></a>5、物流查询配置</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/e6d7b8e3eb28ec2222087c7e96febaded6d20871bb24f03cb20eca9eadedab90.png"></p>
-<h3 id="6、uniapp-配置"><a href="#6、uniapp-配置" class="headerlink" title="6、uniapp 配置"></a>6、uniapp 配置</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/4cc3fc937fd97be8973063d07bd677ad3bbcf5971085dfea219fd54146788113.png"></p>
-<blockquote>
-<p>此配置用于 app 端一键登录，如果您没有 app，可以不配置此项目</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker小册</title>
     <url>/2024/12/09/archive/Docker%E5%B0%8F%E5%86%8C/</url>
     <content><![CDATA[<h2 id="Docker-简介"><a href="#Docker-简介" class="headerlink" title="Docker 简介"></a>Docker 简介</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>Docker 是一种开源的容器化平台，可以让开发者打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是一种轻量级、独立、可执行的软件包，包含了运行一个应用所需的所有内容：代码、运行时环境、系统工具、系统库等。Docker 可以让开发者快速地构建、测试和部署应用程序，而无需担心跨环境的兼容性问题。</p>
@@ -1478,6 +1224,260 @@
 ]]></content>
       <tags>
         <tag>数据/activemq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HashMart开发文档</title>
+    <url>/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><blockquote>
+<p>推荐您使用宝塔搭建本系统，本系统也以宝塔为例演示如何搭建，其他环境，请根据您的实际情况自行安装。<br>宝塔环境的安装，请参考  <a href="https://bt.cn/new/download.html">https://bt.cn/new/download.html</a></p>
+</blockquote>
+<h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><p>服务器环境推荐使用 linux centos，版本任意。软件环境</p>
+<table>
+<thead>
+<tr>
+<th>软件</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PHP</td>
+<td>7.2+</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>5.7</td>
+</tr>
+<tr>
+<td>Nginx</td>
+<td>1.22.1(比较新的版本即可)</td>
+</tr>
+</tbody></table>
+<p>PHP 扩展需要安装的有：<code>fileinfo</code>、<code>redis</code></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/89a314b662ce2038fd5cff4494c17979f6b5995103d2f5465d7a4cfa45c14700.png"></p>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>下面是示例</p>
+<table>
+<thead>
+<tr>
+<th>域名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>demo.hashmart.com.cn</td>
+<td>程序后台访问和接口层访问</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>解析域名指向需要安装的服务器</p>
+</blockquote>
+<p>前端环境准备</p>
+<p>开发工具 HBuilder X 3.7.6 -alpha 微信开发者工具</p>
+<p>前端 node 版本 v14.15.0</p>
+<h2 id="2、安装后台程序"><a href="#2、安装后台程序" class="headerlink" title="2、安装后台程序"></a>2、安装后台程序</h2><p>1、访问码云 (gitee) 下载程序源码  <a href="https://gitee.com/kitego/hashmart">https://gitee.com/kitego/hashmart</a></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/ef7b5f6e59265760a0a6ab3853320df27f9f176f82427e5bd8778af5ff691139.png" alt="|490"></p>
+<p>下载好源码解压好，备用</p>
+<p>2、下面介绍一下每个目录的用途</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>api</td>
+<td>整个系统的接口层源码</td>
+</tr>
+<tr>
+<td>screenshoot</td>
+<td>readme 数据的静态截图文件（与系统无关）</td>
+</tr>
+<tr>
+<td>web&#x2F;admin</td>
+<td>web 下的 admin 目录是放的管理端后台的 vue 源码</td>
+</tr>
+<tr>
+<td>web&#x2F;uniapp</td>
+<td>web 下的 uniapp 目录是放的移动端前端的 uniapp 源码</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3、打开宝塔新建网站，输入域名 `demo.hashmart.com.cn`(示例域名，您的根据实际情况来)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/ed4e5ca44c14613b881b48f94e42305ea522dd2998545a88774380a2df1fee44.png"></p>
+<p>4、上传源码包中的 <code>api</code>  目录中的内容到  <code>/www/wwwroot/demo.hashmart.com.cn</code>  下</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/135758e9ed66ba46161c5094289f84e174eaf8ffc082fea4a4dd2fafec7489b4.png"></p>
+<p>点击网站后的设置</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/0d7c627eb55aae4c0da5b185e7f93f91115cc61bb495b5d4cac851cf9234bc9e.png"></p>
+<p>配置网站的运行目录为  <code>public</code></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/65ae3f0fd958efedd64abf768b0012caad07a2ede68ab71b6026143a2c0a9eb0.png"></p>
+<p>并且设置网站的伪静态</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/bbd8a6b80f92f16a024eaa1ebe1863130fa1a65032a099c16c01d501510d2fb4.png"></p>
+<p>由于系统采用了三方字体，因此要配置这些字体可跨域，网站 –&gt; 设置中</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/3108d522e15e8d0d1f689b7662fa4fe3d8162491f766b3637046b84131e73b20.png"></p>
+<p>添加如下的配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location ~* .(eot|ttf|woff|woff2|svg)$ &#123;</span><br><span class="line">    add_header Access-Control-Allow-Origin *;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、打开浏览器访问  <code>demo.hashmart.com.cn</code>，进入安装页面</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/d7118892b0250b6944caa40d6437ad35590b8f7c8356ceda766c81bf94fb5383.png"></p>
+<p>同意协议进入下一步</p>
+<p>6、系统检测扩展环境以及目录读写权限，没问题点击下一步</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/3eee60a539200c854d05545d384eb3b1b3965cbcd3fe11719dda6952a2d733c3.png"></p>
+<p>7、填写对应的数据库账号信息、管理员密码，点击下一步</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/af504fd6e23639cf132610bf45ad43e92210e2f940f2db5286918d482df86062.png"></p>
+<p>8、等待数据库的安装</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/754409f05e60b8aa55c32bf22d2155f0d1ea98188233d0c467e69b59dcc0c7de.png"></p>
+<p>9、安装成功</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/a2d7891df8156af46d8d3b87f660904ffef7ac9b4dad5da916add88d53f7b16e.png"></p>
+<blockquote>
+<p>建议您安装完成后，删除  <code>app/install</code>  目录，防止被别人重复安装。</p>
+</blockquote>
+<p>10、点击访问后台、输入刚才自己录入的 管理员密码，比如上例我们填写的  <code>admin123</code></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/5ded17548e54a5e502082a4d68407b7f36014abbe3ea17f7e79a62dd55ec0faa.png"></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/4b0e7d8d4bf447424edf1617e9b675996215a52077997eda9f27425ee80a52bb.png"></p>
+<blockquote>
+<p>为了方便搭建的使用，本系统已经把 admin 管理后台的源码编译好后放在了  <code>api</code>  目录的 public 下的  <code>backend</code> 下。如果你想自己修改编译后台，可以参考  <code>常见问题 &gt;&gt; 如何自己编译后台</code></p>
+</blockquote>
+<p>配置定时任务</p>
+<blockquote>
+<p>定时任务主要是处理一些超时未支付的订单</p>
+</blockquote>
+<p>软件中心搜索 supervisor，并安装</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/f4188d7d144ec88d2b14a32f44cc984e14dd6f546caa8ad7a30dbfa8dc7a83e8.png"></p>
+<p>点击配置</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/12788b754d58438239f1fe3c62b96755710b578bc3f187a91b22c8c0724df1be.png"></p>
+<p>宝塔安装  <code>守护进程管理器</code>, 新建定时任务，目录选择 后台程序 所在目录，命令输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php think crontab start</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/2e6430c948f1270ce3410b42d64a8a559c3f9fb90871a146903a69a2b832f6f5.png"></p>
+<p>录入定时任务</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/f27da02625a616cf346794533529de5aa976f4fb175c714949a8fee761aeac0b.png"></p>
+<p>录入如下的 2 条规则</p>
+<table>
+<thead>
+<tr>
+<th>规则名</th>
+<th>命令</th>
+<th>时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>盲盒订单超时检测</td>
+<td>php think blindboxOrder</td>
+<td>每隔 N 分钟 – 10 分</td>
+</tr>
+<tr>
+<td>余额充值订单超时检测</td>
+<td>php think balanceOrder</td>
+<td>每隔 N 分钟 – 10 分钟</td>
+</tr>
+</tbody></table>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/992bbcdfccd3a71cfb6bda3cfc1f67a640cc537ebd937de028887c234d55305d.png"></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/330debd415e7ac21b76afe34d09575b2d228ebbe53b5aace5b0eaf00c9c65635.png"></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/88e7499c39164f2820978734adb42dba5f5766cbfbed3e4583d47f607e374fbd.png"></p>
+<h2 id="3、编译小程序"><a href="#3、编译小程序" class="headerlink" title="3、编译小程序"></a>3、编译小程序</h2><p>1、使用 hbuilderx 打开刚才下载的源码目录下的 uniapp 文件夹,或者进入文件夹直接拖动文件夹到 hbuilderx</p>
+<p>目录地址 源码&gt;web&gt;uniapp</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/976909435dfd6501b19350a839e5aa5ebdbf6ee770c501ddb9eb337b8edc36d6.png"></p>
+<p>2、 打开编辑器终端，输入命令行代码  <code>npm i</code>,输入后按回车键，终端开始下载项目所需依赖包</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/eeb143dbcaba2b7c5bdd4f125237fa7da83472535f1468b9b3275ae93bf57fcf.png"></p>
+<p>3、进行相应的配置， 打开目录下的 <code>manifest.json</code>  文件 ,找到微信小程序配置，在微信小程序 AppID 内输入自己真实的微信小程序 AppID</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/21a98c630157f1beee04b82a8df7dc00b6976d081ba6d52faf3c2923e5084bad.png"></p>
+<p>4、若找不到自己的微信小程序 AppID,打开浏览器，输入“微信公众平台”，进入官网，登录，找到‘开发&gt;开发管理’，点击 ‘开发设置’ ，下方显示 AppID ,复制粘贴。</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/961ce9d990398c9656750593b9316bfdc66c1ac8d16acd0ec158356e5d233a18.png"></p>
+<p>5、请求接口地址修改 打开此文件修改为自己的请求接口地址, “apiroot” 是接口请求地址 “imgroot” 为静态图片地址</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/144f6b73051454e75bf836cd4f3d426021222bc93b59f5123a266a6b58ae9047.png"></p>
+<p>6、运行到微信小程序，运行前将目录下的  <code>uniCloud</code>  文件夹删除 （注意：备份一下这个文件，运行 app 时要用到）</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/1e31abe3c6ce3c3026db55e3333c33ad3684f1e2b300710dc3d81e69c19c1e8d.png"></p>
+<p>7、选中项目，点击上方 ‘’ 运行&gt;运行到小程序模拟器&gt;微信开发者工具</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/335cf0ad2ce83ca28d759e51658c501d64f1a52136f00dc0b474c3be560493fb.png"></p>
+<p>8、运行成功，可选择不登录，点击红色框内按钮进入首页</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/66b3491923b18a1af576e32876875dfaeb21a5bc77081cdb3696993adbb2a635.png"></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/4ecf1d6c25fcdeaaa6c9eee642adc08f1c962f705cde93e7c53801f598f9e25a.png"></p>
+<p>9、微信一键登录，点击右上角详情，修改 appid（修改为自己的微信小程序 appid,若不知道看第 4 步），</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/03c0dffa5318f8c23e09408ad5085cb250071e90f96461f2ea00855f0065e38e.png"></p>
+<p>此处若不填写或者填写不正确的 appid 直接登录会报错。填写正确的 appid 即可登录</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/2e8a1d8904ae9319d8fac91fd1434c76f25ea3c576d8baccaad437b00271b1f0.png"></p>
+<p>10、发行小程序，编译完自己想要增加或者修改的页面后，保存文件，点击   <code>发行&gt;小程序-微信</code>,在弹框内填写相应的信息，小程序名称填自己的小程序名称，AppId 同第三条</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/6015d18e023dd85cfd36f4d0c1b10110ea49e9a9c01200fd4b4b9cdab596acc3.png"></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/0a65a27130a0ea49ab0534ff841539c497d7f4feaf471cacf60d2763ac8e8fca.png"></p>
+<p>11、信息填写完毕，点击“发行”，终端控制台执行编译发行，编译成功后会自动打开微信开发者工具，</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/c924c88fbf5fd5b4c3e3d17b818108591b48bab5dca18f9e05e707999879dd38.png"></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/7a30ebdee04681301961139a836ac96de104e6184b3f5f6ac3ca222791771716.png"></p>
+<p>12、在弹出的微信开发者工具中，点击“详情&gt;本地设置&gt;调试基础库”，选择版本（注意不要选择“灰度中”的版本号），然后点击“上传”，填写版本号，再点击上传即可上传体验版本</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/8b4d93dba3ad610c7fa39a25aab7301f5ab6f9c0279f0f470da1c45b7f927b5c.png"></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/c9d192d6d11484b7381addccf8994344af7b8df86f91c7a18e144a08379a7ea1.png"></p>
+<p>13、若需要上传正式版小程序，登录微信公众平台，提交审核即可</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/5380f3d48f2bf8056fbd8fee7694928ec4b0ded4e6177e59c17872bfa80e5174.png"></p>
+<h2 id="4、编译-App"><a href="#4、编译-App" class="headerlink" title="4、编译 App"></a>4、编译 App</h2><p>1、将我们在小程序删除并备份的   <code>uniCloud</code> 文件夹放在项目的根目录下</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/91ed5dc6553e065fe6069f34d73c3f7097519e66cd6422b00a91deaaeaeedc8f.png"></p>
+<p>2、打开 目录下的 ‘manifest.json’ 文件，点击“基础配置”，填写自己的 uni-app 应用标识，以及应用名称</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/55b7c11461b932f6c864974132ba5d160259916ddb88562e202bcb06c42eeecd.png"></p>
+<p>3、点击 “app 图标配置”，配置自己的 app 图标,点击“浏览”，选择自己要设置的 app 图标，然后点击自动生成所有图标并替换即可</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/c1d61db96afb25abe3f495c04e5ed98e44c61a0a1684644beea5a515eb794a04.png"></p>
+<p>4、打开 unCloud&gt;cloudfunctions&gt;getPhoneNumberHash&gt;index.js 配置相关信息，可从后台获取相应信息或者此文件内直接填写相应的值</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/94462b02a1dff78af9f61688bcf70cede71d134d45bd96c1f0e53329706ae5d7.png"></p>
+<p>5、若 4 内相应参数在后台获取，则登录安装好的后台系统，点击菜单 ‘系统&gt;uniapp 配置’ 填写自己的 uniapp 的相应参数</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/f457567734d32df8d85673710a7150b819561b93b9d92ca5ddc267e8156f4497.png"></p>
+<p>6、云函数 url 化，打开 unicloud 后台（<a href="https://unicloud.dcloud.net.cn/">https://unicloud.dcloud.net.cn/</a>），登录 uniapp 管理员账号</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/2b027c2e414908a7653b0366d1c526858374fd108f2745522f403c8549666c24.png"></p>
+<p>7、找到相应的 app,然后点击“详情”进入此 app 的详情内容，在左侧菜单找到 “云函数&#x2F;云对象&gt;函数&#x2F;对象列表”，在右侧云函数列表找到相应的云函数</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/01623a8c0bf59d0e43ff30117a1fef48f0e091e31120908441c1fe52d26b385e.png"></p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/56ea76b7ac3626a8c350c471fdb5c0d015cb7f2b217f49ee7929ce1dcd09b462.png"></p>
+<p>点击“详情”进入云函数详情页，在最下方找到云函数地址复制粘贴到后台 uniapp 配置内的云函数 url 化</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/5fd25ea7fab8f5a0ac2619cfd27f6efe9b5aee960ba3ec237be9c01819a14b4f.png"></p>
+<p>8、unicloud 云函数关联云空间，右键项目下的 unicloud 文件</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/7e507b71ccee12cbeaee8243b95e780ce47e44e7807b11365a558ebc24346095.png"></p>
+<p>9、弹框内选择自己的云空间，然后点击“关联”即可</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/3a5dffcdca5bba55b85ffae6d0b28e790a7128026b3f9762ac8dc4efd8f93469.png"></p>
+<p>关联成功</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/9519ff23369e0947e53d3f5fd54b803c67f4a9e50427f756cae991075ce9bb19.png"></p>
+<p>10、运行 app，选中项目，然后点击运行&gt;运行到手机或模拟器&gt;运行到 android app 基座</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/e3b913a09e25d4b4d03f5fae99e787635e31d073033d2b1eb5f6a86d8a5f2c36.png"></p>
+<p>此时需要一台安卓手机并打开开发者模式，数据线连接电脑和手机，保证手机跟电脑处于同一局域网下</p>
+<p>点击勾选基座，运行</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/744c2a18d4659921379cdb8701b7431a2ccf8809f863e68f5ede5ea0291f834a.png"></p>
+<p>11、运行过程中终端状态</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/139b60debf1fdecf85c3ae2d94053d255a3cf67ad58e54680898f0e92bf836f7.png"></p>
+<p>12、运行成功会在手机上自动安装一个调试基座 app,并打开</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/6bda15b701cff4f34b8ee9ba61ebb9f110900fd319d65c078fcfd480bcd55cde.png"></p>
+<p>13、打包发行前配置，打开目录下的 ‘manifest.json’ 文件，填写相应参数，（注意：后续升级时所填写应用版本名称要大于上一次设置的值）</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/036730acbb677b1d599e723f70f26a148d72a63fc5e6fcb6fdd707f5998c6fbc.png"></p>
+<p>14、发行 app,选中项目，点击上方“发行&gt;原生 App- 云打包”</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/536daba7005bc4defa241515e9088467072f6d3fdc24cb615d021dd2540a8e9b.png"></p>
+<p>15、在弹出的云打包弹框内填写相应的信息，然后点击下方“打包按钮”</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/40475d8ad2b642196b692cc5cc23f8ee0460db013f29a66ff0ee9e2e0d4e1c69.png"></p>
+<p>16、弹框打包校验，点击继续打包</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/29e5c0cb9193afdddc2339a72017d9ad9c9a330f4e67932c565f4c825fcc3c4e.png"></p>
+<p>17、打包时终端状态，打包时间有时会稍长，请略微等待</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/8a9871ddcb2402f532cbff7aaed2fe45d9be5d6f571b34e3e28040fa56df961c.png"></p>
+<p>打包成功状态</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/91fd6919b6fd1651e07a7ed841fef827b618994070ee81417d125c9176991566.png"></p>
+<p>18、点击链接下载安装包，传到手机上即可安装下载</p>
+<p>19、登录 uni-admin 后台，找到“系统管理&gt;app 升级中心”，选择对应的 app,点击发布新版，选择原生 app 安装包</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/1eeec26312b66ca4c2150ae8f7a25581786fd7ced7fc7bc70829259a7bc7ea47.png"></p>
+<p>进入详情，更新标题及更新内容自行填写，版本号填写与 13 条内相同的应用版本名称，选择文件 选择刚才下载的安装包，强制更新打开则表示上线发行后，再次进入此 app 则必须更新下载新版本才可继续使用，上线发行打开则表示点击发布后立即替换为最新的版本。所有信息配置好后点击发布即可</p>
+<p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/4b85dbc9f83fb20e624558caa575ba61fd6b0bc1265e99aad86988d25f24568d.png"></p>
+<h2 id="5、基础配置"><a href="#5、基础配置" class="headerlink" title="5、基础配置"></a>5、基础配置</h2><blockquote>
+<p>请务必配置好如下的项目，否则系统无法正常运行。</p>
+</blockquote>
+<h3 id="1、配置存储引擎"><a href="#1、配置存储引擎" class="headerlink" title="1、配置存储引擎"></a>1、配置存储引擎</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/82407025c5fd425e98e7973d9152e7da8f5f2ead22762764235def8da2758361.png"></p>
+<blockquote>
+<p>如果您不想配置这些账号，可以点击本地存储</p>
+</blockquote>
+<h3 id="2、配置支付参数"><a href="#2、配置支付参数" class="headerlink" title="2、配置支付参数"></a>2、配置支付参数</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/ad578d19a207a5b7920181793ac47c8a39fa50822f2d2e1f35ac449af0b43787.png"></p>
+<blockquote>
+<p>如果没有配置支付参数，则系统无法完成支付</p>
+</blockquote>
+<h3 id="3、小程序配置"><a href="#3、小程序配置" class="headerlink" title="3、小程序配置"></a>3、小程序配置</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/93756c25b55734a5cb738a359d419e8c67834835412362597a2aa766189d3cac.png"></p>
+<h3 id="4、短信配置"><a href="#4、短信配置" class="headerlink" title="4、短信配置"></a>4、短信配置</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/baeb56251a4573cf0646b37acdb3290b04feb34d2284721d4c1ae87d5ba2b492.png"></p>
+<h3 id="5、物流查询配置"><a href="#5、物流查询配置" class="headerlink" title="5、物流查询配置"></a>5、物流查询配置</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/e6d7b8e3eb28ec2222087c7e96febaded6d20871bb24f03cb20eca9eadedab90.png"></p>
+<h3 id="6、uniapp-配置"><a href="#6、uniapp-配置" class="headerlink" title="6、uniapp 配置"></a>6、uniapp 配置</h3><p><img src="/assets/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/4cc3fc937fd97be8973063d07bd677ad3bbcf5971085dfea219fd54146788113.png"></p>
+<blockquote>
+<p>此配置用于 app 端一键登录，如果您没有 app，可以不配置此项目</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
@@ -2653,6 +2653,127 @@
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PGSQL基本概念</title>
+    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<blockquote>
+<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
+</blockquote>
+<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
+<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
+<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
+<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
+<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
+</li>
+</ul>
+<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
+<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
+<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
+<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
+<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
+<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
+<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
+<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
+</li>
+<li><p><strong>常见钥匙</strong>：</p>
+<ul>
+<li><code>SELECT</code>：查看货物（读数据）。</li>
+<li><code>INSERT</code>：放新货物（写数据）。</li>
+<li><code>DELETE</code>：扔货物（删数据）。</li>
+<li><code>UPDATE</code>：改货物（改数据）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
+<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
+</li>
+<li><p><strong>常见扩展</strong>：</p>
+<ul>
+<li><code>PostGIS</code>：地理数据处理。</li>
+<li><code>pgcrypto</code>：数据加密。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>拆解</strong>：</p>
+<ul>
+<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
+<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
+<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
+<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
+<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
+</ol>
+<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
+]]></content>
+      <tags>
+        <tag>数据</tag>
+        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -3893,127 +4014,6 @@
 ]]></content>
       <tags>
         <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PGSQL基本概念</title>
-    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<blockquote>
-<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
-</blockquote>
-<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
-<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
-<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
-<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
-<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
-</li>
-</ul>
-<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
-<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
-<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
-<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
-<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
-<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
-<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
-<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
-</li>
-<li><p><strong>常见钥匙</strong>：</p>
-<ul>
-<li><code>SELECT</code>：查看货物（读数据）。</li>
-<li><code>INSERT</code>：放新货物（写数据）。</li>
-<li><code>DELETE</code>：扔货物（删数据）。</li>
-<li><code>UPDATE</code>：改货物（改数据）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
-<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
-</li>
-<li><p><strong>常见扩展</strong>：</p>
-<ul>
-<li><code>PostGIS</code>：地理数据处理。</li>
-<li><code>pgcrypto</code>：数据加密。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
-<li><p><strong>示例</strong>：</p>
-  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>拆解</strong>：</p>
-<ul>
-<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
-<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
-<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
-<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
-<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
-<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
-</ol>
-<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
-]]></content>
-      <tags>
-        <tag>数据</tag>
-        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
