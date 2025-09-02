@@ -5011,6 +5011,30 @@
       </tags>
   </entry>
   <entry>
+    <title>线程的几种状态</title>
+    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<pre><code class="highlight mermaid">mindmap
+	(线程的几种状态)
+		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)
+		(运行态-是就绪态和运行中的统称)
+			(就绪态-未抢占到cpu时间片)
+			(运行中-抢占到了时间片) 
+		(阻塞态)
+		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)
+		(超时等待-指定时间后，可以自行返回)
+		(终止态度-线程执行完毕)
+		
+    
+
+</code></pre>
+
+<p><img src="/assets/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/file-20250526135653833.png"></p>
+]]></content>
+      <tags>
+        <tag>后端/Java/八股</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>相对路径的使用</title>
     <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
@@ -5035,30 +5059,6 @@
 ]]></content>
       <tags>
         <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线程的几种状态</title>
-    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<pre><code class="highlight mermaid">mindmap
-	(线程的几种状态)
-		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)
-		(运行态-是就绪态和运行中的统称)
-			(就绪态-未抢占到cpu时间片)
-			(运行中-抢占到了时间片) 
-		(阻塞态)
-		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)
-		(超时等待-指定时间后，可以自行返回)
-		(终止态度-线程执行完毕)
-		
-    
-
-</code></pre>
-
-<p><img src="/assets/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/file-20250526135653833.png"></p>
-]]></content>
-      <tags>
-        <tag>后端/Java/八股</tag>
       </tags>
   </entry>
   <entry>
