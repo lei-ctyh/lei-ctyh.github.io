@@ -1748,6 +1748,36 @@
       </tags>
   </entry>
   <entry>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Maven依赖管理项目构建工具</title>
     <url>/2024/12/09/archive/Maven%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="一、Maven-简介"><a href="#一、Maven-简介" class="headerlink" title="一、Maven 简介"></a>一、Maven 简介</h2><h3 id="1、为什么学习-Maven"><a href="#1、为什么学习-Maven" class="headerlink" title="1、为什么学习 Maven"></a>1、为什么学习 Maven</h3><h4 id="1-1、Maven-是一个依赖管理工具"><a href="#1-1、Maven-是一个依赖管理工具" class="headerlink" title="1.1、Maven 是一个依赖管理工具"></a>1.1、Maven 是一个依赖管理工具</h4><p><strong>jar 包的规模</strong></p>
@@ -2435,36 +2465,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -2653,6 +2653,127 @@
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PGSQL基本概念</title>
+    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<blockquote>
+<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
+</blockquote>
+<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
+<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
+<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
+<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
+<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
+</li>
+</ul>
+<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
+<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
+<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
+<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
+<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
+<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
+<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
+<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
+</li>
+<li><p><strong>常见钥匙</strong>：</p>
+<ul>
+<li><code>SELECT</code>：查看货物（读数据）。</li>
+<li><code>INSERT</code>：放新货物（写数据）。</li>
+<li><code>DELETE</code>：扔货物（删数据）。</li>
+<li><code>UPDATE</code>：改货物（改数据）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
+<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
+</li>
+<li><p><strong>常见扩展</strong>：</p>
+<ul>
+<li><code>PostGIS</code>：地理数据处理。</li>
+<li><code>pgcrypto</code>：数据加密。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>拆解</strong>：</p>
+<ul>
+<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
+<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
+<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
+<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
+<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
+</ol>
+<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
+]]></content>
+      <tags>
+        <tag>数据</tag>
+        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -3710,127 +3831,6 @@
 ]]></content>
       <tags>
         <tag>数据/redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PGSQL基本概念</title>
-    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<blockquote>
-<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
-</blockquote>
-<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
-<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
-<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
-<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
-<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
-</li>
-</ul>
-<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
-<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
-<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
-<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
-<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
-<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
-<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
-<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
-</li>
-<li><p><strong>常见钥匙</strong>：</p>
-<ul>
-<li><code>SELECT</code>：查看货物（读数据）。</li>
-<li><code>INSERT</code>：放新货物（写数据）。</li>
-<li><code>DELETE</code>：扔货物（删数据）。</li>
-<li><code>UPDATE</code>：改货物（改数据）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
-<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
-</li>
-<li><p><strong>常见扩展</strong>：</p>
-<ul>
-<li><code>PostGIS</code>：地理数据处理。</li>
-<li><code>pgcrypto</code>：数据加密。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
-<li><p><strong>示例</strong>：</p>
-  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>拆解</strong>：</p>
-<ul>
-<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
-<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
-<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
-<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
-<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
-<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
-</ol>
-<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
-]]></content>
-      <tags>
-        <tag>数据</tag>
-        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -4899,6 +4899,36 @@
       </tags>
   </entry>
   <entry>
+    <title>如何避免代码的深层嵌套</title>
+    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
+    <content><![CDATA[<blockquote>
+<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
+</blockquote>
+<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
+]]></content>
+      <tags>
+        <tag>代码/优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文章推荐</title>
     <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
     <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
@@ -4978,36 +5008,6 @@
 ]]></content>
       <tags>
         <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何避免代码的深层嵌套</title>
-    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
-    <content><![CDATA[<blockquote>
-<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
-</blockquote>
-<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
-]]></content>
-      <tags>
-        <tag>代码/优化</tag>
       </tags>
   </entry>
   <entry>
