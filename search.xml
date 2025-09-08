@@ -4349,6 +4349,113 @@
       </tags>
   </entry>
   <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>利息计算方式</title>
     <url>/2024/12/09/archive/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
@@ -4789,113 +4896,6 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
