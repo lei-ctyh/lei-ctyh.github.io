@@ -1227,6 +1227,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Git Worktree 常用命令</title>
+    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
+<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
+<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
+<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
+<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
+<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
+]]></content>
+      <tags>
+        <tag>工具/git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HashMart开发文档</title>
     <url>/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><blockquote>
@@ -2465,6 +2491,68 @@
       </tags>
   </entry>
   <entry>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
+</ul>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
+</ul>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -2591,68 +2679,6 @@
 ]]></content>
       <tags>
         <tag>工具/obsidian</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
-</blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
-</li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
-</li>
-</ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
-</ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 被授权的用户名</li>
-</ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
-</ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
-</ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -4017,72 +4043,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker安装kafka集群</title>
-    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
-    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
-<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
-<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
-</ul>
-<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
-<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
-<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
-<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
-</ul>
-<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
-<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看所有的 topic 名字</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
-
-<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
-<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
-<blockquote>
-<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/kafka</tag>
-        <tag>运维/docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Virtualbox7安装及使用详细步骤</title>
     <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
@@ -4346,6 +4306,72 @@
       <tags>
         <tag>运维/linux</tag>
         <tag>工具/virtualbox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker安装kafka集群</title>
+    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
+    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
+<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
+<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
+</ul>
+<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
+<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
+<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
+<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
+</ul>
+<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
+<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看所有的 topic 名字</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
+<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
+<blockquote>
+<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
+        <tag>运维/docker</tag>
       </tags>
   </entry>
   <entry>
