@@ -4375,6 +4375,113 @@
       </tags>
   </entry>
   <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>利息计算方式</title>
     <url>/2024/12/09/archive/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
@@ -4818,110 +4925,37 @@
       </tags>
   </entry>
   <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
+    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
+    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
+    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
+<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
+<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
+<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
+<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
+<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
+<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
+<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
+<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
+<ol>
+<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
+<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
+<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
+<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
+</ol>
+<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
+<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
+<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
+<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
+<ol>
+<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
+<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
+<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
+</ol>
+<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
+<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
 ]]></content>
       <tags>
-        <tag>其他/技术文档</tag>
+        <tag>其他</tag>
       </tags>
   </entry>
   <entry>
@@ -4952,33 +4986,6 @@
 ]]></content>
       <tags>
         <tag>代码/优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>相对路径的使用</title>
-    <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
-<ol>
-<li><p><strong><code>./</code>：</strong> 表示当前目录。使用 <code>./</code> 可以明确指示路径从当前目录开始。</p>
-<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>./file.txt</code> 就表示 <code>/home/user/file.txt</code>。</p>
-</li>
-<li><p><strong><code>../</code>：</strong> 表示上一级目录。使用 <code>../</code> 可以向上移动一级目录。</p>
-<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>../folder/file.txt</code> 就表示 <code>/home/folder/file.txt</code>。</p>
-</li>
-</ol>
-<p>示例：</p>
-<p>假设有如下的文件结构：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/user/</span><br><span class="line">|-- current-folder/</span><br><span class="line">|   |-- script.js</span><br><span class="line">|   |-- image.jpg</span><br><span class="line">|</span><br><span class="line">|-- parent-folder/</span><br><span class="line">    |-- document.txt</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>如果 <code>script.js</code> 中包含 <code>./image.jpg</code>，那么这个路径指向的是 <code>/home/user/current-folder/image.jpg</code>。</p>
-</li>
-<li><p>如果 <code>script.js</code> 中包含 <code>../parent-folder/document.txt</code>，那么这个路径指向的是 <code>/home/user/parent-folder/document.txt</code>。</p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
@@ -5061,6 +5068,33 @@
 ]]></content>
       <tags>
         <tag>持续更新</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>相对路径的使用</title>
+    <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
+<ol>
+<li><p><strong><code>./</code>：</strong> 表示当前目录。使用 <code>./</code> 可以明确指示路径从当前目录开始。</p>
+<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>./file.txt</code> 就表示 <code>/home/user/file.txt</code>。</p>
+</li>
+<li><p><strong><code>../</code>：</strong> 表示上一级目录。使用 <code>../</code> 可以向上移动一级目录。</p>
+<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>../folder/file.txt</code> 就表示 <code>/home/folder/file.txt</code>。</p>
+</li>
+</ol>
+<p>示例：</p>
+<p>假设有如下的文件结构：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/user/</span><br><span class="line">|-- current-folder/</span><br><span class="line">|   |-- script.js</span><br><span class="line">|   |-- image.jpg</span><br><span class="line">|</span><br><span class="line">|-- parent-folder/</span><br><span class="line">    |-- document.txt</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>如果 <code>script.js</code> 中包含 <code>./image.jpg</code>，那么这个路径指向的是 <code>/home/user/current-folder/image.jpg</code>。</p>
+</li>
+<li><p>如果 <code>script.js</code> 中包含 <code>../parent-folder/document.txt</code>，那么这个路径指向的是 <code>/home/user/parent-folder/document.txt</code>。</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
