@@ -1253,6 +1253,132 @@
       </tags>
   </entry>
   <entry>
+    <title>Kafka常用命令总结</title>
+    <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>操作的 topic 名称</td>
+</tr>
+<tr>
+<td>–create</td>
+<td>创建主题</td>
+</tr>
+<tr>
+<td>–delete</td>
+<td>删除主题</td>
+</tr>
+<tr>
+<td>–alter</td>
+<td>修改主题</td>
+</tr>
+<tr>
+<td>–list</td>
+<td>查看所有主题</td>
+</tr>
+<tr>
+<td>–describe</td>
+<td>查看主题详细描述</td>
+</tr>
+<tr>
+<td>–partitions <code>Integer</code></td>
+<td>设置分区数</td>
+</tr>
+<tr>
+<td>–replication-factor <code>Integer</code></td>
+<td>设置分区副本</td>
+</tr>
+</tbody></table>
+<p>这些参数可以与 <code>kafka-topics.sh</code>（Unix&#x2F;Linux）或 <code>kafka-topics.bat</code>（Windows）命令一起使用，用于管理 Kafka 主题。根据需要，选择使用适当的参数来执行相应的操作。</p>
+<h2 id="消费者脚本命令参数："><a href="#消费者脚本命令参数：" class="headerlink" title="消费者脚本命令参数："></a>消费者脚本命令参数：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>消费的 topic 名称</td>
+</tr>
+<tr>
+<td>–group-id</td>
+<td>消费者所属的消费者组 ID</td>
+</tr>
+<tr>
+<td>–from-beginning</td>
+<td>从最早的偏移量开始消费</td>
+</tr>
+<tr>
+<td>–partition <code>Integer</code></td>
+<td>指定要消费的分区</td>
+</tr>
+<tr>
+<td>–offsets <code>String</code></td>
+<td>指定要消费的分区的偏移量</td>
+</tr>
+<tr>
+<td>–max-messages <code>Integer</code></td>
+<td>指定要消费的最大消息数量</td>
+</tr>
+<tr>
+<td>–timeout-ms <code>Integer</code></td>
+<td>指定超时时间（毫秒），在等待新消息时使用</td>
+</tr>
+<tr>
+<td>–property <code>String=String</code></td>
+<td>设置其他的消费者属性</td>
+</tr>
+</tbody></table>
+<h2 id="生成者脚本命令参数："><a href="#生成者脚本命令参数：" class="headerlink" title="生成者脚本命令参数："></a>生成者脚本命令参数：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>发送消息的 topic 名称</td>
+</tr>
+<tr>
+<td>–key</td>
+<td>发送消息的键（可选）</td>
+</tr>
+<tr>
+<td>–value</td>
+<td>发送消息的值</td>
+</tr>
+<tr>
+<td>–property <code>String=String</code></td>
+<td>设置其他的生产者属性</td>
+</tr>
+</tbody></table>
+<p>这些参数可以与 Kafka 提供的相应脚本命令一起使用，用于执行消费者和生产者的操作。根据需要，您可以选择使用适当的参数来配置消费者和生成者的行为。</p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HashMart开发文档</title>
     <url>/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><blockquote>
@@ -1504,132 +1630,6 @@
 ]]></content>
       <tags>
         <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kafka常用命令总结</title>
-    <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>操作的 topic 名称</td>
-</tr>
-<tr>
-<td>–create</td>
-<td>创建主题</td>
-</tr>
-<tr>
-<td>–delete</td>
-<td>删除主题</td>
-</tr>
-<tr>
-<td>–alter</td>
-<td>修改主题</td>
-</tr>
-<tr>
-<td>–list</td>
-<td>查看所有主题</td>
-</tr>
-<tr>
-<td>–describe</td>
-<td>查看主题详细描述</td>
-</tr>
-<tr>
-<td>–partitions <code>Integer</code></td>
-<td>设置分区数</td>
-</tr>
-<tr>
-<td>–replication-factor <code>Integer</code></td>
-<td>设置分区副本</td>
-</tr>
-</tbody></table>
-<p>这些参数可以与 <code>kafka-topics.sh</code>（Unix&#x2F;Linux）或 <code>kafka-topics.bat</code>（Windows）命令一起使用，用于管理 Kafka 主题。根据需要，选择使用适当的参数来执行相应的操作。</p>
-<h2 id="消费者脚本命令参数："><a href="#消费者脚本命令参数：" class="headerlink" title="消费者脚本命令参数："></a>消费者脚本命令参数：</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>消费的 topic 名称</td>
-</tr>
-<tr>
-<td>–group-id</td>
-<td>消费者所属的消费者组 ID</td>
-</tr>
-<tr>
-<td>–from-beginning</td>
-<td>从最早的偏移量开始消费</td>
-</tr>
-<tr>
-<td>–partition <code>Integer</code></td>
-<td>指定要消费的分区</td>
-</tr>
-<tr>
-<td>–offsets <code>String</code></td>
-<td>指定要消费的分区的偏移量</td>
-</tr>
-<tr>
-<td>–max-messages <code>Integer</code></td>
-<td>指定要消费的最大消息数量</td>
-</tr>
-<tr>
-<td>–timeout-ms <code>Integer</code></td>
-<td>指定超时时间（毫秒），在等待新消息时使用</td>
-</tr>
-<tr>
-<td>–property <code>String=String</code></td>
-<td>设置其他的消费者属性</td>
-</tr>
-</tbody></table>
-<h2 id="生成者脚本命令参数："><a href="#生成者脚本命令参数：" class="headerlink" title="生成者脚本命令参数："></a>生成者脚本命令参数：</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>发送消息的 topic 名称</td>
-</tr>
-<tr>
-<td>–key</td>
-<td>发送消息的键（可选）</td>
-</tr>
-<tr>
-<td>–value</td>
-<td>发送消息的值</td>
-</tr>
-<tr>
-<td>–property <code>String=String</code></td>
-<td>设置其他的生产者属性</td>
-</tr>
-</tbody></table>
-<p>这些参数可以与 Kafka 提供的相应脚本命令一起使用，用于执行消费者和生产者的操作。根据需要，您可以选择使用适当的参数来配置消费者和生成者的行为。</p>
-]]></content>
-      <tags>
-        <tag>数据/kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -3860,189 +3860,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SqlManger开发文档</title>
-    <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>教程地址 <a href="https://www.w3schools.cn/pyqt5/index.html">PyQt5 教程 (w3schools.cn)</a></p>
-</blockquote>
-<h2 id="开发记录"><a href="#开发记录" class="headerlink" title="开发记录"></a>开发记录</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><blockquote>
-<p>新建 python 项目, 环境选择新的 venv 环境</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212174014517.png"></p>
-<h3 id="安装必要依赖"><a href="#安装必要依赖" class="headerlink" title="安装必要依赖"></a>安装必要依赖</h3><blockquote>
-<p>当前依赖为项目新增依赖, 后续可能会随开发进行更新</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 提供了与 Python 3.5 或更高版本兼容的 32 位或 64 位架构的 wheels</span><br><span class="line">pip3 install PyQt5</span><br><span class="line"># 要安装 Qt Designer 等开发工具以支持 PyQt5 wheels</span><br><span class="line">pip3 install pyqt5-tools</span><br><span class="line"># 安装链接mysql所需依赖</span><br><span class="line">pip3 install pymysql</span><br><span class="line"># 链接mysql时所用到的加密方式</span><br><span class="line">pip3 install cryptography</span><br><span class="line"># 美化包依赖, 拉取依赖时, 不能使用豆瓣源, 豆瓣源没有这个依赖</span><br><span class="line">pip3 install qdarkstyle</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果直接使用官方镜像源出现安装失败的情况, 可以考虑国内的镜像源</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 豆瓣源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
-
-<p>安装依赖方式参考下图</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175153752.png"></p>
-<h3 id="设计-UI"><a href="#设计-UI" class="headerlink" title="设计 UI"></a>设计 UI</h3><blockquote>
-<p>打开设计器路径 {项目路径}\venv\Lib\site-packages\qt5_applications\Qt\bin\designer.exe</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175609378.png"></p>
-<blockquote>
-<p>设计以下 UI 文件<br>主窗口 UI: sqlManger_ui.ui<br>新增记录模态框 UI: addrowdialog_ui.ui</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150125976.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150325964.png"></p>
-<blockquote>
-<p>UI 文件转成成 Python 文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyuic5 -x sqlManger_ui.ui -o sqlManger_ui.py</span><br><span class="line"></span><br><span class="line">pyuic5 -x addrowdialog_ui.ui -o addrowdialog_ui.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213113642881.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150646257.png"></p>
-<blockquote>
-<p>转换完成后会生成以下文件</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150806994.png"></p>
-<blockquote>
-<p>新增记录时, 不同的表格数据不同, 因此需要动态加载模态框表单项,<br>💡 技术点: <code>setattr</code> 与 <code>getattr</code> 方法的使用</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setattr</span>(目标对象, 属性名, 属性值)</span><br><span class="line"><span class="built_in">getattr</span>(目标对象, 属性名, 属性值)</span><br></pre></td></tr></table></figure>
-
-<p>重构 <code>addrowdialog_ui.py</code> 下的 <code>setupUi</code> <code>retranslateUi</code> 方法, 设置表单项时, 设置成由传入参数动态加载, 文件调整如下</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215153026800.png"></p>
-<h3 id="各个功能点信号与槽函数建立链接"><a href="#各个功能点信号与槽函数建立链接" class="headerlink" title="各个功能点信号与槽函数建立链接"></a>各个功能点信号与槽函数建立链接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.connbut.clicked.connect(<span class="variable language_">self</span>.conn_database)</span><br><span class="line"><span class="comment"># 查询按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.querybut.clicked.connect(<span class="variable language_">self</span>.execute_query)</span><br><span class="line"><span class="comment"># 回滚按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.roolbackbut.clicked.connect(<span class="variable language_">self</span>.rollback_database)</span><br><span class="line"><span class="comment"># 提交按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.commitbut.clicked.connect(<span class="variable language_">self</span>.commit_database)</span><br><span class="line"><span class="comment"># 切换数据库选择</span></span><br><span class="line"><span class="variable language_">self</span>.ui.database.currentIndexChanged.connect(<span class="variable language_">self</span>.change_database)</span><br><span class="line"><span class="comment"># 更改主题</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br><span class="line"><span class="comment"># 右键表格, 展示菜单</span></span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.setContextMenuPolicy(Qt.CustomContextMenu)</span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.customContextMenuRequested.connect(<span class="variable language_">self</span>.display_table_menu)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Mysql-数据库的使用"><a href="#Mysql-数据库的使用" class="headerlink" title="Mysql 数据库的使用"></a>Mysql 数据库的使用</h3><blockquote>
-<p>下载 mysql 相关依赖</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install mysql-connector-python</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>因为涉及到事务的回滚, 所以当前应用获取的数据库链接为单例, 代码如下</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_connection</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.connection</span><br><span class="line">    Utils.connection = pymysql.connect(</span><br><span class="line">        <span class="comment"># 数据库主机名</span></span><br><span class="line">        host=<span class="variable language_">self</span>.ui.host.text(),</span><br><span class="line">        <span class="comment"># 数据库端口号，默认为3306</span></span><br><span class="line">        port=<span class="built_in">int</span>(<span class="variable language_">self</span>.ui.port.text()),</span><br><span class="line">        <span class="comment"># 数据库用户名</span></span><br><span class="line">        user=<span class="variable language_">self</span>.ui.username.text(),</span><br><span class="line">        <span class="comment"># 数据库密码</span></span><br><span class="line">        passwd=<span class="variable language_">self</span>.ui.pwd.text(),</span><br><span class="line">        <span class="comment"># 字符编码</span></span><br><span class="line">        charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> Utils.connection</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_cursor</span>():</span><br><span class="line">    <span class="keyword">if</span> Utils.cursor <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.cursor</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Utils.connection = Utils.get_connection()</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的开启<br>开启时机: 与数据库建立链接之后</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 开启事务</span></span><br><span class="line">cursor.execute(<span class="string">&quot;BEGIN&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的提交<br>提交时机: 点击提交按钮</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).commit()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的回滚<br>回滚时机</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).rollback()</span><br></pre></td></tr></table></figure>
-
-<h3 id="增加美化包"><a href="#增加美化包" class="headerlink" title="增加美化包"></a>增加美化包</h3><blockquote>
-<p>原本的 QT 样式不怎么好看, 集成一下美化包</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install qdarkstyle -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<p>安装插件时, 不能使用豆瓣源, 豆瓣源没有这个依赖</p>
-<blockquote>
-<p>main.py 入口文件给实例设置浅色样式</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>切换主题样式的实现</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215163133407.png"></p>
-<p>监控下拉框数据改变的信号, 链接对应的槽函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为主题切换的信号和槽函数简历链接</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br></pre></td></tr></table></figure>
-
-<p>切换主题的方法实现, 与启动项目时需要添加一步获取应用实例的操作 <code>Utils.get_app_self()</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change_theme</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="variable language_">self</span>.ui.themeComboBox.currentText() == <span class="string">&quot;Dark&quot;</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=DarkPalette()))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>🔍 qt-material 有更丰富的样式</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install qt-material</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>应用样式</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 动态加载qt-material主题</span></span><br><span class="line"><span class="keyword">import</span> site</span><br><span class="line"><span class="comment"># venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">site_packages_path = site.getsitepackages()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># self.ui.themeComboBox.addItems(&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&#x27;light_blue_500.xml&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="新增窗口增加滚动条"><a href="#新增窗口增加滚动条" class="headerlink" title="新增窗口增加滚动条"></a>新增窗口增加滚动条</h3><blockquote>
-<p>参考资料 <a href="https://blog.csdn.net/weixin_43749427/article/details/114883239">Qt designer + ScrollArea 实现滚动界面_qt designer scrollarea-CSDN 博客</a></p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215235502027.png"></p>
-<h3 id="虚拟环境-Venv-同步"><a href="#虚拟环境-Venv-同步" class="headerlink" title="虚拟环境 Venv 同步"></a>虚拟环境 Venv 同步</h3><blockquote>
-<p>参考资料: <a href="https://blog.csdn.net/pearl8899/article/details/113877334">python 项目自动生成环境配置文件 requirements.txt_如何生成 requirements.txt-CSDN 博客</a></p>
-</blockquote>
-<blockquote>
-<p>生成 requirements.txt 文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>安装依赖,根据 requirements.txt</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="异常问题记录"><a href="#异常问题记录" class="headerlink" title="异常问题记录"></a>异常问题记录</h2><h3 id="QSqlDatabase-无法加载-MYSQL-驱动-未解决"><a href="#QSqlDatabase-无法加载-MYSQL-驱动-未解决" class="headerlink" title="QSqlDatabase 无法加载 MYSQL 驱动 (未解决)"></a>QSqlDatabase 无法加载 MYSQL 驱动 (未解决)</h3><blockquote>
-<p>问题现象</p>
-</blockquote>
-<p>QSqlDatabase 无法链接 MYSQL 数据库, 提示无法加载驱动问题</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213155858030.png"></p>
-<blockquote>
-<p>参考资料:</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/qq_34769196/article/details/103898208">PyQt5 使用 QSqlDatabase 类连接 Mysql 的坑</a></p>
-<blockquote>
-<p>问题原因:</p>
-</blockquote>
-<p>最新版本的 QT 缺失 MYSQL 驱动的相关文件</p>
-<blockquote>
-<p>解决方案</p>
-</blockquote>
-<p>根据以上的参考文章操作后问题也没有解决, 最后该问题选择通过 pymysql 链接数据库, 获取数据, 使用标准的 model 来展示</p>
-<h3 id="获取-MYSQL-数据库链接报加密异常-已解决"><a href="#获取-MYSQL-数据库链接报加密异常-已解决" class="headerlink" title="获取 MYSQL 数据库链接报加密异常 (已解决)"></a>获取 MYSQL 数据库链接报加密异常 (已解决)</h3><blockquote>
-<p>问题现象</p>
-</blockquote>
-<p>链接 MYSQL 在密码, 端口等信息均正确的情况下, 报如下异常</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231214101243230.png"></p>
-<blockquote>
-<p>参考资料</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/coco56/article/details/107948413">RuntimeError: ‘cryptography‘ package is required for sha256_password or caching_sha2_password auth m-CSDN 博客</a></p>
-<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="项目基础环境"><a href="#项目基础环境" class="headerlink" title="项目基础环境"></a>项目基础环境</h3><blockquote>
-<p>已安装 Python3, 可使用以下版本查看 python 版本</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222735318.png"></p>
-<blockquote>
-<p>已安装 MySql8.0 及以上版本</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215913574.png"></p>
-<h3 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h3><blockquote>
-<p>首先从 GITHUB 拉取项目, GIT 命令行或者下图方式均可<br>项目地址: <a href="https://github.com/lei-ctyh/sqlManger.git">https://github.com/lei-ctyh/sqlManger.git</a></p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215158278.png"></p>
-<h3 id="配置项目解释器"><a href="#配置项目解释器" class="headerlink" title="配置项目解释器"></a>配置项目解释器</h3><blockquote>
-<p>按照自己需求配置项目解释器即可<br><code>ctrl</code> + <code>alt</code> + <code>s</code> 进入设置 , 具体操作如下图</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220223107.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220436985.png"></p>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><blockquote>
-<p>安装依赖,根据 requirements.txt</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222023427.png"></p>
-<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215170946953.png"></p>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Virtualbox7安装及使用详细步骤</title>
     <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
@@ -4309,6 +4126,189 @@
       </tags>
   </entry>
   <entry>
+    <title>SqlManger开发文档</title>
+    <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>教程地址 <a href="https://www.w3schools.cn/pyqt5/index.html">PyQt5 教程 (w3schools.cn)</a></p>
+</blockquote>
+<h2 id="开发记录"><a href="#开发记录" class="headerlink" title="开发记录"></a>开发记录</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><blockquote>
+<p>新建 python 项目, 环境选择新的 venv 环境</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212174014517.png"></p>
+<h3 id="安装必要依赖"><a href="#安装必要依赖" class="headerlink" title="安装必要依赖"></a>安装必要依赖</h3><blockquote>
+<p>当前依赖为项目新增依赖, 后续可能会随开发进行更新</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 提供了与 Python 3.5 或更高版本兼容的 32 位或 64 位架构的 wheels</span><br><span class="line">pip3 install PyQt5</span><br><span class="line"># 要安装 Qt Designer 等开发工具以支持 PyQt5 wheels</span><br><span class="line">pip3 install pyqt5-tools</span><br><span class="line"># 安装链接mysql所需依赖</span><br><span class="line">pip3 install pymysql</span><br><span class="line"># 链接mysql时所用到的加密方式</span><br><span class="line">pip3 install cryptography</span><br><span class="line"># 美化包依赖, 拉取依赖时, 不能使用豆瓣源, 豆瓣源没有这个依赖</span><br><span class="line">pip3 install qdarkstyle</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果直接使用官方镜像源出现安装失败的情况, 可以考虑国内的镜像源</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 豆瓣源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装依赖方式参考下图</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175153752.png"></p>
+<h3 id="设计-UI"><a href="#设计-UI" class="headerlink" title="设计 UI"></a>设计 UI</h3><blockquote>
+<p>打开设计器路径 {项目路径}\venv\Lib\site-packages\qt5_applications\Qt\bin\designer.exe</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175609378.png"></p>
+<blockquote>
+<p>设计以下 UI 文件<br>主窗口 UI: sqlManger_ui.ui<br>新增记录模态框 UI: addrowdialog_ui.ui</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150125976.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150325964.png"></p>
+<blockquote>
+<p>UI 文件转成成 Python 文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyuic5 -x sqlManger_ui.ui -o sqlManger_ui.py</span><br><span class="line"></span><br><span class="line">pyuic5 -x addrowdialog_ui.ui -o addrowdialog_ui.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213113642881.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150646257.png"></p>
+<blockquote>
+<p>转换完成后会生成以下文件</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150806994.png"></p>
+<blockquote>
+<p>新增记录时, 不同的表格数据不同, 因此需要动态加载模态框表单项,<br>💡 技术点: <code>setattr</code> 与 <code>getattr</code> 方法的使用</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setattr</span>(目标对象, 属性名, 属性值)</span><br><span class="line"><span class="built_in">getattr</span>(目标对象, 属性名, 属性值)</span><br></pre></td></tr></table></figure>
+
+<p>重构 <code>addrowdialog_ui.py</code> 下的 <code>setupUi</code> <code>retranslateUi</code> 方法, 设置表单项时, 设置成由传入参数动态加载, 文件调整如下</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215153026800.png"></p>
+<h3 id="各个功能点信号与槽函数建立链接"><a href="#各个功能点信号与槽函数建立链接" class="headerlink" title="各个功能点信号与槽函数建立链接"></a>各个功能点信号与槽函数建立链接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.connbut.clicked.connect(<span class="variable language_">self</span>.conn_database)</span><br><span class="line"><span class="comment"># 查询按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.querybut.clicked.connect(<span class="variable language_">self</span>.execute_query)</span><br><span class="line"><span class="comment"># 回滚按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.roolbackbut.clicked.connect(<span class="variable language_">self</span>.rollback_database)</span><br><span class="line"><span class="comment"># 提交按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.commitbut.clicked.connect(<span class="variable language_">self</span>.commit_database)</span><br><span class="line"><span class="comment"># 切换数据库选择</span></span><br><span class="line"><span class="variable language_">self</span>.ui.database.currentIndexChanged.connect(<span class="variable language_">self</span>.change_database)</span><br><span class="line"><span class="comment"># 更改主题</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br><span class="line"><span class="comment"># 右键表格, 展示菜单</span></span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.setContextMenuPolicy(Qt.CustomContextMenu)</span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.customContextMenuRequested.connect(<span class="variable language_">self</span>.display_table_menu)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mysql-数据库的使用"><a href="#Mysql-数据库的使用" class="headerlink" title="Mysql 数据库的使用"></a>Mysql 数据库的使用</h3><blockquote>
+<p>下载 mysql 相关依赖</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install mysql-connector-python</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为涉及到事务的回滚, 所以当前应用获取的数据库链接为单例, 代码如下</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_connection</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.connection</span><br><span class="line">    Utils.connection = pymysql.connect(</span><br><span class="line">        <span class="comment"># 数据库主机名</span></span><br><span class="line">        host=<span class="variable language_">self</span>.ui.host.text(),</span><br><span class="line">        <span class="comment"># 数据库端口号，默认为3306</span></span><br><span class="line">        port=<span class="built_in">int</span>(<span class="variable language_">self</span>.ui.port.text()),</span><br><span class="line">        <span class="comment"># 数据库用户名</span></span><br><span class="line">        user=<span class="variable language_">self</span>.ui.username.text(),</span><br><span class="line">        <span class="comment"># 数据库密码</span></span><br><span class="line">        passwd=<span class="variable language_">self</span>.ui.pwd.text(),</span><br><span class="line">        <span class="comment"># 字符编码</span></span><br><span class="line">        charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> Utils.connection</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_cursor</span>():</span><br><span class="line">    <span class="keyword">if</span> Utils.cursor <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.cursor</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Utils.connection = Utils.get_connection()</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的开启<br>开启时机: 与数据库建立链接之后</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 开启事务</span></span><br><span class="line">cursor.execute(<span class="string">&quot;BEGIN&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的提交<br>提交时机: 点击提交按钮</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).commit()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的回滚<br>回滚时机</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).rollback()</span><br></pre></td></tr></table></figure>
+
+<h3 id="增加美化包"><a href="#增加美化包" class="headerlink" title="增加美化包"></a>增加美化包</h3><blockquote>
+<p>原本的 QT 样式不怎么好看, 集成一下美化包</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install qdarkstyle -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装插件时, 不能使用豆瓣源, 豆瓣源没有这个依赖</p>
+<blockquote>
+<p>main.py 入口文件给实例设置浅色样式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>切换主题样式的实现</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215163133407.png"></p>
+<p>监控下拉框数据改变的信号, 链接对应的槽函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为主题切换的信号和槽函数简历链接</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br></pre></td></tr></table></figure>
+
+<p>切换主题的方法实现, 与启动项目时需要添加一步获取应用实例的操作 <code>Utils.get_app_self()</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change_theme</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="variable language_">self</span>.ui.themeComboBox.currentText() == <span class="string">&quot;Dark&quot;</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=DarkPalette()))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🔍 qt-material 有更丰富的样式</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install qt-material</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>应用样式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 动态加载qt-material主题</span></span><br><span class="line"><span class="keyword">import</span> site</span><br><span class="line"><span class="comment"># venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">site_packages_path = site.getsitepackages()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># self.ui.themeComboBox.addItems(&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&#x27;light_blue_500.xml&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增窗口增加滚动条"><a href="#新增窗口增加滚动条" class="headerlink" title="新增窗口增加滚动条"></a>新增窗口增加滚动条</h3><blockquote>
+<p>参考资料 <a href="https://blog.csdn.net/weixin_43749427/article/details/114883239">Qt designer + ScrollArea 实现滚动界面_qt designer scrollarea-CSDN 博客</a></p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215235502027.png"></p>
+<h3 id="虚拟环境-Venv-同步"><a href="#虚拟环境-Venv-同步" class="headerlink" title="虚拟环境 Venv 同步"></a>虚拟环境 Venv 同步</h3><blockquote>
+<p>参考资料: <a href="https://blog.csdn.net/pearl8899/article/details/113877334">python 项目自动生成环境配置文件 requirements.txt_如何生成 requirements.txt-CSDN 博客</a></p>
+</blockquote>
+<blockquote>
+<p>生成 requirements.txt 文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装依赖,根据 requirements.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="异常问题记录"><a href="#异常问题记录" class="headerlink" title="异常问题记录"></a>异常问题记录</h2><h3 id="QSqlDatabase-无法加载-MYSQL-驱动-未解决"><a href="#QSqlDatabase-无法加载-MYSQL-驱动-未解决" class="headerlink" title="QSqlDatabase 无法加载 MYSQL 驱动 (未解决)"></a>QSqlDatabase 无法加载 MYSQL 驱动 (未解决)</h3><blockquote>
+<p>问题现象</p>
+</blockquote>
+<p>QSqlDatabase 无法链接 MYSQL 数据库, 提示无法加载驱动问题</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213155858030.png"></p>
+<blockquote>
+<p>参考资料:</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_34769196/article/details/103898208">PyQt5 使用 QSqlDatabase 类连接 Mysql 的坑</a></p>
+<blockquote>
+<p>问题原因:</p>
+</blockquote>
+<p>最新版本的 QT 缺失 MYSQL 驱动的相关文件</p>
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<p>根据以上的参考文章操作后问题也没有解决, 最后该问题选择通过 pymysql 链接数据库, 获取数据, 使用标准的 model 来展示</p>
+<h3 id="获取-MYSQL-数据库链接报加密异常-已解决"><a href="#获取-MYSQL-数据库链接报加密异常-已解决" class="headerlink" title="获取 MYSQL 数据库链接报加密异常 (已解决)"></a>获取 MYSQL 数据库链接报加密异常 (已解决)</h3><blockquote>
+<p>问题现象</p>
+</blockquote>
+<p>链接 MYSQL 在密码, 端口等信息均正确的情况下, 报如下异常</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231214101243230.png"></p>
+<blockquote>
+<p>参考资料</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/coco56/article/details/107948413">RuntimeError: ‘cryptography‘ package is required for sha256_password or caching_sha2_password auth m-CSDN 博客</a></p>
+<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="项目基础环境"><a href="#项目基础环境" class="headerlink" title="项目基础环境"></a>项目基础环境</h3><blockquote>
+<p>已安装 Python3, 可使用以下版本查看 python 版本</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222735318.png"></p>
+<blockquote>
+<p>已安装 MySql8.0 及以上版本</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215913574.png"></p>
+<h3 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h3><blockquote>
+<p>首先从 GITHUB 拉取项目, GIT 命令行或者下图方式均可<br>项目地址: <a href="https://github.com/lei-ctyh/sqlManger.git">https://github.com/lei-ctyh/sqlManger.git</a></p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215158278.png"></p>
+<h3 id="配置项目解释器"><a href="#配置项目解释器" class="headerlink" title="配置项目解释器"></a>配置项目解释器</h3><blockquote>
+<p>按照自己需求配置项目解释器即可<br><code>ctrl</code> + <code>alt</code> + <code>s</code> 进入设置 , 具体操作如下图</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220223107.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220436985.png"></p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><blockquote>
+<p>安装依赖,根据 requirements.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222023427.png"></p>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215170946953.png"></p>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker安装kafka集群</title>
     <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
     <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
@@ -4479,6 +4479,40 @@
 ]]></content>
       <tags>
         <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
+    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
+    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
+<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
+<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
+<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
+<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
+<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
+<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
+<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
+<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
+<ol>
+<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
+<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
+<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
+<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
+</ol>
+<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
+<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
+<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
+<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
+<ol>
+<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
+<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
+<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
+</ol>
+<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
+<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
+]]></content>
+      <tags>
+        <tag>其他</tag>
       </tags>
   </entry>
   <entry>
@@ -4925,40 +4959,6 @@
       </tags>
   </entry>
   <entry>
-    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
-    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
-    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
-<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
-<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
-<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
-<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
-<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
-<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
-<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
-<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
-<ol>
-<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
-<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
-<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
-<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
-</ol>
-<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
-<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
-<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
-<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
-<ol>
-<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
-<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
-<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
-</ol>
-<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
-<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
-]]></content>
-      <tags>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何避免代码的深层嵌套</title>
     <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
     <content><![CDATA[<blockquote>
@@ -5095,30 +5095,6 @@
 ]]></content>
       <tags>
         <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线程的几种状态</title>
-    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<pre><code class="highlight mermaid">mindmap
-	(线程的几种状态)
-		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)
-		(运行态-是就绪态和运行中的统称)
-			(就绪态-未抢占到cpu时间片)
-			(运行中-抢占到了时间片) 
-		(阻塞态)
-		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)
-		(超时等待-指定时间后，可以自行返回)
-		(终止态度-线程执行完毕)
-		
-    
-
-</code></pre>
-
-<p><img src="/assets/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/file-20250526135653833.png"></p>
-]]></content>
-      <tags>
-        <tag>后端/Java/八股</tag>
       </tags>
   </entry>
   <entry>
@@ -5283,6 +5259,30 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线程的几种状态</title>
+    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<pre><code class="highlight mermaid">mindmap
+	(线程的几种状态)
+		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)
+		(运行态-是就绪态和运行中的统称)
+			(就绪态-未抢占到cpu时间片)
+			(运行中-抢占到了时间片) 
+		(阻塞态)
+		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)
+		(超时等待-指定时间后，可以自行返回)
+		(终止态度-线程执行完毕)
+		
+    
+
+</code></pre>
+
+<p><img src="/assets/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/file-20250526135653833.png"></p>
+]]></content>
+      <tags>
+        <tag>后端/Java/八股</tag>
       </tags>
   </entry>
   <entry>
