@@ -1253,132 +1253,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kafka常用命令总结</title>
-    <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>操作的 topic 名称</td>
-</tr>
-<tr>
-<td>–create</td>
-<td>创建主题</td>
-</tr>
-<tr>
-<td>–delete</td>
-<td>删除主题</td>
-</tr>
-<tr>
-<td>–alter</td>
-<td>修改主题</td>
-</tr>
-<tr>
-<td>–list</td>
-<td>查看所有主题</td>
-</tr>
-<tr>
-<td>–describe</td>
-<td>查看主题详细描述</td>
-</tr>
-<tr>
-<td>–partitions <code>Integer</code></td>
-<td>设置分区数</td>
-</tr>
-<tr>
-<td>–replication-factor <code>Integer</code></td>
-<td>设置分区副本</td>
-</tr>
-</tbody></table>
-<p>这些参数可以与 <code>kafka-topics.sh</code>（Unix&#x2F;Linux）或 <code>kafka-topics.bat</code>（Windows）命令一起使用，用于管理 Kafka 主题。根据需要，选择使用适当的参数来执行相应的操作。</p>
-<h2 id="消费者脚本命令参数："><a href="#消费者脚本命令参数：" class="headerlink" title="消费者脚本命令参数："></a>消费者脚本命令参数：</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>消费的 topic 名称</td>
-</tr>
-<tr>
-<td>–group-id</td>
-<td>消费者所属的消费者组 ID</td>
-</tr>
-<tr>
-<td>–from-beginning</td>
-<td>从最早的偏移量开始消费</td>
-</tr>
-<tr>
-<td>–partition <code>Integer</code></td>
-<td>指定要消费的分区</td>
-</tr>
-<tr>
-<td>–offsets <code>String</code></td>
-<td>指定要消费的分区的偏移量</td>
-</tr>
-<tr>
-<td>–max-messages <code>Integer</code></td>
-<td>指定要消费的最大消息数量</td>
-</tr>
-<tr>
-<td>–timeout-ms <code>Integer</code></td>
-<td>指定超时时间（毫秒），在等待新消息时使用</td>
-</tr>
-<tr>
-<td>–property <code>String=String</code></td>
-<td>设置其他的消费者属性</td>
-</tr>
-</tbody></table>
-<h2 id="生成者脚本命令参数："><a href="#生成者脚本命令参数：" class="headerlink" title="生成者脚本命令参数："></a>生成者脚本命令参数：</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>发送消息的 topic 名称</td>
-</tr>
-<tr>
-<td>–key</td>
-<td>发送消息的键（可选）</td>
-</tr>
-<tr>
-<td>–value</td>
-<td>发送消息的值</td>
-</tr>
-<tr>
-<td>–property <code>String=String</code></td>
-<td>设置其他的生产者属性</td>
-</tr>
-</tbody></table>
-<p>这些参数可以与 Kafka 提供的相应脚本命令一起使用，用于执行消费者和生产者的操作。根据需要，您可以选择使用适当的参数来配置消费者和生成者的行为。</p>
-]]></content>
-      <tags>
-        <tag>数据/kafka</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HashMart开发文档</title>
     <url>/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><blockquote>
@@ -1630,6 +1504,132 @@
 ]]></content>
       <tags>
         <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kafka常用命令总结</title>
+    <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>操作的 topic 名称</td>
+</tr>
+<tr>
+<td>–create</td>
+<td>创建主题</td>
+</tr>
+<tr>
+<td>–delete</td>
+<td>删除主题</td>
+</tr>
+<tr>
+<td>–alter</td>
+<td>修改主题</td>
+</tr>
+<tr>
+<td>–list</td>
+<td>查看所有主题</td>
+</tr>
+<tr>
+<td>–describe</td>
+<td>查看主题详细描述</td>
+</tr>
+<tr>
+<td>–partitions <code>Integer</code></td>
+<td>设置分区数</td>
+</tr>
+<tr>
+<td>–replication-factor <code>Integer</code></td>
+<td>设置分区副本</td>
+</tr>
+</tbody></table>
+<p>这些参数可以与 <code>kafka-topics.sh</code>（Unix&#x2F;Linux）或 <code>kafka-topics.bat</code>（Windows）命令一起使用，用于管理 Kafka 主题。根据需要，选择使用适当的参数来执行相应的操作。</p>
+<h2 id="消费者脚本命令参数："><a href="#消费者脚本命令参数：" class="headerlink" title="消费者脚本命令参数："></a>消费者脚本命令参数：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>消费的 topic 名称</td>
+</tr>
+<tr>
+<td>–group-id</td>
+<td>消费者所属的消费者组 ID</td>
+</tr>
+<tr>
+<td>–from-beginning</td>
+<td>从最早的偏移量开始消费</td>
+</tr>
+<tr>
+<td>–partition <code>Integer</code></td>
+<td>指定要消费的分区</td>
+</tr>
+<tr>
+<td>–offsets <code>String</code></td>
+<td>指定要消费的分区的偏移量</td>
+</tr>
+<tr>
+<td>–max-messages <code>Integer</code></td>
+<td>指定要消费的最大消息数量</td>
+</tr>
+<tr>
+<td>–timeout-ms <code>Integer</code></td>
+<td>指定超时时间（毫秒），在等待新消息时使用</td>
+</tr>
+<tr>
+<td>–property <code>String=String</code></td>
+<td>设置其他的消费者属性</td>
+</tr>
+</tbody></table>
+<h2 id="生成者脚本命令参数："><a href="#生成者脚本命令参数：" class="headerlink" title="生成者脚本命令参数："></a>生成者脚本命令参数：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>发送消息的 topic 名称</td>
+</tr>
+<tr>
+<td>–key</td>
+<td>发送消息的键（可选）</td>
+</tr>
+<tr>
+<td>–value</td>
+<td>发送消息的值</td>
+</tr>
+<tr>
+<td>–property <code>String=String</code></td>
+<td>设置其他的生产者属性</td>
+</tr>
+</tbody></table>
+<p>这些参数可以与 Kafka 提供的相应脚本命令一起使用，用于执行消费者和生产者的操作。根据需要，您可以选择使用适当的参数来配置消费者和生成者的行为。</p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
       </tags>
   </entry>
   <entry>
