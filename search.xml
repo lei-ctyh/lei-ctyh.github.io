@@ -1633,147 +1633,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux 卸载openjdk 安装oraclejdk</title>
-    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
-    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
-<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
-<p>如果有项目在运行，请先停止项目</p>
-</blockquote>
-<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
-<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
-<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
-<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
-<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
-<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
-<p>上传到 opt 路径下</p>
-</blockquote>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
-<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
-<p>安装路径不做要求，因此文件夹也不做要求</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
-<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
-<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
-
-<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux常用命令汇总</title>
-    <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>👍 本篇文章是为了巩固和记录一些 linux 下的常用指令，相当于是自己的一本工具书。本文参考以下网站</p>
-</blockquote>
-<ul>
-<li><a href="https://www.linuxcool.com/">Linux 命令大全(手册) – 真正好用的 Linux 命令在线查询网站 (linuxcool.com)</a></li>
-<li><a href="https://www.linuxprobe.com/basic-learning-00.html">第 0 章 咱们先来谈谈为什么要学习 Linux 系统 | 《Linux 就该这么学》 (linuxprobe.com)</a></li>
-</ul>
-<h2 id="修改-Hosts-文件"><a href="#修改-Hosts-文件" class="headerlink" title="修改 Hosts 文件"></a>修改 Hosts 文件</h2><blockquote>
-<p>修改 hosts 文件需要拥有对该文件的读写权限</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/hosts</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>刷新 DNS 缓存, 使其立即生效。额，当前步骤好像不做也不会失败。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> /etc/init.d/network restart    <span class="comment"># 重启网络</span></span><br><span class="line"> </span><br><span class="line"> or</span><br><span class="line"> </span><br><span class="line"> /etc/init.d/net.eth0 restart   <span class="comment"># 这个就是重启网卡了</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查看-Jdk-版本，路径及配置环境变量"><a href="#查看-Jdk-版本，路径及配置环境变量" class="headerlink" title="查看 Jdk 版本，路径及配置环境变量"></a>查看 Jdk 版本，路径及配置环境变量</h2><h3 id="查看-JDK-版本"><a href="#查看-JDK-版本" class="headerlink" title="查看 JDK 版本"></a>查看 JDK 版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112222910749.png"></p>
-<h3 id="查看-JDK-安装目录"><a href="#查看-JDK-安装目录" class="headerlink" title="查看 JDK 安装目录"></a>查看 JDK 安装目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223413446.png"></p>
-<h3 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><blockquote>
-<p>进入环境变量的文件, 需要 <code>sudo</code> 或者 <code>root</code> 用户来执行, 普通用户如何添加 <code>sudo</code> 可参考 <a href="#sudo%E5%91%BD%E4%BB%A4">sudo 命令的使用</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/profile</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>修改文件,底部添加如下代码,可参考 <a href="#Vim%E7%9A%84%E4%BD%BF%E7%94%A8">Vim 的使用</a>, <code>JAVA_HOME</code> 的参数值来源于 <a href="#%E6%9F%A5%E7%9C%8BJDK%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">查看 JDK 安装目录</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/bin/java</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223931855.png"></p>
-<blockquote>
-<p>重新加载配置文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置-Sudo-用户"><a href="#设置-Sudo-用户" class="headerlink" title="设置 Sudo 用户"></a>设置 Sudo 用户</h2><blockquote>
-<p>你不知道 root 账号的密码，但是你需要 root 账号的权限来完成一些命令, 当然不是所有用户都用利用 sudo 使用 root 权限的资格，必须是添加在 <code>/etc/sudoers</code> 文件下用户</p>
-</blockquote>
-<h3 id="切换到-Root-用户"><a href="#切换到-Root-用户" class="headerlink" title="切换到 Root 用户"></a>切换到 Root 用户</h3><blockquote>
-<p>这一步需要 root 用户操作,</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225016655.png"></p>
-<h3 id="给-etc-sudoers-文件添加写权限"><a href="#给-etc-sudoers-文件添加写权限" class="headerlink" title="给&#x2F;etc&#x2F;sudoers 文件添加写权限"></a>给&#x2F;etc&#x2F;sudoers 文件添加写权限</h3><blockquote>
-<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+w /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改-sudoers-文件"><a href="#修改-sudoers-文件" class="headerlink" title="修改 sudoers 文件"></a>修改 <code>sudoers</code> 文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>找到这行：root ALL&#x3D;(ALL) ALL, 在这行下面添加 <code>&#123;需要添加的用户名&#125;</code> ALL&#x3D;(ALL) ALL</p>
-</blockquote>
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225904580.png"></p>
-<blockquote>
-<p>sudoers 下面添加普通用户可以使用 <code>sudo</code> 命令的格式 <code>xxx</code> 代表用户名称或者组名称，注意大小写。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xxx ALL=(ALL) ALL <span class="comment"># 普通用户可以使用sudo命令，但是需要密码</span></span><br><span class="line">%xxx ALL=(ALL) ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，但是需要密码</span></span><br><span class="line"></span><br><span class="line">xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 普通 用户可以使用sudo命令，不需要密码</span></span><br><span class="line"></span><br><span class="line">%xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，不需要密码</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="去除-Root-用户对-Sudoers-文件的写权限"><a href="#去除-Root-用户对-Sudoers-文件的写权限" class="headerlink" title="去除 Root 用户对 Sudoers 文件的写权限"></a>去除 Root 用户对 Sudoers 文件的写权限</h3><blockquote>
-<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u-w /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置静态-IP"><a href="#设置静态-IP" class="headerlink" title="设置静态 IP"></a>设置静态 IP</h2><h3 id="切换至-Root-用户-非必须"><a href="#切换至-Root-用户-非必须" class="headerlink" title="切换至 Root 用户 (非必须)"></a>切换至 Root 用户 (非必须)</h3><p>切换成 root 用户，或者后续指令一直使用 sudo</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ifconfig查看网卡信息，确认网卡名 ifcfg-enp0s3</span></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-        <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Maven依赖管理项目构建工具</title>
     <url>/2024/12/09/archive/Maven%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="一、Maven-简介"><a href="#一、Maven-简介" class="headerlink" title="一、Maven 简介"></a>一、Maven 简介</h2><h3 id="1、为什么学习-Maven"><a href="#1、为什么学习-Maven" class="headerlink" title="1、为什么学习 Maven"></a>1、为什么学习 Maven</h3><h4 id="1-1、Maven-是一个依赖管理工具"><a href="#1-1、Maven-是一个依赖管理工具" class="headerlink" title="1.1、Maven 是一个依赖管理工具"></a>1.1、Maven 是一个依赖管理工具</h4><p><strong>jar 包的规模</strong></p>
@@ -2458,6 +2317,147 @@
 ]]></content>
       <tags>
         <tag>后端/Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令汇总</title>
+    <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>👍 本篇文章是为了巩固和记录一些 linux 下的常用指令，相当于是自己的一本工具书。本文参考以下网站</p>
+</blockquote>
+<ul>
+<li><a href="https://www.linuxcool.com/">Linux 命令大全(手册) – 真正好用的 Linux 命令在线查询网站 (linuxcool.com)</a></li>
+<li><a href="https://www.linuxprobe.com/basic-learning-00.html">第 0 章 咱们先来谈谈为什么要学习 Linux 系统 | 《Linux 就该这么学》 (linuxprobe.com)</a></li>
+</ul>
+<h2 id="修改-Hosts-文件"><a href="#修改-Hosts-文件" class="headerlink" title="修改 Hosts 文件"></a>修改 Hosts 文件</h2><blockquote>
+<p>修改 hosts 文件需要拥有对该文件的读写权限</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>刷新 DNS 缓存, 使其立即生效。额，当前步骤好像不做也不会失败。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> /etc/init.d/network restart    <span class="comment"># 重启网络</span></span><br><span class="line"> </span><br><span class="line"> or</span><br><span class="line"> </span><br><span class="line"> /etc/init.d/net.eth0 restart   <span class="comment"># 这个就是重启网卡了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看-Jdk-版本，路径及配置环境变量"><a href="#查看-Jdk-版本，路径及配置环境变量" class="headerlink" title="查看 Jdk 版本，路径及配置环境变量"></a>查看 Jdk 版本，路径及配置环境变量</h2><h3 id="查看-JDK-版本"><a href="#查看-JDK-版本" class="headerlink" title="查看 JDK 版本"></a>查看 JDK 版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112222910749.png"></p>
+<h3 id="查看-JDK-安装目录"><a href="#查看-JDK-安装目录" class="headerlink" title="查看 JDK 安装目录"></a>查看 JDK 安装目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223413446.png"></p>
+<h3 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><blockquote>
+<p>进入环境变量的文件, 需要 <code>sudo</code> 或者 <code>root</code> 用户来执行, 普通用户如何添加 <code>sudo</code> 可参考 <a href="#sudo%E5%91%BD%E4%BB%A4">sudo 命令的使用</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>修改文件,底部添加如下代码,可参考 <a href="#Vim%E7%9A%84%E4%BD%BF%E7%94%A8">Vim 的使用</a>, <code>JAVA_HOME</code> 的参数值来源于 <a href="#%E6%9F%A5%E7%9C%8BJDK%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">查看 JDK 安装目录</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/bin/java</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223931855.png"></p>
+<blockquote>
+<p>重新加载配置文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置-Sudo-用户"><a href="#设置-Sudo-用户" class="headerlink" title="设置 Sudo 用户"></a>设置 Sudo 用户</h2><blockquote>
+<p>你不知道 root 账号的密码，但是你需要 root 账号的权限来完成一些命令, 当然不是所有用户都用利用 sudo 使用 root 权限的资格，必须是添加在 <code>/etc/sudoers</code> 文件下用户</p>
+</blockquote>
+<h3 id="切换到-Root-用户"><a href="#切换到-Root-用户" class="headerlink" title="切换到 Root 用户"></a>切换到 Root 用户</h3><blockquote>
+<p>这一步需要 root 用户操作,</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225016655.png"></p>
+<h3 id="给-etc-sudoers-文件添加写权限"><a href="#给-etc-sudoers-文件添加写权限" class="headerlink" title="给&#x2F;etc&#x2F;sudoers 文件添加写权限"></a>给&#x2F;etc&#x2F;sudoers 文件添加写权限</h3><blockquote>
+<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+w /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-sudoers-文件"><a href="#修改-sudoers-文件" class="headerlink" title="修改 sudoers 文件"></a>修改 <code>sudoers</code> 文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>找到这行：root ALL&#x3D;(ALL) ALL, 在这行下面添加 <code>&#123;需要添加的用户名&#125;</code> ALL&#x3D;(ALL) ALL</p>
+</blockquote>
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225904580.png"></p>
+<blockquote>
+<p>sudoers 下面添加普通用户可以使用 <code>sudo</code> 命令的格式 <code>xxx</code> 代表用户名称或者组名称，注意大小写。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xxx ALL=(ALL) ALL <span class="comment"># 普通用户可以使用sudo命令，但是需要密码</span></span><br><span class="line">%xxx ALL=(ALL) ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，但是需要密码</span></span><br><span class="line"></span><br><span class="line">xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 普通 用户可以使用sudo命令，不需要密码</span></span><br><span class="line"></span><br><span class="line">%xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，不需要密码</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="去除-Root-用户对-Sudoers-文件的写权限"><a href="#去除-Root-用户对-Sudoers-文件的写权限" class="headerlink" title="去除 Root 用户对 Sudoers 文件的写权限"></a>去除 Root 用户对 Sudoers 文件的写权限</h3><blockquote>
+<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u-w /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置静态-IP"><a href="#设置静态-IP" class="headerlink" title="设置静态 IP"></a>设置静态 IP</h2><h3 id="切换至-Root-用户-非必须"><a href="#切换至-Root-用户-非必须" class="headerlink" title="切换至 Root 用户 (非必须)"></a>切换至 Root 用户 (非必须)</h3><p>切换成 root 用户，或者后续指令一直使用 sudo</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ifconfig查看网卡信息，确认网卡名 ifcfg-enp0s3</span></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>持续更新</tag>
+        <tag>运维/linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 卸载openjdk 安装oraclejdk</title>
+    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
+    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
+<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
+<p>如果有项目在运行，请先停止项目</p>
+</blockquote>
+<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
+<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
+<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
+<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
+<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
+<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
+<p>上传到 opt 路径下</p>
+</blockquote>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
+<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
+<p>安装路径不做要求，因此文件夹也不做要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
+<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
+<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
+
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
