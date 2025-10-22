@@ -5122,6 +5122,71 @@
       </tags>
   </entry>
   <entry>
+    <title>若依系统生产环境图片不显示问题解决方案</title>
+    <url>/2025/10/22/archive/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在若依 (RuoYi) 系统部署到生产环境后，经常遇到图片无法显示的问题。这通常是由于 Nginx 配置中静态资源处理规则冲突导致的。</p>
+<h3 id="根本原因分析"><a href="#根本原因分析" class="headerlink" title="根本原因分析"></a>根本原因分析</h3><p>问题主要出现在 Nginx 配置中的静态资源缓存规则与若依系统的资源路径存在冲突：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 这些通用规则会拦截所有图片和静态资源请求</span></span><br><span class="line"><span class="section">location</span> <span class="regexp">~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span> &#123;</span><br><span class="line">     <span class="attribute">expires</span>      <span class="number">30d</span>;</span><br><span class="line">     <span class="attribute">error_log</span> <span class="literal">off</span>;</span><br><span class="line">     <span class="attribute">access_log</span> /dev/null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="方案一：后端资源代理（推荐用于开发环境）"><a href="#方案一：后端资源代理（推荐用于开发环境）" class="headerlink" title="方案一：后端资源代理（推荐用于开发环境）"></a>方案一：后端资源代理（推荐用于开发环境）</h3><p>通过 Nginx 将静态资源请求代理到后端 Spring Boot 应用：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> /profile/ &#123;</span><br><span class="line">    <span class="attribute">client_max_body_size</span> <span class="number">10000m</span>;  <span class="comment"># 支持大文件上传</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8088/profile/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>开发测试环境</li>
+<li>资源文件存储在后端应用服务器</li>
+<li>需要统一通过应用服务器管理资源</li>
+</ul>
+<h3 id="方案二：Nginx-直接服务静态文件（推荐用于生产环境）"><a href="#方案二：Nginx-直接服务静态文件（推荐用于生产环境）" class="headerlink" title="方案二：Nginx 直接服务静态文件（推荐用于生产环境）"></a>方案二：Nginx 直接服务静态文件（推荐用于生产环境）</h3><p>使用 Nginx 的 <code>alias</code> 指令直接提供静态文件服务：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> /profile/ &#123;</span><br><span class="line">    <span class="attribute">alias</span> /home/admin/app/attachments/;  <span class="comment"># 确保路径与 application.yml 中的 profile 配置一致</span></span><br><span class="line">    <span class="attribute">autoindex</span> <span class="literal">off</span>;  <span class="comment"># 禁止目录浏览</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优势</strong>：</p>
+<ul>
+<li>性能更高，减少后端压力</li>
+<li>静态文件由 Web 服务器直接处理</li>
+<li>更好的缓存控制</li>
+</ul>
+<h2 id="关键配置步骤"><a href="#关键配置步骤" class="headerlink" title="关键配置步骤"></a>关键配置步骤</h2><h3 id="1-注释冲突的静态资源规则"><a href="#1-注释冲突的静态资源规则" class="headerlink" title="1. 注释冲突的静态资源规则"></a>1. 注释冲突的静态资源规则</h3><p>在 Nginx 配置中注释或删除以下冲突规则：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 注释掉这些通用静态资源规则</span></span><br><span class="line"><span class="comment"># location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</span></span><br><span class="line"><span class="comment">#      expires      30d;</span></span><br><span class="line"><span class="comment">#      error_log off;</span></span><br><span class="line"><span class="comment">#      access_log /dev/null;</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># location ~ .*\.(js|css)?$ &#123;</span></span><br><span class="line"><span class="comment">#      expires      12h;</span></span><br><span class="line"><span class="comment">#      error_log off;</span></span><br><span class="line"><span class="comment">#      access_log /dev/null; </span></span><br><span class="line"><span class="comment"># &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-验证目录权限"><a href="#2-验证目录权限" class="headerlink" title="2. 验证目录权限"></a>2. 验证目录权限</h3><p>确保 Nginx 用户对静态资源目录有读取权限：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查目录是否存在</span></span><br><span class="line"><span class="built_in">ls</span> -la /home/admin/app/attachments/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改目录权限（如果需要）</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/admin/app/attachments/</span><br><span class="line"><span class="built_in">chown</span> -R nginx:nginx /home/admin/app/attachments/</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-检查若依配置"><a href="#3-检查若依配置" class="headerlink" title="3. 检查若依配置"></a>3. 检查若依配置</h3><p>确认 <code>application.yml</code> 中的文件存储路径与 Nginx 配置一致：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># application.yml</span></span><br><span class="line"><span class="attr">file:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">/home/admin/app/attachments/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="完整生产环境配置示例"><a href="#完整生产环境配置示例" class="headerlink" title="完整生产环境配置示例"></a>完整生产环境配置示例</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> your-domain.com;</span><br><span class="line">    <span class="attribute">root</span> /www/wwwroot/your-domain.com;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># API 代理配置</span></span><br><span class="line">    <span class="section">location</span> /prod-api/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8080/;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="attribute">proxy_connect_timeout</span> <span class="number">30s</span>;</span><br><span class="line">        <span class="attribute">proxy_send_timeout</span> <span class="number">30s</span>;</span><br><span class="line">        <span class="attribute">proxy_read_timeout</span> <span class="number">30s</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 静态资源配置 - 方案二（生产环境推荐）</span></span><br><span class="line">    <span class="section">location</span> /profile/ &#123;</span><br><span class="line">        <span class="attribute">alias</span> /home/admin/app/attachments/;</span><br><span class="line">        <span class="attribute">autoindex</span> <span class="literal">off</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 可选的缓存设置</span></span><br><span class="line">        <span class="attribute">expires</span> <span class="number">30d</span>;</span><br><span class="line">        <span class="attribute">add_header</span> Cache-Control <span class="string">&quot;public, immutable&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 安全配置</span></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ ^/(\.user.ini|\.htaccess|\.git|\.env|\.svn|\.project|LICENSE|README.md)</span> &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">404</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># SSL 证书验证</span></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ \.well-known</span> &#123;</span><br><span class="line">        <span class="attribute">allow</span> all;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">access_log</span> /www/wwwlogs/your-domain.com.log;</span><br><span class="line">    <span class="attribute">error_log</span> /www/wwwlogs/your-domain.com.<span class="literal">error</span>.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="故障排查清单"><a href="#故障排查清单" class="headerlink" title="故障排查清单"></a>故障排查清单</h2><ol>
+<li><p><strong>检查 Nginx 配置语法</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重新加载 Nginx 配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看 Nginx 错误日志</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> -f /www/wwwlogs/your-domain.com.error.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>验证文件路径权限</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -la /home/admin/app/attachments/upload/image/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>测试静态资源访问</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -I http://your-domain.com/profile/upload/image/test.jpg</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="最佳实践建议"><a href="#最佳实践建议" class="headerlink" title="最佳实践建议"></a>最佳实践建议</h2><ol>
+<li><strong>生产环境优先使用方案二</strong>（Nginx 直接服务静态文件）</li>
+<li><strong>保持路径一致性</strong>：确保 Nginx 配置与 Spring Boot 配置中的路径完全一致</li>
+<li><strong>定期检查权限</strong>：部署更新后验证文件目录权限</li>
+<li><strong>配置适当的缓存策略</strong>：对静态资源设置合理的过期时间</li>
+<li><strong>监控日志文件</strong>：定期检查 Nginx 错误日志以发现潜在问题</li>
+</ol>
+<p>通过以上配置和排查步骤，可以有效解决若依系统在生产环境中图片不显示的问题。</p>
+]]></content>
+      <tags>
+        <tag>工具/nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>高效时间管理核心：待办清单与日程管理的艺术</title>
     <url>/2025/09/17/archive/%E9%AB%98%E6%95%88%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%A0%B8%E5%BF%83%EF%BC%9A%E5%BE%85%E5%8A%9E%E6%B8%85%E5%8D%95%E4%B8%8E%E6%97%A5%E7%A8%8B%E7%AE%A1%E7%90%86%E7%9A%84%E8%89%BA%E6%9C%AF/</url>
     <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h2><p>为什么总感觉时间不够用？为什么事情总是拖到最后一刻才匆忙完成？问题的核心往往在于我们混淆了“需要做的事”和“时间”的概念。掌握“待办”与“日程”的区别，并有效运用相关管理法则，是摆脱忙碌、走向高效的关键。</p>
