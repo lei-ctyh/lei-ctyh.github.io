@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Dbeaver工具手册</title>
+    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
+<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
+</blockquote>
+<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
+<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
+<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
+</ul>
+<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
+<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
+<li>选择中要复制的代码</li>
+<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
+</ol>
+<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
+<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
+<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
+<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
+]]></content>
+      <tags>
+        <tag>工具/dbeaver</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ActiveMQ</title>
     <url>/2024/12/09/archive/ActiveMQ/</url>
     <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
@@ -137,61 +192,6 @@
 <li>官网：<a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Dbeaver工具手册</title>
-    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
-<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
-</blockquote>
-<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
-<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
-<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
-</ul>
-<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
-<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
-<li>选择中要复制的代码</li>
-<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
-</ol>
-<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
-<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
-<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
-<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
-]]></content>
-      <tags>
-        <tag>工具/dbeaver</tag>
-      </tags>
   </entry>
   <entry>
     <title>Docker小册</title>
@@ -5174,36 +5174,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何避免代码的深层嵌套</title>
-    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
-    <content><![CDATA[<blockquote>
-<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
-</blockquote>
-<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
-]]></content>
-      <tags>
-        <tag>代码/优化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>文章推荐</title>
     <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
     <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
@@ -5286,6 +5256,36 @@
       </tags>
   </entry>
   <entry>
+    <title>如何避免代码的深层嵌套</title>
+    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
+    <content><![CDATA[<blockquote>
+<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
+</blockquote>
+<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
+]]></content>
+      <tags>
+        <tag>代码/优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>相对路径的使用</title>
     <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
@@ -5310,30 +5310,6 @@
 ]]></content>
       <tags>
         <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线程的几种状态</title>
-    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<pre><code class="highlight mermaid">mindmap
-	(线程的几种状态)
-		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)
-		(运行态-是就绪态和运行中的统称)
-			(就绪态-未抢占到cpu时间片)
-			(运行中-抢占到了时间片) 
-		(阻塞态)
-		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)
-		(超时等待-指定时间后，可以自行返回)
-		(终止态度-线程执行完毕)
-		
-    
-
-</code></pre>
-
-<p><img src="/assets/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/file-20250526135653833.png"></p>
-]]></content>
-      <tags>
-        <tag>后端/Java/八股</tag>
       </tags>
   </entry>
   <entry>
@@ -5399,6 +5375,30 @@
 ]]></content>
       <tags>
         <tag>工具/nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线程的几种状态</title>
+    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<pre><code class="highlight mermaid">mindmap
+	(线程的几种状态)
+		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)
+		(运行态-是就绪态和运行中的统称)
+			(就绪态-未抢占到cpu时间片)
+			(运行中-抢占到了时间片) 
+		(阻塞态)
+		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)
+		(超时等待-指定时间后，可以自行返回)
+		(终止态度-线程执行完毕)
+		
+    
+
+</code></pre>
+
+<p><img src="/assets/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/file-20250526135653833.png"></p>
+]]></content>
+      <tags>
+        <tag>后端/Java/八股</tag>
       </tags>
   </entry>
   <entry>
