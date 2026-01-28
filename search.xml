@@ -1,61 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Dbeaver工具手册</title>
-    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
-<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
-</blockquote>
-<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
-<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
-<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
-</ul>
-<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
-<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
-<li>选择中要复制的代码</li>
-<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
-</ol>
-<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
-<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
-<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
-<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
-]]></content>
-      <tags>
-        <tag>工具/dbeaver</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ActiveMQ</title>
     <url>/2024/12/09/archive/ActiveMQ/</url>
     <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
@@ -192,6 +137,61 @@
 <li>官网：<a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Dbeaver工具手册</title>
+    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
+<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
+</blockquote>
+<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
+<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
+<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
+</ul>
+<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
+<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
+<li>选择中要复制的代码</li>
+<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
+</ol>
+<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
+<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
+<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
+<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
+]]></content>
+      <tags>
+        <tag>工具/dbeaver</tag>
+      </tags>
   </entry>
   <entry>
     <title>Docker小册</title>
@@ -4043,72 +4043,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker安装kafka集群</title>
-    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
-    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
-<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
-<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
-</ul>
-<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
-<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
-<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
-<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
-</ul>
-<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
-<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看所有的 topic 名字</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
-
-<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
-<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
-<blockquote>
-<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/kafka</tag>
-        <tag>运维/docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Virtualbox7安装及使用详细步骤</title>
     <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
@@ -4375,6 +4309,72 @@
       </tags>
   </entry>
   <entry>
+    <title>docker安装kafka集群</title>
+    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
+    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
+<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
+<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
+</ul>
+<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
+<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
+<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
+<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
+</ul>
+<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
+<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看所有的 topic 名字</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
+<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
+<blockquote>
+<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
+        <tag>运维/docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git 入门指南：写给完全不懂版本控制的你</title>
     <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
@@ -4587,6 +4587,113 @@
         <tag>Git</tag>
         <tag>版本控制</tag>
         <tag>入门教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
@@ -5030,113 +5137,6 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
