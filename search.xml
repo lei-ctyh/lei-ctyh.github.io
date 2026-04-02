@@ -2461,36 +2461,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -2620,62 +2590,30 @@
       </tags>
   </entry>
   <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
-</blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
-</li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
-</li>
-</ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
-</ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 被授权的用户名</li>
-</ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
-</ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
-</ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
@@ -4043,6 +3981,390 @@
       </tags>
   </entry>
   <entry>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
+</ul>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
+</ul>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 入门指南：写给完全不懂版本控制的你</title>
+    <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
+<ul>
+<li>改代码改崩了，想恢复昨天的版本，却发现没备份</li>
+<li>和同事一起开发，不知道怎么合并各自的修改</li>
+<li>听别人说 “commit”、”push”、”rebase”，完全听不懂</li>
+</ul>
+<p>这篇文章用最通俗的语言，帮你搞懂 Git 是什么、怎么用。</p>
+<hr>
+<h2 id="一、Git-是什么？"><a href="#一、Git-是什么？" class="headerlink" title="一、Git 是什么？"></a>一、Git 是什么？</h2><p><strong>一句话解释</strong>：Git 是一个”代码时光机”，能帮你：</p>
+<ul>
+<li>保存代码的每一个历史版本</li>
+<li>随时穿越回任意时间点</li>
+<li>多人协作开发不打架</li>
+</ul>
+<hr>
+<h2 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h2><h3 id="2-1-仓库（Repository）"><a href="#2-1-仓库（Repository）" class="headerlink" title="2.1 仓库（Repository）"></a>2.1 仓库（Repository）</h3><p>仓库就是一个被 Git 管理的项目文件夹。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的项目/</span><br><span class="line">├── .git/          ← 隐藏文件夹，存储所有历史记录（本地仓库）</span><br><span class="line">├── src/           ← 你实际编辑的代码（工作目录）</span><br><span class="line">├── index.html</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>重点</strong>：</p>
+<ul>
+<li><strong>工作目录</strong> &#x3D; 你能看到和编辑的文件</li>
+<li><strong>本地仓库 (.git)</strong> &#x3D; 隐藏的”存档库”，存着所有历史版本</li>
+</ul>
+<blockquote>
+<p>💡 只要 <code>.git</code> 文件夹不删，你就能恢复到任意一次 commit 的状态。</p>
+</blockquote>
+<h3 id="2-2-代码的三个状态"><a href="#2-2-代码的三个状态" class="headerlink" title="2.2 代码的三个状态"></a>2.2 代码的三个状态</h3><pre><code class="highlight mermaid">flowchart LR
+    A[工作目录&lt;br/&gt;Working Dir&lt;br/&gt;你正在改的文件] --&gt;|git add| B[暂存区&lt;br/&gt;Staging Area&lt;br/&gt;准备要提交的]
+    B --&gt;|git commit| C[本地仓库&lt;br/&gt;Local Repo&lt;br/&gt;已保存的历史]</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>说明</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作目录</td>
+<td>你正在编辑的文件</td>
+<td>正在写的作业</td>
+</tr>
+<tr>
+<td>暂存区</td>
+<td>准备提交的修改</td>
+<td>放进书包准备交的作业</td>
+</tr>
+<tr>
+<td>本地仓库</td>
+<td>已保存的历史记录</td>
+<td>老师收走存档的作业</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-本地-vs-远端"><a href="#2-3-本地-vs-远端" class="headerlink" title="2.3 本地 vs 远端"></a>2.3 本地 vs 远端</h3><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本地（Local）</strong></td>
+<td>你自己电脑上的仓库</td>
+</tr>
+<tr>
+<td><strong>远端（Remote）</strong></td>
+<td>服务器上的仓库（如 GitHub、GitLab）</td>
+</tr>
+</tbody></table>
+<p>它们之间的同步：</p>
+<pre><code class="highlight mermaid">flowchart LR
+    A[本地仓库] --&gt;|git push&lt;br/&gt;推送| B[远端仓库]
+    B --&gt;|git pull&lt;br/&gt;拉取| A</code></pre>
+
+<hr>
+<h2 id="三、分支（Branch）"><a href="#三、分支（Branch）" class="headerlink" title="三、分支（Branch）"></a>三、分支（Branch）</h2><h3 id="3-1-什么是分支？"><a href="#3-1-什么是分支？" class="headerlink" title="3.1 什么是分支？"></a>3.1 什么是分支？</h3><p>分支就是代码的”平行世界”。</p>
+<p>想象一下：你在写一个网站，老板突然说要加个新功能。你不想在正式代码上直接改（怕改崩），于是：</p>
+<ol>
+<li>创建一个新分支 <code>feature-xxx</code></li>
+<li>在新分支上随便折腾</li>
+<li>测试没问题后，合并回主分支</li>
+</ol>
+<pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;A&quot;
+    commit id: &quot;B&quot;
+    commit id: &quot;C&quot;
+    branch feature
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    checkout main
+    merge feature id: &quot;F&quot;</code></pre>
+
+<h3 id="3-2-常见分支"><a href="#3-2-常见分支" class="headerlink" title="3.2 常见分支"></a>3.2 常见分支</h3><table>
+<thead>
+<tr>
+<th>分支名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>master</code> &#x2F; <code>main</code></td>
+<td>正式版本，稳定的代码</td>
+</tr>
+<tr>
+<td><code>develop</code></td>
+<td>开发中的代码</td>
+</tr>
+<tr>
+<td><code>feature-xxx</code></td>
+<td>某个新功能的开发</td>
+</tr>
+<tr>
+<td><code>hotfix-xxx</code></td>
+<td>紧急修复 bug</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="四、Merge-vs-Rebase"><a href="#四、Merge-vs-Rebase" class="headerlink" title="四、Merge vs Rebase"></a>四、Merge vs Rebase</h2><p>这是两种合并代码的方式，效果相同但历史记录不同。</p>
+<h3 id="Merge（合并）"><a href="#Merge（合并）" class="headerlink" title="Merge（合并）"></a>Merge（合并）</h3><pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    commit id: &quot;F&quot;
+    commit id: &quot;G&quot;
+    branch feature
+    checkout feature
+    commit id: &quot;A&quot;
+    commit id: &quot;B&quot;
+    commit id: &quot;C&quot;
+    checkout main
+    merge feature id: &quot;H (合并节点)&quot;</code></pre>
+
+<ul>
+<li>会产生一个”合并节点”</li>
+<li>历史记录能看出分支合并过程</li>
+</ul>
+<h3 id="Rebase（变基）"><a href="#Rebase（变基）" class="headerlink" title="Rebase（变基）"></a>Rebase（变基）</h3><pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    commit id: &quot;F&quot;
+    commit id: &quot;G&quot;
+    commit id: &quot;A&#x27;&quot;
+    commit id: &quot;B&#x27;&quot;
+    commit id: &quot;C&#x27;&quot;</code></pre>
+
+<ul>
+<li>把你的提交”嫁接”到最新节点后面</li>
+<li>历史记录更整洁（一条直线）</li>
+</ul>
+<h3 id="推荐工作流"><a href="#推荐工作流" class="headerlink" title="推荐工作流"></a>推荐工作流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 本地提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;完成了xxx功能&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远端最新代码并变基</span></span><br><span class="line">git pull --rebase origin develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 推送</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、常用命令速查表"><a href="#五、常用命令速查表" class="headerlink" title="五、常用命令速查表"></a>五、常用命令速查表</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status              <span class="comment"># 查看当前状态</span></span><br><span class="line">git add .               <span class="comment"># 暂存所有修改</span></span><br><span class="line">git commit -m <span class="string">&quot;说明&quot;</span>     <span class="comment"># 提交到本地仓库</span></span><br><span class="line">git <span class="built_in">log</span> --oneline       <span class="comment"># 查看提交历史</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch              <span class="comment"># 查看所有分支</span></span><br><span class="line">git checkout xxx        <span class="comment"># 切换到 xxx 分支</span></span><br><span class="line">git checkout -b xxx     <span class="comment"># 创建并切换到新分支</span></span><br><span class="line">git merge xxx           <span class="comment"># 合并 xxx 分支到当前分支</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="同步操作"><a href="#同步操作" class="headerlink" title="同步操作"></a>同步操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull                <span class="comment"># 拉取远端代码并合并</span></span><br><span class="line">git push                <span class="comment"># 推送到远端</span></span><br><span class="line">git fetch               <span class="comment"># 只拉取，不合并</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- file    <span class="comment"># 撤销工作目录的修改</span></span><br><span class="line">git reset HEAD file     <span class="comment"># 撤销暂存区的修改</span></span><br><span class="line">git reset --hard abc123 <span class="comment"># 回退到某个提交（谨慎使用）</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1：修改了但没-commit，能恢复吗？"><a href="#Q1：修改了但没-commit，能恢复吗？" class="headerlink" title="Q1：修改了但没 commit，能恢复吗？"></a>Q1：修改了但没 commit，能恢复吗？</h3><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>能否恢复</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已 commit</td>
+<td>✅ 永久保存，随时可恢复</td>
+</tr>
+<tr>
+<td>只 add 没 commit</td>
+<td>⚠️ 有办法但麻烦</td>
+</tr>
+<tr>
+<td>没 add 也没 commit</td>
+<td>❌ 丢了就是丢了</td>
+</tr>
+</tbody></table>
+<h3 id="Q2：-git-文件夹能删吗？"><a href="#Q2：-git-文件夹能删吗？" class="headerlink" title="Q2：.git 文件夹能删吗？"></a>Q2：.git 文件夹能删吗？</h3><p><strong>不能！</strong> 删了就等于删掉所有历史记录，只剩当前版本的文件。</p>
+<h3 id="Q3：push-和-pull-的区别？"><a href="#Q3：push-和-pull-的区别？" class="headerlink" title="Q3：push 和 pull 的区别？"></a>Q3：push 和 pull 的区别？</h3><ul>
+<li><code>push</code>：你 → 服务器（上传）</li>
+<li><code>pull</code>：服务器 → 你（下载）</li>
+</ul>
+<hr>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Git 的核心就三件事：</p>
+<ol>
+<li><strong>保存历史</strong>：每次 <code>commit</code> 就是一次存档</li>
+<li><strong>分支开发</strong>：在平行世界里随便折腾</li>
+<li><strong>多人协作</strong>：通过 <code>push/pull</code> 同步代码</li>
+</ol>
+<p>记住这张图：</p>
+<pre><code class="highlight mermaid">flowchart LR
+    A[工作目录] --&gt;|add| B[暂存区]
+    B --&gt;|commit| C[本地仓库]
+    C --&gt;|push| D[远端仓库]
+    D --&gt;|pull| C</code></pre>
+
+<hr>
+<p><strong>入门建议</strong>：先把 <code>add</code>、<code>commit</code>、<code>pull</code>、<code>push</code> 用熟，其他命令遇到再学。</p>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>版本控制</tag>
+        <tag>入门教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Virtualbox7安装及使用详细步骤</title>
     <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
@@ -4372,328 +4694,6 @@
       <tags>
         <tag>数据/kafka</tag>
         <tag>运维/docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git 入门指南：写给完全不懂版本控制的你</title>
-    <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
-<ul>
-<li>改代码改崩了，想恢复昨天的版本，却发现没备份</li>
-<li>和同事一起开发，不知道怎么合并各自的修改</li>
-<li>听别人说 “commit”、”push”、”rebase”，完全听不懂</li>
-</ul>
-<p>这篇文章用最通俗的语言，帮你搞懂 Git 是什么、怎么用。</p>
-<hr>
-<h2 id="一、Git-是什么？"><a href="#一、Git-是什么？" class="headerlink" title="一、Git 是什么？"></a>一、Git 是什么？</h2><p><strong>一句话解释</strong>：Git 是一个”代码时光机”，能帮你：</p>
-<ul>
-<li>保存代码的每一个历史版本</li>
-<li>随时穿越回任意时间点</li>
-<li>多人协作开发不打架</li>
-</ul>
-<hr>
-<h2 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h2><h3 id="2-1-仓库（Repository）"><a href="#2-1-仓库（Repository）" class="headerlink" title="2.1 仓库（Repository）"></a>2.1 仓库（Repository）</h3><p>仓库就是一个被 Git 管理的项目文件夹。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的项目/</span><br><span class="line">├── .git/          ← 隐藏文件夹，存储所有历史记录（本地仓库）</span><br><span class="line">├── src/           ← 你实际编辑的代码（工作目录）</span><br><span class="line">├── index.html</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
-
-<p><strong>重点</strong>：</p>
-<ul>
-<li><strong>工作目录</strong> &#x3D; 你能看到和编辑的文件</li>
-<li><strong>本地仓库 (.git)</strong> &#x3D; 隐藏的”存档库”，存着所有历史版本</li>
-</ul>
-<blockquote>
-<p>💡 只要 <code>.git</code> 文件夹不删，你就能恢复到任意一次 commit 的状态。</p>
-</blockquote>
-<h3 id="2-2-代码的三个状态"><a href="#2-2-代码的三个状态" class="headerlink" title="2.2 代码的三个状态"></a>2.2 代码的三个状态</h3><pre><code class="highlight mermaid">flowchart LR
-    A[工作目录&lt;br/&gt;Working Dir&lt;br/&gt;你正在改的文件] --&gt;|git add| B[暂存区&lt;br/&gt;Staging Area&lt;br/&gt;准备要提交的]
-    B --&gt;|git commit| C[本地仓库&lt;br/&gt;Local Repo&lt;br/&gt;已保存的历史]</code></pre>
-
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>说明</th>
-<th>类比</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>工作目录</td>
-<td>你正在编辑的文件</td>
-<td>正在写的作业</td>
-</tr>
-<tr>
-<td>暂存区</td>
-<td>准备提交的修改</td>
-<td>放进书包准备交的作业</td>
-</tr>
-<tr>
-<td>本地仓库</td>
-<td>已保存的历史记录</td>
-<td>老师收走存档的作业</td>
-</tr>
-</tbody></table>
-<h3 id="2-3-本地-vs-远端"><a href="#2-3-本地-vs-远端" class="headerlink" title="2.3 本地 vs 远端"></a>2.3 本地 vs 远端</h3><table>
-<thead>
-<tr>
-<th>概念</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>本地（Local）</strong></td>
-<td>你自己电脑上的仓库</td>
-</tr>
-<tr>
-<td><strong>远端（Remote）</strong></td>
-<td>服务器上的仓库（如 GitHub、GitLab）</td>
-</tr>
-</tbody></table>
-<p>它们之间的同步：</p>
-<pre><code class="highlight mermaid">flowchart LR
-    A[本地仓库] --&gt;|git push&lt;br/&gt;推送| B[远端仓库]
-    B --&gt;|git pull&lt;br/&gt;拉取| A</code></pre>
-
-<hr>
-<h2 id="三、分支（Branch）"><a href="#三、分支（Branch）" class="headerlink" title="三、分支（Branch）"></a>三、分支（Branch）</h2><h3 id="3-1-什么是分支？"><a href="#3-1-什么是分支？" class="headerlink" title="3.1 什么是分支？"></a>3.1 什么是分支？</h3><p>分支就是代码的”平行世界”。</p>
-<p>想象一下：你在写一个网站，老板突然说要加个新功能。你不想在正式代码上直接改（怕改崩），于是：</p>
-<ol>
-<li>创建一个新分支 <code>feature-xxx</code></li>
-<li>在新分支上随便折腾</li>
-<li>测试没问题后，合并回主分支</li>
-</ol>
-<pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;A&quot;
-    commit id: &quot;B&quot;
-    commit id: &quot;C&quot;
-    branch feature
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    checkout main
-    merge feature id: &quot;F&quot;</code></pre>
-
-<h3 id="3-2-常见分支"><a href="#3-2-常见分支" class="headerlink" title="3.2 常见分支"></a>3.2 常见分支</h3><table>
-<thead>
-<tr>
-<th>分支名</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>master</code> &#x2F; <code>main</code></td>
-<td>正式版本，稳定的代码</td>
-</tr>
-<tr>
-<td><code>develop</code></td>
-<td>开发中的代码</td>
-</tr>
-<tr>
-<td><code>feature-xxx</code></td>
-<td>某个新功能的开发</td>
-</tr>
-<tr>
-<td><code>hotfix-xxx</code></td>
-<td>紧急修复 bug</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="四、Merge-vs-Rebase"><a href="#四、Merge-vs-Rebase" class="headerlink" title="四、Merge vs Rebase"></a>四、Merge vs Rebase</h2><p>这是两种合并代码的方式，效果相同但历史记录不同。</p>
-<h3 id="Merge（合并）"><a href="#Merge（合并）" class="headerlink" title="Merge（合并）"></a>Merge（合并）</h3><pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    commit id: &quot;F&quot;
-    commit id: &quot;G&quot;
-    branch feature
-    checkout feature
-    commit id: &quot;A&quot;
-    commit id: &quot;B&quot;
-    commit id: &quot;C&quot;
-    checkout main
-    merge feature id: &quot;H (合并节点)&quot;</code></pre>
-
-<ul>
-<li>会产生一个”合并节点”</li>
-<li>历史记录能看出分支合并过程</li>
-</ul>
-<h3 id="Rebase（变基）"><a href="#Rebase（变基）" class="headerlink" title="Rebase（变基）"></a>Rebase（变基）</h3><pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    commit id: &quot;F&quot;
-    commit id: &quot;G&quot;
-    commit id: &quot;A&#x27;&quot;
-    commit id: &quot;B&#x27;&quot;
-    commit id: &quot;C&#x27;&quot;</code></pre>
-
-<ul>
-<li>把你的提交”嫁接”到最新节点后面</li>
-<li>历史记录更整洁（一条直线）</li>
-</ul>
-<h3 id="推荐工作流"><a href="#推荐工作流" class="headerlink" title="推荐工作流"></a>推荐工作流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 本地提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;完成了xxx功能&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远端最新代码并变基</span></span><br><span class="line">git pull --rebase origin develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 推送</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="五、常用命令速查表"><a href="#五、常用命令速查表" class="headerlink" title="五、常用命令速查表"></a>五、常用命令速查表</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status              <span class="comment"># 查看当前状态</span></span><br><span class="line">git add .               <span class="comment"># 暂存所有修改</span></span><br><span class="line">git commit -m <span class="string">&quot;说明&quot;</span>     <span class="comment"># 提交到本地仓库</span></span><br><span class="line">git <span class="built_in">log</span> --oneline       <span class="comment"># 查看提交历史</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch              <span class="comment"># 查看所有分支</span></span><br><span class="line">git checkout xxx        <span class="comment"># 切换到 xxx 分支</span></span><br><span class="line">git checkout -b xxx     <span class="comment"># 创建并切换到新分支</span></span><br><span class="line">git merge xxx           <span class="comment"># 合并 xxx 分支到当前分支</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="同步操作"><a href="#同步操作" class="headerlink" title="同步操作"></a>同步操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull                <span class="comment"># 拉取远端代码并合并</span></span><br><span class="line">git push                <span class="comment"># 推送到远端</span></span><br><span class="line">git fetch               <span class="comment"># 只拉取，不合并</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- file    <span class="comment"># 撤销工作目录的修改</span></span><br><span class="line">git reset HEAD file     <span class="comment"># 撤销暂存区的修改</span></span><br><span class="line">git reset --hard abc123 <span class="comment"># 回退到某个提交（谨慎使用）</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1：修改了但没-commit，能恢复吗？"><a href="#Q1：修改了但没-commit，能恢复吗？" class="headerlink" title="Q1：修改了但没 commit，能恢复吗？"></a>Q1：修改了但没 commit，能恢复吗？</h3><table>
-<thead>
-<tr>
-<th>情况</th>
-<th>能否恢复</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>已 commit</td>
-<td>✅ 永久保存，随时可恢复</td>
-</tr>
-<tr>
-<td>只 add 没 commit</td>
-<td>⚠️ 有办法但麻烦</td>
-</tr>
-<tr>
-<td>没 add 也没 commit</td>
-<td>❌ 丢了就是丢了</td>
-</tr>
-</tbody></table>
-<h3 id="Q2：-git-文件夹能删吗？"><a href="#Q2：-git-文件夹能删吗？" class="headerlink" title="Q2：.git 文件夹能删吗？"></a>Q2：.git 文件夹能删吗？</h3><p><strong>不能！</strong> 删了就等于删掉所有历史记录，只剩当前版本的文件。</p>
-<h3 id="Q3：push-和-pull-的区别？"><a href="#Q3：push-和-pull-的区别？" class="headerlink" title="Q3：push 和 pull 的区别？"></a>Q3：push 和 pull 的区别？</h3><ul>
-<li><code>push</code>：你 → 服务器（上传）</li>
-<li><code>pull</code>：服务器 → 你（下载）</li>
-</ul>
-<hr>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Git 的核心就三件事：</p>
-<ol>
-<li><strong>保存历史</strong>：每次 <code>commit</code> 就是一次存档</li>
-<li><strong>分支开发</strong>：在平行世界里随便折腾</li>
-<li><strong>多人协作</strong>：通过 <code>push/pull</code> 同步代码</li>
-</ol>
-<p>记住这张图：</p>
-<pre><code class="highlight mermaid">flowchart LR
-    A[工作目录] --&gt;|add| B[暂存区]
-    B --&gt;|commit| C[本地仓库]
-    C --&gt;|push| D[远端仓库]
-    D --&gt;|pull| C</code></pre>
-
-<hr>
-<p><strong>入门建议</strong>：先把 <code>add</code>、<code>commit</code>、<code>pull</code>、<code>push</code> 用熟，其他命令遇到再学。</p>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>版本控制</tag>
-        <tag>入门教程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
@@ -5263,6 +5263,33 @@
 ]]></content>
   </entry>
   <entry>
+    <title>相对路径的使用</title>
+    <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
+<ol>
+<li><p><strong><code>./</code>：</strong> 表示当前目录。使用 <code>./</code> 可以明确指示路径从当前目录开始。</p>
+<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>./file.txt</code> 就表示 <code>/home/user/file.txt</code>。</p>
+</li>
+<li><p><strong><code>../</code>：</strong> 表示上一级目录。使用 <code>../</code> 可以向上移动一级目录。</p>
+<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>../folder/file.txt</code> 就表示 <code>/home/folder/file.txt</code>。</p>
+</li>
+</ol>
+<p>示例：</p>
+<p>假设有如下的文件结构：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/user/</span><br><span class="line">|-- current-folder/</span><br><span class="line">|   |-- script.js</span><br><span class="line">|   |-- image.jpg</span><br><span class="line">|</span><br><span class="line">|-- parent-folder/</span><br><span class="line">    |-- document.txt</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>如果 <code>script.js</code> 中包含 <code>./image.jpg</code>，那么这个路径指向的是 <code>/home/user/current-folder/image.jpg</code>。</p>
+</li>
+<li><p>如果 <code>script.js</code> 中包含 <code>../parent-folder/document.txt</code>，那么这个路径指向的是 <code>/home/user/parent-folder/document.txt</code>。</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文章推荐</title>
     <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
     <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
@@ -5342,33 +5369,6 @@
 ]]></content>
       <tags>
         <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>相对路径的使用</title>
-    <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
-<ol>
-<li><p><strong><code>./</code>：</strong> 表示当前目录。使用 <code>./</code> 可以明确指示路径从当前目录开始。</p>
-<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>./file.txt</code> 就表示 <code>/home/user/file.txt</code>。</p>
-</li>
-<li><p><strong><code>../</code>：</strong> 表示上一级目录。使用 <code>../</code> 可以向上移动一级目录。</p>
-<p>例如，如果当前路径是 <code>/home/user/</code>，那么 <code>../folder/file.txt</code> 就表示 <code>/home/folder/file.txt</code>。</p>
-</li>
-</ol>
-<p>示例：</p>
-<p>假设有如下的文件结构：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/home/user/</span><br><span class="line">|-- current-folder/</span><br><span class="line">|   |-- script.js</span><br><span class="line">|   |-- image.jpg</span><br><span class="line">|</span><br><span class="line">|-- parent-folder/</span><br><span class="line">    |-- document.txt</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>如果 <code>script.js</code> 中包含 <code>./image.jpg</code>，那么这个路径指向的是 <code>/home/user/current-folder/image.jpg</code>。</p>
-</li>
-<li><p>如果 <code>script.js</code> 中包含 <code>../parent-folder/document.txt</code>，那么这个路径指向的是 <code>/home/user/parent-folder/document.txt</code>。</p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
@@ -5625,13 +5625,13 @@
       </tags>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
