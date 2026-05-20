@@ -1253,6 +1253,295 @@
       </tags>
   </entry>
   <entry>
+    <title>HTTPS 证书到底是什么？</title>
+    <url>/2026/05/20/archive/HTTPS%20%E8%AF%81%E4%B9%A6%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>从小白视角讲清楚 SSL&#x2F;TLS 证书、CA、证书链和吊销检查。</p>
+</blockquote>
+<p>在项目现场排查接口问题时，我们经常会遇到类似这样的报错：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">SEC_E_CERT_EXPIRED - 收到的证书已过期</span><br><span class="line">吊销服务器已脱机，吊销功能无法检查吊销</span><br><span class="line">SSLHandshakeException</span><br><span class="line">PKIX path building failed</span><br></pre></td></tr></table></figure>
+
+<p>很多人第一反应是：“我只是访问一个 HTTPS 地址，为什么还和证书扯上关系？”</p>
+<p>这篇文章就用尽量通俗的方式，把 HTTPS 证书这块知识讲清楚。</p>
+<hr>
+<h2 id="1-先记住一句话"><a href="#1-先记住一句话" class="headerlink" title="1. 先记住一句话"></a>1. 先记住一句话</h2><p>HTTPS 证书可以理解成：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">网站在网络世界里的身份证</span><br></pre></td></tr></table></figure>
+
+<p>当我们访问一个 HTTPS 地址时，比如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">https://oapi.dingtalk.com</span><br></pre></td></tr></table></figure>
+
+<p>客户端不会盲目信任对方，而是会问：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">你真的是 oapi.dingtalk.com 吗？</span><br><span class="line">你有什么证明？</span><br></pre></td></tr></table></figure>
+
+<p>这时服务端会拿出一张证书，告诉客户端：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">我是 oapi.dingtalk.com</span><br><span class="line">这是我的证书</span><br><span class="line">这是权威机构给我签发的</span><br></pre></td></tr></table></figure>
+
+<p>客户端检查通过后，才会继续建立加密连接。</p>
+<h2 id="2-谁是客户端，谁是服务端？"><a href="#2-谁是客户端，谁是服务端？" class="headerlink" title="2. 谁是客户端，谁是服务端？"></a>2. 谁是客户端，谁是服务端？</h2><p>谁主动发起请求，谁就是客户端。</p>
+<p>谁被访问、提供服务，谁就是服务端。</p>
+<p>比如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">HCM/ACC Java 程序 -&gt; 钉钉接口</span><br><span class="line">客户端              服务端</span><br></pre></td></tr></table></figure>
+
+<p>命令行测试时：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">curl -&gt; oapi.dingtalk.com</span><br><span class="line">客户端  服务端</span><br></pre></td></tr></table></figure>
+
+<p>用户打开系统页面时：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">浏览器 -&gt; HCM 系统</span><br><span class="line">客户端   服务端</span><br></pre></td></tr></table></figure>
+
+<p>所以客户端和服务端不是固定身份，而是看当前是谁在访问谁。</p>
+<h2 id="3-HTTPS-证书的作用是什么？"><a href="#3-HTTPS-证书的作用是什么？" class="headerlink" title="3. HTTPS 证书的作用是什么？"></a>3. HTTPS 证书的作用是什么？</h2><p>证书主要解决三个问题。</p>
+<h3 id="3-1-证明身份"><a href="#3-1-证明身份" class="headerlink" title="3.1 证明身份"></a>3.1 证明身份</h3><p>客户端访问：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">https://oapi.dingtalk.com</span><br></pre></td></tr></table></figure>
+
+<p>服务端必须证明：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">我确实有资格代表 oapi.dingtalk.com</span><br></pre></td></tr></table></figure>
+
+<p>否则中间任何机器都可以冒充钉钉服务器。</p>
+<h3 id="3-2-建立加密通道"><a href="#3-2-建立加密通道" class="headerlink" title="3.2 建立加密通道"></a>3.2 建立加密通道</h3><p>证书里包含服务端的公钥。</p>
+<p>客户端和服务端会利用这个公钥参与 TLS 握手，最终协商出一套加密密钥。</p>
+<p>后续请求内容，比如 <code>appkey</code>、<code>appsecret</code>、<code>access_token</code>，就不会明文在网络上传输。</p>
+<h3 id="3-3-防止中间人攻击"><a href="#3-3-防止中间人攻击" class="headerlink" title="3.3 防止中间人攻击"></a>3.3 防止中间人攻击</h3><p>如果没有证书校验，中间设备可以假装自己是钉钉：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">HCM服务器 -&gt; 假钉钉服务器</span><br></pre></td></tr></table></figure>
+
+<p>然后诱导你把敏感信息发过去。</p>
+<p>证书校验就是为了防止这种情况。</p>
+<h2 id="4-域名为什么不能单独作为身份标识？"><a href="#4-域名为什么不能单独作为身份标识？" class="headerlink" title="4. 域名为什么不能单独作为身份标识？"></a>4. 域名为什么不能单独作为身份标识？</h2><p>很多人会疑惑：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">我访问的是 oapi.dingtalk.com，域名不就是身份吗？</span><br></pre></td></tr></table></figure>
+
+<p>不是。</p>
+<p>域名更像是“门牌号”或“地址”，而不是身份证。</p>
+<p>访问一个域名时，中间会经过 DNS 解析：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">oapi.dingtalk.com -&gt; 某个 IP</span><br></pre></td></tr></table></figure>
+
+<p>但这个解析结果可能会被很多因素影响：</p>
+<ul>
+<li>内网 DNS</li>
+<li>hosts 文件</li>
+<li>代理服务器</li>
+<li>网闸设备</li>
+<li>负载均衡</li>
+<li>安全设备</li>
+<li>DNS 缓存</li>
+</ul>
+<p>比如现场可能出现：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">oapi.dingtalk.com -&gt; 172.16.200.102</span><br></pre></td></tr></table></figure>
+
+<p>这个 <code>172.16.200.102</code> 可能是医院内网代理或网闸。</p>
+<p>所以，客户端不能只看“我输入了什么域名”，还要确认“当前连接到的服务端是否真的有资格代表这个域名”。</p>
+<p>这个确认过程靠的就是证书。</p>
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">域名表示你想访问谁，证书证明对方真的是谁。</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-CA-是什么？"><a href="#5-CA-是什么？" class="headerlink" title="5. CA 是什么？"></a>5. CA 是什么？</h2><p>CA 的全称是 <code>Certificate Authority</code>，证书颁发机构。</p>
+<p>可以把 CA 理解成现实世界里的“发证机关”。</p>
+<p>网站不能自己说：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">我是钉钉，你信我</span><br></pre></td></tr></table></figure>
+
+<p>因为谁都可以这么说。</p>
+<p>它需要一个权威机构来证明：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">我 CA 机构证明，这张证书确实属于 oapi.dingtalk.com</span><br></pre></td></tr></table></figure>
+
+<p>常见公网 CA 有：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">DigiCert</span><br><span class="line">GlobalSign</span><br><span class="line">Let&#x27;s Encrypt</span><br><span class="line">Sectigo</span><br><span class="line">Entrust</span><br></pre></td></tr></table></figure>
+
+<p>浏览器、操作系统、Java 里通常都内置了一批可信 CA。</p>
+<p>所以你平时访问大多数 HTTPS 网站时，不需要手工导入证书。</p>
+<h2 id="6-证书链是什么？"><a href="#6-证书链是什么？" class="headerlink" title="6. 证书链是什么？"></a>6. 证书链是什么？</h2><p>证书通常不是单独一张，而是一条链。</p>
+<p>大致像这样：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">网站服务器证书</span><br><span class="line">  -&gt; 中间 CA 证书</span><br><span class="line">    -&gt; 根 CA 证书</span><br></pre></td></tr></table></figure>
+
+<p>可以类比现实世界：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">个人身份证</span><br><span class="line">  -&gt; 市公安局签发</span><br><span class="line">    -&gt; 国家权威体系认可</span><br></pre></td></tr></table></figure>
+
+<p>客户端最终信任的是根 CA。</p>
+<p>如果证书链能一路追溯到客户端信任的根 CA，就认为这张网站证书可信。</p>
+<h2 id="7-根-CA、中间-CA、服务器证书有什么区别？"><a href="#7-根-CA、中间-CA、服务器证书有什么区别？" class="headerlink" title="7. 根 CA、中间 CA、服务器证书有什么区别？"></a>7. 根 CA、中间 CA、服务器证书有什么区别？</h2><p>可以这样理解：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">根 CA 证书：最高级发证机关</span><br><span class="line">中间 CA 证书：下级发证机关</span><br><span class="line">服务器证书：发给具体网站的身份证</span><br></pre></td></tr></table></figure>
+
+<p>对应 HTTPS：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">根 CA 证书：系统/浏览器/Java 信任库里的根</span><br><span class="line">中间 CA 证书：由根 CA 签发，用来继续签发网站证书</span><br><span class="line">服务器证书：发给具体网站，比如 oapi.dingtalk.com</span><br></pre></td></tr></table></figure>
+
+<p>我们平时说“导入 CA 证书”，一般导入的是根 CA 或中间 CA，而不是每个网站自己的服务器证书。</p>
+<h2 id="8-SSL-证书和-TLS-证书是一个东西吗？"><a href="#8-SSL-证书和-TLS-证书是一个东西吗？" class="headerlink" title="8. SSL 证书和 TLS 证书是一个东西吗？"></a>8. SSL 证书和 TLS 证书是一个东西吗？</h2><p>日常沟通里，基本可以认为是一个东西。</p>
+<p>严格来说：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">SSL 是老协议名称</span><br><span class="line">TLS 是现在主流协议名称</span><br></pre></td></tr></table></figure>
+
+<p>但大家习惯上仍然说：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">SSL证书</span><br><span class="line">HTTPS证书</span><br><span class="line">TLS证书</span><br><span class="line">服务器证书</span><br></pre></td></tr></table></figure>
+
+<p>在大多数项目沟通场景里，这几个词指的都是 HTTPS 连接时用到的服务器证书。</p>
+<h2 id="9-证书里一般有哪些信息？"><a href="#9-证书里一般有哪些信息？" class="headerlink" title="9. 证书里一般有哪些信息？"></a>9. 证书里一般有哪些信息？</h2><p>一张证书通常包含这些关键内容。</p>
+<h3 id="9-1-颁发给谁"><a href="#9-1-颁发给谁" class="headerlink" title="9.1 颁发给谁"></a>9.1 颁发给谁</h3><p>也就是 <code>Subject</code>。</p>
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">CN = oapi.dingtalk.com</span><br><span class="line">O = Alibaba</span><br><span class="line">C = CN</span><br></pre></td></tr></table></figure>
+
+<p>现在更重要的是 <code>SAN</code>，也就是备用名称列表：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">DNS:oapi.dingtalk.com</span><br><span class="line">DNS:api.dingtalk.com</span><br><span class="line">DNS:*.dingtalk.com</span><br></pre></td></tr></table></figure>
+
+<p>客户端校验域名时，主要看 <code>SAN</code>。</p>
+<h3 id="9-2-谁签发的"><a href="#9-2-谁签发的" class="headerlink" title="9.2 谁签发的"></a>9.2 谁签发的</h3><p>也就是 <code>Issuer</code>。</p>
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">DigiCert</span><br><span class="line">GlobalSign</span><br><span class="line">Alibaba Cloud</span><br><span class="line">某医院内网 CA</span><br><span class="line">某网闸 Root CA</span><br></pre></td></tr></table></figure>
+
+<p>如果签发者是公网 CA，系统通常默认信任。</p>
+<p>如果签发者是医院、公司、网闸自己的 CA，可能需要手工导入根证书。</p>
+<h3 id="9-3-有效期"><a href="#9-3-有效期" class="headerlink" title="9.3 有效期"></a>9.3 有效期</h3><p>证书有生效时间和过期时间：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Not Before: 2025-01-01</span><br><span class="line">Not After : 2026-01-01</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器时间不准确，也可能导致证书被误判为过期或尚未生效。</p>
+<h3 id="9-4-公钥"><a href="#9-4-公钥" class="headerlink" title="9.4 公钥"></a>9.4 公钥</h3><p>证书里包含公钥。</p>
+<p>公钥用于 TLS 握手和加密协商。</p>
+<p>注意：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">证书里有公钥</span><br><span class="line">私钥只保存在服务端</span><br></pre></td></tr></table></figure>
+
+<p>私钥不能泄露。</p>
+<h3 id="9-5-签名算法"><a href="#9-5-签名算法" class="headerlink" title="9.5 签名算法"></a>9.5 签名算法</h3><p>例如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">SHA256withRSA</span><br><span class="line">ECDSA with SHA256</span><br></pre></td></tr></table></figure>
+
+<p>太老的算法，比如 <code>MD5</code>、<code>SHA1</code>，可能会被现代客户端拒绝。</p>
+<h3 id="9-6-序列号"><a href="#9-6-序列号" class="headerlink" title="9.6 序列号"></a>9.6 序列号</h3><p>每张证书都有唯一编号。</p>
+<p>吊销证书时，CA 会根据序列号标记这张证书作废。</p>
+<h3 id="9-7-证书用途"><a href="#9-7-证书用途" class="headerlink" title="9.7 证书用途"></a>9.7 证书用途</h3><p>也叫 <code>Key Usage</code> 或 <code>Extended Key Usage</code>。</p>
+<p>HTTPS 服务器证书通常会包含：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">TLS Web Server Authentication</span><br><span class="line">Digital Signature</span><br><span class="line">Key Encipherment</span><br></pre></td></tr></table></figure>
+
+<p>表示这张证书可以用于 HTTPS 服务端身份认证。</p>
+<h3 id="9-8-吊销检查地址"><a href="#9-8-吊销检查地址" class="headerlink" title="9.8 吊销检查地址"></a>9.8 吊销检查地址</h3><p>证书里可能包含：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">CRL Distribution Points</span><br><span class="line">OCSP Authority Information Access</span><br></pre></td></tr></table></figure>
+
+<p>客户端可以通过这些地址检查证书有没有被吊销。</p>
+<h2 id="10-什么是证书吊销？"><a href="#10-什么是证书吊销？" class="headerlink" title="10. 什么是证书吊销？"></a>10. 什么是证书吊销？</h2><p>证书即使没有过期，也可能被提前作废。</p>
+<p>比如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">私钥泄露</span><br><span class="line">证书签错</span><br><span class="line">域名归属异常</span><br><span class="line">安全事故</span><br><span class="line">证书主动废弃</span><br></pre></td></tr></table></figure>
+
+<p>这就叫证书吊销。</p>
+<p>客户端为了确认一张证书有没有被作废，可能会访问：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">CRL 地址</span><br><span class="line">OCSP 地址</span><br></pre></td></tr></table></figure>
+
+<p>可以理解成：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">查一下这张身份证有没有被挂失</span><br></pre></td></tr></table></figure>
+
+<p>如果访问不到吊销检查服务器，就可能报：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">吊销服务器已脱机，吊销功能无法检查吊销</span><br></pre></td></tr></table></figure>
+
+<p>这不一定说明证书本身是假证，也可能只是吊销检查地址访问不通。</p>
+<h2 id="11-为什么浏览器访问很多-HTTPS-网站不用导入证书？"><a href="#11-为什么浏览器访问很多-HTTPS-网站不用导入证书？" class="headerlink" title="11. 为什么浏览器访问很多 HTTPS 网站不用导入证书？"></a>11. 为什么浏览器访问很多 HTTPS 网站不用导入证书？</h2><p>因为浏览器或操作系统已经内置了一批可信根 CA。</p>
+<p>普通公网网站的证书链通常是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">网站证书</span><br><span class="line">  -&gt; 中间 CA</span><br><span class="line">    -&gt; 系统已信任的根 CA</span><br></pre></td></tr></table></figure>
+
+<p>所以浏览器能自动验证通过。</p>
+<p>不是没有证书，而是信任基础已经预装好了。</p>
+<h2 id="12-为什么内网代理或网闸容易出现证书问题？"><a href="#12-为什么内网代理或网闸容易出现证书问题？" class="headerlink" title="12. 为什么内网代理或网闸容易出现证书问题？"></a>12. 为什么内网代理或网闸容易出现证书问题？</h2><p>很多医院、政企、内网环境会有代理、网闸、安全设备。</p>
+<p>链路可能是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">业务服务器</span><br><span class="line">  -&gt; 内网代理/网闸</span><br><span class="line">    -&gt; 公网接口</span><br></pre></td></tr></table></figure>
+
+<p>有些设备会做 HTTPS 解密或代理。</p>
+<p>这时它可能会自己生成一张证书，返回给客户端。</p>
+<p>比如你访问：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">https://oapi.dingtalk.com:4433</span><br></pre></td></tr></table></figure>
+
+<p>实际连接到：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">172.16.200.102:4433</span><br></pre></td></tr></table></figure>
+
+<p>这台 <code>172.16.200.102</code> 可能是内网代理。</p>
+<p>它可能返回一张由医院内网 CA 或网闸 CA 签发的证书。</p>
+<p>如果客户端不信任这个内网 CA，就会报证书错误。</p>
+<h2 id="13-curl-k-是什么意思？"><a href="#13-curl-k-是什么意思？" class="headerlink" title="13. curl -k 是什么意思？"></a>13. <code>curl -k</code> 是什么意思？</h2><p><code>curl -k</code> 的意思是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">忽略 HTTPS 证书校验</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -k https://oapi.dingtalk.com:4433/gettoken</span><br></pre></td></tr></table></figure>
+
+<p>它等价于告诉客户端：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">不管证书有没有问题，直接继续请求</span><br></pre></td></tr></table></figure>
+
+<p>所以 <code>-k</code> 适合临时排查：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">不加 -k 失败</span><br><span class="line">加 -k 成功</span><br></pre></td></tr></table></figure>
+
+<p>通常说明：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">网络是通的</span><br><span class="line">接口也能访问</span><br><span class="line">问题在证书校验环节</span><br></pre></td></tr></table></figure>
+
+<p>但 <code>-k</code> 不建议作为正式解决方案。</p>
+<p>因为正式程序通常不应该跳过证书校验。</p>
+<h2 id="14-Java-会不会自动忽略证书？"><a href="#14-Java-会不会自动忽略证书？" class="headerlink" title="14. Java 会不会自动忽略证书？"></a>14. Java 会不会自动忽略证书？</h2><p>Java 默认不会忽略证书。</p>
+<p>Java 发 HTTPS 请求时，一般会校验：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">证书链是否可信</span><br><span class="line">域名是否匹配</span><br><span class="line">证书是否过期</span><br><span class="line">TLS 握手是否正常</span><br></pre></td></tr></table></figure>
+
+<p>如果失败，常见报错包括：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">javax.net.ssl.SSLHandshakeException</span><br><span class="line">PKIX path building failed</span><br><span class="line">unable to find valid certification path</span><br><span class="line">No subject alternative DNS name matching</span><br><span class="line">certificate expired</span><br></pre></td></tr></table></figure>
+
+<p>但有一点需要注意：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Java 默认通常不强制检查证书吊销状态</span><br></pre></td></tr></table></figure>
+
+<p>而 Windows 的 <code>curl</code> 如果使用 <code>schannel</code>，可能会检查吊销状态。</p>
+<p>所以可能出现：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">curl 报吊销检查失败</span><br><span class="line">Java 请求正常</span><br></pre></td></tr></table></figure>
+
+<p>这并不代表 Java 完全忽略证书，而是它们检查规则不完全一样。</p>
+<h2 id="15-现场排查时怎么判断问题在哪？"><a href="#15-现场排查时怎么判断问题在哪？" class="headerlink" title="15. 现场排查时怎么判断问题在哪？"></a>15. 现场排查时怎么判断问题在哪？</h2><p>可以按这个顺序排查。</p>
+<h3 id="15-1-看-DNS-解析到哪里"><a href="#15-1-看-DNS-解析到哪里" class="headerlink" title="15.1 看 DNS 解析到哪里"></a>15.1 看 DNS 解析到哪里</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nslookup oapi.dingtalk.com</span><br></pre></td></tr></table></figure>
+
+<p>如果解析到内网地址，例如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">172.16.200.102</span><br></pre></td></tr></table></figure>
+
+<p>说明中间有内网 DNS、代理或网闸参与。</p>
+<h3 id="15-2-看端口通不通"><a href="#15-2-看端口通不通" class="headerlink" title="15.2 看端口通不通"></a>15.2 看端口通不通</h3><p>Windows 可以用：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Test-NetConnection</span> oapi.dingtalk.com <span class="literal">-Port</span> <span class="number">4433</span></span><br></pre></td></tr></table></figure>
+
+<p>或：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -v https://oapi.dingtalk.com:4433/gettoken</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-3-看加-k-后能不能返回"><a href="#15-3-看加-k-后能不能返回" class="headerlink" title="15.3 看加 -k 后能不能返回"></a>15.3 看加 <code>-k</code> 后能不能返回</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -k -v https://oapi.dingtalk.com:4433/gettoken</span><br></pre></td></tr></table></figure>
+
+<p>如果返回类似：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;errcode&quot;</span><span class="punctuation">:</span><span class="number">40035</span><span class="punctuation">,</span><span class="attr">&quot;errmsg&quot;</span><span class="punctuation">:</span><span class="string">&quot;缺少corpid or appkey&quot;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>说明请求已经到达接口服务，只是业务参数不完整。</p>
+<h3 id="15-4-带真实参数测试"><a href="#15-4-带真实参数测试" class="headerlink" title="15.4 带真实参数测试"></a>15.4 带真实参数测试</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -k <span class="string">&quot;https://oapi.dingtalk.com:4433/gettoken?appkey=xxx&amp;appsecret=xxx&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果返回：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;errcode&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span><span class="attr">&quot;access_token&quot;</span><span class="punctuation">:</span><span class="string">&quot;...&quot;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>说明接口链路可用。</p>
+<h3 id="15-5-看证书是谁签发的"><a href="#15-5-看证书是谁签发的" class="headerlink" title="15.5 看证书是谁签发的"></a>15.5 看证书是谁签发的</h3><p>重点关注：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Subject</span><br><span class="line">Issuer</span><br><span class="line">Not After</span><br><span class="line">SAN</span><br><span class="line">CRL/OCSP</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>Issuer</code> 是内网 CA 或网闸 CA，就要确认客户端是否信任它。</p>
+<h2 id="16-证书问题和网络不通有什么区别？"><a href="#16-证书问题和网络不通有什么区别？" class="headerlink" title="16. 证书问题和网络不通有什么区别？"></a>16. 证书问题和网络不通有什么区别？</h2><p>网络不通通常表现为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">timeout</span><br><span class="line">connection refused</span><br><span class="line">could not resolve host</span><br><span class="line">no route to host</span><br></pre></td></tr></table></figure>
+
+<p>证书问题通常表现为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">certificate expired</span><br><span class="line">unable to get local issuer certificate</span><br><span class="line">PKIX path building failed</span><br><span class="line">certificate revoked</span><br><span class="line">revocation server offline</span><br><span class="line">hostname mismatch</span><br></pre></td></tr></table></figure>
+
+<p>如果加 <code>-k</code> 后能访问，多半是证书校验问题。</p>
+<p>如果加 <code>-k</code> 后还是超时，那就是网络、端口、代理或防火墙问题。</p>
+<h2 id="17-用一句话总结整套机制"><a href="#17-用一句话总结整套机制" class="headerlink" title="17. 用一句话总结整套机制"></a>17. 用一句话总结整套机制</h2><p>HTTPS 证书就是网站的身份证。</p>
+<p>域名告诉客户端：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">我要找谁</span><br></pre></td></tr></table></figure>
+
+<p>证书告诉客户端：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">当前连接到的这个服务端，是否真的有资格代表这个域名</span><br></pre></td></tr></table></figure>
+
+<p>CA 是发证机关。</p>
+<p>证书链是信任传递路径。</p>
+<p>吊销检查是查这张证书有没有被挂失。</p>
+<p><code>curl -k</code> 是临时跳过验身份证。</p>
+<p>Java 默认不忽略证书，但通常不强制检查吊销状态。</p>
+<p>在内网代理、网闸、SSL 解密场景下，最容易出现证书链不可信、吊销检查失败、代理证书未导入等问题。</p>
+<h2 id="18-最后的排查口诀"><a href="#18-最后的排查口诀" class="headerlink" title="18. 最后的排查口诀"></a>18. 最后的排查口诀</h2><p>遇到 HTTPS 证书问题，可以记住这几句话：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">先看域名解析到哪里</span><br><span class="line">再看端口能不能连</span><br><span class="line">不加 -k 看证书错误</span><br><span class="line">加 -k 看接口是否可达</span><br><span class="line">能返回业务错误说明网络通</span><br><span class="line">正式环境不要依赖 -k</span><br><span class="line">内网代理要检查 CA 信任链</span><br><span class="line">Java 和 curl 证书校验规则不完全一样</span><br></pre></td></tr></table></figure>
+
+<p>理解了这些，再看 HTTPS 证书报错，就不会一头雾水了。</p>
+]]></content>
+      <tags>
+        <tag>HTTPS</tag>
+        <tag>SSL</tag>
+        <tag>TLS</tag>
+        <tag>证书</tag>
+        <tag>网络排查</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HashMart开发文档</title>
     <url>/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><blockquote>
@@ -2491,68 +2780,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
-</blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
-</li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
-</li>
-</ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
-</ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 被授权的用户名</li>
-</ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
-</ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
-</ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -2679,6 +2906,68 @@
 ]]></content>
       <tags>
         <tag>工具/obsidian</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
+</ul>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
+</ul>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -5140,6 +5429,40 @@
       </tags>
   </entry>
   <entry>
+    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
+    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
+    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
+<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
+<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
+<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
+<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
+<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
+<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
+<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
+<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
+<ol>
+<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
+<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
+<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
+<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
+</ol>
+<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
+<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
+<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
+<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
+<ol>
+<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
+<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
+<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
+</ol>
+<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
+<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
+]]></content>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何避免代码的深层嵌套</title>
     <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
     <content><![CDATA[<blockquote>
@@ -5308,40 +5631,6 @@
 ]]></content>
       <tags>
         <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
-    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
-    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
-<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
-<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
-<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
-<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
-<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
-<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
-<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
-<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
-<ol>
-<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
-<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
-<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
-<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
-</ol>
-<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
-<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
-<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
-<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
-<ol>
-<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
-<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
-<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
-</ol>
-<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
-<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
-]]></content>
-      <tags>
-        <tag>其他</tag>
       </tags>
   </entry>
   <entry>
