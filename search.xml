@@ -1227,6 +1227,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Git Worktree 常用命令</title>
+    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
+<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
+<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
+<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
+<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
+<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
+]]></content>
+      <tags>
+        <tag>工具/git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HashMart开发文档</title>
     <url>/2024/12/10/archive/HashMart%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h2 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h2><blockquote>
@@ -1478,32 +1504,6 @@
 ]]></content>
       <tags>
         <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git Worktree 常用命令</title>
-    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
-<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
-<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
-<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
-<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
-<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
-]]></content>
-      <tags>
-        <tag>工具/git</tag>
       </tags>
   </entry>
   <entry>
@@ -2491,6 +2491,68 @@
       </tags>
   </entry>
   <entry>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
+</ul>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
+</ul>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -2620,65 +2682,124 @@
       </tags>
   </entry>
   <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <title>PGSQL基本概念</title>
+    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
 </blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
+<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
+<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
 </li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
+<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
+<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
+<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
 </li>
 </ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
+<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
+<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
 <ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
+<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
 </ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
+<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
 <ul>
-<li><code>yksoft</code> 被授权的用户名</li>
+<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
+<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
 </ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
+<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
 <ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
+<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
+<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
 </ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
+<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
+</li>
+<li><p><strong>常见钥匙</strong>：</p>
 <ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
+<li><code>SELECT</code>：查看货物（读数据）。</li>
+<li><code>INSERT</code>：放新货物（写数据）。</li>
+<li><code>DELETE</code>：扔货物（删数据）。</li>
+<li><code>UPDATE</code>：改货物（改数据）。</li>
 </ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
+<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
+</li>
+<li><p><strong>常见扩展</strong>：</p>
+<ul>
+<li><code>PostGIS</code>：地理数据处理。</li>
+<li><code>pgcrypto</code>：数据加密。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>拆解</strong>：</p>
+<ul>
+<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
+<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
+<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
+<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
+<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
+</ol>
+<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
 ]]></content>
       <tags>
-        <tag>数据/oracle</tag>
+        <tag>数据</tag>
+        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -3922,124 +4043,335 @@
       </tags>
   </entry>
   <entry>
-    <title>PGSQL基本概念</title>
-    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<blockquote>
-<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
+    <title>Virtualbox7安装及使用详细步骤</title>
+    <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
+    <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
+<p>Virtualbox 软件安装包 <a href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a></p>
 </blockquote>
-<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
-<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
-<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
-<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
-<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
-</li>
-</ul>
-<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
-<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
-<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
-<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
-<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
-<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
-<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
-<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
-</li>
-<li><p><strong>常见钥匙</strong>：</p>
-<ul>
-<li><code>SELECT</code>：查看货物（读数据）。</li>
-<li><code>INSERT</code>：放新货物（写数据）。</li>
-<li><code>DELETE</code>：扔货物（删数据）。</li>
-<li><code>UPDATE</code>：改货物（改数据）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
-<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
-</li>
-<li><p><strong>常见扩展</strong>：</p>
-<ul>
-<li><code>PostGIS</code>：地理数据处理。</li>
-<li><code>pgcrypto</code>：数据加密。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
-<li><p><strong>示例</strong>：</p>
-  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>拆解</strong>：</p>
-<ul>
-<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
-<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
-<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317145609332.png"></p>
+<blockquote>
+<p>centerOS7 镜像 <a href="http://mirrors.aliyun.com/centos/7/isos/x86_64/">centos-7-isos-x86_64 安装包下载_开源镜像站-阿里云 (aliyun.com)</a></p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317145815189.png"></p>
+<h2 id="安装-Virtualbox"><a href="#安装-Virtualbox" class="headerlink" title="安装 Virtualbox"></a>安装 Virtualbox</h2><blockquote>
+<p>使用管理员身份运行 VirtualBox-7.0.14-161095-Win.exe</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317150126977.png"></p>
+<blockquote>
+<p>进入向导界面, 点击下一步</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004204897.png"></p>
+<blockquote>
+<p>点击 <code>浏览</code> 按钮，自定义安装路径，点击下一步</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004229962.png"></p>
+<blockquote>
+<p>此时会出现警告，这是由于安装时会增加虚拟网卡，属于正常现象，点击按钮 <code>是</code> 即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004306436.png"></p>
+<blockquote>
+<p>点击安装</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004325481.png"></p>
+<blockquote>
+<p>稍等片刻即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004414548.png"></p>
+<blockquote>
+<p>点击完成，此时会自动打开</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004445886.png"></p>
+<h2 id="创建虚拟电脑"><a href="#创建虚拟电脑" class="headerlink" title="创建虚拟电脑"></a>创建虚拟电脑</h2><blockquote>
+<p>在欢迎页点击新建</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172127494.png"></p>
+<blockquote>
+<p>切换为专家模式</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172308301.png"></p>
+<blockquote>
+<p>填写虚拟电脑名称和系统类型, 参照下图, 名称和文件夹可以按需填写</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172429508.png"></p>
+<blockquote>
+<p>分配硬件信息, 我这分配的运存为 4G, 4 个处理器,可以按照自己的电脑实际情况填写</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172634529.png"></p>
+<blockquote>
+<p>分配 50GB 的硬盘, 可以按需分配, 不要勾选 <code>预先分配全部空间</code>, 点击完成即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172830316.png"></p>
+<h2 id="配置电脑相关信息"><a href="#配置电脑相关信息" class="headerlink" title="配置电脑相关信息"></a>配置电脑相关信息</h2><blockquote>
+<p>右键新建的虚拟机，弹窗选项面板，点击设置</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321102313647.png"></p>
+<blockquote>
+<p>设置常规选项卡, 开启共享剪切板功能</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173209083.png"></p>
+<blockquote>
+<p>显示选项卡, 拉满显存大小</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173425672.png"></p>
+<blockquote>
+<p>选择启动映像, 即之前下载的 centos7 的 iso 文件</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173649026.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173722706.png"></p>
+<blockquote>
+<p>网络选项卡，链接方式设置为桥接网卡</p>
+</blockquote>
+<p>此处不推荐使用 NAT 网络的原因是由于, virtualBox 的 NAT 网络下, 主机无法访问虚拟机, 虽然会占用真实的 IP, 不过个人学习使用的话地址满够分配的</p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173824260.png"></p>
+<blockquote>
+<p>关于网卡名称的选择：</p>
+</blockquote>
+<p>查看当前使用的网卡名称：<code>设置</code> -&gt; <code>网络和Internet</code> -&gt; <code>属性</code> -&gt; <code>描述</code>，或者使用下图中的 gif 方式作为参考</p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/recording%201.gif"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323002631131.png"></p>
+<blockquote>
+<p>设置完毕, 点击确定, 启动虚拟机</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174153258.png"></p>
+<h2 id="安装-Centeros7"><a href="#安装-Centeros7" class="headerlink" title="安装 Centeros7"></a>安装 Centeros7</h2><blockquote>
+<p>加电启动虚拟机之后, 显示系统安装界面，启动时可能会出现一些问题，解决方法参考文章末尾</p>
+</blockquote>
+<p>通过键盘的 <code>↑</code> 和 <code>↓</code> 键选择安装选项, <code>Enter</code> 回车键确认, 下方红框内的代表为直接安装和先检测后安装, 选择哪个都可以</p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174515009.png"></p>
+<blockquote>
+<p>选择语言</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174821200.png"></p>
+<blockquote>
+<p>设置软件选择, 基本环境选择 <code>GHOME桌面</code>, 附加选项勾选 <code>开发环境和安全性工具</code></p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175037865.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175107836.png"></p>
+<blockquote>
+<p>配置分区, 设置为手动分区</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175257462.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175318593.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175359893.png"></p>
+<blockquote>
+<p>点击下图 <code>＋</code> 号, 开始添加分区, 分区建议参考 <a href="https://blog.csdn.net/weixin_39206909/article/details/120231440">CentOS7 手动磁盘分区详解_centos7 分区-CSDN 博客</a></p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/recording.gif"></p>
+<table>
+<thead>
+<tr>
+<th>分区类型</th>
+<th>分区大小</th>
+<th>设备类型</th>
+<th>文件系统</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;boot</td>
+<td>1G</td>
+<td>标准分区</td>
+<td>ext-4</td>
+<td>系统启动时的引导分区</td>
+</tr>
+<tr>
+<td>swap</td>
+<td>4G</td>
+<td>标准分区</td>
+<td>swap</td>
+<td>和自己的运存大小一致即可</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>45G</td>
+<td>标准分区</td>
+<td>ext-4</td>
+<td>剩余的全部硬盘容量</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>确认进行分区</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317180901204.png"></p>
+<blockquote>
+<p>设置网络和主机名</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181007501.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181709608.png"></p>
+<blockquote>
+<p>点击开始安装, 安装期间设置 Root 密码和创建用户即可, 参照下图, 如果密码过于简单需要按两次完成按钮</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181803113.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181911658.png"></p>
+<blockquote>
+<p>安装完成, 点击重启即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317182529974.png"></p>
+<h2 id="Centeros-初始化配置"><a href="#Centeros-初始化配置" class="headerlink" title="Centeros 初始化配置"></a>Centeros 初始化配置</h2><blockquote>
+<p>接受许可证,完成配置</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185126489.png"></p>
+<blockquote>
+<p>输入账号密码, 进入系统</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185200374.png"></p>
+<blockquote>
+<p>测试网络状况, 右键桌面, 打开终端</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185352405.png"></p>
+<blockquote>
+<p>ping 百度</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
 
-<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
-<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
-<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
-<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
-</ol>
-<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185445969.png"></p>
+<h2 id="安装增强功能"><a href="#安装增强功能" class="headerlink" title="安装增强功能"></a>安装增强功能</h2><p>Virtualbox 在不安装增强功能扩展的情况下, 无法自适应分辨率和共享剪切板等操作, 下面为如何安装增强功能扩展</p>
+<blockquote>
+<p>安装 perl</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install perl</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185930677.png"></p>
+<blockquote>
+<p>安装 elfutils-libelf-devel</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install elfutils-libelf-devel</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190021805.png"></p>
+<blockquote>
+<p>点击安装增强功能</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190212133.png"></p>
+<blockquote>
+<p>点击运行增强功能的 iso 文件</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190250576.png"></p>
+<blockquote>
+<p>出现下图文字, 代表安装成功</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190436359.png"></p>
+<blockquote>
+<p>重启虚拟机, 显存不够的话可能渲染不出来</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317192159253.png"></p>
+<h2 id="配置优化项"><a href="#配置优化项" class="headerlink" title="配置优化项"></a>配置优化项</h2><h3 id="全局设置虚拟机安装路径"><a href="#全局设置虚拟机安装路径" class="headerlink" title="全局设置虚拟机安装路径"></a>全局设置虚拟机安装路径</h3><blockquote>
+<p>打开全局设置</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171608418.png"></p>
+<blockquote>
+<p>选择合适的路径，点击 <code>确定</code> 即可。💡 不建议装在 C 盘，当然电脑未分区的除外</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171714346.png"></p>
+<blockquote>
+<p>再次新建虚拟机，默认安装路径就变成刚刚设置的了</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171935263.png"></p>
+<h3 id="更改主机组合键"><a href="#更改主机组合键" class="headerlink" title="更改主机组合键"></a>更改主机组合键</h3><p>有一些小伙伴应该使用过 VmWare，VM 如果想要将鼠标从虚拟机移除到主集，需要按住 <code>Ctrl + Alt</code> 键，而 Virtualbox 则默认是 <code>右Ctrl</code> 键，不过我们可以做出更改</p>
+<blockquote>
+<p>打开全局设定</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171608418.png"></p>
+<blockquote>
+<p>选择左侧热键</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172453962.png"></p>
+<blockquote>
+<p>点击虚拟电脑</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172518434.png"></p>
+<blockquote>
+<p>更改此处的主机组合键，点击确定即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172549673.png"></p>
+<h2 id="常见问题及解决办法"><a href="#常见问题及解决办法" class="headerlink" title="常见问题及解决办法"></a>常见问题及解决办法</h2><h3 id="启动报错：E-FAIL-0X80004005"><a href="#启动报错：E-FAIL-0X80004005" class="headerlink" title="启动报错：E_FAIL (0X80004005)"></a>启动报错：E_FAIL (0X80004005)</h3><blockquote>
+<p>Q：启动报错</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165234379.png"></p>
+<blockquote>
+<p>排查过程</p>
+</blockquote>
+<ul>
+<li>根据提示，查看相关日志<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165348661.png"></li>
+<li>跟踪日志异常，发现加载驱动的路径书写有误<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165507853.png"></li>
+<li>从官网查阅相关问题的解决方案：<a href="https://forums.virtualbox.org/viewtopic.php?t=108749">VM 无法启动 rc&#x3D;126 强化 VBoxRT.dll enmWhat&#x3D;4 - virtualbox.org</a></li>
+</ul>
+<blockquote>
+<p>解决步骤：</p>
+</blockquote>
+<ul>
+<li>下载方案中涉及的工具：<a href="https://www.wireshark.org/download.html">Wireshark · Download</a><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171132103.png"></li>
+<li>下载完成，右键以管理员运行，一路 <code>next</code> 即可，也可以更换安装路径以安装<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171339572.png"></li>
+</ul>
 ]]></content>
       <tags>
-        <tag>数据</tag>
-        <tag>数据/数据库</tag>
+        <tag>运维/linux</tag>
+        <tag>工具/virtualbox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker安装kafka集群</title>
+    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
+    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
+<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
+<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
+</ul>
+<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
+<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
+<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
+<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
+</ul>
+<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
+<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看所有的 topic 名字</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
+<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
+<blockquote>
+<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
+        <tag>运维/docker</tag>
       </tags>
   </entry>
   <entry>
@@ -4808,372 +5140,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker安装kafka集群</title>
-    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
-    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
-<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
-<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
-</ul>
-<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
-<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
-<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
-<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
-</ul>
-<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
-<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>查看所有的 topic 名字</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
-
-<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
-<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
-<blockquote>
-<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/kafka</tag>
-        <tag>运维/docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Virtualbox7安装及使用详细步骤</title>
-    <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
-    <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
-<p>Virtualbox 软件安装包 <a href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a></p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317145609332.png"></p>
-<blockquote>
-<p>centerOS7 镜像 <a href="http://mirrors.aliyun.com/centos/7/isos/x86_64/">centos-7-isos-x86_64 安装包下载_开源镜像站-阿里云 (aliyun.com)</a></p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317145815189.png"></p>
-<h2 id="安装-Virtualbox"><a href="#安装-Virtualbox" class="headerlink" title="安装 Virtualbox"></a>安装 Virtualbox</h2><blockquote>
-<p>使用管理员身份运行 VirtualBox-7.0.14-161095-Win.exe</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317150126977.png"></p>
-<blockquote>
-<p>进入向导界面, 点击下一步</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004204897.png"></p>
-<blockquote>
-<p>点击 <code>浏览</code> 按钮，自定义安装路径，点击下一步</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004229962.png"></p>
-<blockquote>
-<p>此时会出现警告，这是由于安装时会增加虚拟网卡，属于正常现象，点击按钮 <code>是</code> 即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004306436.png"></p>
-<blockquote>
-<p>点击安装</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004325481.png"></p>
-<blockquote>
-<p>稍等片刻即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004414548.png"></p>
-<blockquote>
-<p>点击完成，此时会自动打开</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004445886.png"></p>
-<h2 id="创建虚拟电脑"><a href="#创建虚拟电脑" class="headerlink" title="创建虚拟电脑"></a>创建虚拟电脑</h2><blockquote>
-<p>在欢迎页点击新建</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172127494.png"></p>
-<blockquote>
-<p>切换为专家模式</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172308301.png"></p>
-<blockquote>
-<p>填写虚拟电脑名称和系统类型, 参照下图, 名称和文件夹可以按需填写</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172429508.png"></p>
-<blockquote>
-<p>分配硬件信息, 我这分配的运存为 4G, 4 个处理器,可以按照自己的电脑实际情况填写</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172634529.png"></p>
-<blockquote>
-<p>分配 50GB 的硬盘, 可以按需分配, 不要勾选 <code>预先分配全部空间</code>, 点击完成即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172830316.png"></p>
-<h2 id="配置电脑相关信息"><a href="#配置电脑相关信息" class="headerlink" title="配置电脑相关信息"></a>配置电脑相关信息</h2><blockquote>
-<p>右键新建的虚拟机，弹窗选项面板，点击设置</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321102313647.png"></p>
-<blockquote>
-<p>设置常规选项卡, 开启共享剪切板功能</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173209083.png"></p>
-<blockquote>
-<p>显示选项卡, 拉满显存大小</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173425672.png"></p>
-<blockquote>
-<p>选择启动映像, 即之前下载的 centos7 的 iso 文件</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173649026.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173722706.png"></p>
-<blockquote>
-<p>网络选项卡，链接方式设置为桥接网卡</p>
-</blockquote>
-<p>此处不推荐使用 NAT 网络的原因是由于, virtualBox 的 NAT 网络下, 主机无法访问虚拟机, 虽然会占用真实的 IP, 不过个人学习使用的话地址满够分配的</p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173824260.png"></p>
-<blockquote>
-<p>关于网卡名称的选择：</p>
-</blockquote>
-<p>查看当前使用的网卡名称：<code>设置</code> -&gt; <code>网络和Internet</code> -&gt; <code>属性</code> -&gt; <code>描述</code>，或者使用下图中的 gif 方式作为参考</p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/recording%201.gif"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323002631131.png"></p>
-<blockquote>
-<p>设置完毕, 点击确定, 启动虚拟机</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174153258.png"></p>
-<h2 id="安装-Centeros7"><a href="#安装-Centeros7" class="headerlink" title="安装 Centeros7"></a>安装 Centeros7</h2><blockquote>
-<p>加电启动虚拟机之后, 显示系统安装界面，启动时可能会出现一些问题，解决方法参考文章末尾</p>
-</blockquote>
-<p>通过键盘的 <code>↑</code> 和 <code>↓</code> 键选择安装选项, <code>Enter</code> 回车键确认, 下方红框内的代表为直接安装和先检测后安装, 选择哪个都可以</p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174515009.png"></p>
-<blockquote>
-<p>选择语言</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174821200.png"></p>
-<blockquote>
-<p>设置软件选择, 基本环境选择 <code>GHOME桌面</code>, 附加选项勾选 <code>开发环境和安全性工具</code></p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175037865.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175107836.png"></p>
-<blockquote>
-<p>配置分区, 设置为手动分区</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175257462.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175318593.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175359893.png"></p>
-<blockquote>
-<p>点击下图 <code>＋</code> 号, 开始添加分区, 分区建议参考 <a href="https://blog.csdn.net/weixin_39206909/article/details/120231440">CentOS7 手动磁盘分区详解_centos7 分区-CSDN 博客</a></p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/recording.gif"></p>
-<table>
-<thead>
-<tr>
-<th>分区类型</th>
-<th>分区大小</th>
-<th>设备类型</th>
-<th>文件系统</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x2F;boot</td>
-<td>1G</td>
-<td>标准分区</td>
-<td>ext-4</td>
-<td>系统启动时的引导分区</td>
-</tr>
-<tr>
-<td>swap</td>
-<td>4G</td>
-<td>标准分区</td>
-<td>swap</td>
-<td>和自己的运存大小一致即可</td>
-</tr>
-<tr>
-<td>&#x2F;</td>
-<td>45G</td>
-<td>标准分区</td>
-<td>ext-4</td>
-<td>剩余的全部硬盘容量</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>确认进行分区</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317180901204.png"></p>
-<blockquote>
-<p>设置网络和主机名</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181007501.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181709608.png"></p>
-<blockquote>
-<p>点击开始安装, 安装期间设置 Root 密码和创建用户即可, 参照下图, 如果密码过于简单需要按两次完成按钮</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181803113.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181911658.png"></p>
-<blockquote>
-<p>安装完成, 点击重启即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317182529974.png"></p>
-<h2 id="Centeros-初始化配置"><a href="#Centeros-初始化配置" class="headerlink" title="Centeros 初始化配置"></a>Centeros 初始化配置</h2><blockquote>
-<p>接受许可证,完成配置</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185126489.png"></p>
-<blockquote>
-<p>输入账号密码, 进入系统</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185200374.png"></p>
-<blockquote>
-<p>测试网络状况, 右键桌面, 打开终端</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185352405.png"></p>
-<blockquote>
-<p>ping 百度</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185445969.png"></p>
-<h2 id="安装增强功能"><a href="#安装增强功能" class="headerlink" title="安装增强功能"></a>安装增强功能</h2><p>Virtualbox 在不安装增强功能扩展的情况下, 无法自适应分辨率和共享剪切板等操作, 下面为如何安装增强功能扩展</p>
-<blockquote>
-<p>安装 perl</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install perl</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185930677.png"></p>
-<blockquote>
-<p>安装 elfutils-libelf-devel</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install elfutils-libelf-devel</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190021805.png"></p>
-<blockquote>
-<p>点击安装增强功能</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190212133.png"></p>
-<blockquote>
-<p>点击运行增强功能的 iso 文件</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190250576.png"></p>
-<blockquote>
-<p>出现下图文字, 代表安装成功</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190436359.png"></p>
-<blockquote>
-<p>重启虚拟机, 显存不够的话可能渲染不出来</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317192159253.png"></p>
-<h2 id="配置优化项"><a href="#配置优化项" class="headerlink" title="配置优化项"></a>配置优化项</h2><h3 id="全局设置虚拟机安装路径"><a href="#全局设置虚拟机安装路径" class="headerlink" title="全局设置虚拟机安装路径"></a>全局设置虚拟机安装路径</h3><blockquote>
-<p>打开全局设置</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171608418.png"></p>
-<blockquote>
-<p>选择合适的路径，点击 <code>确定</code> 即可。💡 不建议装在 C 盘，当然电脑未分区的除外</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171714346.png"></p>
-<blockquote>
-<p>再次新建虚拟机，默认安装路径就变成刚刚设置的了</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171935263.png"></p>
-<h3 id="更改主机组合键"><a href="#更改主机组合键" class="headerlink" title="更改主机组合键"></a>更改主机组合键</h3><p>有一些小伙伴应该使用过 VmWare，VM 如果想要将鼠标从虚拟机移除到主集，需要按住 <code>Ctrl + Alt</code> 键，而 Virtualbox 则默认是 <code>右Ctrl</code> 键，不过我们可以做出更改</p>
-<blockquote>
-<p>打开全局设定</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171608418.png"></p>
-<blockquote>
-<p>选择左侧热键</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172453962.png"></p>
-<blockquote>
-<p>点击虚拟电脑</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172518434.png"></p>
-<blockquote>
-<p>更改此处的主机组合键，点击确定即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172549673.png"></p>
-<h2 id="常见问题及解决办法"><a href="#常见问题及解决办法" class="headerlink" title="常见问题及解决办法"></a>常见问题及解决办法</h2><h3 id="启动报错：E-FAIL-0X80004005"><a href="#启动报错：E-FAIL-0X80004005" class="headerlink" title="启动报错：E_FAIL (0X80004005)"></a>启动报错：E_FAIL (0X80004005)</h3><blockquote>
-<p>Q：启动报错</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165234379.png"></p>
-<blockquote>
-<p>排查过程</p>
-</blockquote>
-<ul>
-<li>根据提示，查看相关日志<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165348661.png"></li>
-<li>跟踪日志异常，发现加载驱动的路径书写有误<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165507853.png"></li>
-<li>从官网查阅相关问题的解决方案：<a href="https://forums.virtualbox.org/viewtopic.php?t=108749">VM 无法启动 rc&#x3D;126 强化 VBoxRT.dll enmWhat&#x3D;4 - virtualbox.org</a></li>
-</ul>
-<blockquote>
-<p>解决步骤：</p>
-</blockquote>
-<ul>
-<li>下载方案中涉及的工具：<a href="https://www.wireshark.org/download.html">Wireshark · Download</a><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171132103.png"></li>
-<li>下载完成，右键以管理员运行，一路 <code>next</code> 即可，也可以更换安装路径以安装<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171339572.png"></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-        <tag>工具/virtualbox</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
-    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
-    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
-<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
-<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
-<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
-<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
-<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
-<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
-<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
-<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
-<ol>
-<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
-<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
-<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
-<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
-</ol>
-<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
-<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
-<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
-<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
-<ol>
-<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
-<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
-<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
-</ol>
-<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
-<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
-]]></content>
-      <tags>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何避免代码的深层嵌套</title>
     <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
     <content><![CDATA[<blockquote>
@@ -5202,6 +5168,65 @@
       <tags>
         <tag>代码/优化</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>完美主义者，为什么你总是离完美最远？</title>
+    <url>/2026/03/11/archive/%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%80%BB%E6%98%AF%E7%A6%BB%E5%AE%8C%E7%BE%8E%E6%9C%80%E8%BF%9C%EF%BC%9F/</url>
+    <content><![CDATA[<h2 id="完美主义者，为什么你总是离完美最远？"><a href="#完美主义者，为什么你总是离完美最远？" class="headerlink" title="完美主义者，为什么你总是离完美最远？"></a>完美主义者，为什么你总是离完美最远？</h2><blockquote>
+<p>一个不存在的作品，离完美当然最远</p>
+</blockquote>
+<p>“我一定要做到最好才敢开始。”</p>
+<p>“这个方案还不够完美，再等等。”</p>
+<p>“那个标点符号应该用斜体吗？我再调调。”</p>
+<p>这些话，听起来熟悉吗？</p>
+<p>如果你是那个总在等待“完美时机”的人，如果你常常因为一个细节反复修改而错过 deadline，那么今天这篇文章，就是写给你的。</p>
+<p>因为，完美主义者往往最终离完美最远。</p>
+<p>这听起来像一个悖论，但背后藏着深刻的心理学真相。</p>
+<h3 id="01-行动的瘫痪：想得越多，做得越少"><a href="#01-行动的瘫痪：想得越多，做得越少" class="headerlink" title="01 行动的瘫痪：想得越多，做得越少"></a>01 行动的瘫痪：想得越多，做得越少</h3><p>完美主义者的大脑里，住着一个极致清晰的“完美画面”。</p>
+<p>但当他们看向起点和终点之间的路程时，巨大的落差会带来压倒性的焦虑。</p>
+<p>“我必须第一次就把它做好。”</p>
+<p>这句话像一个魔咒。它让人无法接受“初稿”“草稿”这些正常的过程。因为任何不完美的开始，都被视为对最终目标的亵渎。</p>
+<p>结果呢？</p>
+<p>为了不做出“不完美”的东西，索性就不开始了。</p>
+<p>PPT 构思了三周，还没新建文件；想写公众号，注册账号半年一个字都没写；想换工作，简历改了无数版，始终没有投出去。</p>
+<p>事情永远停留在计划和构想阶段，永远无法成为现实。</p>
+<p>可一个不存在的作品，怎么可能完美？</p>
+<h3 id="02-效率的诅咒：在细枝末节上无限沉沦"><a href="#02-效率的诅咒：在细枝末节上无限沉沦" class="headerlink" title="02 效率的诅咒：在细枝末节上无限沉沦"></a>02 效率的诅咒：在细枝末节上无限沉沦</h3><p>如果完美主义者侥幸开始了行动，他们往往会陷入另一种困境：局部最优，而非全局最优。</p>
+<p>“这个标点符号应该用斜体吗？”</p>
+<p>“这张图的配色饱和度再调低 2%？”</p>
+<p>“这一段的第一句话是不是不够抓人？”</p>
+<p>他们会把 80% 的精力，花在只占整体价值 20%，甚至更少的细节上。</p>
+<p>就像一个画家，把一片叶子画得栩栩如生，却忘了画树干。</p>
+<p>精力和时间被无关紧要的“完美”消耗殆尽，整体进度停滞不前，核心任务无法完成。最终呈现的作品，可能细节精致，但整体框架是残缺的。</p>
+<p>这，真的是你想要的“完美”吗？</p>
+<h3 id="03-反馈的隔绝：无法承受的批评之重"><a href="#03-反馈的隔绝：无法承受的批评之重" class="headerlink" title="03 反馈的隔绝：无法承受的批评之重"></a>03 反馈的隔绝：无法承受的批评之重</h3><p>任何作品的诞生都离不开反馈和修正。但完美主义者往往将自己的作品与自我价值绑定。</p>
+<p>“我的作品不完美 &#x3D; 我是一个失败者。”</p>
+<p>这个等式一旦成立，任何对作品的批评，即使是善意的、建设性的，都会被解读为对自身的攻击。</p>
+<p>于是，他们害怕展示不完美的半成品。</p>
+<p>产品经理要 demo，说“还在优化”；导师要看初稿，说“还没写完”；朋友想提建议，说“不用了，我再改改”。</p>
+<p>他们闭门造车，直到最后一刻才拿出一个自以为完美的“成品”，结果却发现——与市场需求脱节，与用户期待不符，与实际情况偏差。</p>
+<p>这时候的打击，往往是毁灭性的。</p>
+<p>而如果当初早点拿出来，早点听取反馈，早点调整方向，结局会不会不一样？</p>
+<h3 id="04-标准的失焦：完美是一个移动的靶子"><a href="#04-标准的失焦：完美是一个移动的靶子" class="headerlink" title="04 标准的失焦：完美是一个移动的靶子"></a>04 标准的失焦：完美是一个移动的靶子</h3><p>最残酷的一点是：对于完美主义者而言，“完美”的标准是动态的，甚至是永远无法企及的。</p>
+<p>“等我做到 A，我就完美了……不，我应该还要做到 B……也许 C 才是真正完美的……”</p>
+<p>他们的内心缺乏一个“足够好”的锚点。</p>
+<p>于是，他们永远在追逐一个不断后退的地平线。即使外人看来他们已经做得很好了，他们自己依然感到挫败和焦虑。</p>
+<p>从未体验过“完成”的满足感，从未感受过“交付”的轻松感，永远在路上，永远不够好。</p>
+<h2 id="真正的完美，藏在“完成”里"><a href="#真正的完美，藏在“完成”里" class="headerlink" title="真正的完美，藏在“完成”里"></a>真正的完美，藏在“完成”里</h2><p>那些真正取得卓越成就的人，往往不是完美主义者，而是“追求卓越者”。</p>
+<p><strong>完美主义者关注的是“如何避免错误”。</strong></p>
+<p><strong>追求卓越者关注的是“如何不断进步”。</strong></p>
+<p>一字之差，天壤之别。</p>
+<p>追求卓越者接受初始版本的不完美。他们知道，完美的初稿不存在，伟大的作品都是改出来的。</p>
+<p>他们先完成，再完美。</p>
+<p>因为他们明白：一个交付了的、有瑕疵的作品，远比一个在脑海中构思了无数遍、但从未问世的完美作品，更有价值，也更接近“完美”本身。</p>
+<p>正如伏尔泰所说：“完美是优秀的敌人。”</p>
+<p>或者，用现代互联网的话来说：“先发布，再迭代。”</p>
+<p>所以，如果你也是一个被困在完美主义牢笼里的人，今天，我想对你说：</p>
+<p>放手去做吧。</p>
+<p>接受那个笨拙的开始，接纳那个不完美的初稿。</p>
+<p>发布它，分享它，收集反馈，然后改进它。</p>
+<p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
+]]></content>
   </entry>
   <entry>
     <title>文章推荐</title>
@@ -5286,63 +5311,38 @@
       </tags>
   </entry>
   <entry>
-    <title>完美主义者，为什么你总是离完美最远？</title>
-    <url>/2026/03/11/archive/%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%80%BB%E6%98%AF%E7%A6%BB%E5%AE%8C%E7%BE%8E%E6%9C%80%E8%BF%9C%EF%BC%9F/</url>
-    <content><![CDATA[<h2 id="完美主义者，为什么你总是离完美最远？"><a href="#完美主义者，为什么你总是离完美最远？" class="headerlink" title="完美主义者，为什么你总是离完美最远？"></a>完美主义者，为什么你总是离完美最远？</h2><blockquote>
-<p>一个不存在的作品，离完美当然最远</p>
-</blockquote>
-<p>“我一定要做到最好才敢开始。”</p>
-<p>“这个方案还不够完美，再等等。”</p>
-<p>“那个标点符号应该用斜体吗？我再调调。”</p>
-<p>这些话，听起来熟悉吗？</p>
-<p>如果你是那个总在等待“完美时机”的人，如果你常常因为一个细节反复修改而错过 deadline，那么今天这篇文章，就是写给你的。</p>
-<p>因为，完美主义者往往最终离完美最远。</p>
-<p>这听起来像一个悖论，但背后藏着深刻的心理学真相。</p>
-<h3 id="01-行动的瘫痪：想得越多，做得越少"><a href="#01-行动的瘫痪：想得越多，做得越少" class="headerlink" title="01 行动的瘫痪：想得越多，做得越少"></a>01 行动的瘫痪：想得越多，做得越少</h3><p>完美主义者的大脑里，住着一个极致清晰的“完美画面”。</p>
-<p>但当他们看向起点和终点之间的路程时，巨大的落差会带来压倒性的焦虑。</p>
-<p>“我必须第一次就把它做好。”</p>
-<p>这句话像一个魔咒。它让人无法接受“初稿”“草稿”这些正常的过程。因为任何不完美的开始，都被视为对最终目标的亵渎。</p>
-<p>结果呢？</p>
-<p>为了不做出“不完美”的东西，索性就不开始了。</p>
-<p>PPT 构思了三周，还没新建文件；想写公众号，注册账号半年一个字都没写；想换工作，简历改了无数版，始终没有投出去。</p>
-<p>事情永远停留在计划和构想阶段，永远无法成为现实。</p>
-<p>可一个不存在的作品，怎么可能完美？</p>
-<h3 id="02-效率的诅咒：在细枝末节上无限沉沦"><a href="#02-效率的诅咒：在细枝末节上无限沉沦" class="headerlink" title="02 效率的诅咒：在细枝末节上无限沉沦"></a>02 效率的诅咒：在细枝末节上无限沉沦</h3><p>如果完美主义者侥幸开始了行动，他们往往会陷入另一种困境：局部最优，而非全局最优。</p>
-<p>“这个标点符号应该用斜体吗？”</p>
-<p>“这张图的配色饱和度再调低 2%？”</p>
-<p>“这一段的第一句话是不是不够抓人？”</p>
-<p>他们会把 80% 的精力，花在只占整体价值 20%，甚至更少的细节上。</p>
-<p>就像一个画家，把一片叶子画得栩栩如生，却忘了画树干。</p>
-<p>精力和时间被无关紧要的“完美”消耗殆尽，整体进度停滞不前，核心任务无法完成。最终呈现的作品，可能细节精致，但整体框架是残缺的。</p>
-<p>这，真的是你想要的“完美”吗？</p>
-<h3 id="03-反馈的隔绝：无法承受的批评之重"><a href="#03-反馈的隔绝：无法承受的批评之重" class="headerlink" title="03 反馈的隔绝：无法承受的批评之重"></a>03 反馈的隔绝：无法承受的批评之重</h3><p>任何作品的诞生都离不开反馈和修正。但完美主义者往往将自己的作品与自我价值绑定。</p>
-<p>“我的作品不完美 &#x3D; 我是一个失败者。”</p>
-<p>这个等式一旦成立，任何对作品的批评，即使是善意的、建设性的，都会被解读为对自身的攻击。</p>
-<p>于是，他们害怕展示不完美的半成品。</p>
-<p>产品经理要 demo，说“还在优化”；导师要看初稿，说“还没写完”；朋友想提建议，说“不用了，我再改改”。</p>
-<p>他们闭门造车，直到最后一刻才拿出一个自以为完美的“成品”，结果却发现——与市场需求脱节，与用户期待不符，与实际情况偏差。</p>
-<p>这时候的打击，往往是毁灭性的。</p>
-<p>而如果当初早点拿出来，早点听取反馈，早点调整方向，结局会不会不一样？</p>
-<h3 id="04-标准的失焦：完美是一个移动的靶子"><a href="#04-标准的失焦：完美是一个移动的靶子" class="headerlink" title="04 标准的失焦：完美是一个移动的靶子"></a>04 标准的失焦：完美是一个移动的靶子</h3><p>最残酷的一点是：对于完美主义者而言，“完美”的标准是动态的，甚至是永远无法企及的。</p>
-<p>“等我做到 A，我就完美了……不，我应该还要做到 B……也许 C 才是真正完美的……”</p>
-<p>他们的内心缺乏一个“足够好”的锚点。</p>
-<p>于是，他们永远在追逐一个不断后退的地平线。即使外人看来他们已经做得很好了，他们自己依然感到挫败和焦虑。</p>
-<p>从未体验过“完成”的满足感，从未感受过“交付”的轻松感，永远在路上，永远不够好。</p>
-<h2 id="真正的完美，藏在“完成”里"><a href="#真正的完美，藏在“完成”里" class="headerlink" title="真正的完美，藏在“完成”里"></a>真正的完美，藏在“完成”里</h2><p>那些真正取得卓越成就的人，往往不是完美主义者，而是“追求卓越者”。</p>
-<p><strong>完美主义者关注的是“如何避免错误”。</strong></p>
-<p><strong>追求卓越者关注的是“如何不断进步”。</strong></p>
-<p>一字之差，天壤之别。</p>
-<p>追求卓越者接受初始版本的不完美。他们知道，完美的初稿不存在，伟大的作品都是改出来的。</p>
-<p>他们先完成，再完美。</p>
-<p>因为他们明白：一个交付了的、有瑕疵的作品，远比一个在脑海中构思了无数遍、但从未问世的完美作品，更有价值，也更接近“完美”本身。</p>
-<p>正如伏尔泰所说：“完美是优秀的敌人。”</p>
-<p>或者，用现代互联网的话来说：“先发布，再迭代。”</p>
-<p>所以，如果你也是一个被困在完美主义牢笼里的人，今天，我想对你说：</p>
-<p>放手去做吧。</p>
-<p>接受那个笨拙的开始，接纳那个不完美的初稿。</p>
-<p>发布它，分享它，收集反馈，然后改进它。</p>
-<p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
+    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
+    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
+    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
+<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
+<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
+<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
+<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
+<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
+<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
+<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
+<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
+<ol>
+<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
+<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
+<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
+<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
+</ol>
+<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
+<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
+<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
+<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
+<ol>
+<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
+<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
+<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
+</ol>
+<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
+<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
 ]]></content>
+      <tags>
+        <tag>其他</tag>
+      </tags>
   </entry>
   <entry>
     <title>相对路径的使用</title>
@@ -5625,13 +5625,13 @@
       </tags>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
