@@ -194,6 +194,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Git Worktree 常用命令</title>
+    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
+<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
+<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
+<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
+<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
+<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
+]]></content>
+      <tags>
+        <tag>工具/git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker小册</title>
     <url>/2024/12/09/archive/Docker%E5%B0%8F%E5%86%8C/</url>
     <content><![CDATA[<h2 id="Docker-简介"><a href="#Docker-简介" class="headerlink" title="Docker 简介"></a>Docker 简介</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>Docker 是一种开源的容器化平台，可以让开发者打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是一种轻量级、独立、可执行的软件包，包含了运行一个应用所需的所有内容：代码、运行时环境、系统工具、系统库等。Docker 可以让开发者快速地构建、测试和部署应用程序，而无需担心跨环境的兼容性问题。</p>
@@ -1227,32 +1253,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git Worktree 常用命令</title>
-    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
-<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
-<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
-<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
-<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
-<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
-]]></content>
-      <tags>
-        <tag>工具/git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTPS 证书到底是什么？</title>
     <url>/2026/05/20/archive/HTTPS%20%E8%AF%81%E4%B9%A6%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
     <content><![CDATA[<blockquote>
@@ -2063,36 +2063,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Maven依赖管理项目构建工具</title>
     <url>/2024/12/09/archive/Maven%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="一、Maven-简介"><a href="#一、Maven-简介" class="headerlink" title="一、Maven 简介"></a>一、Maven 简介</h2><h3 id="1、为什么学习-Maven"><a href="#1、为什么学习-Maven" class="headerlink" title="1、为什么学习 Maven"></a>1、为什么学习 Maven</h3><h4 id="1-1、Maven-是一个依赖管理工具"><a href="#1-1、Maven-是一个依赖管理工具" class="headerlink" title="1.1、Maven 是一个依赖管理工具"></a>1.1、Maven 是一个依赖管理工具</h4><p><strong>jar 包的规模</strong></p>
@@ -2780,6 +2750,36 @@
       </tags>
   </entry>
   <entry>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -2909,6 +2909,68 @@
       </tags>
   </entry>
   <entry>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
+</ul>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
+</ul>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PGSQL基本概念</title>
     <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<blockquote>
@@ -3027,68 +3089,6 @@
       <tags>
         <tag>数据</tag>
         <tag>数据/数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
-</blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
-</li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
-</li>
-</ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
-</ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 被授权的用户名</li>
-</ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
-</ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
-</ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -4664,6 +4664,221 @@
       </tags>
   </entry>
   <entry>
+    <title>Git 入门指南：写给完全不懂版本控制的你</title>
+    <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
+<ul>
+<li>改代码改崩了，想恢复昨天的版本，却发现没备份</li>
+<li>和同事一起开发，不知道怎么合并各自的修改</li>
+<li>听别人说 “commit”、”push”、”rebase”，完全听不懂</li>
+</ul>
+<p>这篇文章用最通俗的语言，帮你搞懂 Git 是什么、怎么用。</p>
+<hr>
+<h2 id="一、Git-是什么？"><a href="#一、Git-是什么？" class="headerlink" title="一、Git 是什么？"></a>一、Git 是什么？</h2><p><strong>一句话解释</strong>：Git 是一个”代码时光机”，能帮你：</p>
+<ul>
+<li>保存代码的每一个历史版本</li>
+<li>随时穿越回任意时间点</li>
+<li>多人协作开发不打架</li>
+</ul>
+<hr>
+<h2 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h2><h3 id="2-1-仓库（Repository）"><a href="#2-1-仓库（Repository）" class="headerlink" title="2.1 仓库（Repository）"></a>2.1 仓库（Repository）</h3><p>仓库就是一个被 Git 管理的项目文件夹。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的项目/</span><br><span class="line">├── .git/          ← 隐藏文件夹，存储所有历史记录（本地仓库）</span><br><span class="line">├── src/           ← 你实际编辑的代码（工作目录）</span><br><span class="line">├── index.html</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>重点</strong>：</p>
+<ul>
+<li><strong>工作目录</strong> &#x3D; 你能看到和编辑的文件</li>
+<li><strong>本地仓库 (.git)</strong> &#x3D; 隐藏的”存档库”，存着所有历史版本</li>
+</ul>
+<blockquote>
+<p>💡 只要 <code>.git</code> 文件夹不删，你就能恢复到任意一次 commit 的状态。</p>
+</blockquote>
+<h3 id="2-2-代码的三个状态"><a href="#2-2-代码的三个状态" class="headerlink" title="2.2 代码的三个状态"></a>2.2 代码的三个状态</h3><pre><code class="highlight mermaid">flowchart LR
+    A[工作目录&lt;br/&gt;Working Dir&lt;br/&gt;你正在改的文件] --&gt;|git add| B[暂存区&lt;br/&gt;Staging Area&lt;br/&gt;准备要提交的]
+    B --&gt;|git commit| C[本地仓库&lt;br/&gt;Local Repo&lt;br/&gt;已保存的历史]</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>说明</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作目录</td>
+<td>你正在编辑的文件</td>
+<td>正在写的作业</td>
+</tr>
+<tr>
+<td>暂存区</td>
+<td>准备提交的修改</td>
+<td>放进书包准备交的作业</td>
+</tr>
+<tr>
+<td>本地仓库</td>
+<td>已保存的历史记录</td>
+<td>老师收走存档的作业</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-本地-vs-远端"><a href="#2-3-本地-vs-远端" class="headerlink" title="2.3 本地 vs 远端"></a>2.3 本地 vs 远端</h3><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本地（Local）</strong></td>
+<td>你自己电脑上的仓库</td>
+</tr>
+<tr>
+<td><strong>远端（Remote）</strong></td>
+<td>服务器上的仓库（如 GitHub、GitLab）</td>
+</tr>
+</tbody></table>
+<p>它们之间的同步：</p>
+<pre><code class="highlight mermaid">flowchart LR
+    A[本地仓库] --&gt;|git push&lt;br/&gt;推送| B[远端仓库]
+    B --&gt;|git pull&lt;br/&gt;拉取| A</code></pre>
+
+<hr>
+<h2 id="三、分支（Branch）"><a href="#三、分支（Branch）" class="headerlink" title="三、分支（Branch）"></a>三、分支（Branch）</h2><h3 id="3-1-什么是分支？"><a href="#3-1-什么是分支？" class="headerlink" title="3.1 什么是分支？"></a>3.1 什么是分支？</h3><p>分支就是代码的”平行世界”。</p>
+<p>想象一下：你在写一个网站，老板突然说要加个新功能。你不想在正式代码上直接改（怕改崩），于是：</p>
+<ol>
+<li>创建一个新分支 <code>feature-xxx</code></li>
+<li>在新分支上随便折腾</li>
+<li>测试没问题后，合并回主分支</li>
+</ol>
+<pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;A&quot;
+    commit id: &quot;B&quot;
+    commit id: &quot;C&quot;
+    branch feature
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    checkout main
+    merge feature id: &quot;F&quot;</code></pre>
+
+<h3 id="3-2-常见分支"><a href="#3-2-常见分支" class="headerlink" title="3.2 常见分支"></a>3.2 常见分支</h3><table>
+<thead>
+<tr>
+<th>分支名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>master</code> &#x2F; <code>main</code></td>
+<td>正式版本，稳定的代码</td>
+</tr>
+<tr>
+<td><code>develop</code></td>
+<td>开发中的代码</td>
+</tr>
+<tr>
+<td><code>feature-xxx</code></td>
+<td>某个新功能的开发</td>
+</tr>
+<tr>
+<td><code>hotfix-xxx</code></td>
+<td>紧急修复 bug</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="四、Merge-vs-Rebase"><a href="#四、Merge-vs-Rebase" class="headerlink" title="四、Merge vs Rebase"></a>四、Merge vs Rebase</h2><p>这是两种合并代码的方式，效果相同但历史记录不同。</p>
+<h3 id="Merge（合并）"><a href="#Merge（合并）" class="headerlink" title="Merge（合并）"></a>Merge（合并）</h3><pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    commit id: &quot;F&quot;
+    commit id: &quot;G&quot;
+    branch feature
+    checkout feature
+    commit id: &quot;A&quot;
+    commit id: &quot;B&quot;
+    commit id: &quot;C&quot;
+    checkout main
+    merge feature id: &quot;H (合并节点)&quot;</code></pre>
+
+<ul>
+<li>会产生一个”合并节点”</li>
+<li>历史记录能看出分支合并过程</li>
+</ul>
+<h3 id="Rebase（变基）"><a href="#Rebase（变基）" class="headerlink" title="Rebase（变基）"></a>Rebase（变基）</h3><pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    commit id: &quot;F&quot;
+    commit id: &quot;G&quot;
+    commit id: &quot;A&#x27;&quot;
+    commit id: &quot;B&#x27;&quot;
+    commit id: &quot;C&#x27;&quot;</code></pre>
+
+<ul>
+<li>把你的提交”嫁接”到最新节点后面</li>
+<li>历史记录更整洁（一条直线）</li>
+</ul>
+<h3 id="推荐工作流"><a href="#推荐工作流" class="headerlink" title="推荐工作流"></a>推荐工作流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 本地提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;完成了xxx功能&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远端最新代码并变基</span></span><br><span class="line">git pull --rebase origin develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 推送</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、常用命令速查表"><a href="#五、常用命令速查表" class="headerlink" title="五、常用命令速查表"></a>五、常用命令速查表</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status              <span class="comment"># 查看当前状态</span></span><br><span class="line">git add .               <span class="comment"># 暂存所有修改</span></span><br><span class="line">git commit -m <span class="string">&quot;说明&quot;</span>     <span class="comment"># 提交到本地仓库</span></span><br><span class="line">git <span class="built_in">log</span> --oneline       <span class="comment"># 查看提交历史</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch              <span class="comment"># 查看所有分支</span></span><br><span class="line">git checkout xxx        <span class="comment"># 切换到 xxx 分支</span></span><br><span class="line">git checkout -b xxx     <span class="comment"># 创建并切换到新分支</span></span><br><span class="line">git merge xxx           <span class="comment"># 合并 xxx 分支到当前分支</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="同步操作"><a href="#同步操作" class="headerlink" title="同步操作"></a>同步操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull                <span class="comment"># 拉取远端代码并合并</span></span><br><span class="line">git push                <span class="comment"># 推送到远端</span></span><br><span class="line">git fetch               <span class="comment"># 只拉取，不合并</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- file    <span class="comment"># 撤销工作目录的修改</span></span><br><span class="line">git reset HEAD file     <span class="comment"># 撤销暂存区的修改</span></span><br><span class="line">git reset --hard abc123 <span class="comment"># 回退到某个提交（谨慎使用）</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1：修改了但没-commit，能恢复吗？"><a href="#Q1：修改了但没-commit，能恢复吗？" class="headerlink" title="Q1：修改了但没 commit，能恢复吗？"></a>Q1：修改了但没 commit，能恢复吗？</h3><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>能否恢复</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已 commit</td>
+<td>✅ 永久保存，随时可恢复</td>
+</tr>
+<tr>
+<td>只 add 没 commit</td>
+<td>⚠️ 有办法但麻烦</td>
+</tr>
+<tr>
+<td>没 add 也没 commit</td>
+<td>❌ 丢了就是丢了</td>
+</tr>
+</tbody></table>
+<h3 id="Q2：-git-文件夹能删吗？"><a href="#Q2：-git-文件夹能删吗？" class="headerlink" title="Q2：.git 文件夹能删吗？"></a>Q2：.git 文件夹能删吗？</h3><p><strong>不能！</strong> 删了就等于删掉所有历史记录，只剩当前版本的文件。</p>
+<h3 id="Q3：push-和-pull-的区别？"><a href="#Q3：push-和-pull-的区别？" class="headerlink" title="Q3：push 和 pull 的区别？"></a>Q3：push 和 pull 的区别？</h3><ul>
+<li><code>push</code>：你 → 服务器（上传）</li>
+<li><code>pull</code>：服务器 → 你（下载）</li>
+</ul>
+<hr>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Git 的核心就三件事：</p>
+<ol>
+<li><strong>保存历史</strong>：每次 <code>commit</code> 就是一次存档</li>
+<li><strong>分支开发</strong>：在平行世界里随便折腾</li>
+<li><strong>多人协作</strong>：通过 <code>push/pull</code> 同步代码</li>
+</ol>
+<p>记住这张图：</p>
+<pre><code class="highlight mermaid">flowchart LR
+    A[工作目录] --&gt;|add| B[暂存区]
+    B --&gt;|commit| C[本地仓库]
+    C --&gt;|push| D[远端仓库]
+    D --&gt;|pull| C</code></pre>
+
+<hr>
+<p><strong>入门建议</strong>：先把 <code>add</code>、<code>commit</code>、<code>pull</code>、<code>push</code> 用熟，其他命令遇到再学。</p>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>版本控制</tag>
+        <tag>入门教程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>obsidian-sync-cnblog</title>
     <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
     <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
@@ -5214,221 +5429,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 入门指南：写给完全不懂版本控制的你</title>
-    <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
-<ul>
-<li>改代码改崩了，想恢复昨天的版本，却发现没备份</li>
-<li>和同事一起开发，不知道怎么合并各自的修改</li>
-<li>听别人说 “commit”、”push”、”rebase”，完全听不懂</li>
-</ul>
-<p>这篇文章用最通俗的语言，帮你搞懂 Git 是什么、怎么用。</p>
-<hr>
-<h2 id="一、Git-是什么？"><a href="#一、Git-是什么？" class="headerlink" title="一、Git 是什么？"></a>一、Git 是什么？</h2><p><strong>一句话解释</strong>：Git 是一个”代码时光机”，能帮你：</p>
-<ul>
-<li>保存代码的每一个历史版本</li>
-<li>随时穿越回任意时间点</li>
-<li>多人协作开发不打架</li>
-</ul>
-<hr>
-<h2 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h2><h3 id="2-1-仓库（Repository）"><a href="#2-1-仓库（Repository）" class="headerlink" title="2.1 仓库（Repository）"></a>2.1 仓库（Repository）</h3><p>仓库就是一个被 Git 管理的项目文件夹。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的项目/</span><br><span class="line">├── .git/          ← 隐藏文件夹，存储所有历史记录（本地仓库）</span><br><span class="line">├── src/           ← 你实际编辑的代码（工作目录）</span><br><span class="line">├── index.html</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
-
-<p><strong>重点</strong>：</p>
-<ul>
-<li><strong>工作目录</strong> &#x3D; 你能看到和编辑的文件</li>
-<li><strong>本地仓库 (.git)</strong> &#x3D; 隐藏的”存档库”，存着所有历史版本</li>
-</ul>
-<blockquote>
-<p>💡 只要 <code>.git</code> 文件夹不删，你就能恢复到任意一次 commit 的状态。</p>
-</blockquote>
-<h3 id="2-2-代码的三个状态"><a href="#2-2-代码的三个状态" class="headerlink" title="2.2 代码的三个状态"></a>2.2 代码的三个状态</h3><pre><code class="highlight mermaid">flowchart LR
-    A[工作目录&lt;br/&gt;Working Dir&lt;br/&gt;你正在改的文件] --&gt;|git add| B[暂存区&lt;br/&gt;Staging Area&lt;br/&gt;准备要提交的]
-    B --&gt;|git commit| C[本地仓库&lt;br/&gt;Local Repo&lt;br/&gt;已保存的历史]</code></pre>
-
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>说明</th>
-<th>类比</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>工作目录</td>
-<td>你正在编辑的文件</td>
-<td>正在写的作业</td>
-</tr>
-<tr>
-<td>暂存区</td>
-<td>准备提交的修改</td>
-<td>放进书包准备交的作业</td>
-</tr>
-<tr>
-<td>本地仓库</td>
-<td>已保存的历史记录</td>
-<td>老师收走存档的作业</td>
-</tr>
-</tbody></table>
-<h3 id="2-3-本地-vs-远端"><a href="#2-3-本地-vs-远端" class="headerlink" title="2.3 本地 vs 远端"></a>2.3 本地 vs 远端</h3><table>
-<thead>
-<tr>
-<th>概念</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>本地（Local）</strong></td>
-<td>你自己电脑上的仓库</td>
-</tr>
-<tr>
-<td><strong>远端（Remote）</strong></td>
-<td>服务器上的仓库（如 GitHub、GitLab）</td>
-</tr>
-</tbody></table>
-<p>它们之间的同步：</p>
-<pre><code class="highlight mermaid">flowchart LR
-    A[本地仓库] --&gt;|git push&lt;br/&gt;推送| B[远端仓库]
-    B --&gt;|git pull&lt;br/&gt;拉取| A</code></pre>
-
-<hr>
-<h2 id="三、分支（Branch）"><a href="#三、分支（Branch）" class="headerlink" title="三、分支（Branch）"></a>三、分支（Branch）</h2><h3 id="3-1-什么是分支？"><a href="#3-1-什么是分支？" class="headerlink" title="3.1 什么是分支？"></a>3.1 什么是分支？</h3><p>分支就是代码的”平行世界”。</p>
-<p>想象一下：你在写一个网站，老板突然说要加个新功能。你不想在正式代码上直接改（怕改崩），于是：</p>
-<ol>
-<li>创建一个新分支 <code>feature-xxx</code></li>
-<li>在新分支上随便折腾</li>
-<li>测试没问题后，合并回主分支</li>
-</ol>
-<pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;A&quot;
-    commit id: &quot;B&quot;
-    commit id: &quot;C&quot;
-    branch feature
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    checkout main
-    merge feature id: &quot;F&quot;</code></pre>
-
-<h3 id="3-2-常见分支"><a href="#3-2-常见分支" class="headerlink" title="3.2 常见分支"></a>3.2 常见分支</h3><table>
-<thead>
-<tr>
-<th>分支名</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>master</code> &#x2F; <code>main</code></td>
-<td>正式版本，稳定的代码</td>
-</tr>
-<tr>
-<td><code>develop</code></td>
-<td>开发中的代码</td>
-</tr>
-<tr>
-<td><code>feature-xxx</code></td>
-<td>某个新功能的开发</td>
-</tr>
-<tr>
-<td><code>hotfix-xxx</code></td>
-<td>紧急修复 bug</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="四、Merge-vs-Rebase"><a href="#四、Merge-vs-Rebase" class="headerlink" title="四、Merge vs Rebase"></a>四、Merge vs Rebase</h2><p>这是两种合并代码的方式，效果相同但历史记录不同。</p>
-<h3 id="Merge（合并）"><a href="#Merge（合并）" class="headerlink" title="Merge（合并）"></a>Merge（合并）</h3><pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    commit id: &quot;F&quot;
-    commit id: &quot;G&quot;
-    branch feature
-    checkout feature
-    commit id: &quot;A&quot;
-    commit id: &quot;B&quot;
-    commit id: &quot;C&quot;
-    checkout main
-    merge feature id: &quot;H (合并节点)&quot;</code></pre>
-
-<ul>
-<li>会产生一个”合并节点”</li>
-<li>历史记录能看出分支合并过程</li>
-</ul>
-<h3 id="Rebase（变基）"><a href="#Rebase（变基）" class="headerlink" title="Rebase（变基）"></a>Rebase（变基）</h3><pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    commit id: &quot;F&quot;
-    commit id: &quot;G&quot;
-    commit id: &quot;A&#x27;&quot;
-    commit id: &quot;B&#x27;&quot;
-    commit id: &quot;C&#x27;&quot;</code></pre>
-
-<ul>
-<li>把你的提交”嫁接”到最新节点后面</li>
-<li>历史记录更整洁（一条直线）</li>
-</ul>
-<h3 id="推荐工作流"><a href="#推荐工作流" class="headerlink" title="推荐工作流"></a>推荐工作流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 本地提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;完成了xxx功能&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远端最新代码并变基</span></span><br><span class="line">git pull --rebase origin develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 推送</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="五、常用命令速查表"><a href="#五、常用命令速查表" class="headerlink" title="五、常用命令速查表"></a>五、常用命令速查表</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status              <span class="comment"># 查看当前状态</span></span><br><span class="line">git add .               <span class="comment"># 暂存所有修改</span></span><br><span class="line">git commit -m <span class="string">&quot;说明&quot;</span>     <span class="comment"># 提交到本地仓库</span></span><br><span class="line">git <span class="built_in">log</span> --oneline       <span class="comment"># 查看提交历史</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch              <span class="comment"># 查看所有分支</span></span><br><span class="line">git checkout xxx        <span class="comment"># 切换到 xxx 分支</span></span><br><span class="line">git checkout -b xxx     <span class="comment"># 创建并切换到新分支</span></span><br><span class="line">git merge xxx           <span class="comment"># 合并 xxx 分支到当前分支</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="同步操作"><a href="#同步操作" class="headerlink" title="同步操作"></a>同步操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull                <span class="comment"># 拉取远端代码并合并</span></span><br><span class="line">git push                <span class="comment"># 推送到远端</span></span><br><span class="line">git fetch               <span class="comment"># 只拉取，不合并</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- file    <span class="comment"># 撤销工作目录的修改</span></span><br><span class="line">git reset HEAD file     <span class="comment"># 撤销暂存区的修改</span></span><br><span class="line">git reset --hard abc123 <span class="comment"># 回退到某个提交（谨慎使用）</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1：修改了但没-commit，能恢复吗？"><a href="#Q1：修改了但没-commit，能恢复吗？" class="headerlink" title="Q1：修改了但没 commit，能恢复吗？"></a>Q1：修改了但没 commit，能恢复吗？</h3><table>
-<thead>
-<tr>
-<th>情况</th>
-<th>能否恢复</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>已 commit</td>
-<td>✅ 永久保存，随时可恢复</td>
-</tr>
-<tr>
-<td>只 add 没 commit</td>
-<td>⚠️ 有办法但麻烦</td>
-</tr>
-<tr>
-<td>没 add 也没 commit</td>
-<td>❌ 丢了就是丢了</td>
-</tr>
-</tbody></table>
-<h3 id="Q2：-git-文件夹能删吗？"><a href="#Q2：-git-文件夹能删吗？" class="headerlink" title="Q2：.git 文件夹能删吗？"></a>Q2：.git 文件夹能删吗？</h3><p><strong>不能！</strong> 删了就等于删掉所有历史记录，只剩当前版本的文件。</p>
-<h3 id="Q3：push-和-pull-的区别？"><a href="#Q3：push-和-pull-的区别？" class="headerlink" title="Q3：push 和 pull 的区别？"></a>Q3：push 和 pull 的区别？</h3><ul>
-<li><code>push</code>：你 → 服务器（上传）</li>
-<li><code>pull</code>：服务器 → 你（下载）</li>
-</ul>
-<hr>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Git 的核心就三件事：</p>
-<ol>
-<li><strong>保存历史</strong>：每次 <code>commit</code> 就是一次存档</li>
-<li><strong>分支开发</strong>：在平行世界里随便折腾</li>
-<li><strong>多人协作</strong>：通过 <code>push/pull</code> 同步代码</li>
-</ol>
-<p>记住这张图：</p>
-<pre><code class="highlight mermaid">flowchart LR
-    A[工作目录] --&gt;|add| B[暂存区]
-    B --&gt;|commit| C[本地仓库]
-    C --&gt;|push| D[远端仓库]
-    D --&gt;|pull| C</code></pre>
-
-<hr>
-<p><strong>入门建议</strong>：先把 <code>add</code>、<code>commit</code>、<code>pull</code>、<code>push</code> 用熟，其他命令遇到再学。</p>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>版本控制</tag>
-        <tag>入门教程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何避免代码的深层嵌套</title>
     <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
     <content><![CDATA[<blockquote>
@@ -5491,65 +5491,6 @@
       <tags>
         <tag>其他</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>完美主义者，为什么你总是离完美最远？</title>
-    <url>/2026/03/11/archive/%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%80%BB%E6%98%AF%E7%A6%BB%E5%AE%8C%E7%BE%8E%E6%9C%80%E8%BF%9C%EF%BC%9F/</url>
-    <content><![CDATA[<h2 id="完美主义者，为什么你总是离完美最远？"><a href="#完美主义者，为什么你总是离完美最远？" class="headerlink" title="完美主义者，为什么你总是离完美最远？"></a>完美主义者，为什么你总是离完美最远？</h2><blockquote>
-<p>一个不存在的作品，离完美当然最远</p>
-</blockquote>
-<p>“我一定要做到最好才敢开始。”</p>
-<p>“这个方案还不够完美，再等等。”</p>
-<p>“那个标点符号应该用斜体吗？我再调调。”</p>
-<p>这些话，听起来熟悉吗？</p>
-<p>如果你是那个总在等待“完美时机”的人，如果你常常因为一个细节反复修改而错过 deadline，那么今天这篇文章，就是写给你的。</p>
-<p>因为，完美主义者往往最终离完美最远。</p>
-<p>这听起来像一个悖论，但背后藏着深刻的心理学真相。</p>
-<h3 id="01-行动的瘫痪：想得越多，做得越少"><a href="#01-行动的瘫痪：想得越多，做得越少" class="headerlink" title="01 行动的瘫痪：想得越多，做得越少"></a>01 行动的瘫痪：想得越多，做得越少</h3><p>完美主义者的大脑里，住着一个极致清晰的“完美画面”。</p>
-<p>但当他们看向起点和终点之间的路程时，巨大的落差会带来压倒性的焦虑。</p>
-<p>“我必须第一次就把它做好。”</p>
-<p>这句话像一个魔咒。它让人无法接受“初稿”“草稿”这些正常的过程。因为任何不完美的开始，都被视为对最终目标的亵渎。</p>
-<p>结果呢？</p>
-<p>为了不做出“不完美”的东西，索性就不开始了。</p>
-<p>PPT 构思了三周，还没新建文件；想写公众号，注册账号半年一个字都没写；想换工作，简历改了无数版，始终没有投出去。</p>
-<p>事情永远停留在计划和构想阶段，永远无法成为现实。</p>
-<p>可一个不存在的作品，怎么可能完美？</p>
-<h3 id="02-效率的诅咒：在细枝末节上无限沉沦"><a href="#02-效率的诅咒：在细枝末节上无限沉沦" class="headerlink" title="02 效率的诅咒：在细枝末节上无限沉沦"></a>02 效率的诅咒：在细枝末节上无限沉沦</h3><p>如果完美主义者侥幸开始了行动，他们往往会陷入另一种困境：局部最优，而非全局最优。</p>
-<p>“这个标点符号应该用斜体吗？”</p>
-<p>“这张图的配色饱和度再调低 2%？”</p>
-<p>“这一段的第一句话是不是不够抓人？”</p>
-<p>他们会把 80% 的精力，花在只占整体价值 20%，甚至更少的细节上。</p>
-<p>就像一个画家，把一片叶子画得栩栩如生，却忘了画树干。</p>
-<p>精力和时间被无关紧要的“完美”消耗殆尽，整体进度停滞不前，核心任务无法完成。最终呈现的作品，可能细节精致，但整体框架是残缺的。</p>
-<p>这，真的是你想要的“完美”吗？</p>
-<h3 id="03-反馈的隔绝：无法承受的批评之重"><a href="#03-反馈的隔绝：无法承受的批评之重" class="headerlink" title="03 反馈的隔绝：无法承受的批评之重"></a>03 反馈的隔绝：无法承受的批评之重</h3><p>任何作品的诞生都离不开反馈和修正。但完美主义者往往将自己的作品与自我价值绑定。</p>
-<p>“我的作品不完美 &#x3D; 我是一个失败者。”</p>
-<p>这个等式一旦成立，任何对作品的批评，即使是善意的、建设性的，都会被解读为对自身的攻击。</p>
-<p>于是，他们害怕展示不完美的半成品。</p>
-<p>产品经理要 demo，说“还在优化”；导师要看初稿，说“还没写完”；朋友想提建议，说“不用了，我再改改”。</p>
-<p>他们闭门造车，直到最后一刻才拿出一个自以为完美的“成品”，结果却发现——与市场需求脱节，与用户期待不符，与实际情况偏差。</p>
-<p>这时候的打击，往往是毁灭性的。</p>
-<p>而如果当初早点拿出来，早点听取反馈，早点调整方向，结局会不会不一样？</p>
-<h3 id="04-标准的失焦：完美是一个移动的靶子"><a href="#04-标准的失焦：完美是一个移动的靶子" class="headerlink" title="04 标准的失焦：完美是一个移动的靶子"></a>04 标准的失焦：完美是一个移动的靶子</h3><p>最残酷的一点是：对于完美主义者而言，“完美”的标准是动态的，甚至是永远无法企及的。</p>
-<p>“等我做到 A，我就完美了……不，我应该还要做到 B……也许 C 才是真正完美的……”</p>
-<p>他们的内心缺乏一个“足够好”的锚点。</p>
-<p>于是，他们永远在追逐一个不断后退的地平线。即使外人看来他们已经做得很好了，他们自己依然感到挫败和焦虑。</p>
-<p>从未体验过“完成”的满足感，从未感受过“交付”的轻松感，永远在路上，永远不够好。</p>
-<h2 id="真正的完美，藏在“完成”里"><a href="#真正的完美，藏在“完成”里" class="headerlink" title="真正的完美，藏在“完成”里"></a>真正的完美，藏在“完成”里</h2><p>那些真正取得卓越成就的人，往往不是完美主义者，而是“追求卓越者”。</p>
-<p><strong>完美主义者关注的是“如何避免错误”。</strong></p>
-<p><strong>追求卓越者关注的是“如何不断进步”。</strong></p>
-<p>一字之差，天壤之别。</p>
-<p>追求卓越者接受初始版本的不完美。他们知道，完美的初稿不存在，伟大的作品都是改出来的。</p>
-<p>他们先完成，再完美。</p>
-<p>因为他们明白：一个交付了的、有瑕疵的作品，远比一个在脑海中构思了无数遍、但从未问世的完美作品，更有价值，也更接近“完美”本身。</p>
-<p>正如伏尔泰所说：“完美是优秀的敌人。”</p>
-<p>或者，用现代互联网的话来说：“先发布，再迭代。”</p>
-<p>所以，如果你也是一个被困在完美主义牢笼里的人，今天，我想对你说：</p>
-<p>放手去做吧。</p>
-<p>接受那个笨拙的开始，接纳那个不完美的初稿。</p>
-<p>发布它，分享它，收集反馈，然后改进它。</p>
-<p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
-]]></content>
   </entry>
   <entry>
     <title>文章推荐</title>
@@ -5632,6 +5573,65 @@
       <tags>
         <tag>持续更新</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>完美主义者，为什么你总是离完美最远？</title>
+    <url>/2026/03/11/archive/%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%80%BB%E6%98%AF%E7%A6%BB%E5%AE%8C%E7%BE%8E%E6%9C%80%E8%BF%9C%EF%BC%9F/</url>
+    <content><![CDATA[<h2 id="完美主义者，为什么你总是离完美最远？"><a href="#完美主义者，为什么你总是离完美最远？" class="headerlink" title="完美主义者，为什么你总是离完美最远？"></a>完美主义者，为什么你总是离完美最远？</h2><blockquote>
+<p>一个不存在的作品，离完美当然最远</p>
+</blockquote>
+<p>“我一定要做到最好才敢开始。”</p>
+<p>“这个方案还不够完美，再等等。”</p>
+<p>“那个标点符号应该用斜体吗？我再调调。”</p>
+<p>这些话，听起来熟悉吗？</p>
+<p>如果你是那个总在等待“完美时机”的人，如果你常常因为一个细节反复修改而错过 deadline，那么今天这篇文章，就是写给你的。</p>
+<p>因为，完美主义者往往最终离完美最远。</p>
+<p>这听起来像一个悖论，但背后藏着深刻的心理学真相。</p>
+<h3 id="01-行动的瘫痪：想得越多，做得越少"><a href="#01-行动的瘫痪：想得越多，做得越少" class="headerlink" title="01 行动的瘫痪：想得越多，做得越少"></a>01 行动的瘫痪：想得越多，做得越少</h3><p>完美主义者的大脑里，住着一个极致清晰的“完美画面”。</p>
+<p>但当他们看向起点和终点之间的路程时，巨大的落差会带来压倒性的焦虑。</p>
+<p>“我必须第一次就把它做好。”</p>
+<p>这句话像一个魔咒。它让人无法接受“初稿”“草稿”这些正常的过程。因为任何不完美的开始，都被视为对最终目标的亵渎。</p>
+<p>结果呢？</p>
+<p>为了不做出“不完美”的东西，索性就不开始了。</p>
+<p>PPT 构思了三周，还没新建文件；想写公众号，注册账号半年一个字都没写；想换工作，简历改了无数版，始终没有投出去。</p>
+<p>事情永远停留在计划和构想阶段，永远无法成为现实。</p>
+<p>可一个不存在的作品，怎么可能完美？</p>
+<h3 id="02-效率的诅咒：在细枝末节上无限沉沦"><a href="#02-效率的诅咒：在细枝末节上无限沉沦" class="headerlink" title="02 效率的诅咒：在细枝末节上无限沉沦"></a>02 效率的诅咒：在细枝末节上无限沉沦</h3><p>如果完美主义者侥幸开始了行动，他们往往会陷入另一种困境：局部最优，而非全局最优。</p>
+<p>“这个标点符号应该用斜体吗？”</p>
+<p>“这张图的配色饱和度再调低 2%？”</p>
+<p>“这一段的第一句话是不是不够抓人？”</p>
+<p>他们会把 80% 的精力，花在只占整体价值 20%，甚至更少的细节上。</p>
+<p>就像一个画家，把一片叶子画得栩栩如生，却忘了画树干。</p>
+<p>精力和时间被无关紧要的“完美”消耗殆尽，整体进度停滞不前，核心任务无法完成。最终呈现的作品，可能细节精致，但整体框架是残缺的。</p>
+<p>这，真的是你想要的“完美”吗？</p>
+<h3 id="03-反馈的隔绝：无法承受的批评之重"><a href="#03-反馈的隔绝：无法承受的批评之重" class="headerlink" title="03 反馈的隔绝：无法承受的批评之重"></a>03 反馈的隔绝：无法承受的批评之重</h3><p>任何作品的诞生都离不开反馈和修正。但完美主义者往往将自己的作品与自我价值绑定。</p>
+<p>“我的作品不完美 &#x3D; 我是一个失败者。”</p>
+<p>这个等式一旦成立，任何对作品的批评，即使是善意的、建设性的，都会被解读为对自身的攻击。</p>
+<p>于是，他们害怕展示不完美的半成品。</p>
+<p>产品经理要 demo，说“还在优化”；导师要看初稿，说“还没写完”；朋友想提建议，说“不用了，我再改改”。</p>
+<p>他们闭门造车，直到最后一刻才拿出一个自以为完美的“成品”，结果却发现——与市场需求脱节，与用户期待不符，与实际情况偏差。</p>
+<p>这时候的打击，往往是毁灭性的。</p>
+<p>而如果当初早点拿出来，早点听取反馈，早点调整方向，结局会不会不一样？</p>
+<h3 id="04-标准的失焦：完美是一个移动的靶子"><a href="#04-标准的失焦：完美是一个移动的靶子" class="headerlink" title="04 标准的失焦：完美是一个移动的靶子"></a>04 标准的失焦：完美是一个移动的靶子</h3><p>最残酷的一点是：对于完美主义者而言，“完美”的标准是动态的，甚至是永远无法企及的。</p>
+<p>“等我做到 A，我就完美了……不，我应该还要做到 B……也许 C 才是真正完美的……”</p>
+<p>他们的内心缺乏一个“足够好”的锚点。</p>
+<p>于是，他们永远在追逐一个不断后退的地平线。即使外人看来他们已经做得很好了，他们自己依然感到挫败和焦虑。</p>
+<p>从未体验过“完成”的满足感，从未感受过“交付”的轻松感，永远在路上，永远不够好。</p>
+<h2 id="真正的完美，藏在“完成”里"><a href="#真正的完美，藏在“完成”里" class="headerlink" title="真正的完美，藏在“完成”里"></a>真正的完美，藏在“完成”里</h2><p>那些真正取得卓越成就的人，往往不是完美主义者，而是“追求卓越者”。</p>
+<p><strong>完美主义者关注的是“如何避免错误”。</strong></p>
+<p><strong>追求卓越者关注的是“如何不断进步”。</strong></p>
+<p>一字之差，天壤之别。</p>
+<p>追求卓越者接受初始版本的不完美。他们知道，完美的初稿不存在，伟大的作品都是改出来的。</p>
+<p>他们先完成，再完美。</p>
+<p>因为他们明白：一个交付了的、有瑕疵的作品，远比一个在脑海中构思了无数遍、但从未问世的完美作品，更有价值，也更接近“完美”本身。</p>
+<p>正如伏尔泰所说：“完美是优秀的敌人。”</p>
+<p>或者，用现代互联网的话来说：“先发布，再迭代。”</p>
+<p>所以，如果你也是一个被困在完美主义牢笼里的人，今天，我想对你说：</p>
+<p>放手去做吧。</p>
+<p>接受那个笨拙的开始，接纳那个不完美的初稿。</p>
+<p>发布它，分享它，收集反馈，然后改进它。</p>
+<p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
+]]></content>
   </entry>
   <entry>
     <title>相对路径的使用</title>
@@ -5914,13 +5914,13 @@
       </tags>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
