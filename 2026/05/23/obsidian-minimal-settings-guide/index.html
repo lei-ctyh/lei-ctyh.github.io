@@ -1,0 +1,1057 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>知了 | 知了</title><meta name="author" content="Zhang Lei"><meta name="copyright" content="Zhang Lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Obsidian Minimal 两个设置插件说明书本文说明 Obsidian 的 Minimal 主题中两个常用插件的职责、配置位置、推荐用法和避坑原则：  Minimal Theme Settings Style Settings  适用场景：你正在使用 Minimal 主题，希望把 Obsidian 调成稳定、清爽、接近飞书文档的阅读体验。  1. 总体结论Minimal 主题的配置不要全部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知了">
+<meta property="og:url" content="https://lei-ctyh.github.io/2026/05/23/obsidian-minimal-settings-guide/index.html">
+<meta property="og:site_name" content="知了">
+<meta property="og:description" content="Obsidian Minimal 两个设置插件说明书本文说明 Obsidian 的 Minimal 主题中两个常用插件的职责、配置位置、推荐用法和避坑原则：  Minimal Theme Settings Style Settings  适用场景：你正在使用 Minimal 主题，希望把 Obsidian 调成稳定、清爽、接近飞书文档的阅读体验。  1. 总体结论Minimal 主题的配置不要全部">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800">
+<meta property="article:published_time" content="2026-05-23T03:28:11.635Z">
+<meta property="article:modified_time" content="2026-05-23T03:28:11.635Z">
+<meta property="article:author" content="Zhang Lei">
+<meta property="article:tag" content="张磊, 网络日志, 博客, 个人网站">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=800"><link rel="shortcut icon" href="/images/icon/favicon-32x32.png"><link rel="canonical" href="https://lei-ctyh.github.io/2026/05/23/obsidian-minimal-settings-guide/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '知了',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://bing.img.run/uhd.php);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">知了</span></a><a class="nav-page-title" href="/"><span class="site-name">知了</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-23T03:28:11.635Z" title="发表于 2026-05-23 11:28:11">2026-05-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-23T03:28:11.635Z" title="更新于 2026-05-23 11:28:11">2026-05-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Obsidian-Minimal-两个设置插件说明书"><a href="#Obsidian-Minimal-两个设置插件说明书" class="headerlink" title="Obsidian Minimal 两个设置插件说明书"></a>Obsidian Minimal 两个设置插件说明书</h1><p>本文说明 Obsidian 的 Minimal 主题中两个常用插件的职责、配置位置、推荐用法和避坑原则：</p>
+<ul>
+<li>Minimal Theme Settings</li>
+<li>Style Settings</li>
+</ul>
+<p>适用场景：你正在使用 Minimal 主题，希望把 Obsidian 调成稳定、清爽、接近飞书文档的阅读体验。</p>
+<hr>
+<h2 id="1-总体结论"><a href="#1-总体结论" class="headerlink" title="1. 总体结论"></a>1. 总体结论</h2><p>Minimal 主题的配置不要全部写进 CSS，也不要只靠一个插件。推荐按三层管理：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>用途</th>
+<th>典型配置</th>
+<th>是否推荐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Obsidian 外观设置</td>
+<td>Obsidian 原生基础配置</td>
+<td>当前主题、基础字号、界面字体、正文字体、代码字体</td>
+<td>推荐</td>
+</tr>
+<tr>
+<td>Minimal Theme Settings</td>
+<td>Minimal 的基础能力和全局开关</td>
+<td>配色方案、背景对比度、字号、行高、正文宽度、图片宽度</td>
+<td>强烈推荐</td>
+</tr>
+<tr>
+<td>Style Settings</td>
+<td>Minimal 暴露出的细节变量</td>
+<td>标题颜色、链接色、引用块、代码块、表格、Callout</td>
+<td>强烈推荐</td>
+</tr>
+<tr>
+<td>CSS snippets</td>
+<td>插件无法覆盖的最后补丁</td>
+<td>Live Preview 引用块、图片圆角、局部插件冲突</td>
+<td>谨慎使用</td>
+</tr>
+</tbody></table>
+<p>一句话原则：</p>
+<blockquote>
+<p>能用 Minimal Theme Settings 调的，不写进 CSS；能用 Style Settings 调的，也不写进 CSS；CSS 只做最后 10% 的补丁。</p>
+</blockquote>
+<hr>
+<h2 id="2-Minimal-Theme-Settings-是什么"><a href="#2-Minimal-Theme-Settings-是什么" class="headerlink" title="2. Minimal Theme Settings 是什么"></a>2. Minimal Theme Settings 是什么</h2><p>Minimal Theme Settings 是 Minimal 主题的官方配套插件。</p>
+<p>它不是必须安装，但官方强烈推荐安装。它的作用是把 Minimal 的常用配置放到 Obsidian 设置面板里，让你不用写 CSS 就能调整主题的核心体验。</p>
+<p>官方定位：</p>
+<blockquote>
+<p>用来控制 Minimal 的颜色、字体和功能开关。</p>
+</blockquote>
+<h3 id="2-1-它适合管理什么"><a href="#2-1-它适合管理什么" class="headerlink" title="2.1 它适合管理什么"></a>2.1 它适合管理什么</h3><p>Minimal Theme Settings 更适合管理“大开关”和“全局体验”：</p>
+<ul>
+<li>配色方案</li>
+<li>背景对比度</li>
+<li>正文字号</li>
+<li>侧栏字号</li>
+<li>行高</li>
+<li>正文宽度</li>
+<li>宽屏正文宽度</li>
+<li>最大内容宽度</li>
+<li>图片&#x2F;视频是否铺满正文宽度</li>
+<li>是否启用彩色标题</li>
+<li>是否启用彩色边框</li>
+<li>是否启用彩色选中状态</li>
+<li>是否显示导航标签</li>
+<li>是否开启 Focus mode</li>
+<li>是否显示链接下划线</li>
+<li>是否显示侧栏边框</li>
+</ul>
+<h3 id="2-2-配置文件位置"><a href="#2-2-配置文件位置" class="headerlink" title="2.2 配置文件位置"></a>2.2 配置文件位置</h3><p>在你的库里，它的配置保存在：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.obsidian/plugins/obsidian-minimal-settings/data.json</span><br></pre></td></tr></table></figure>
+
+<p>你当前库中的实际路径是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\hjsoft\Nutstore\1\我的坚果云\hexo\source\_posts\.obsidian\plugins\obsidian-minimal-settings\data.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-重要配置项说明"><a href="#2-3-重要配置项说明" class="headerlink" title="2.3 重要配置项说明"></a>2.3 重要配置项说明</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>中文含义</th>
+<th>建议值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>lightStyle</code></td>
+<td>浅色模式背景风格</td>
+<td><code>minimal-light</code></td>
+<td>控制浅色模式背景对比度</td>
+</tr>
+<tr>
+<td><code>darkStyle</code></td>
+<td>深色模式背景风格</td>
+<td><code>minimal-dark</code></td>
+<td>控制深色模式背景对比度</td>
+</tr>
+<tr>
+<td><code>lightScheme</code></td>
+<td>浅色配色方案</td>
+<td>按喜好选择</td>
+<td>如 <code>minimal-default-light</code>、Flexoki、macOS 等</td>
+</tr>
+<tr>
+<td><code>darkScheme</code></td>
+<td>深色配色方案</td>
+<td>按喜好选择</td>
+<td>深色模式对应方案</td>
+</tr>
+<tr>
+<td><code>editorFont</code></td>
+<td>编辑器字体</td>
+<td>可留空</td>
+<td>通常用 Obsidian 外观设置统一管理字体</td>
+</tr>
+<tr>
+<td><code>lineHeight</code></td>
+<td>正文行高</td>
+<td><code>1.75</code> 到 <code>1.8</code></td>
+<td>接近飞书文档可用 <code>1.8</code></td>
+</tr>
+<tr>
+<td><code>lineWidth</code></td>
+<td>普通正文宽度</td>
+<td><code>50</code> 到 <code>52</code></td>
+<td>单位近似 <code>em</code>，<code>52</code> 接近 820px</td>
+</tr>
+<tr>
+<td><code>lineWidthWide</code></td>
+<td>宽屏元素宽度</td>
+<td><code>60</code></td>
+<td>表格、图片等宽元素可更宽</td>
+</tr>
+<tr>
+<td><code>maxWidth</code></td>
+<td>最大宽度百分比</td>
+<td><code>88</code></td>
+<td>官方默认值，通常不必改</td>
+</tr>
+<tr>
+<td><code>textNormal</code></td>
+<td>正文字号</td>
+<td><code>16</code></td>
+<td>飞书文档也是 16px 左右</td>
+</tr>
+<tr>
+<td><code>textSmall</code></td>
+<td>小字号</td>
+<td><code>13</code> 或 <code>14</code></td>
+<td>侧栏、辅助文字使用</td>
+</tr>
+<tr>
+<td><code>fullWidthMedia</code></td>
+<td>媒体是否铺满</td>
+<td><code>false</code></td>
+<td>图片不建议默认铺满，阅读更克制</td>
+</tr>
+<tr>
+<td><code>colorfulHeadings</code></td>
+<td>彩色标题</td>
+<td><code>false</code></td>
+<td>飞书风格不建议彩色标题</td>
+</tr>
+<tr>
+<td><code>colorfulFrame</code></td>
+<td>彩色窗口边框</td>
+<td><code>false</code></td>
+<td>保持干净</td>
+</tr>
+<tr>
+<td><code>colorfulActiveStates</code></td>
+<td>彩色激活状态</td>
+<td>看喜好</td>
+<td>想要飞书蓝高亮可开启或用 Style Settings 设置</td>
+</tr>
+<tr>
+<td><code>readableLineLength</code></td>
+<td>可读行宽</td>
+<td><code>true</code></td>
+<td>配合 Obsidian 原生设置生效</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-配色方案"><a href="#2-4-配色方案" class="headerlink" title="2.4 配色方案"></a>2.4 配色方案</h3><p>Minimal Theme Settings 内置一些常见配色方案：</p>
+<ul>
+<li>Atom</li>
+<li>Ayu</li>
+<li>Catppuccin</li>
+<li>Dracula</li>
+<li>E-ink</li>
+<li>Everforest</li>
+<li>Flexoki</li>
+<li>Gruvbox</li>
+<li>macOS</li>
+<li>Nord</li>
+<li>Rosé Pine</li>
+<li>Sky</li>
+<li>Solarized</li>
+<li>Things</li>
+</ul>
+<p>如果你追求飞书文档那种低干扰、白底、浅灰、蓝色点缀的感觉，建议优先试：</p>
+<ul>
+<li>Minimal 默认浅色</li>
+<li>macOS</li>
+<li>Flexoki</li>
+<li>E-ink</li>
+</ul>
+<p>不要一开始就选高饱和配色，否则会偏离飞书那种“轻、白、克制”的感觉。</p>
+<h3 id="2-5-背景对比度"><a href="#2-5-背景对比度" class="headerlink" title="2.5 背景对比度"></a>2.5 背景对比度</h3><p>Minimal Theme Settings 支持不同背景对比度。</p>
+<p>浅色模式常见选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>效果</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Default</td>
+<td>侧栏比主区域略深</td>
+<td>Minimal 默认风格</td>
+</tr>
+<tr>
+<td>Low contrast</td>
+<td>侧栏和正文背景更接近</td>
+<td>更接近飞书、Notion 的轻量界面</td>
+</tr>
+<tr>
+<td>All white</td>
+<td>侧栏和正文都更白</td>
+<td>喜欢纯白文档感</td>
+</tr>
+<tr>
+<td>High contrast</td>
+<td>深色侧栏、浅色正文</td>
+<td>更像传统 IDE 或强分区界面</td>
+</tr>
+</tbody></table>
+<p>如果你觉得左侧栏“灰灰暗暗”，优先尝试：</p>
+<ol>
+<li><code>Low contrast</code></li>
+<li><code>All white</code></li>
+</ol>
+<p>不要优先用 CSS 强行改侧栏背景。</p>
+<h3 id="2-6-行宽设置注意事项"><a href="#2-6-行宽设置注意事项" class="headerlink" title="2.6 行宽设置注意事项"></a>2.6 行宽设置注意事项</h3><p>Minimal 官方说明里有一个关键点：</p>
+<blockquote>
+<p>要让 Minimal 的 line width 设置生效，需要打开 Obsidian 编辑器设置里的 Readable line length。</p>
+</blockquote>
+<p>也就是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings -&gt; Editor -&gt; Readable line length</span><br></pre></td></tr></table></figure>
+
+<p>如果这个没开，<code>lineWidth</code>、<code>lineWidthWide</code> 可能不会按预期生效。</p>
+<hr>
+<h2 id="3-Style-Settings-是什么"><a href="#3-Style-Settings-是什么" class="headerlink" title="3. Style Settings 是什么"></a>3. Style Settings 是什么</h2><p>Style Settings 是一个通用插件，不只服务 Minimal。</p>
+<p>它会读取主题或 CSS snippet 里的 <code>@settings</code> 配置声明，然后生成可视化设置面板。</p>
+<p>Minimal 对 Style Settings 支持非常完整，所以它可以调整很多 Minimal 的细节变量。</p>
+<p>官方定位：</p>
+<blockquote>
+<p>Minimal Theme Settings 负责基础自定义和快捷键；Style Settings 提供更深入的界面细节定制。</p>
+</blockquote>
+<h3 id="3-1-它适合管理什么"><a href="#3-1-它适合管理什么" class="headerlink" title="3.1 它适合管理什么"></a>3.1 它适合管理什么</h3><p>Style Settings 更适合管理“细节样式”：</p>
+<ul>
+<li>背景色</li>
+<li>边框色</li>
+<li>链接色</li>
+<li>标题字体、字号、字重、颜色</li>
+<li>引用块背景、文字、边框</li>
+<li>代码块背景、文字、语法高亮</li>
+<li>表格样式</li>
+<li>Callout 样式</li>
+<li>图标颜色</li>
+<li>图片透明度</li>
+<li>Dataview 显示样式</li>
+<li>Graph 节点颜色</li>
+<li>标签颜色</li>
+</ul>
+<h3 id="3-2-配置文件位置"><a href="#3-2-配置文件位置" class="headerlink" title="3.2 配置文件位置"></a>3.2 配置文件位置</h3><p>Style Settings 的配置保存在：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.obsidian/plugins/obsidian-style-settings/data.json</span><br></pre></td></tr></table></figure>
+
+<p>你当前库中的实际路径是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\hjsoft\Nutstore\1\我的坚果云\hexo\source\_posts\.obsidian\plugins\obsidian-style-settings\data.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-常见配置项说明"><a href="#3-3-常见配置项说明" class="headerlink" title="3.3 常见配置项说明"></a>3.3 常见配置项说明</h3><p>Minimal 的 Style Settings 配置项很多，下面列常用的。</p>
+<h4 id="3-3-1-界面颜色"><a href="#3-3-1-界面颜色" class="headerlink" title="3.3.1 界面颜色"></a>3.3.1 界面颜色</h4><table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>CSS 变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base color</td>
+<td><code>--base-h</code>, <code>--base-s</code>, <code>--base-l</code></td>
+<td>基础背景色系统</td>
+</tr>
+<tr>
+<td>Primary background</td>
+<td><code>--bg1</code></td>
+<td>主窗口背景</td>
+</tr>
+<tr>
+<td>Secondary background</td>
+<td><code>--bg2</code></td>
+<td>侧栏、菜单背景</td>
+</tr>
+<tr>
+<td>Active background</td>
+<td><code>--bg3</code></td>
+<td>当前项、悬停背景</td>
+</tr>
+<tr>
+<td>Border color</td>
+<td><code>--ui1</code></td>
+<td>普通边框</td>
+</tr>
+<tr>
+<td>Highlighted border color</td>
+<td><code>--ui2</code></td>
+<td>悬停边框</td>
+</tr>
+<tr>
+<td>Active border color</td>
+<td><code>--ui3</code></td>
+<td>激活边框</td>
+</tr>
+</tbody></table>
+<h4 id="3-3-2-强调色和链接色"><a href="#3-3-2-强调色和链接色" class="headerlink" title="3.3.2 强调色和链接色"></a>3.3.2 强调色和链接色</h4><table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>CSS 变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accent color</td>
+<td><code>--ax1</code></td>
+<td>链接、按钮等强调色</td>
+</tr>
+<tr>
+<td>Accent color hover</td>
+<td><code>--ax2</code></td>
+<td>悬停强调色</td>
+</tr>
+<tr>
+<td>Accent color interactive</td>
+<td><code>--ax3</code></td>
+<td>交互控件颜色</td>
+</tr>
+<tr>
+<td>Text on accent</td>
+<td><code>--sp1</code></td>
+<td>强调色上的文字</td>
+</tr>
+<tr>
+<td>Internal link color</td>
+<td><code>--link-color</code></td>
+<td>内链颜色</td>
+</tr>
+<tr>
+<td>Internal link color hover</td>
+<td><code>--link-color-hover</code></td>
+<td>内链悬停颜色</td>
+</tr>
+</tbody></table>
+<p>飞书风格建议：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>链接蓝</td>
+<td><code>#1456f0</code></td>
+</tr>
+<tr>
+<td>悬停蓝</td>
+<td><code>#0f48d8</code></td>
+</tr>
+<tr>
+<td>深色模式链接</td>
+<td><code>#78a0ff</code></td>
+</tr>
+</tbody></table>
+<h4 id="3-3-3-标题"><a href="#3-3-3-标题" class="headerlink" title="3.3.3 标题"></a>3.3.3 标题</h4><p>每一级标题都可以单独设置：</p>
+<table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>示例变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Heading font</td>
+<td><code>--h1-font</code></td>
+<td>标题字体</td>
+</tr>
+<tr>
+<td>Heading font size</td>
+<td><code>--h1-size</code></td>
+<td>标题字号</td>
+</tr>
+<tr>
+<td>Heading font weight</td>
+<td><code>--h1-weight</code></td>
+<td>标题字重</td>
+</tr>
+<tr>
+<td>Heading font color</td>
+<td><code>--h1-color</code></td>
+<td>标题颜色</td>
+</tr>
+<tr>
+<td>Heading font variant</td>
+<td><code>--h1-variant</code></td>
+<td>大小写变体</td>
+</tr>
+<tr>
+<td>Heading font style</td>
+<td><code>--h1-style</code></td>
+<td>正常、斜体等</td>
+</tr>
+<tr>
+<td>Heading divider line</td>
+<td>class toggle</td>
+<td>标题下划线</td>
+</tr>
+</tbody></table>
+<p>飞书风格建议：</p>
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H1</td>
+<td><code>34px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+<tr>
+<td>H2</td>
+<td><code>22px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+<tr>
+<td>H3</td>
+<td><code>20px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+<tr>
+<td>H4</td>
+<td><code>18px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+<tr>
+<td>H5&#x2F;H6</td>
+<td><code>16px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+</tbody></table>
+<h4 id="3-3-4-引用块"><a href="#3-3-4-引用块" class="headerlink" title="3.3.4 引用块"></a>3.3.4 引用块</h4><table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>CSS 变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Blockquote text color</td>
+<td><code>--blockquote-color</code></td>
+<td>引用文字颜色</td>
+</tr>
+<tr>
+<td>Blockquote background color</td>
+<td><code>--blockquote-background-color</code></td>
+<td>引用背景</td>
+</tr>
+<tr>
+<td>Blockquote border color</td>
+<td><code>--blockquote-border-color</code></td>
+<td>左侧边框颜色</td>
+</tr>
+<tr>
+<td>Blockquote border thickness</td>
+<td><code>--blockquote-border-thickness</code></td>
+<td>左侧边框粗细</td>
+</tr>
+<tr>
+<td>Blockquote font size</td>
+<td><code>--blockquote-size</code></td>
+<td>引用字号</td>
+</tr>
+<tr>
+<td>Blockquote font style</td>
+<td><code>--blockquote-font-style</code></td>
+<td>引用是否斜体</td>
+</tr>
+</tbody></table>
+<p>飞书风格建议：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>背景</td>
+<td><code>#fafafa</code> 或 <code>#f5f6f7</code></td>
+</tr>
+<tr>
+<td>边框</td>
+<td><code>#dee0e3</code></td>
+</tr>
+<tr>
+<td>边框粗细</td>
+<td><code>3px</code></td>
+</tr>
+<tr>
+<td>文字</td>
+<td>使用 <code>--text-muted</code> 或接近 <code>#646a73</code></td>
+</tr>
+</tbody></table>
+<p>如果引用块看起来太灰，优先把背景从 <code>#f5f6f7</code> 改成 <code>#fafafa</code>。</p>
+<h4 id="3-3-5-代码块"><a href="#3-3-5-代码块" class="headerlink" title="3.3.5 代码块"></a>3.3.5 代码块</h4><table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>CSS 变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Code font size</td>
+<td><code>--code-font-size</code></td>
+<td>代码字号</td>
+</tr>
+<tr>
+<td>Scroll long lines</td>
+<td>class toggle</td>
+<td>长代码是否横向滚动</td>
+</tr>
+<tr>
+<td>Code background color</td>
+<td><code>--code-background</code></td>
+<td>代码块背景</td>
+</tr>
+<tr>
+<td>Code text color</td>
+<td><code>--code-normal</code></td>
+<td>代码文字颜色</td>
+</tr>
+</tbody></table>
+<p>飞书风格建议：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代码字号</td>
+<td><code>14px</code></td>
+</tr>
+<tr>
+<td>代码行高</td>
+<td><code>22px</code>，如果 Style Settings 不能调，再用 CSS snippet</td>
+</tr>
+<tr>
+<td>背景</td>
+<td><code>#f5f6f7</code></td>
+</tr>
+<tr>
+<td>边框</td>
+<td><code>#dee0e3</code>，如果 Style Settings 不能调，再用 CSS snippet</td>
+</tr>
+<tr>
+<td>圆角</td>
+<td><code>8px</code>，通常需要 CSS snippet</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-两个插件怎么分工"><a href="#4-两个插件怎么分工" class="headerlink" title="4. 两个插件怎么分工"></a>4. 两个插件怎么分工</h2><h3 id="4-1-推荐分工表"><a href="#4-1-推荐分工表" class="headerlink" title="4.1 推荐分工表"></a>4.1 推荐分工表</h3><table>
+<thead>
+<tr>
+<th>需求</th>
+<th>推荐位置</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主题选择</td>
+<td>Obsidian 外观设置</td>
+<td>原生配置最稳定</td>
+</tr>
+<tr>
+<td>当前配色方案</td>
+<td>Minimal Theme Settings</td>
+<td>Minimal 官方支持</td>
+</tr>
+<tr>
+<td>背景对比度</td>
+<td>Minimal Theme Settings</td>
+<td>官方已有 Default&#x2F;Low contrast&#x2F;All white 等选项</td>
+</tr>
+<tr>
+<td>正文字号</td>
+<td>Minimal Theme Settings</td>
+<td>全局排版基础项</td>
+</tr>
+<tr>
+<td>正文行高</td>
+<td>Minimal Theme Settings</td>
+<td>官方配置，避免 CSS 冲突</td>
+</tr>
+<tr>
+<td>正文宽度</td>
+<td>Minimal Theme Settings</td>
+<td>官方 line width 配置</td>
+</tr>
+<tr>
+<td>图片是否铺满</td>
+<td>Minimal Theme Settings</td>
+<td>官方媒体宽度配置</td>
+</tr>
+<tr>
+<td>标题颜色</td>
+<td>Style Settings</td>
+<td>每级标题可独立调</td>
+</tr>
+<tr>
+<td>标题字号</td>
+<td>Style Settings</td>
+<td>每级标题可独立调</td>
+</tr>
+<tr>
+<td>链接颜色</td>
+<td>Style Settings</td>
+<td>Minimal 暴露了变量</td>
+</tr>
+<tr>
+<td>引用背景</td>
+<td>Style Settings</td>
+<td>Minimal 暴露了变量</td>
+</tr>
+<tr>
+<td>引用圆角</td>
+<td>CSS snippet</td>
+<td>Style Settings 通常不暴露圆角</td>
+</tr>
+<tr>
+<td>代码块背景</td>
+<td>Style Settings</td>
+<td>Minimal 暴露了变量</td>
+</tr>
+<tr>
+<td>代码块边框&#x2F;圆角</td>
+<td>CSS snippet</td>
+<td>细节补丁</td>
+</tr>
+<tr>
+<td>左侧文件树当前项样式</td>
+<td>CSS snippet 或 Minimal 功能</td>
+<td>具体效果通常要 CSS 微调</td>
+</tr>
+<tr>
+<td>插件样式冲突</td>
+<td>CSS snippet</td>
+<td>只能局部覆盖</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-不推荐的做法"><a href="#4-2-不推荐的做法" class="headerlink" title="4.2 不推荐的做法"></a>4.2 不推荐的做法</h3><p>不要这样做：</p>
+<ul>
+<li>直接改 <code>themes/Minimal/theme.css</code></li>
+<li>同一个变量既在 Style Settings 里调，又在 CSS snippet 里调</li>
+<li>把所有视觉配置都塞进一个巨大 <code>customize.css</code></li>
+<li>同时启用多个全局美化 snippet</li>
+<li>看到不满意就加 <code>!important</code></li>
+</ul>
+<p>这些做法短期有效，长期会导致你不知道到底是谁在生效。</p>
+<hr>
+<h2 id="5-飞书风格推荐配置"><a href="#5-飞书风格推荐配置" class="headerlink" title="5. 飞书风格推荐配置"></a>5. 飞书风格推荐配置</h2><p>下面是一套适合“飞书式文档阅读”的配置思路。</p>
+<h3 id="5-1-Minimal-Theme-Settings"><a href="#5-1-Minimal-Theme-Settings" class="headerlink" title="5.1 Minimal Theme Settings"></a>5.1 Minimal Theme Settings</h3><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Body font size</td>
+<td><code>16</code></td>
+</tr>
+<tr>
+<td>Line height</td>
+<td><code>1.8</code></td>
+</tr>
+<tr>
+<td>Normal line width</td>
+<td><code>52</code></td>
+</tr>
+<tr>
+<td>Wide line width</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td>Maximum line width</td>
+<td><code>88</code></td>
+</tr>
+<tr>
+<td>Maximize media</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>Colorful headings</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>Colorful frame</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>Readable line length</td>
+<td>开启</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-Style-Settings"><a href="#5-2-Style-Settings" class="headerlink" title="5.2 Style Settings"></a>5.2 Style Settings</h3><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H1 size</td>
+<td><code>34px</code></td>
+</tr>
+<tr>
+<td>H2 size</td>
+<td><code>22px</code></td>
+</tr>
+<tr>
+<td>H3 size</td>
+<td><code>20px</code></td>
+</tr>
+<tr>
+<td>Heading color</td>
+<td><code>#1f2329</code></td>
+</tr>
+<tr>
+<td>Link color</td>
+<td><code>#1456f0</code></td>
+</tr>
+<tr>
+<td>Link hover</td>
+<td><code>#0f48d8</code></td>
+</tr>
+<tr>
+<td>Blockquote background</td>
+<td><code>#fafafa</code></td>
+</tr>
+<tr>
+<td>Blockquote border</td>
+<td><code>#dee0e3</code></td>
+</tr>
+<tr>
+<td>Code background</td>
+<td><code>#f5f6f7</code></td>
+</tr>
+<tr>
+<td>Code size</td>
+<td><code>14px</code></td>
+</tr>
+</tbody></table>
+<h3 id="5-3-CSS-snippet-只保留这些"><a href="#5-3-CSS-snippet-只保留这些" class="headerlink" title="5.3 CSS snippet 只保留这些"></a>5.3 CSS snippet 只保留这些</h3><p>如果你追求飞书效果，CSS snippet 只建议保留：</p>
+<ul>
+<li>引用块圆角和内边距</li>
+<li>Live Preview 中连续引用块的背景修正</li>
+<li>代码块圆角、边框、内边距</li>
+<li>图片圆角</li>
+<li>左侧文件树当前项蓝色高亮</li>
+</ul>
+<p>不要把正文字号、正文宽度、行高、标题颜色写进 CSS snippet。</p>
+<hr>
+<h2 id="6-常见问题"><a href="#6-常见问题" class="headerlink" title="6. 常见问题"></a>6. 常见问题</h2><h3 id="6-1-为什么我改了-line-width-没效果"><a href="#6-1-为什么我改了-line-width-没效果" class="headerlink" title="6.1 为什么我改了 line width 没效果"></a>6.1 为什么我改了 line width 没效果</h3><p>检查 Obsidian 原生设置：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings -&gt; Editor -&gt; Readable line length</span><br></pre></td></tr></table></figure>
+
+<p>需要开启这个设置，Minimal 的 line width 才能更稳定地生效。</p>
+<h3 id="6-2-为什么左侧栏看起来灰灰暗暗"><a href="#6-2-为什么左侧栏看起来灰灰暗暗" class="headerlink" title="6.2 为什么左侧栏看起来灰灰暗暗"></a>6.2 为什么左侧栏看起来灰灰暗暗</h3><p>优先检查 Minimal Theme Settings 的 Background contrast。</p>
+<p>建议顺序：</p>
+<ol>
+<li>试 <code>Low contrast</code></li>
+<li>再试 <code>All white</code></li>
+<li>最后才考虑 CSS snippet</li>
+</ol>
+<p>不要一开始就写 CSS 强行改侧栏背景。</p>
+<h3 id="6-3-为什么引用块很灰"><a href="#6-3-为什么引用块很灰" class="headerlink" title="6.3 为什么引用块很灰"></a>6.3 为什么引用块很灰</h3><p>优先在 Style Settings 里调：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Blockquotes -&gt; Blockquote background color</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>#f5f6f7</code> 太灰，可以改成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#fafafa</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-为什么编辑模式和阅读模式不一致"><a href="#6-4-为什么编辑模式和阅读模式不一致" class="headerlink" title="6.4 为什么编辑模式和阅读模式不一致"></a>6.4 为什么编辑模式和阅读模式不一致</h3><p>Obsidian 的阅读模式和 Live Preview 使用的 DOM 结构不同。</p>
+<p>Style Settings 通常能影响变量，但一些细节，例如连续引用块的圆角、<code>&gt;</code> 符号隐藏、代码块内边距，可能需要 CSS snippet 补丁。</p>
+<h3 id="6-5-为什么-Style-Settings-里改了，文件又被自动清理"><a href="#6-5-为什么-Style-Settings-里改了，文件又被自动清理" class="headerlink" title="6.5 为什么 Style Settings 里改了，文件又被自动清理"></a>6.5 为什么 Style Settings 里改了，文件又被自动清理</h3><p>Style Settings 会根据主题声明的 <code>@settings</code> 校验配置项。</p>
+<p>如果你手动写入了主题没有声明的 key，插件可能会在加载后清理掉。</p>
+<p>所以手动改 <code>data.json</code> 时，最好确认 Minimal 的 <code>theme.css</code> 里确实存在对应 <code>id</code>。</p>
+<hr>
+<h2 id="7-当前库推荐维护规则"><a href="#7-当前库推荐维护规则" class="headerlink" title="7. 当前库推荐维护规则"></a>7. 当前库推荐维护规则</h2><p>你的库建议这样维护：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>负责内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.obsidian/appearance.json</code></td>
+<td>当前主题、基础字号、字体、启用哪些 CSS snippets</td>
+</tr>
+<tr>
+<td><code>.obsidian/plugins/obsidian-minimal-settings/data.json</code></td>
+<td>Minimal 的全局排版和功能开关</td>
+</tr>
+<tr>
+<td><code>.obsidian/plugins/obsidian-style-settings/data.json</code></td>
+<td>Minimal 的颜色、标题、代码、引用等细节变量</td>
+</tr>
+<tr>
+<td><code>.obsidian/snippets/feishu-doc-style.css</code></td>
+<td>飞书风格的最后补丁</td>
+</tr>
+<tr>
+<td><code>.obsidian/snippets/customize.css</code></td>
+<td>你已有的个人杂项补丁，后续建议继续拆小</td>
+</tr>
+</tbody></table>
+<p>如果以后你想调整外观，推荐顺序是：</p>
+<ol>
+<li>先看 Obsidian 原生设置能不能调。</li>
+<li>再看 Minimal Theme Settings 能不能调。</li>
+<li>再看 Style Settings 能不能调。</li>
+<li>最后才写 CSS snippet。</li>
+</ol>
+<hr>
+<h2 id="8-参考链接"><a href="#8-参考链接" class="headerlink" title="8. 参考链接"></a>8. 参考链接</h2><ul>
+<li>Minimal Theme Settings GitHub：<a target="_blank" rel="noopener" href="https://github.com/kepano/obsidian-minimal-settings">https://github.com/kepano/obsidian-minimal-settings</a></li>
+<li>Minimal 官方文档：<a target="_blank" rel="noopener" href="https://minimal.guide/">https://minimal.guide/</a></li>
+<li>Color schemes：<a target="_blank" rel="noopener" href="https://minimal.guide/features/color-schemes">https://minimal.guide/features/color-schemes</a></li>
+<li>Minimal Theme Settings：<a target="_blank" rel="noopener" href="https://minimal.guide/plugins/minimal-theme-settings">https://minimal.guide/plugins/minimal-theme-settings</a></li>
+<li>Style Settings：<a target="_blank" rel="noopener" href="https://minimal.guide/plugins/style-settings">https://minimal.guide/plugins/style-settings</a></li>
+<li>Line width：<a target="_blank" rel="noopener" href="https://minimal.guide/features/line-width">https://minimal.guide/features/line-width</a></li>
+<li>Background contrast：<a target="_blank" rel="noopener" href="https://minimal.guide/features/contrast">https://minimal.guide/features/contrast</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io">Zhang Lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lei-ctyh.github.io/2026/05/23/obsidian-minimal-settings-guide/">https://lei-ctyh.github.io/2026/05/23/obsidian-minimal-settings-guide/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lei-ctyh.github.io" target="_blank">知了</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/05/23/markdown-style-test-feishu/" title="markdown-style-test-feishu"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">markdown-style-test-feishu</div></div><div class="info-2"><div class="info-item-1">Markdown 样式测试文档 用途：将本文导入或复制到飞书文档，用来对比 Obsidian、Minimal 主题、飞书云文档之间的排版差异 重点观察：标题层级、段落行高、列表缩进、代码块、引用块、表格、图片位置、图片尺寸、图文混排。   1. 基础正文这是一段普通正文，用来观察默认字号、行高、段落间距和正文宽度。理想的阅读效果应该是文字不拥挤、行距舒适、每行长度适中，长时间阅读时不会产生明显疲劳。 这是第二段正文。这里包含一些中文、English words、数字 1234567890，以及常见标点符号：逗号，句号。冒号：分号；括号（内容）和引号“示例”。 这是一段较长的正文，用来测试自动换行效果。如果正文容器过宽，读者的视线移动距离会变长；如果正文容器过窄，换行会过于频繁。飞书文档的正文宽度通常比较克制，这也是它看起来舒服的重要原因之一。 2. 行内样式这是一段包含 加粗文本、斜体文本、加粗斜体、删除线、inline code、普通链接 的正文。 中文技术文档里经常会出现变量名，例如...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zhang Lei</div><div class="author-info-description">路漫漫其修远兮，吾将上下而求索</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">27</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lei-ctyh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2468341590@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #hdhfbb;"></i></a><a class="social-icon" href="https://www.cnblogs.com/aaalei" target="_blank" title="CnBlog"><i class="fa-solid fa-rss" style="color: #hdhfbb;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">该网站由 lei-ctyh 维护，欢迎访问！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Obsidian-Minimal-%E4%B8%A4%E4%B8%AA%E8%AE%BE%E7%BD%AE%E6%8F%92%E4%BB%B6%E8%AF%B4%E6%98%8E%E4%B9%A6"><span class="toc-number">1.</span> <span class="toc-text">Obsidian Minimal 两个设置插件说明书</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%80%BB%E4%BD%93%E7%BB%93%E8%AE%BA"><span class="toc-number">1.1.</span> <span class="toc-text">1. 总体结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Minimal-Theme-Settings-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.</span> <span class="toc-text">2. Minimal Theme Settings 是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AE%83%E9%80%82%E5%90%88%E7%AE%A1%E7%90%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 它适合管理什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 配置文件位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E9%87%8D%E8%A6%81%E9%85%8D%E7%BD%AE%E9%A1%B9%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 重要配置项说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E9%85%8D%E8%89%B2%E6%96%B9%E6%A1%88"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 配色方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E8%83%8C%E6%99%AF%E5%AF%B9%E6%AF%94%E5%BA%A6"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 背景对比度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E8%A1%8C%E5%AE%BD%E8%AE%BE%E7%BD%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 行宽设置注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Style-Settings-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.</span> <span class="toc-text">3. Style Settings 是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%AE%83%E9%80%82%E5%90%88%E7%AE%A1%E7%90%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 它适合管理什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 配置文件位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E9%A1%B9%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 常见配置项说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E7%95%8C%E9%9D%A2%E9%A2%9C%E8%89%B2"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">3.3.1 界面颜色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E5%BC%BA%E8%B0%83%E8%89%B2%E5%92%8C%E9%93%BE%E6%8E%A5%E8%89%B2"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">3.3.2 强调色和链接色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-3-%E6%A0%87%E9%A2%98"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">3.3.3 标题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-4-%E5%BC%95%E7%94%A8%E5%9D%97"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">3.3.4 引用块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-5-%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.3.3.5.</span> <span class="toc-text">3.3.5 代码块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%A4%E4%B8%AA%E6%8F%92%E4%BB%B6%E6%80%8E%E4%B9%88%E5%88%86%E5%B7%A5"><span class="toc-number">1.4.</span> <span class="toc-text">4. 两个插件怎么分工</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%8E%A8%E8%8D%90%E5%88%86%E5%B7%A5%E8%A1%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 推荐分工表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%B8%8D%E6%8E%A8%E8%8D%90%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 不推荐的做法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%A3%9E%E4%B9%A6%E9%A3%8E%E6%A0%BC%E6%8E%A8%E8%8D%90%E9%85%8D%E7%BD%AE"><span class="toc-number">1.5.</span> <span class="toc-text">5. 飞书风格推荐配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Minimal-Theme-Settings"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 Minimal Theme Settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Style-Settings"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 Style Settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-CSS-snippet-%E5%8F%AA%E4%BF%9D%E7%95%99%E8%BF%99%E4%BA%9B"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 CSS snippet 只保留这些</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.</span> <span class="toc-text">6. 常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E6%94%B9%E4%BA%86-line-width-%E6%B2%A1%E6%95%88%E6%9E%9C"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 为什么我改了 line width 没效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%B7%A6%E4%BE%A7%E6%A0%8F%E7%9C%8B%E8%B5%B7%E6%9D%A5%E7%81%B0%E7%81%B0%E6%9A%97%E6%9A%97"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 为什么左侧栏看起来灰灰暗暗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%95%E7%94%A8%E5%9D%97%E5%BE%88%E7%81%B0"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 为什么引用块很灰</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%98%85%E8%AF%BB%E6%A8%A1%E5%BC%8F%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="toc-number">1.6.4.</span> <span class="toc-text">6.4 为什么编辑模式和阅读模式不一致</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-%E4%B8%BA%E4%BB%80%E4%B9%88-Style-Settings-%E9%87%8C%E6%94%B9%E4%BA%86%EF%BC%8C%E6%96%87%E4%BB%B6%E5%8F%88%E8%A2%AB%E8%87%AA%E5%8A%A8%E6%B8%85%E7%90%86"><span class="toc-number">1.6.5.</span> <span class="toc-text">6.5 为什么 Style Settings 里改了，文件又被自动清理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%BD%93%E5%89%8D%E5%BA%93%E6%8E%A8%E8%8D%90%E7%BB%B4%E6%8A%A4%E8%A7%84%E5%88%99"><span class="toc-number">1.7.</span> <span class="toc-text">7. 当前库推荐维护规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">1.8.</span> <span class="toc-text">8. 参考链接</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/23/obsidian-minimal-settings-guide/" title="无标题">无标题</a><time datetime="2026-05-23T03:28:11.635Z" title="发表于 2026-05-23 11:28:11">2026-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/23/markdown-style-test-feishu/" title="markdown-style-test-feishu">markdown-style-test-feishu</a><time datetime="2026-05-23T02:42:59.000Z" title="发表于 2026-05-23 10:42:59">2026-05-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/20/archive/HTTPS%20%E8%AF%81%E4%B9%A6%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" title="HTTPS 证书到底是什么？">HTTPS 证书到底是什么？</a><time datetime="2026-05-20T10:30:53.000Z" title="发表于 2026-05-20 18:30:53">2026-05-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/11/archive/%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%80%BB%E6%98%AF%E7%A6%BB%E5%AE%8C%E7%BE%8E%E6%9C%80%E8%BF%9C%EF%BC%9F/" title="完美主义者，为什么你总是离完美最远？">完美主义者，为什么你总是离完美最远？</a><time datetime="2026-03-11T05:59:50.000Z" title="发表于 2026-03-11 13:59:50">2026-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/01/archive/git%E5%85%A5%E9%97%A8/" title="Git 入门指南：写给完全不懂版本控制的你">Git 入门指南：写给完全不懂版本控制的你</a><time datetime="2025-12-01T16:00:00.000Z" title="发表于 2025-12-02 00:00:00">2025-12-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By Zhang Lei</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

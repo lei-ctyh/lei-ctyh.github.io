@@ -1,6 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>markdown-style-test-feishu</title>
+    <url>/2026/05/23/markdown-style-test-feishu/</url>
+    <content><![CDATA[<h2 id="Markdown-样式测试文档"><a href="#Markdown-样式测试文档" class="headerlink" title="Markdown 样式测试文档"></a>Markdown 样式测试文档</h2><blockquote>
+<p>用途：将本文导入或复制到飞书文档，用来对比 Obsidian、Minimal 主题、飞书云文档之间的排版差异</p>
+<p>重点观察：标题层级、段落行高、列表缩进、代码块、引用块、表格、图片位置、图片尺寸、图文混排。</p>
+</blockquote>
+<hr>
+<h3 id="1-基础正文"><a href="#1-基础正文" class="headerlink" title="1. 基础正文"></a>1. 基础正文</h3><p>这是一段普通正文，用来观察默认字号、行高、段落间距和正文宽度。理想的阅读效果应该是文字不拥挤、行距舒适、每行长度适中，长时间阅读时不会产生明显疲劳。</p>
+<p>这是第二段正文。这里包含一些中文、English words、数字 1234567890，以及常见标点符号：逗号，句号。冒号：分号；括号（内容）和引号“示例”。</p>
+<p>这是一段较长的正文，用来测试自动换行效果。如果正文容器过宽，读者的视线移动距离会变长；如果正文容器过窄，换行会过于频繁。飞书文档的正文宽度通常比较克制，这也是它看起来舒服的重要原因之一。</p>
+<h3 id="2-行内样式"><a href="#2-行内样式" class="headerlink" title="2. 行内样式"></a>2. 行内样式</h3><p>这是一段包含 <strong>加粗文本</strong>、<em>斜体文本</em>、<em><strong>加粗斜体</strong></em>、<del>删除线</del>、<code>inline code</code>、<a href="https://www.feishu.cn/">普通链接</a> 的正文。</p>
+<p>中文技术文档里经常会出现变量名，例如 <code>fileKey</code>、<code>fileUrl</code>、<code>folder</code>、<code>uploadPath</code>。这些行内代码应该足够醒目，但不应该打断阅读节奏。</p>
+<h3 id="3-标题层级"><a href="#3-标题层级" class="headerlink" title="3. 标题层级"></a>3. 标题层级</h3><h2 id="H1-一级标题：页面主标题"><a href="#H1-一级标题：页面主标题" class="headerlink" title="H1 一级标题：页面主标题"></a>H1 一级标题：页面主标题</h2><p>一级标题通常只应该在页面顶部出现一次，用来观察主标题字号、字重和上下间距。</p>
+<h3 id="H2-二级标题：主要章节"><a href="#H2-二级标题：主要章节" class="headerlink" title="H2 二级标题：主要章节"></a>H2 二级标题：主要章节</h3><p>二级标题适合划分主要章节，应该有明显的视觉权重。</p>
+<h4 id="H3-三级标题：小节标题"><a href="#H3-三级标题：小节标题" class="headerlink" title="H3 三级标题：小节标题"></a>H3 三级标题：小节标题</h4><p>三级标题适合进一步拆分内容，应该比正文突出，但不要过于夸张。</p>
+<h5 id="H4-四级标题"><a href="#H4-四级标题" class="headerlink" title="H4 四级标题"></a>H4 四级标题</h5><p>四级标题常用于技术文档中的细节说明。</p>
+<h6 id="H5-五级标题"><a href="#H5-五级标题" class="headerlink" title="H5 五级标题"></a>H5 五级标题</h6><p>五级标题测试较低层级标题的可读性。</p>
+<h6 id="H6-六级标题"><a href="#H6-六级标题" class="headerlink" title="H6 六级标题"></a>H6 六级标题</h6><p>六级标题测试最小标题样式。</p>
+<h3 id="4-无序列表"><a href="#4-无序列表" class="headerlink" title="4. 无序列表"></a>4. 无序列表</h3><ul>
+<li>第一层列表项，用来观察项目符号、左侧缩进和行高。</li>
+<li>第一层列表项较长时，会自动换行。换行后的第二行应该和正文内容对齐，而不是回到项目符号下面。</li>
+<li>第一层列表项包含 <code>inline code</code> 和 <strong>加粗文本</strong>。<ul>
+<li>第二层列表项，用来观察嵌套缩进。</li>
+<li>第二层列表项继续补充说明。<ul>
+<li>第三层列表项，用来观察更深层级缩进。</li>
+<li>第三层列表项包含中文和 English words。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-有序列表"><a href="#5-有序列表" class="headerlink" title="5. 有序列表"></a>5. 有序列表</h3><ol>
+<li>第一步：选择文件。</li>
+<li>第二步：上传到后端接口。</li>
+<li>第三步：后端返回 <code>fileKey</code> 和 <code>fileUrl</code>。</li>
+<li>第四步：业务表只保存 <code>fileKey</code>。</li>
+<li>第五步：页面展示时通过 <code>fileKey</code> 获取 <code>fileUrl</code>。</li>
+</ol>
+<h4 id="5-1-嵌套有序列表"><a href="#5-1-嵌套有序列表" class="headerlink" title="5.1 嵌套有序列表"></a>5.1 嵌套有序列表</h4><ol>
+<li>后端处理<ol>
+<li>校验文件类型。</li>
+<li>生成存储路径。</li>
+<li>保存文件记录。</li>
+</ol>
+</li>
+<li>前端处理<ol>
+<li>调用上传接口。</li>
+<li>保存返回结果。</li>
+<li>渲染图片或下载链接。</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-任务列表"><a href="#6-任务列表" class="headerlink" title="6. 任务列表"></a>6. 任务列表</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 已完成任务：整理上传接口。</li>
+<li><input checked="" disabled="" type="checkbox"> 已完成任务：统一 <code>fileKey</code> 规则。</li>
+<li><input disabled="" type="checkbox"> 待完成任务：补充云存储配置。</li>
+<li><input disabled="" type="checkbox"> 待完成任务：增加异常场景说明。</li>
+</ul>
+<h3 id="7-引用块"><a href="#7-引用块" class="headerlink" title="7. 引用块"></a>7. 引用块</h3><blockquote>
+<p>这是普通引用块。适合放说明、提示、背景信息。需要观察引用块左边框、背景色、内边距和文字颜色。</p>
+</blockquote>
+<blockquote>
+<p>多段引用块第一段。</p>
+<p>多段引用块第二段。这里用来观察引用块内部段落间距。</p>
+</blockquote>
+<blockquote>
+<p><strong>注意：</strong> 如果引用块背景太深，会破坏页面的轻盈感；如果边框太重，也会显得像警告框。</p>
+</blockquote>
+<h3 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8. 代码块"></a>8. 代码块</h3><h4 id="8-1-普通文本代码块"><a href="#8-1-普通文本代码块" class="headerlink" title="8.1 普通文本代码块"></a>8.1 普通文本代码块</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-2-Java-代码块"><a href="#8-2-Java-代码块" class="headerlink" title="8.2 Java 代码块"></a>8.2 Java 代码块</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> FileUploadVO <span class="title function_">upload</span><span class="params">(MultipartFile file, String folder)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileKey</span> <span class="operator">=</span> fileStorageService.save(file, folder);</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileUrl</span> <span class="operator">=</span> fileUrlService.getUrl(fileKey);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">FileUploadVO</span>(fileKey, fileUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-3-TypeScript-代码块"><a href="#8-3-TypeScript-代码块" class="headerlink" title="8.3 TypeScript 代码块"></a>8.3 TypeScript 代码块</h4><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">uploadFile</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">File</span>, <span class="attr">folder</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">  formData.<span class="title function_">append</span>(<span class="string">&#x27;file&#x27;</span>, file);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> request.<span class="property">post</span>&lt;<span class="title class_">FileUploadVO</span>&gt;(<span class="string">`/support/file/upload?folder=<span class="subst">$&#123;folder&#125;</span>`</span>, formData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-4-JSON-代码块"><a href="#8-4-JSON-代码块" class="headerlink" title="8.4 JSON 代码块"></a>8.4 JSON 代码块</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;fileKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;fileUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://example.com/upload/course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;folder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-表格"><a href="#9-表格" class="headerlink" title="9. 表格"></a>9. 表格</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>路径</th>
+<th>说明</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后端接口</td>
+<td><code>FileController.java</code></td>
+<td>负责上传、下载、获取 URL</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>存储服务</td>
+<td><code>IFileStorageService.java</code></td>
+<td>屏蔽本地存储和云存储差异</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>前端封装</td>
+<td><code>file-api.ts</code></td>
+<td>统一上传入口</td>
+<td>待补充</td>
+</tr>
+<tr>
+<td>图片展示</td>
+<td><code>ImagePreview.vue</code></td>
+<td>根据 <code>fileKey</code> 获取展示地址</td>
+<td>待优化</td>
+</tr>
+</tbody></table>
+<h4 id="9-1-长文本表格"><a href="#9-1-长文本表格" class="headerlink" title="9.1 长文本表格"></a>9.1 长文本表格</h4><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐做法</th>
+<th>不推荐做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保存业务数据</td>
+<td>只保存 <code>fileKey</code>，展示时再换取 <code>fileUrl</code></td>
+<td>直接保存完整访问地址</td>
+</tr>
+<tr>
+<td>切换存储方式</td>
+<td>后端统一适配，本地和云存储共用规则</td>
+<td>前端根据环境拼接不同地址</td>
+</tr>
+<tr>
+<td>图片预览</td>
+<td>使用统一组件处理加载、失败、占位图</td>
+<td>每个页面各写一套逻辑</td>
+</tr>
+</tbody></table>
+<h3 id="10-分割线"><a href="#10-分割线" class="headerlink" title="10. 分割线"></a>10. 分割线</h3><p>上方内容。</p>
+<hr>
+<p>下方内容。观察分割线的颜色、上下间距和粗细。</p>
+<h3 id="11-图片测试"><a href="#11-图片测试" class="headerlink" title="11. 图片测试"></a>11. 图片测试</h3><p>以下图片使用远程占位图，方便复制或导入到飞书后直接显示。</p>
+<h4 id="11-1-默认-Markdown-图片"><a href="#11-1-默认-Markdown-图片" class="headerlink" title="11.1 默认 Markdown 图片"></a>11.1 默认 Markdown 图片</h4><p><img src="https://placehold.co/900x360/png?text=Default+Markdown+Image" alt="默认图片：宽 900 高 360"></p>
+<p>观察点：默认图片是否铺满正文宽度，是否有圆角，图片上下是否留白。</p>
+<h4 id="11-2-小图"><a href="#11-2-小图" class="headerlink" title="11.2 小图"></a>11.2 小图</h4><p><img src="https://placehold.co/240x160/png?text=Small+Image" alt="小图：宽 240 高 160"></p>
+<p>观察点：小图是否左对齐，是否和正文贴得太近。</p>
+<h4 id="11-3-HTML-控制宽度"><a href="#11-3-HTML-控制宽度" class="headerlink" title="11.3 HTML 控制宽度"></a>11.3 HTML 控制宽度</h4><img src="https://placehold.co/480x240/png?text=HTML+Width+480" alt="HTML 宽度 480 图片" width="480" />
+
+<p>观察点：飞书是否保留 HTML 图片宽度；Obsidian 是否正常显示。</p>
+<h4 id="11-4-居中图片"><a href="#11-4-居中图片" class="headerlink" title="11.4 居中图片"></a>11.4 居中图片</h4><p align="center">
+  <img src="https://placehold.co/520x260/png?text=Centered+Image" alt="居中图片" width="520" />
+</p>
+
+<p>观察点：飞书是否保留居中效果；如果不保留，后续需要手动调整或使用飞书原生图片居中。</p>
+<h4 id="11-5-左右图文混排：左图右文"><a href="#11-5-左右图文混排：左图右文" class="headerlink" title="11.5 左右图文混排：左图右文"></a>11.5 左右图文混排：左图右文</h4><img src="https://placehold.co/260x180/png?text=Left+Image" alt="左侧图片" width="260" align="left" />
+
+<p>这是一段用于测试左图右文的正文。图片如果浮动成功，文字会从图片右侧开始环绕；如果不支持浮动，图片会独占一行。飞书导入 Markdown 时不一定保留 <code>align=&quot;left&quot;</code>，因此这里主要用于观察兼容性。</p>
+<p>这是一段继续补充的正文，用来测试多行文字环绕时的行高和右侧留白。若效果不稳定，建议在飞书里使用表格或分栏来实现稳定的图文排版。</p>
+<br clear="both" />
+
+<h4 id="11-6-左右图文混排：右图左文"><a href="#11-6-左右图文混排：右图左文" class="headerlink" title="11.6 左右图文混排：右图左文"></a>11.6 左右图文混排：右图左文</h4><img src="https://placehold.co/260x180/png?text=Right+Image" alt="右侧图片" width="260" align="right" />
+
+<p>这是一段用于测试右图左文的正文。图片如果浮动成功，文字会在图片左侧排列；如果导入后浮动失效，说明目标平台对 HTML 图片布局支持有限。</p>
+<p>在技术文档里，右图左文适合放界面截图说明，但如果兼容性不好，推荐改用表格方式实现。</p>
+<br clear="both" />
+
+<h4 id="11-7-使用表格实现左右图片"><a href="#11-7-使用表格实现左右图片" class="headerlink" title="11.7 使用表格实现左右图片"></a>11.7 使用表格实现左右图片</h4><table>
+<thead>
+<tr>
+<th>左图</th>
+<th>右图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://placehold.co/360x220/png?text=Left+Column" alt="左图"></td>
+<td><img src="https://placehold.co/360x220/png?text=Right+Column" alt="右图"></td>
+</tr>
+</tbody></table>
+<p>观察点：表格内图片是否等宽、是否有额外边框、是否适合作为稳定的左右布局方案。</p>
+<h4 id="11-8-图片加说明文字"><a href="#11-8-图片加说明文字" class="headerlink" title="11.8 图片加说明文字"></a>11.8 图片加说明文字</h4><p><img src="https://placehold.co/820x360/png?text=Upload+Flow+Diagram" alt="接口流程图"></p>
+<p>图 1：文件上传流程示意图。观察图片说明文字是否应该使用普通段落、引用块或斜体。</p>
+<p><em>图 2：这是斜体说明文字，用来测试图片 caption 的视觉效果。</em></p>
+<h3 id="12-链接与路径"><a href="#12-链接与路径" class="headerlink" title="12. 链接与路径"></a>12. 链接与路径</h3><p>普通链接：<a href="https://www.feishu.cn/">飞书官网</a></p>
+<p>裸链接：<a href="https://www.feishu.cn/">https://www.feishu.cn/</a></p>
+<p>相对路径示例：<code>smart-admin-api-java8-springboot2/sa-base/src/main/java/net/lab1024/sa/base/module/support/file/</code></p>
+<p>接口路径示例：<code>POST /support/file/upload?folder=course</code></p>
+<h3 id="13-数学公式兼容性"><a href="#13-数学公式兼容性" class="headerlink" title="13. 数学公式兼容性"></a>13. 数学公式兼容性</h3><p>行内公式：$E &#x3D; mc^2$</p>
+<p>块级公式：</p>
+<p>$$<br>sum &#x3D; principal \times rate \times days &#x2F; 365<br>$$</p>
+<p>观察点：飞书导入后是否保留公式渲染；如果没有渲染，是否以纯文本展示。</p>
+<h3 id="14-Mermaid-兼容性"><a href="#14-Mermaid-兼容性" class="headerlink" title="14. Mermaid 兼容性"></a>14. Mermaid 兼容性</h3><pre><code class="highlight mermaid">flowchart TD
+  A[前端选择文件] --&gt; B[调用上传接口]
+  B --&gt; C[后端保存文件]
+  C --&gt; D[返回 fileKey/fileUrl]
+  D --&gt; E[业务表保存 fileKey]
+  E --&gt; F[展示时获取 fileUrl]</code></pre>
+
+<p>观察点：飞书是否将 Mermaid 渲染为图，还是保留为代码块。</p>
+<h3 id="15-折叠内容兼容性"><a href="#15-折叠内容兼容性" class="headerlink" title="15. 折叠内容兼容性"></a>15. 折叠内容兼容性</h3><details>
+<summary>点击展开更多说明</summary>
+
+<p>这里是折叠内容。用于测试飞书是否保留 HTML details 标签。如果不支持，通常会以普通文本或被过滤掉。</p>
+</details>
+
+<h3 id="16-综合样例：文件上传模块说明"><a href="#16-综合样例：文件上传模块说明" class="headerlink" title="16. 综合样例：文件上传模块说明"></a>16. 综合样例：文件上传模块说明</h3><h4 id="16-1-总体原则"><a href="#16-1-总体原则" class="headerlink" title="16.1 总体原则"></a>16.1 总体原则</h4><p>本项目文件上传的核心原则：</p>
+<ol>
+<li>业务表只保存 <code>fileKey</code>。</li>
+<li>页面展示使用 <code>fileUrl</code>。</li>
+<li><code>fileUrl</code> 由后端统一生成。</li>
+<li>前端不要手工拼接 <code>/upload/$&#123;fileKey&#125;</code>。</li>
+<li>上传目录由 <code>folder</code> 参数决定。</li>
+<li>本地存储和云存储共用同一套 <code>fileKey</code> 规则。</li>
+</ol>
+<h4 id="16-2-典型流程"><a href="#16-2-典型流程" class="headerlink" title="16.2 典型流程"></a>16.2 典型流程</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-3-推荐约定"><a href="#16-3-推荐约定" class="headerlink" title="16.3 推荐约定"></a>16.3 推荐约定</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>命名规则</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>课程封面</td>
+<td><code>course-cover</code></td>
+<td><code>course-cover/2026/05/demo.png</code></td>
+</tr>
+<tr>
+<td>老师资质</td>
+<td><code>teacher-cert</code></td>
+<td><code>teacher-cert/2026/05/cert.pdf</code></td>
+</tr>
+<tr>
+<td>临时文件</td>
+<td><code>temp</code></td>
+<td><code>temp/2026/05/upload.tmp</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>推荐将所有文件访问入口收口到后端服务，避免前端直接依赖具体存储实现。</p>
+</blockquote>
+<h3 id="17-视觉检查清单"><a href="#17-视觉检查清单" class="headerlink" title="17. 视觉检查清单"></a>17. 视觉检查清单</h3><ul>
+<li><input disabled="" type="checkbox"> 正文字号是否舒适。</li>
+<li><input disabled="" type="checkbox"> 正文行高是否接近飞书的 <code>1.8</code>。</li>
+<li><input disabled="" type="checkbox"> 正文宽度是否接近 <code>820px</code>。</li>
+<li><input disabled="" type="checkbox"> 标题上下间距是否清晰。</li>
+<li><input disabled="" type="checkbox"> 列表缩进是否自然。</li>
+<li><input disabled="" type="checkbox"> 代码块背景是否足够轻。</li>
+<li><input disabled="" type="checkbox"> 表格是否清晰但不沉重。</li>
+<li><input disabled="" type="checkbox"> 图片默认位置是否符合预期。</li>
+<li><input disabled="" type="checkbox"> 左右图文混排是否稳定。</li>
+<li><input disabled="" type="checkbox"> 复制到飞书后是否有明显样式丢失。</li>
+</ul>
+<hr>
+<h3 id="18-结论记录区"><a href="#18-结论记录区" class="headerlink" title="18. 结论记录区"></a>18. 结论记录区</h3><p>你可以在飞书中复制下面这段，用来记录观察结果：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Obsidian 效果</th>
+<th>飞书效果</th>
+<th>是否需要调整</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正文字号</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>正文行高</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>正文宽度</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>标题样式</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>代码块</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>表格</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>图片位置</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>图文混排</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
     <title>ActiveMQ</title>
     <url>/2024/12/09/archive/ActiveMQ/</url>
     <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
@@ -135,6 +448,870 @@
 <p><img src="/assets/ActiveMQ/image-20240409220439596.png"></p>
 <h2 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>官网：<a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2026/05/23/obsidian-minimal-settings-guide/</url>
+    <content><![CDATA[<h1 id="Obsidian-Minimal-两个设置插件说明书"><a href="#Obsidian-Minimal-两个设置插件说明书" class="headerlink" title="Obsidian Minimal 两个设置插件说明书"></a>Obsidian Minimal 两个设置插件说明书</h1><p>本文说明 Obsidian 的 Minimal 主题中两个常用插件的职责、配置位置、推荐用法和避坑原则：</p>
+<ul>
+<li>Minimal Theme Settings</li>
+<li>Style Settings</li>
+</ul>
+<p>适用场景：你正在使用 Minimal 主题，希望把 Obsidian 调成稳定、清爽、接近飞书文档的阅读体验。</p>
+<hr>
+<h2 id="1-总体结论"><a href="#1-总体结论" class="headerlink" title="1. 总体结论"></a>1. 总体结论</h2><p>Minimal 主题的配置不要全部写进 CSS，也不要只靠一个插件。推荐按三层管理：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>用途</th>
+<th>典型配置</th>
+<th>是否推荐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Obsidian 外观设置</td>
+<td>Obsidian 原生基础配置</td>
+<td>当前主题、基础字号、界面字体、正文字体、代码字体</td>
+<td>推荐</td>
+</tr>
+<tr>
+<td>Minimal Theme Settings</td>
+<td>Minimal 的基础能力和全局开关</td>
+<td>配色方案、背景对比度、字号、行高、正文宽度、图片宽度</td>
+<td>强烈推荐</td>
+</tr>
+<tr>
+<td>Style Settings</td>
+<td>Minimal 暴露出的细节变量</td>
+<td>标题颜色、链接色、引用块、代码块、表格、Callout</td>
+<td>强烈推荐</td>
+</tr>
+<tr>
+<td>CSS snippets</td>
+<td>插件无法覆盖的最后补丁</td>
+<td>Live Preview 引用块、图片圆角、局部插件冲突</td>
+<td>谨慎使用</td>
+</tr>
+</tbody></table>
+<p>一句话原则：</p>
+<blockquote>
+<p>能用 Minimal Theme Settings 调的，不写进 CSS；能用 Style Settings 调的，也不写进 CSS；CSS 只做最后 10% 的补丁。</p>
+</blockquote>
+<hr>
+<h2 id="2-Minimal-Theme-Settings-是什么"><a href="#2-Minimal-Theme-Settings-是什么" class="headerlink" title="2. Minimal Theme Settings 是什么"></a>2. Minimal Theme Settings 是什么</h2><p>Minimal Theme Settings 是 Minimal 主题的官方配套插件。</p>
+<p>它不是必须安装，但官方强烈推荐安装。它的作用是把 Minimal 的常用配置放到 Obsidian 设置面板里，让你不用写 CSS 就能调整主题的核心体验。</p>
+<p>官方定位：</p>
+<blockquote>
+<p>用来控制 Minimal 的颜色、字体和功能开关。</p>
+</blockquote>
+<h3 id="2-1-它适合管理什么"><a href="#2-1-它适合管理什么" class="headerlink" title="2.1 它适合管理什么"></a>2.1 它适合管理什么</h3><p>Minimal Theme Settings 更适合管理“大开关”和“全局体验”：</p>
+<ul>
+<li>配色方案</li>
+<li>背景对比度</li>
+<li>正文字号</li>
+<li>侧栏字号</li>
+<li>行高</li>
+<li>正文宽度</li>
+<li>宽屏正文宽度</li>
+<li>最大内容宽度</li>
+<li>图片&#x2F;视频是否铺满正文宽度</li>
+<li>是否启用彩色标题</li>
+<li>是否启用彩色边框</li>
+<li>是否启用彩色选中状态</li>
+<li>是否显示导航标签</li>
+<li>是否开启 Focus mode</li>
+<li>是否显示链接下划线</li>
+<li>是否显示侧栏边框</li>
+</ul>
+<h3 id="2-2-配置文件位置"><a href="#2-2-配置文件位置" class="headerlink" title="2.2 配置文件位置"></a>2.2 配置文件位置</h3><p>在你的库里，它的配置保存在：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.obsidian/plugins/obsidian-minimal-settings/data.json</span><br></pre></td></tr></table></figure>
+
+<p>你当前库中的实际路径是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">C:\Users\hjsoft\Nutstore\1\我的坚果云\hexo\source\_posts\.obsidian\plugins\obsidian-minimal-settings\data.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-重要配置项说明"><a href="#2-3-重要配置项说明" class="headerlink" title="2.3 重要配置项说明"></a>2.3 重要配置项说明</h3><table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>中文含义</th>
+<th>建议值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>lightStyle</code></td>
+<td>浅色模式背景风格</td>
+<td><code>minimal-light</code></td>
+<td>控制浅色模式背景对比度</td>
+</tr>
+<tr>
+<td><code>darkStyle</code></td>
+<td>深色模式背景风格</td>
+<td><code>minimal-dark</code></td>
+<td>控制深色模式背景对比度</td>
+</tr>
+<tr>
+<td><code>lightScheme</code></td>
+<td>浅色配色方案</td>
+<td>按喜好选择</td>
+<td>如 <code>minimal-default-light</code>、Flexoki、macOS 等</td>
+</tr>
+<tr>
+<td><code>darkScheme</code></td>
+<td>深色配色方案</td>
+<td>按喜好选择</td>
+<td>深色模式对应方案</td>
+</tr>
+<tr>
+<td><code>editorFont</code></td>
+<td>编辑器字体</td>
+<td>可留空</td>
+<td>通常用 Obsidian 外观设置统一管理字体</td>
+</tr>
+<tr>
+<td><code>lineHeight</code></td>
+<td>正文行高</td>
+<td><code>1.75</code> 到 <code>1.8</code></td>
+<td>接近飞书文档可用 <code>1.8</code></td>
+</tr>
+<tr>
+<td><code>lineWidth</code></td>
+<td>普通正文宽度</td>
+<td><code>50</code> 到 <code>52</code></td>
+<td>单位近似 <code>em</code>，<code>52</code> 接近 820px</td>
+</tr>
+<tr>
+<td><code>lineWidthWide</code></td>
+<td>宽屏元素宽度</td>
+<td><code>60</code></td>
+<td>表格、图片等宽元素可更宽</td>
+</tr>
+<tr>
+<td><code>maxWidth</code></td>
+<td>最大宽度百分比</td>
+<td><code>88</code></td>
+<td>官方默认值，通常不必改</td>
+</tr>
+<tr>
+<td><code>textNormal</code></td>
+<td>正文字号</td>
+<td><code>16</code></td>
+<td>飞书文档也是 16px 左右</td>
+</tr>
+<tr>
+<td><code>textSmall</code></td>
+<td>小字号</td>
+<td><code>13</code> 或 <code>14</code></td>
+<td>侧栏、辅助文字使用</td>
+</tr>
+<tr>
+<td><code>fullWidthMedia</code></td>
+<td>媒体是否铺满</td>
+<td><code>false</code></td>
+<td>图片不建议默认铺满，阅读更克制</td>
+</tr>
+<tr>
+<td><code>colorfulHeadings</code></td>
+<td>彩色标题</td>
+<td><code>false</code></td>
+<td>飞书风格不建议彩色标题</td>
+</tr>
+<tr>
+<td><code>colorfulFrame</code></td>
+<td>彩色窗口边框</td>
+<td><code>false</code></td>
+<td>保持干净</td>
+</tr>
+<tr>
+<td><code>colorfulActiveStates</code></td>
+<td>彩色激活状态</td>
+<td>看喜好</td>
+<td>想要飞书蓝高亮可开启或用 Style Settings 设置</td>
+</tr>
+<tr>
+<td><code>readableLineLength</code></td>
+<td>可读行宽</td>
+<td><code>true</code></td>
+<td>配合 Obsidian 原生设置生效</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-配色方案"><a href="#2-4-配色方案" class="headerlink" title="2.4 配色方案"></a>2.4 配色方案</h3><p>Minimal Theme Settings 内置一些常见配色方案：</p>
+<ul>
+<li>Atom</li>
+<li>Ayu</li>
+<li>Catppuccin</li>
+<li>Dracula</li>
+<li>E-ink</li>
+<li>Everforest</li>
+<li>Flexoki</li>
+<li>Gruvbox</li>
+<li>macOS</li>
+<li>Nord</li>
+<li>Rosé Pine</li>
+<li>Sky</li>
+<li>Solarized</li>
+<li>Things</li>
+</ul>
+<p>如果你追求飞书文档那种低干扰、白底、浅灰、蓝色点缀的感觉，建议优先试：</p>
+<ul>
+<li>Minimal 默认浅色</li>
+<li>macOS</li>
+<li>Flexoki</li>
+<li>E-ink</li>
+</ul>
+<p>不要一开始就选高饱和配色，否则会偏离飞书那种“轻、白、克制”的感觉。</p>
+<h3 id="2-5-背景对比度"><a href="#2-5-背景对比度" class="headerlink" title="2.5 背景对比度"></a>2.5 背景对比度</h3><p>Minimal Theme Settings 支持不同背景对比度。</p>
+<p>浅色模式常见选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>效果</th>
+<th>适合场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Default</td>
+<td>侧栏比主区域略深</td>
+<td>Minimal 默认风格</td>
+</tr>
+<tr>
+<td>Low contrast</td>
+<td>侧栏和正文背景更接近</td>
+<td>更接近飞书、Notion 的轻量界面</td>
+</tr>
+<tr>
+<td>All white</td>
+<td>侧栏和正文都更白</td>
+<td>喜欢纯白文档感</td>
+</tr>
+<tr>
+<td>High contrast</td>
+<td>深色侧栏、浅色正文</td>
+<td>更像传统 IDE 或强分区界面</td>
+</tr>
+</tbody></table>
+<p>如果你觉得左侧栏“灰灰暗暗”，优先尝试：</p>
+<ol>
+<li><code>Low contrast</code></li>
+<li><code>All white</code></li>
+</ol>
+<p>不要优先用 CSS 强行改侧栏背景。</p>
+<h3 id="2-6-行宽设置注意事项"><a href="#2-6-行宽设置注意事项" class="headerlink" title="2.6 行宽设置注意事项"></a>2.6 行宽设置注意事项</h3><p>Minimal 官方说明里有一个关键点：</p>
+<blockquote>
+<p>要让 Minimal 的 line width 设置生效，需要打开 Obsidian 编辑器设置里的 Readable line length。</p>
+</blockquote>
+<p>也就是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Settings -&gt; Editor -&gt; Readable line length</span><br></pre></td></tr></table></figure>
+
+<p>如果这个没开，<code>lineWidth</code>、<code>lineWidthWide</code> 可能不会按预期生效。</p>
+<hr>
+<h2 id="3-Style-Settings-是什么"><a href="#3-Style-Settings-是什么" class="headerlink" title="3. Style Settings 是什么"></a>3. Style Settings 是什么</h2><p>Style Settings 是一个通用插件，不只服务 Minimal。</p>
+<p>它会读取主题或 CSS snippet 里的 <code>@settings</code> 配置声明，然后生成可视化设置面板。</p>
+<p>Minimal 对 Style Settings 支持非常完整，所以它可以调整很多 Minimal 的细节变量。</p>
+<p>官方定位：</p>
+<blockquote>
+<p>Minimal Theme Settings 负责基础自定义和快捷键；Style Settings 提供更深入的界面细节定制。</p>
+</blockquote>
+<h3 id="3-1-它适合管理什么"><a href="#3-1-它适合管理什么" class="headerlink" title="3.1 它适合管理什么"></a>3.1 它适合管理什么</h3><p>Style Settings 更适合管理“细节样式”：</p>
+<ul>
+<li>背景色</li>
+<li>边框色</li>
+<li>链接色</li>
+<li>标题字体、字号、字重、颜色</li>
+<li>引用块背景、文字、边框</li>
+<li>代码块背景、文字、语法高亮</li>
+<li>表格样式</li>
+<li>Callout 样式</li>
+<li>图标颜色</li>
+<li>图片透明度</li>
+<li>Dataview 显示样式</li>
+<li>Graph 节点颜色</li>
+<li>标签颜色</li>
+</ul>
+<h3 id="3-2-配置文件位置"><a href="#3-2-配置文件位置" class="headerlink" title="3.2 配置文件位置"></a>3.2 配置文件位置</h3><p>Style Settings 的配置保存在：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.obsidian/plugins/obsidian-style-settings/data.json</span><br></pre></td></tr></table></figure>
+
+<p>你当前库中的实际路径是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">C:\Users\hjsoft\Nutstore\1\我的坚果云\hexo\source\_posts\.obsidian\plugins\obsidian-style-settings\data.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-常见配置项说明"><a href="#3-3-常见配置项说明" class="headerlink" title="3.3 常见配置项说明"></a>3.3 常见配置项说明</h3><p>Minimal 的 Style Settings 配置项很多，下面列常用的。</p>
+<h4 id="3-3-1-界面颜色"><a href="#3-3-1-界面颜色" class="headerlink" title="3.3.1 界面颜色"></a>3.3.1 界面颜色</h4><table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>CSS 变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base color</td>
+<td><code>--base-h</code>, <code>--base-s</code>, <code>--base-l</code></td>
+<td>基础背景色系统</td>
+</tr>
+<tr>
+<td>Primary background</td>
+<td><code>--bg1</code></td>
+<td>主窗口背景</td>
+</tr>
+<tr>
+<td>Secondary background</td>
+<td><code>--bg2</code></td>
+<td>侧栏、菜单背景</td>
+</tr>
+<tr>
+<td>Active background</td>
+<td><code>--bg3</code></td>
+<td>当前项、悬停背景</td>
+</tr>
+<tr>
+<td>Border color</td>
+<td><code>--ui1</code></td>
+<td>普通边框</td>
+</tr>
+<tr>
+<td>Highlighted border color</td>
+<td><code>--ui2</code></td>
+<td>悬停边框</td>
+</tr>
+<tr>
+<td>Active border color</td>
+<td><code>--ui3</code></td>
+<td>激活边框</td>
+</tr>
+</tbody></table>
+<h4 id="3-3-2-强调色和链接色"><a href="#3-3-2-强调色和链接色" class="headerlink" title="3.3.2 强调色和链接色"></a>3.3.2 强调色和链接色</h4><table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>CSS 变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accent color</td>
+<td><code>--ax1</code></td>
+<td>链接、按钮等强调色</td>
+</tr>
+<tr>
+<td>Accent color hover</td>
+<td><code>--ax2</code></td>
+<td>悬停强调色</td>
+</tr>
+<tr>
+<td>Accent color interactive</td>
+<td><code>--ax3</code></td>
+<td>交互控件颜色</td>
+</tr>
+<tr>
+<td>Text on accent</td>
+<td><code>--sp1</code></td>
+<td>强调色上的文字</td>
+</tr>
+<tr>
+<td>Internal link color</td>
+<td><code>--link-color</code></td>
+<td>内链颜色</td>
+</tr>
+<tr>
+<td>Internal link color hover</td>
+<td><code>--link-color-hover</code></td>
+<td>内链悬停颜色</td>
+</tr>
+</tbody></table>
+<p>飞书风格建议：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>链接蓝</td>
+<td><code>#1456f0</code></td>
+</tr>
+<tr>
+<td>悬停蓝</td>
+<td><code>#0f48d8</code></td>
+</tr>
+<tr>
+<td>深色模式链接</td>
+<td><code>#78a0ff</code></td>
+</tr>
+</tbody></table>
+<h4 id="3-3-3-标题"><a href="#3-3-3-标题" class="headerlink" title="3.3.3 标题"></a>3.3.3 标题</h4><p>每一级标题都可以单独设置：</p>
+<table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>示例变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Heading font</td>
+<td><code>--h1-font</code></td>
+<td>标题字体</td>
+</tr>
+<tr>
+<td>Heading font size</td>
+<td><code>--h1-size</code></td>
+<td>标题字号</td>
+</tr>
+<tr>
+<td>Heading font weight</td>
+<td><code>--h1-weight</code></td>
+<td>标题字重</td>
+</tr>
+<tr>
+<td>Heading font color</td>
+<td><code>--h1-color</code></td>
+<td>标题颜色</td>
+</tr>
+<tr>
+<td>Heading font variant</td>
+<td><code>--h1-variant</code></td>
+<td>大小写变体</td>
+</tr>
+<tr>
+<td>Heading font style</td>
+<td><code>--h1-style</code></td>
+<td>正常、斜体等</td>
+</tr>
+<tr>
+<td>Heading divider line</td>
+<td>class toggle</td>
+<td>标题下划线</td>
+</tr>
+</tbody></table>
+<p>飞书风格建议：</p>
+<table>
+<thead>
+<tr>
+<th>标题</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H1</td>
+<td><code>34px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+<tr>
+<td>H2</td>
+<td><code>22px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+<tr>
+<td>H3</td>
+<td><code>20px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+<tr>
+<td>H4</td>
+<td><code>18px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+<tr>
+<td>H5&#x2F;H6</td>
+<td><code>16px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
+</tr>
+</tbody></table>
+<h4 id="3-3-4-引用块"><a href="#3-3-4-引用块" class="headerlink" title="3.3.4 引用块"></a>3.3.4 引用块</h4><table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>CSS 变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Blockquote text color</td>
+<td><code>--blockquote-color</code></td>
+<td>引用文字颜色</td>
+</tr>
+<tr>
+<td>Blockquote background color</td>
+<td><code>--blockquote-background-color</code></td>
+<td>引用背景</td>
+</tr>
+<tr>
+<td>Blockquote border color</td>
+<td><code>--blockquote-border-color</code></td>
+<td>左侧边框颜色</td>
+</tr>
+<tr>
+<td>Blockquote border thickness</td>
+<td><code>--blockquote-border-thickness</code></td>
+<td>左侧边框粗细</td>
+</tr>
+<tr>
+<td>Blockquote font size</td>
+<td><code>--blockquote-size</code></td>
+<td>引用字号</td>
+</tr>
+<tr>
+<td>Blockquote font style</td>
+<td><code>--blockquote-font-style</code></td>
+<td>引用是否斜体</td>
+</tr>
+</tbody></table>
+<p>飞书风格建议：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>背景</td>
+<td><code>#fafafa</code> 或 <code>#f5f6f7</code></td>
+</tr>
+<tr>
+<td>边框</td>
+<td><code>#dee0e3</code></td>
+</tr>
+<tr>
+<td>边框粗细</td>
+<td><code>3px</code></td>
+</tr>
+<tr>
+<td>文字</td>
+<td>使用 <code>--text-muted</code> 或接近 <code>#646a73</code></td>
+</tr>
+</tbody></table>
+<p>如果引用块看起来太灰，优先把背景从 <code>#f5f6f7</code> 改成 <code>#fafafa</code>。</p>
+<h4 id="3-3-5-代码块"><a href="#3-3-5-代码块" class="headerlink" title="3.3.5 代码块"></a>3.3.5 代码块</h4><table>
+<thead>
+<tr>
+<th>设置项</th>
+<th>CSS 变量</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Code font size</td>
+<td><code>--code-font-size</code></td>
+<td>代码字号</td>
+</tr>
+<tr>
+<td>Scroll long lines</td>
+<td>class toggle</td>
+<td>长代码是否横向滚动</td>
+</tr>
+<tr>
+<td>Code background color</td>
+<td><code>--code-background</code></td>
+<td>代码块背景</td>
+</tr>
+<tr>
+<td>Code text color</td>
+<td><code>--code-normal</code></td>
+<td>代码文字颜色</td>
+</tr>
+</tbody></table>
+<p>飞书风格建议：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代码字号</td>
+<td><code>14px</code></td>
+</tr>
+<tr>
+<td>代码行高</td>
+<td><code>22px</code>，如果 Style Settings 不能调，再用 CSS snippet</td>
+</tr>
+<tr>
+<td>背景</td>
+<td><code>#f5f6f7</code></td>
+</tr>
+<tr>
+<td>边框</td>
+<td><code>#dee0e3</code>，如果 Style Settings 不能调，再用 CSS snippet</td>
+</tr>
+<tr>
+<td>圆角</td>
+<td><code>8px</code>，通常需要 CSS snippet</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-两个插件怎么分工"><a href="#4-两个插件怎么分工" class="headerlink" title="4. 两个插件怎么分工"></a>4. 两个插件怎么分工</h2><h3 id="4-1-推荐分工表"><a href="#4-1-推荐分工表" class="headerlink" title="4.1 推荐分工表"></a>4.1 推荐分工表</h3><table>
+<thead>
+<tr>
+<th>需求</th>
+<th>推荐位置</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主题选择</td>
+<td>Obsidian 外观设置</td>
+<td>原生配置最稳定</td>
+</tr>
+<tr>
+<td>当前配色方案</td>
+<td>Minimal Theme Settings</td>
+<td>Minimal 官方支持</td>
+</tr>
+<tr>
+<td>背景对比度</td>
+<td>Minimal Theme Settings</td>
+<td>官方已有 Default&#x2F;Low contrast&#x2F;All white 等选项</td>
+</tr>
+<tr>
+<td>正文字号</td>
+<td>Minimal Theme Settings</td>
+<td>全局排版基础项</td>
+</tr>
+<tr>
+<td>正文行高</td>
+<td>Minimal Theme Settings</td>
+<td>官方配置，避免 CSS 冲突</td>
+</tr>
+<tr>
+<td>正文宽度</td>
+<td>Minimal Theme Settings</td>
+<td>官方 line width 配置</td>
+</tr>
+<tr>
+<td>图片是否铺满</td>
+<td>Minimal Theme Settings</td>
+<td>官方媒体宽度配置</td>
+</tr>
+<tr>
+<td>标题颜色</td>
+<td>Style Settings</td>
+<td>每级标题可独立调</td>
+</tr>
+<tr>
+<td>标题字号</td>
+<td>Style Settings</td>
+<td>每级标题可独立调</td>
+</tr>
+<tr>
+<td>链接颜色</td>
+<td>Style Settings</td>
+<td>Minimal 暴露了变量</td>
+</tr>
+<tr>
+<td>引用背景</td>
+<td>Style Settings</td>
+<td>Minimal 暴露了变量</td>
+</tr>
+<tr>
+<td>引用圆角</td>
+<td>CSS snippet</td>
+<td>Style Settings 通常不暴露圆角</td>
+</tr>
+<tr>
+<td>代码块背景</td>
+<td>Style Settings</td>
+<td>Minimal 暴露了变量</td>
+</tr>
+<tr>
+<td>代码块边框&#x2F;圆角</td>
+<td>CSS snippet</td>
+<td>细节补丁</td>
+</tr>
+<tr>
+<td>左侧文件树当前项样式</td>
+<td>CSS snippet 或 Minimal 功能</td>
+<td>具体效果通常要 CSS 微调</td>
+</tr>
+<tr>
+<td>插件样式冲突</td>
+<td>CSS snippet</td>
+<td>只能局部覆盖</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-不推荐的做法"><a href="#4-2-不推荐的做法" class="headerlink" title="4.2 不推荐的做法"></a>4.2 不推荐的做法</h3><p>不要这样做：</p>
+<ul>
+<li>直接改 <code>themes/Minimal/theme.css</code></li>
+<li>同一个变量既在 Style Settings 里调，又在 CSS snippet 里调</li>
+<li>把所有视觉配置都塞进一个巨大 <code>customize.css</code></li>
+<li>同时启用多个全局美化 snippet</li>
+<li>看到不满意就加 <code>!important</code></li>
+</ul>
+<p>这些做法短期有效，长期会导致你不知道到底是谁在生效。</p>
+<hr>
+<h2 id="5-飞书风格推荐配置"><a href="#5-飞书风格推荐配置" class="headerlink" title="5. 飞书风格推荐配置"></a>5. 飞书风格推荐配置</h2><p>下面是一套适合“飞书式文档阅读”的配置思路。</p>
+<h3 id="5-1-Minimal-Theme-Settings"><a href="#5-1-Minimal-Theme-Settings" class="headerlink" title="5.1 Minimal Theme Settings"></a>5.1 Minimal Theme Settings</h3><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Body font size</td>
+<td><code>16</code></td>
+</tr>
+<tr>
+<td>Line height</td>
+<td><code>1.8</code></td>
+</tr>
+<tr>
+<td>Normal line width</td>
+<td><code>52</code></td>
+</tr>
+<tr>
+<td>Wide line width</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td>Maximum line width</td>
+<td><code>88</code></td>
+</tr>
+<tr>
+<td>Maximize media</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>Colorful headings</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>Colorful frame</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>Readable line length</td>
+<td>开启</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-Style-Settings"><a href="#5-2-Style-Settings" class="headerlink" title="5.2 Style Settings"></a>5.2 Style Settings</h3><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>建议值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H1 size</td>
+<td><code>34px</code></td>
+</tr>
+<tr>
+<td>H2 size</td>
+<td><code>22px</code></td>
+</tr>
+<tr>
+<td>H3 size</td>
+<td><code>20px</code></td>
+</tr>
+<tr>
+<td>Heading color</td>
+<td><code>#1f2329</code></td>
+</tr>
+<tr>
+<td>Link color</td>
+<td><code>#1456f0</code></td>
+</tr>
+<tr>
+<td>Link hover</td>
+<td><code>#0f48d8</code></td>
+</tr>
+<tr>
+<td>Blockquote background</td>
+<td><code>#fafafa</code></td>
+</tr>
+<tr>
+<td>Blockquote border</td>
+<td><code>#dee0e3</code></td>
+</tr>
+<tr>
+<td>Code background</td>
+<td><code>#f5f6f7</code></td>
+</tr>
+<tr>
+<td>Code size</td>
+<td><code>14px</code></td>
+</tr>
+</tbody></table>
+<h3 id="5-3-CSS-snippet-只保留这些"><a href="#5-3-CSS-snippet-只保留这些" class="headerlink" title="5.3 CSS snippet 只保留这些"></a>5.3 CSS snippet 只保留这些</h3><p>如果你追求飞书效果，CSS snippet 只建议保留：</p>
+<ul>
+<li>引用块圆角和内边距</li>
+<li>Live Preview 中连续引用块的背景修正</li>
+<li>代码块圆角、边框、内边距</li>
+<li>图片圆角</li>
+<li>左侧文件树当前项蓝色高亮</li>
+</ul>
+<p>不要把正文字号、正文宽度、行高、标题颜色写进 CSS snippet。</p>
+<hr>
+<h2 id="6-常见问题"><a href="#6-常见问题" class="headerlink" title="6. 常见问题"></a>6. 常见问题</h2><h3 id="6-1-为什么我改了-line-width-没效果"><a href="#6-1-为什么我改了-line-width-没效果" class="headerlink" title="6.1 为什么我改了 line width 没效果"></a>6.1 为什么我改了 line width 没效果</h3><p>检查 Obsidian 原生设置：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Settings -&gt; Editor -&gt; Readable line length</span><br></pre></td></tr></table></figure>
+
+<p>需要开启这个设置，Minimal 的 line width 才能更稳定地生效。</p>
+<h3 id="6-2-为什么左侧栏看起来灰灰暗暗"><a href="#6-2-为什么左侧栏看起来灰灰暗暗" class="headerlink" title="6.2 为什么左侧栏看起来灰灰暗暗"></a>6.2 为什么左侧栏看起来灰灰暗暗</h3><p>优先检查 Minimal Theme Settings 的 Background contrast。</p>
+<p>建议顺序：</p>
+<ol>
+<li>试 <code>Low contrast</code></li>
+<li>再试 <code>All white</code></li>
+<li>最后才考虑 CSS snippet</li>
+</ol>
+<p>不要一开始就写 CSS 强行改侧栏背景。</p>
+<h3 id="6-3-为什么引用块很灰"><a href="#6-3-为什么引用块很灰" class="headerlink" title="6.3 为什么引用块很灰"></a>6.3 为什么引用块很灰</h3><p>优先在 Style Settings 里调：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Blockquotes -&gt; Blockquote background color</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>#f5f6f7</code> 太灰，可以改成：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">#fafafa</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-为什么编辑模式和阅读模式不一致"><a href="#6-4-为什么编辑模式和阅读模式不一致" class="headerlink" title="6.4 为什么编辑模式和阅读模式不一致"></a>6.4 为什么编辑模式和阅读模式不一致</h3><p>Obsidian 的阅读模式和 Live Preview 使用的 DOM 结构不同。</p>
+<p>Style Settings 通常能影响变量，但一些细节，例如连续引用块的圆角、<code>&gt;</code> 符号隐藏、代码块内边距，可能需要 CSS snippet 补丁。</p>
+<h3 id="6-5-为什么-Style-Settings-里改了，文件又被自动清理"><a href="#6-5-为什么-Style-Settings-里改了，文件又被自动清理" class="headerlink" title="6.5 为什么 Style Settings 里改了，文件又被自动清理"></a>6.5 为什么 Style Settings 里改了，文件又被自动清理</h3><p>Style Settings 会根据主题声明的 <code>@settings</code> 校验配置项。</p>
+<p>如果你手动写入了主题没有声明的 key，插件可能会在加载后清理掉。</p>
+<p>所以手动改 <code>data.json</code> 时，最好确认 Minimal 的 <code>theme.css</code> 里确实存在对应 <code>id</code>。</p>
+<hr>
+<h2 id="7-当前库推荐维护规则"><a href="#7-当前库推荐维护规则" class="headerlink" title="7. 当前库推荐维护规则"></a>7. 当前库推荐维护规则</h2><p>你的库建议这样维护：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>负责内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.obsidian/appearance.json</code></td>
+<td>当前主题、基础字号、字体、启用哪些 CSS snippets</td>
+</tr>
+<tr>
+<td><code>.obsidian/plugins/obsidian-minimal-settings/data.json</code></td>
+<td>Minimal 的全局排版和功能开关</td>
+</tr>
+<tr>
+<td><code>.obsidian/plugins/obsidian-style-settings/data.json</code></td>
+<td>Minimal 的颜色、标题、代码、引用等细节变量</td>
+</tr>
+<tr>
+<td><code>.obsidian/snippets/feishu-doc-style.css</code></td>
+<td>飞书风格的最后补丁</td>
+</tr>
+<tr>
+<td><code>.obsidian/snippets/customize.css</code></td>
+<td>你已有的个人杂项补丁，后续建议继续拆小</td>
+</tr>
+</tbody></table>
+<p>如果以后你想调整外观，推荐顺序是：</p>
+<ol>
+<li>先看 Obsidian 原生设置能不能调。</li>
+<li>再看 Minimal Theme Settings 能不能调。</li>
+<li>再看 Style Settings 能不能调。</li>
+<li>最后才写 CSS snippet。</li>
+</ol>
+<hr>
+<h2 id="8-参考链接"><a href="#8-参考链接" class="headerlink" title="8. 参考链接"></a>8. 参考链接</h2><ul>
+<li>Minimal Theme Settings GitHub：<a href="https://github.com/kepano/obsidian-minimal-settings">https://github.com/kepano/obsidian-minimal-settings</a></li>
+<li>Minimal 官方文档：<a href="https://minimal.guide/">https://minimal.guide/</a></li>
+<li>Color schemes：<a href="https://minimal.guide/features/color-schemes">https://minimal.guide/features/color-schemes</a></li>
+<li>Minimal Theme Settings：<a href="https://minimal.guide/plugins/minimal-theme-settings">https://minimal.guide/plugins/minimal-theme-settings</a></li>
+<li>Style Settings：<a href="https://minimal.guide/plugins/style-settings">https://minimal.guide/plugins/style-settings</a></li>
+<li>Line width：<a href="https://minimal.guide/features/line-width">https://minimal.guide/features/line-width</a></li>
+<li>Background contrast：<a href="https://minimal.guide/features/contrast">https://minimal.guide/features/contrast</a></li>
 </ul>
 ]]></content>
   </entry>
@@ -2780,135 +3957,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Obsidian插件汇总</title>
-    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
-<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
-</blockquote>
-<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
-<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
-</blockquote>
-<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
-<p>Page Feature 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
-<blockquote>
-<p>Page Feature 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
-<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
-<p>Page Behaviors 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
-<blockquote>
-<p>Page Behaviors 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
-<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
-<ul>
-<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
-<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
-</ul>
-<blockquote>
-<p>Embedding options 英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
-<blockquote>
-<p>Embedding options 中文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
-<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的使用可以参考下 GIF</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
-<p>😀 导出时建议选择独立文档</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
-<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
-<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
-<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
-<blockquote>
-<p>开启了删除日志, 成功删除后会有如下界面</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
-<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
-</blockquote>
-<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
-<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
-<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
-</blockquote>
-<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>直接按照下图配置即可, 没什么按需调整的选项</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
-<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的集团使用可参考下 GIF 以及表格</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
-<table>
-<thead>
-<tr>
-<th>热键</th>
-<th>行为</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Tab</td>
-<td>下一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Shift + Tab</td>
-<td>前一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>下一行</td>
-<td>跳转至下一行, 没有下一行则新增</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + D</td>
-<td>打开表格帮助面板</td>
-<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
-</tr>
-</tbody></table>
-<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>该插件主要</p>
-</blockquote>
-<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
-<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
-<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
-]]></content>
-      <tags>
-        <tag>工具/obsidian</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Orecal数据库还原</title>
     <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
     <content><![CDATA[<blockquote>
@@ -4664,6 +5712,135 @@
       </tags>
   </entry>
   <entry>
+    <title>Obsidian插件汇总</title>
+    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
+<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
+</blockquote>
+<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
+</blockquote>
+<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
+<p>Page Feature 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
+<blockquote>
+<p>Page Feature 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
+<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
+<p>Page Behaviors 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
+<blockquote>
+<p>Page Behaviors 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
+<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
+<ul>
+<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
+<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
+</ul>
+<blockquote>
+<p>Embedding options 英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
+<blockquote>
+<p>Embedding options 中文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的使用可以参考下 GIF</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
+<p>😀 导出时建议选择独立文档</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
+<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
+<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
+<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
+<blockquote>
+<p>开启了删除日志, 成功删除后会有如下界面</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
+<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
+</blockquote>
+<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
+<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
+<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
+</blockquote>
+<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>直接按照下图配置即可, 没什么按需调整的选项</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
+<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的集团使用可参考下 GIF 以及表格</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
+<table>
+<thead>
+<tr>
+<th>热键</th>
+<th>行为</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tab</td>
+<td>下一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>前一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>下一行</td>
+<td>跳转至下一行, 没有下一行则新增</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + D</td>
+<td>打开表格帮助面板</td>
+<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
+</tr>
+</tbody></table>
+<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>该插件主要</p>
+</blockquote>
+<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
+<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
+<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
+]]></content>
+      <tags>
+        <tag>工具/obsidian</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git 入门指南：写给完全不懂版本控制的你</title>
     <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
@@ -4876,113 +6053,6 @@
         <tag>Git</tag>
         <tag>版本控制</tag>
         <tag>入门教程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
@@ -5426,6 +6496,113 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
