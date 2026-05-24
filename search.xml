@@ -1,459 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>markdown-style-test-feishu</title>
-    <url>/2026/05/23/markdown-style-test-feishu/</url>
-    <content><![CDATA[<h2 id="Markdown-样式测试文档"><a href="#Markdown-样式测试文档" class="headerlink" title="Markdown 样式测试文档"></a>Markdown 样式测试文档</h2><blockquote>
-<p>用途：将本文导入或复制到飞书文档，用来对比 Obsidian、Minimal 主题、飞书云文档之间的排版差异</p>
-<p>重点观察：标题层级、段落行高、列表缩进、代码块、引用块、表格、图片位置、图片尺寸、图文混排。</p>
-</blockquote>
-<hr>
-<h3 id="1-基础正文"><a href="#1-基础正文" class="headerlink" title="1. 基础正文"></a>1. 基础正文</h3><p>这是一段普通正文，用来观察默认字号、行高、段落间距和正文宽度。理想的阅读效果应该是文字不拥挤、行距舒适、每行长度适中，长时间阅读时不会产生明显疲劳。</p>
-<p>这是第二段正文。这里包含一些中文、English words、数字 1234567890，以及常见标点符号：逗号，句号。冒号：分号；括号（内容）和引号“示例”。</p>
-<p>这是一段较长的正文，用来测试自动换行效果。如果正文容器过宽，读者的视线移动距离会变长；如果正文容器过窄，换行会过于频繁。飞书文档的正文宽度通常比较克制，这也是它看起来舒服的重要原因之一。</p>
-<h3 id="2-行内样式"><a href="#2-行内样式" class="headerlink" title="2. 行内样式"></a>2. 行内样式</h3><p>这是一段包含 <strong>加粗文本</strong>、<em>斜体文本</em>、<em><strong>加粗斜体</strong></em>、<del>删除线</del>、<code>inline code</code>、<a href="https://www.feishu.cn/">普通链接</a> 的正文。</p>
-<p>中文技术文档里经常会出现变量名，例如 <code>fileKey</code>、<code>fileUrl</code>、<code>folder</code>、<code>uploadPath</code>。这些行内代码应该足够醒目，但不应该打断阅读节奏。</p>
-<h3 id="3-标题层级"><a href="#3-标题层级" class="headerlink" title="3. 标题层级"></a>3. 标题层级</h3><h2 id="H1-一级标题：页面主标题"><a href="#H1-一级标题：页面主标题" class="headerlink" title="H1 一级标题：页面主标题"></a>H1 一级标题：页面主标题</h2><p>一级标题通常只应该在页面顶部出现一次，用来观察主标题字号、字重和上下间距。</p>
-<h3 id="H2-二级标题：主要章节"><a href="#H2-二级标题：主要章节" class="headerlink" title="H2 二级标题：主要章节"></a>H2 二级标题：主要章节</h3><p>二级标题适合划分主要章节，应该有明显的视觉权重。</p>
-<h4 id="H3-三级标题：小节标题"><a href="#H3-三级标题：小节标题" class="headerlink" title="H3 三级标题：小节标题"></a>H3 三级标题：小节标题</h4><p>三级标题适合进一步拆分内容，应该比正文突出，但不要过于夸张。</p>
-<h5 id="H4-四级标题"><a href="#H4-四级标题" class="headerlink" title="H4 四级标题"></a>H4 四级标题</h5><p>四级标题常用于技术文档中的细节说明。</p>
-<h6 id="H5-五级标题"><a href="#H5-五级标题" class="headerlink" title="H5 五级标题"></a>H5 五级标题</h6><p>五级标题测试较低层级标题的可读性。</p>
-<h6 id="H6-六级标题"><a href="#H6-六级标题" class="headerlink" title="H6 六级标题"></a>H6 六级标题</h6><p>六级标题测试最小标题样式。</p>
-<h3 id="4-无序列表"><a href="#4-无序列表" class="headerlink" title="4. 无序列表"></a>4. 无序列表</h3><ul>
-<li>第一层列表项，用来观察项目符号、左侧缩进和行高。</li>
-<li>第一层列表项较长时，会自动换行。换行后的第二行应该和正文内容对齐，而不是回到项目符号下面。</li>
-<li>第一层列表项包含 <code>inline code</code> 和 <strong>加粗文本</strong>。<ul>
-<li>第二层列表项，用来观察嵌套缩进。</li>
-<li>第二层列表项继续补充说明。<ul>
-<li>第三层列表项，用来观察更深层级缩进。</li>
-<li>第三层列表项包含中文和 English words。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-有序列表"><a href="#5-有序列表" class="headerlink" title="5. 有序列表"></a>5. 有序列表</h3><ol>
-<li>第一步：选择文件。</li>
-<li>第二步：上传到后端接口。</li>
-<li>第三步：后端返回 <code>fileKey</code> 和 <code>fileUrl</code>。</li>
-<li>第四步：业务表只保存 <code>fileKey</code>。</li>
-<li>第五步：页面展示时通过 <code>fileKey</code> 获取 <code>fileUrl</code>。</li>
-</ol>
-<h4 id="5-1-嵌套有序列表"><a href="#5-1-嵌套有序列表" class="headerlink" title="5.1 嵌套有序列表"></a>5.1 嵌套有序列表</h4><ol>
-<li>后端处理<ol>
-<li>校验文件类型。</li>
-<li>生成存储路径。</li>
-<li>保存文件记录。</li>
-</ol>
-</li>
-<li>前端处理<ol>
-<li>调用上传接口。</li>
-<li>保存返回结果。</li>
-<li>渲染图片或下载链接。</li>
-</ol>
-</li>
-</ol>
-<h3 id="6-任务列表"><a href="#6-任务列表" class="headerlink" title="6. 任务列表"></a>6. 任务列表</h3><ul>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务：整理上传接口。</li>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务：统一 <code>fileKey</code> 规则。</li>
-<li><input disabled="" type="checkbox"> 待完成任务：补充云存储配置。</li>
-<li><input disabled="" type="checkbox"> 待完成任务：增加异常场景说明。</li>
-</ul>
-<h3 id="7-引用块"><a href="#7-引用块" class="headerlink" title="7. 引用块"></a>7. 引用块</h3><blockquote>
-<p>这是普通引用块。适合放说明、提示、背景信息。需要观察引用块左边框、背景色、内边距和文字颜色。</p>
-</blockquote>
-<blockquote>
-<p>多段引用块第一段。</p>
-<p>多段引用块第二段。这里用来观察引用块内部段落间距。</p>
-</blockquote>
-<blockquote>
-<p><strong>注意：</strong> 如果引用块背景太深，会破坏页面的轻盈感；如果边框太重，也会显得像警告框。</p>
-</blockquote>
-<h3 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8. 代码块"></a>8. 代码块</h3><h4 id="8-1-普通文本代码块"><a href="#8-1-普通文本代码块" class="headerlink" title="8.1 普通文本代码块"></a>8.1 普通文本代码块</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-2-Java-代码块"><a href="#8-2-Java-代码块" class="headerlink" title="8.2 Java 代码块"></a>8.2 Java 代码块</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> FileUploadVO <span class="title function_">upload</span><span class="params">(MultipartFile file, String folder)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileKey</span> <span class="operator">=</span> fileStorageService.save(file, folder);</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileUrl</span> <span class="operator">=</span> fileUrlService.getUrl(fileKey);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">FileUploadVO</span>(fileKey, fileUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-3-TypeScript-代码块"><a href="#8-3-TypeScript-代码块" class="headerlink" title="8.3 TypeScript 代码块"></a>8.3 TypeScript 代码块</h4><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">uploadFile</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">File</span>, <span class="attr">folder</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">  formData.<span class="title function_">append</span>(<span class="string">&#x27;file&#x27;</span>, file);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> request.<span class="property">post</span>&lt;<span class="title class_">FileUploadVO</span>&gt;(<span class="string">`/support/file/upload?folder=<span class="subst">$&#123;folder&#125;</span>`</span>, formData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-4-JSON-代码块"><a href="#8-4-JSON-代码块" class="headerlink" title="8.4 JSON 代码块"></a>8.4 JSON 代码块</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;fileKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;fileUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://example.com/upload/course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;folder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="9-表格"><a href="#9-表格" class="headerlink" title="9. 表格"></a>9. 表格</h3><table>
-<thead>
-<tr>
-<th>模块</th>
-<th>路径</th>
-<th>说明</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>后端接口</td>
-<td><code>FileController.java</code></td>
-<td>负责上传、下载、获取 URL</td>
-<td>已完成</td>
-</tr>
-<tr>
-<td>存储服务</td>
-<td><code>IFileStorageService.java</code></td>
-<td>屏蔽本地存储和云存储差异</td>
-<td>已完成</td>
-</tr>
-<tr>
-<td>前端封装</td>
-<td><code>file-api.ts</code></td>
-<td>统一上传入口</td>
-<td>待补充</td>
-</tr>
-<tr>
-<td>图片展示</td>
-<td><code>ImagePreview.vue</code></td>
-<td>根据 <code>fileKey</code> 获取展示地址</td>
-<td>待优化</td>
-</tr>
-</tbody></table>
-<h4 id="9-1-长文本表格"><a href="#9-1-长文本表格" class="headerlink" title="9.1 长文本表格"></a>9.1 长文本表格</h4><table>
-<thead>
-<tr>
-<th>场景</th>
-<th>推荐做法</th>
-<th>不推荐做法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>保存业务数据</td>
-<td>只保存 <code>fileKey</code>，展示时再换取 <code>fileUrl</code></td>
-<td>直接保存完整访问地址</td>
-</tr>
-<tr>
-<td>切换存储方式</td>
-<td>后端统一适配，本地和云存储共用规则</td>
-<td>前端根据环境拼接不同地址</td>
-</tr>
-<tr>
-<td>图片预览</td>
-<td>使用统一组件处理加载、失败、占位图</td>
-<td>每个页面各写一套逻辑</td>
-</tr>
-</tbody></table>
-<h3 id="10-分割线"><a href="#10-分割线" class="headerlink" title="10. 分割线"></a>10. 分割线</h3><p>上方内容。</p>
-<hr>
-<p>下方内容。观察分割线的颜色、上下间距和粗细。</p>
-<h3 id="11-图片测试"><a href="#11-图片测试" class="headerlink" title="11. 图片测试"></a>11. 图片测试</h3><p>以下图片使用远程占位图，方便复制或导入到飞书后直接显示。</p>
-<h4 id="11-1-默认-Markdown-图片"><a href="#11-1-默认-Markdown-图片" class="headerlink" title="11.1 默认 Markdown 图片"></a>11.1 默认 Markdown 图片</h4><p><img src="https://placehold.co/900x360/png?text=Default+Markdown+Image" alt="默认图片：宽 900 高 360"></p>
-<p>观察点：默认图片是否铺满正文宽度，是否有圆角，图片上下是否留白。</p>
-<h4 id="11-2-小图"><a href="#11-2-小图" class="headerlink" title="11.2 小图"></a>11.2 小图</h4><p><img src="https://placehold.co/240x160/png?text=Small+Image" alt="小图：宽 240 高 160"></p>
-<p>观察点：小图是否左对齐，是否和正文贴得太近。</p>
-<h4 id="11-3-HTML-控制宽度"><a href="#11-3-HTML-控制宽度" class="headerlink" title="11.3 HTML 控制宽度"></a>11.3 HTML 控制宽度</h4><img src="https://placehold.co/480x240/png?text=HTML+Width+480" alt="HTML 宽度 480 图片" width="480" />
-
-<p>观察点：飞书是否保留 HTML 图片宽度；Obsidian 是否正常显示。</p>
-<h4 id="11-4-居中图片"><a href="#11-4-居中图片" class="headerlink" title="11.4 居中图片"></a>11.4 居中图片</h4><p align="center">
-  <img src="https://placehold.co/520x260/png?text=Centered+Image" alt="居中图片" width="520" />
-</p>
-
-<p>观察点：飞书是否保留居中效果；如果不保留，后续需要手动调整或使用飞书原生图片居中。</p>
-<h4 id="11-5-左右图文混排：左图右文"><a href="#11-5-左右图文混排：左图右文" class="headerlink" title="11.5 左右图文混排：左图右文"></a>11.5 左右图文混排：左图右文</h4><img src="https://placehold.co/260x180/png?text=Left+Image" alt="左侧图片" width="260" align="left" />
-
-<p>这是一段用于测试左图右文的正文。图片如果浮动成功，文字会从图片右侧开始环绕；如果不支持浮动，图片会独占一行。飞书导入 Markdown 时不一定保留 <code>align=&quot;left&quot;</code>，因此这里主要用于观察兼容性。</p>
-<p>这是一段继续补充的正文，用来测试多行文字环绕时的行高和右侧留白。若效果不稳定，建议在飞书里使用表格或分栏来实现稳定的图文排版。</p>
-<br clear="both" />
-
-<h4 id="11-6-左右图文混排：右图左文"><a href="#11-6-左右图文混排：右图左文" class="headerlink" title="11.6 左右图文混排：右图左文"></a>11.6 左右图文混排：右图左文</h4><img src="https://placehold.co/260x180/png?text=Right+Image" alt="右侧图片" width="260" align="right" />
-
-<p>这是一段用于测试右图左文的正文。图片如果浮动成功，文字会在图片左侧排列；如果导入后浮动失效，说明目标平台对 HTML 图片布局支持有限。</p>
-<p>在技术文档里，右图左文适合放界面截图说明，但如果兼容性不好，推荐改用表格方式实现。</p>
-<br clear="both" />
-
-<h4 id="11-7-使用表格实现左右图片"><a href="#11-7-使用表格实现左右图片" class="headerlink" title="11.7 使用表格实现左右图片"></a>11.7 使用表格实现左右图片</h4><table>
-<thead>
-<tr>
-<th>左图</th>
-<th>右图</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><img src="https://placehold.co/360x220/png?text=Left+Column" alt="左图"></td>
-<td><img src="https://placehold.co/360x220/png?text=Right+Column" alt="右图"></td>
-</tr>
-</tbody></table>
-<p>观察点：表格内图片是否等宽、是否有额外边框、是否适合作为稳定的左右布局方案。</p>
-<h4 id="11-8-图片加说明文字"><a href="#11-8-图片加说明文字" class="headerlink" title="11.8 图片加说明文字"></a>11.8 图片加说明文字</h4><p><img src="https://placehold.co/820x360/png?text=Upload+Flow+Diagram" alt="接口流程图"></p>
-<p>图 1：文件上传流程示意图。观察图片说明文字是否应该使用普通段落、引用块或斜体。</p>
-<p><em>图 2：这是斜体说明文字，用来测试图片 caption 的视觉效果。</em></p>
-<h3 id="12-链接与路径"><a href="#12-链接与路径" class="headerlink" title="12. 链接与路径"></a>12. 链接与路径</h3><p>普通链接：<a href="https://www.feishu.cn/">飞书官网</a></p>
-<p>裸链接：<a href="https://www.feishu.cn/">https://www.feishu.cn/</a></p>
-<p>相对路径示例：<code>smart-admin-api-java8-springboot2/sa-base/src/main/java/net/lab1024/sa/base/module/support/file/</code></p>
-<p>接口路径示例：<code>POST /support/file/upload?folder=course</code></p>
-<h3 id="13-数学公式兼容性"><a href="#13-数学公式兼容性" class="headerlink" title="13. 数学公式兼容性"></a>13. 数学公式兼容性</h3><p>行内公式：$E &#x3D; mc^2$</p>
-<p>块级公式：</p>
-<p>$$<br>sum &#x3D; principal \times rate \times days &#x2F; 365<br>$$</p>
-<p>观察点：飞书导入后是否保留公式渲染；如果没有渲染，是否以纯文本展示。</p>
-<h3 id="14-Mermaid-兼容性"><a href="#14-Mermaid-兼容性" class="headerlink" title="14. Mermaid 兼容性"></a>14. Mermaid 兼容性</h3><pre><code class="highlight mermaid">flowchart TD
-  A[前端选择文件] --&gt; B[调用上传接口]
-  B --&gt; C[后端保存文件]
-  C --&gt; D[返回 fileKey/fileUrl]
-  D --&gt; E[业务表保存 fileKey]
-  E --&gt; F[展示时获取 fileUrl]</code></pre>
-
-<p>观察点：飞书是否将 Mermaid 渲染为图，还是保留为代码块。</p>
-<h3 id="15-折叠内容兼容性"><a href="#15-折叠内容兼容性" class="headerlink" title="15. 折叠内容兼容性"></a>15. 折叠内容兼容性</h3><details>
-<summary>点击展开更多说明</summary>
-
-<p>这里是折叠内容。用于测试飞书是否保留 HTML details 标签。如果不支持，通常会以普通文本或被过滤掉。</p>
-</details>
-
-<h3 id="16-综合样例：文件上传模块说明"><a href="#16-综合样例：文件上传模块说明" class="headerlink" title="16. 综合样例：文件上传模块说明"></a>16. 综合样例：文件上传模块说明</h3><h4 id="16-1-总体原则"><a href="#16-1-总体原则" class="headerlink" title="16.1 总体原则"></a>16.1 总体原则</h4><p>本项目文件上传的核心原则：</p>
-<ol>
-<li>业务表只保存 <code>fileKey</code>。</li>
-<li>页面展示使用 <code>fileUrl</code>。</li>
-<li><code>fileUrl</code> 由后端统一生成。</li>
-<li>前端不要手工拼接 <code>/upload/$&#123;fileKey&#125;</code>。</li>
-<li>上传目录由 <code>folder</code> 参数决定。</li>
-<li>本地存储和云存储共用同一套 <code>fileKey</code> 规则。</li>
-</ol>
-<h4 id="16-2-典型流程"><a href="#16-2-典型流程" class="headerlink" title="16.2 典型流程"></a>16.2 典型流程</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
-
-<h4 id="16-3-推荐约定"><a href="#16-3-推荐约定" class="headerlink" title="16.3 推荐约定"></a>16.3 推荐约定</h4><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>命名规则</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>课程封面</td>
-<td><code>course-cover</code></td>
-<td><code>course-cover/2026/05/demo.png</code></td>
-</tr>
-<tr>
-<td>老师资质</td>
-<td><code>teacher-cert</code></td>
-<td><code>teacher-cert/2026/05/cert.pdf</code></td>
-</tr>
-<tr>
-<td>临时文件</td>
-<td><code>temp</code></td>
-<td><code>temp/2026/05/upload.tmp</code></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>推荐将所有文件访问入口收口到后端服务，避免前端直接依赖具体存储实现。</p>
-</blockquote>
-<h3 id="17-视觉检查清单"><a href="#17-视觉检查清单" class="headerlink" title="17. 视觉检查清单"></a>17. 视觉检查清单</h3><ul>
-<li><input disabled="" type="checkbox"> 正文字号是否舒适。</li>
-<li><input disabled="" type="checkbox"> 正文行高是否接近飞书的 <code>1.8</code>。</li>
-<li><input disabled="" type="checkbox"> 正文宽度是否接近 <code>820px</code>。</li>
-<li><input disabled="" type="checkbox"> 标题上下间距是否清晰。</li>
-<li><input disabled="" type="checkbox"> 列表缩进是否自然。</li>
-<li><input disabled="" type="checkbox"> 代码块背景是否足够轻。</li>
-<li><input disabled="" type="checkbox"> 表格是否清晰但不沉重。</li>
-<li><input disabled="" type="checkbox"> 图片默认位置是否符合预期。</li>
-<li><input disabled="" type="checkbox"> 左右图文混排是否稳定。</li>
-<li><input disabled="" type="checkbox"> 复制到飞书后是否有明显样式丢失。</li>
-</ul>
-<hr>
-<h3 id="18-结论记录区"><a href="#18-结论记录区" class="headerlink" title="18. 结论记录区"></a>18. 结论记录区</h3><p>你可以在飞书中复制下面这段，用来记录观察结果：</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>Obsidian 效果</th>
-<th>飞书效果</th>
-<th>是否需要调整</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>正文字号</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>正文行高</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>正文宽度</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>标题样式</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>代码块</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>表格</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>图片位置</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>图文混排</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-]]></content>
-  </entry>
-  <entry>
-    <title>ActiveMQ</title>
-    <url>/2024/12/09/archive/ActiveMQ/</url>
-    <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
-<p>MQ 就是消息中间件。MQ 是一种理念，ActiveMQ 是 MQ 的落地产品。不管是哪款消息中间件，都有如下一些技术维度：</p>
-</blockquote>
-<p><img src="/assets/ActiveMQ/image-20240408221948862.png" alt="|560"></p>
-<blockquote>
-<p>MQ 消息的详细比较</p>
-</blockquote>
-<p><img src="/assets/ActiveMQ/image-20240408222125860.png"></p>
-<blockquote>
-<p>各类 MQ 的擅长领域</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>MQ 种类</th>
-<th>变成语言</th>
-<th>擅长领域</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>kafka</td>
-<td>scala</td>
-<td>大数据领域的主流 MQ。</td>
-</tr>
-<tr>
-<td>rabbitmq</td>
-<td>erlang</td>
-<td>基于 erlang 语言，不好修改底层，不好查找问题的原因，不建议选用</td>
-</tr>
-<tr>
-<td>rocketmq</td>
-<td>java</td>
-<td>适用于大型项目。适用于集群</td>
-</tr>
-<tr>
-<td>activemq</td>
-<td>java</td>
-<td>适用于中小型项目</td>
-</tr>
-</tbody></table>
-<h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>面向消息的中间件（message-oriented middleware）MOM 能够很好的解决以上问题。是指利用高效可靠的消息传递机制与平台无关的数据交流，并基于数据通信来进行分布式系统的集成。通过提供消息传递和消息排队模型在分布式环境下提供应用解耦，弹性伸缩，冗余存储、流量削峰，异步通信，数据同步等功能。</p>
-<p>大致的过程是这样的：发送者把消息发送给消息服务器，消息服务器将消息存放在若干队列&#x2F;主题 topic 中，在合适的时候，消息服务器回将消息转发给接受者。在这个过程中，发送和接收是异步的，也就是发送无需等待，而且发送者和接受者的生命周期也没有必然的关系；尤其在发布 pub&#x2F;订阅 sub 模式下，也可以完成一对多的通信，即让一个消息有多个接受者。</p>
-<p><img src="/assets/ActiveMQ/image-20240408224621057.png"></p>
-<h2 id="如何安装与查看控制台"><a href="#如何安装与查看控制台" class="headerlink" title="如何安装与查看控制台"></a>如何安装与查看控制台</h2><h3 id="Linux-系统直接安装"><a href="#Linux-系统直接安装" class="headerlink" title="Linux 系统直接安装"></a>Linux 系统直接安装</h3><h4 id="检查-JAVA-环境"><a href="#检查-JAVA-环境" class="headerlink" title="检查 JAVA 环境"></a>检查 JAVA 环境</h4><p>由于 ActiveMQ 是 java 编写的，因此需要有 jdk 的运行环境，检查 Java 版本</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240408234356463.png"></p>
-<h4 id="官网下载安装包"><a href="#官网下载安装包" class="headerlink" title="官网下载安装包"></a>官网下载安装包</h4><p>凡遇技术，必定官网 <a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></p>
-<blockquote>
-<p>注意：5.16.x 版本及以下支持 java8，5.17.x-5.18.x 需要 java11，6 版本则需要 java17</p>
-</blockquote>
-<p>下图中左侧是稳定版，右侧是开发版。</p>
-<p><img src="/assets/ActiveMQ/image-20240408231212252.png"></p>
-<p>按需要查找版本，此处贴一个 5.14.5 版本的链接 <a href="https://activemq.apache.org/components/classic/download/classic-05-14-05">ActiveMQ — ActiveMQ (apache.org)</a>，由于后续涉及集群的搭建，建议下载 Linux 的版本，毕竟没有见过 window 搭建集群的</p>
-<p><img src="/assets/ActiveMQ/image-20240409182551469.png"></p>
-<h4 id="上传安装包到-Linux-服务器"><a href="#上传安装包到-Linux-服务器" class="headerlink" title="上传安装包到 Linux 服务器"></a>上传安装包到 Linux 服务器</h4><p>安装包放到&#x2F;opt 目录下，放在哪个目录没有硬性要求</p>
-<p><img src="/assets/ActiveMQ/image-20240408235316664.png"></p>
-<h4 id="创建软件安装文件夹"><a href="#创建软件安装文件夹" class="headerlink" title="创建软件安装文件夹"></a>创建软件安装文件夹</h4><blockquote>
-<p>软件安装文件夹，没有路径要求</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建软件安装的文件夹 -p 父目录不存在，则循环创建</span></span><br><span class="line"><span class="built_in">mkdir</span> -p /software/activeMQ/</span><br></pre></td></tr></table></figure>
-
-<h4 id="解压缩安装包"><a href="#解压缩安装包" class="headerlink" title="解压缩安装包"></a>解压缩安装包</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf apache-activemq-5.14.5-bin.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409000433353.png"></p>
-<h4 id="拷贝解压文件"><a href="#拷贝解压文件" class="headerlink" title="拷贝解压文件"></a>拷贝解压文件</h4><p>拷贝解压的软件到指定的安装文件夹，直接解压过去也是可以的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -r apache-activemq-5.14.5 /software/activeMQ/</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409000715651.png"></p>
-<h4 id="普通启动"><a href="#普通启动" class="headerlink" title="普通启动"></a>普通启动</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 首先要跳转到 %软件的安装目录%/bin 目录下</span></span><br><span class="line"><span class="built_in">cd</span> /software/activeMQ/apache-activemq-5.14.5/bin</span><br><span class="line"><span class="comment"># 执行启动命令</span></span><br><span class="line">./activemq start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409001242335.png"></p>
-<h4 id="启动时指定日志输出文件（重要"><a href="#启动时指定日志输出文件（重要" class="headerlink" title="启动时指定日志输出文件（重要)"></a>启动时指定日志输出文件（重要)</h4><p>activemq 日志默认的位置是在：%activemq 安装目录%&#x2F;data&#x2F;activemq.log</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  activemq start  &gt;  %指定路径%</span></span><br><span class="line"> activemq start  &gt;  /usr/local/raohao/activemq.log</span><br></pre></td></tr></table></figure>
-
-<h3 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h3><blockquote>
-<p>前情提要：Docker 需要已经安装，Docker 的使用参考 <a href="Docker%E5%B0%8F%E5%86%8C.md">Docker小册</a></p>
-</blockquote>
-<h4 id="查询镜像"><a href="#查询镜像" class="headerlink" title="查询镜像"></a>查询镜像</h4><blockquote>
-<p>官方并没有为 ActiveMq 制作镜像，我们只能选择点赞数最多的一个下载使用。版本 5.14.3</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker search activemq</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409173028743.png"></p>
-<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull webcenter/activemq</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409173703232.png"></p>
-<h4 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images webcenter/activemq</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409174536552.png"></p>
-<h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><blockquote>
-<p>也可以直接执行该指令，省去前面查询的步骤</p>
-</blockquote>
-<ul>
-<li>61616 是 activemq 的容器使用端口（映射为 61617）</li>
-<li>8161 是 web 页面管理端口（对外映射为 8161）</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name=<span class="string">&#x27;activemq5.14.3&#x27;</span> \</span><br><span class="line">     -d \</span><br><span class="line">  -p 8161:8161 \</span><br><span class="line">  -p 61616:61616 \</span><br><span class="line">  -e ACTIVEMQ_ADMIN_LOGIN=admin \</span><br><span class="line">  -e ACTIVEMQ_ADMIN_PASSWORD=123456 \</span><br><span class="line">  -v /app/activemq/data:/data/activemq \</span><br><span class="line">  -v /app/activemq/log:/var/log/activemq \</span><br><span class="line">  webcenter/activemq:latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409175301711.png"></p>
-<h3 id="检查服务是否启动"><a href="#检查服务是否启动" class="headerlink" title="检查服务是否启动"></a>检查服务是否启动</h3><h4 id="方式-1：检查进程"><a href="#方式-1：检查进程" class="headerlink" title="方式 1：检查进程"></a>方式 1：检查进程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep activemq</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409015224394.png"></p>
-<h4 id="方式-2：检查端口是否被占用"><a href="#方式-2：检查端口是否被占用" class="headerlink" title="方式 2：检查端口是否被占用"></a>方式 2：检查端口是否被占用</h4><p>ActiveMQ 默认端口是 61616</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -anp | grep 61616</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409181131261.png"></p>
-<h4 id="方式-3：换种方式查看端口是否被占用"><a href="#方式-3：换种方式查看端口是否被占用" class="headerlink" title="方式 3：换种方式查看端口是否被占用"></a>方式 3：换种方式查看端口是否被占用</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsof -i:61616</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ActiveMQ/image-20240409181157709.png"></p>
-<h3 id="启动异常排查"><a href="#启动异常排查" class="headerlink" title="启动异常排查"></a>启动异常排查</h3><h4 id="JDK-版本不满足当前-MQ-的需求"><a href="#JDK-版本不满足当前-MQ-的需求" class="headerlink" title="JDK 版本不满足当前 MQ 的需求"></a>JDK 版本不满足当前 MQ 的需求</h4><blockquote>
-<p>现象描述：linux 系统直接安装的方式下，项目迟迟启动不起来，activemq.log 中也没有任何异常的抛出</p>
-</blockquote>
-<p><strong>排查结果：</strong> activeMQ5.17.x 版本要求的 JDK 版本为 11，而本地当前的 java 版本为 java8，因此导致的启动失败，这也是前面截图中部分操作的指令使用的是 6.1.1 做演示的原因</p>
-<p><img src="/assets/ActiveMQ/image-20240409181844086.png"></p>
-<h4 id="权限不够导致的-Web-页面无法启动"><a href="#权限不够导致的-Web-页面无法启动" class="headerlink" title="权限不够导致的 Web 页面无法启动"></a>权限不够导致的 Web 页面无法启动</h4><blockquote>
-<p>现象描述：无法连接控制页面，但是服务确已经启动，<code>activemq console</code> 爆出权限不够的异常</p>
-</blockquote>
-<p><img src="/assets/ActiveMQ/image-20240409215527343.png"></p>
-<p><strong>解决办法：</strong> 使用拥有足够权限的用户启动服务</p>
-<h4 id="外部访问不到"><a href="#外部访问不到" class="headerlink" title="外部访问不到"></a>外部访问不到</h4><blockquote>
-<p>现象描述：<code>curl 127.0.0.1:8161</code> 有返回的网页数据，但是在外部计算机中通过域名加端口，浏览器访问不到</p>
-</blockquote>
-<p>查看是否是 linux 防火墙导致 <a href="https://blog.csdn.net/jialexiaoxuan/article/details/134288680">linux系统中查看防火墙以及开放端口号命令_linux查看加入防火墙端口-CSDN博客</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看防火墙状态</span></span><br><span class="line">systemctl status firewalld</span><br><span class="line"><span class="comment"># 开启防火墙</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
-
-<h3 id="访问控制台"><a href="#访问控制台" class="headerlink" title="访问控制台"></a>访问控制台</h3><blockquote>
-<p>访问地址：http:&#x2F;&#x2F;% 主机 IP%:8161，默认用户名密码均为 admin，</p>
-</blockquote>
-<p><img src="/assets/ActiveMQ/image-20240409220439596.png"></p>
-<h2 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>官网：<a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title></title>
-    <url>/2026/05/23/obsidian-minimal-settings-guide/</url>
+    <url>/2026/05/24/obsidian-minimal-settings-guide/</url>
     <content><![CDATA[<h1 id="Obsidian-Minimal-两个设置插件说明书"><a href="#Obsidian-Minimal-两个设置插件说明书" class="headerlink" title="Obsidian Minimal 两个设置插件说明书"></a>Obsidian Minimal 两个设置插件说明书</h1><p>本文说明 Obsidian 的 Minimal 主题中两个常用插件的职责、配置位置、推荐用法和避坑原则：</p>
 <ul>
 <li>Minimal Theme Settings</li>
@@ -1316,59 +865,455 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Dbeaver工具手册</title>
-    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
-<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
+    <title>markdown-style-test-feishu</title>
+    <url>/2026/05/23/markdown-style-test-feishu/</url>
+    <content><![CDATA[<h2 id="Markdown-样式测试文档"><a href="#Markdown-样式测试文档" class="headerlink" title="Markdown 样式测试文档"></a>Markdown 样式测试文档</h2><blockquote>
+<p>用途：将本文导入或复制到飞书文档，用来对比 Obsidian、Minimal 主题、飞书云文档之间的排版差异</p>
+<p>重点观察：标题层级、段落行高、列表缩进、代码块、引用块、表格、图片位置、图片尺寸、图文混排。</p>
 </blockquote>
-<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
-<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
-<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
+<hr>
+<h3 id="1-基础正文"><a href="#1-基础正文" class="headerlink" title="1. 基础正文"></a>1. 基础正文</h3><p>这是一段普通正文，用来观察默认字号、行高、段落间距和正文宽度。理想的阅读效果应该是文字不拥挤、行距舒适、每行长度适中，长时间阅读时不会产生明显疲劳。</p>
+<p>这是第二段正文。这里包含一些中文、English words、数字 1234567890，以及常见标点符号：逗号，句号。冒号：分号；括号（内容）和引号“示例”。</p>
+<p>这是一段较长的正文，用来测试自动换行效果。如果正文容器过宽，读者的视线移动距离会变长；如果正文容器过窄，换行会过于频繁。飞书文档的正文宽度通常比较克制，这也是它看起来舒服的重要原因之一。</p>
+<h3 id="2-行内样式"><a href="#2-行内样式" class="headerlink" title="2. 行内样式"></a>2. 行内样式</h3><p>这是一段包含 <strong>加粗文本</strong>、<em>斜体文本</em>、<em><strong>加粗斜体</strong></em>、<del>删除线</del>、<code>inline code</code>、<a href="https://www.feishu.cn/">普通链接</a> 的正文。</p>
+<p>中文技术文档里经常会出现变量名，例如 <code>fileKey</code>、<code>fileUrl</code>、<code>folder</code>、<code>uploadPath</code>。这些行内代码应该足够醒目，但不应该打断阅读节奏。</p>
+<h3 id="3-标题层级"><a href="#3-标题层级" class="headerlink" title="3. 标题层级"></a>3. 标题层级</h3><h2 id="H1-一级标题：页面主标题"><a href="#H1-一级标题：页面主标题" class="headerlink" title="H1 一级标题：页面主标题"></a>H1 一级标题：页面主标题</h2><p>一级标题通常只应该在页面顶部出现一次，用来观察主标题字号、字重和上下间距。</p>
+<h3 id="H2-二级标题：主要章节"><a href="#H2-二级标题：主要章节" class="headerlink" title="H2 二级标题：主要章节"></a>H2 二级标题：主要章节</h3><p>二级标题适合划分主要章节，应该有明显的视觉权重。</p>
+<h4 id="H3-三级标题：小节标题"><a href="#H3-三级标题：小节标题" class="headerlink" title="H3 三级标题：小节标题"></a>H3 三级标题：小节标题</h4><p>三级标题适合进一步拆分内容，应该比正文突出，但不要过于夸张。</p>
+<h5 id="H4-四级标题"><a href="#H4-四级标题" class="headerlink" title="H4 四级标题"></a>H4 四级标题</h5><p>四级标题常用于技术文档中的细节说明。</p>
+<h6 id="H5-五级标题"><a href="#H5-五级标题" class="headerlink" title="H5 五级标题"></a>H5 五级标题</h6><p>五级标题测试较低层级标题的可读性。</p>
+<h6 id="H6-六级标题"><a href="#H6-六级标题" class="headerlink" title="H6 六级标题"></a>H6 六级标题</h6><p>六级标题测试最小标题样式。</p>
+<h3 id="4-无序列表"><a href="#4-无序列表" class="headerlink" title="4. 无序列表"></a>4. 无序列表</h3><ul>
+<li>第一层列表项，用来观察项目符号、左侧缩进和行高。</li>
+<li>第一层列表项较长时，会自动换行。换行后的第二行应该和正文内容对齐，而不是回到项目符号下面。</li>
+<li>第一层列表项包含 <code>inline code</code> 和 <strong>加粗文本</strong>。<ul>
+<li>第二层列表项，用来观察嵌套缩进。</li>
+<li>第二层列表项继续补充说明。<ul>
+<li>第三层列表项，用来观察更深层级缩进。</li>
+<li>第三层列表项包含中文和 English words。</li>
 </ul>
-<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
-<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
-<li>选择中要复制的代码</li>
-<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-有序列表"><a href="#5-有序列表" class="headerlink" title="5. 有序列表"></a>5. 有序列表</h3><ol>
+<li>第一步：选择文件。</li>
+<li>第二步：上传到后端接口。</li>
+<li>第三步：后端返回 <code>fileKey</code> 和 <code>fileUrl</code>。</li>
+<li>第四步：业务表只保存 <code>fileKey</code>。</li>
+<li>第五步：页面展示时通过 <code>fileKey</code> 获取 <code>fileUrl</code>。</li>
 </ol>
-<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
-<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
-<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
-<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
+<h4 id="5-1-嵌套有序列表"><a href="#5-1-嵌套有序列表" class="headerlink" title="5.1 嵌套有序列表"></a>5.1 嵌套有序列表</h4><ol>
+<li>后端处理<ol>
+<li>校验文件类型。</li>
+<li>生成存储路径。</li>
+<li>保存文件记录。</li>
+</ol>
+</li>
+<li>前端处理<ol>
+<li>调用上传接口。</li>
+<li>保存返回结果。</li>
+<li>渲染图片或下载链接。</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-任务列表"><a href="#6-任务列表" class="headerlink" title="6. 任务列表"></a>6. 任务列表</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 已完成任务：整理上传接口。</li>
+<li><input checked="" disabled="" type="checkbox"> 已完成任务：统一 <code>fileKey</code> 规则。</li>
+<li><input disabled="" type="checkbox"> 待完成任务：补充云存储配置。</li>
+<li><input disabled="" type="checkbox"> 待完成任务：增加异常场景说明。</li>
+</ul>
+<h3 id="7-引用块"><a href="#7-引用块" class="headerlink" title="7. 引用块"></a>7. 引用块</h3><blockquote>
+<p>这是普通引用块。适合放说明、提示、背景信息。需要观察引用块左边框、背景色、内边距和文字颜色。</p>
+</blockquote>
+<blockquote>
+<p>多段引用块第一段。</p>
+<p>多段引用块第二段。这里用来观察引用块内部段落间距。</p>
+</blockquote>
+<blockquote>
+<p><strong>注意：</strong> 如果引用块背景太深，会破坏页面的轻盈感；如果边框太重，也会显得像警告框。</p>
+</blockquote>
+<h3 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8. 代码块"></a>8. 代码块</h3><h4 id="8-1-普通文本代码块"><a href="#8-1-普通文本代码块" class="headerlink" title="8.1 普通文本代码块"></a>8.1 普通文本代码块</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-2-Java-代码块"><a href="#8-2-Java-代码块" class="headerlink" title="8.2 Java 代码块"></a>8.2 Java 代码块</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> FileUploadVO <span class="title function_">upload</span><span class="params">(MultipartFile file, String folder)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileKey</span> <span class="operator">=</span> fileStorageService.save(file, folder);</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileUrl</span> <span class="operator">=</span> fileUrlService.getUrl(fileKey);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">FileUploadVO</span>(fileKey, fileUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-3-TypeScript-代码块"><a href="#8-3-TypeScript-代码块" class="headerlink" title="8.3 TypeScript 代码块"></a>8.3 TypeScript 代码块</h4><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">uploadFile</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">File</span>, <span class="attr">folder</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">  formData.<span class="title function_">append</span>(<span class="string">&#x27;file&#x27;</span>, file);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> request.<span class="property">post</span>&lt;<span class="title class_">FileUploadVO</span>&gt;(<span class="string">`/support/file/upload?folder=<span class="subst">$&#123;folder&#125;</span>`</span>, formData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-4-JSON-代码块"><a href="#8-4-JSON-代码块" class="headerlink" title="8.4 JSON 代码块"></a>8.4 JSON 代码块</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;fileKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;fileUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://example.com/upload/course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;folder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-表格"><a href="#9-表格" class="headerlink" title="9. 表格"></a>9. 表格</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>路径</th>
+<th>说明</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后端接口</td>
+<td><code>FileController.java</code></td>
+<td>负责上传、下载、获取 URL</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>存储服务</td>
+<td><code>IFileStorageService.java</code></td>
+<td>屏蔽本地存储和云存储差异</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>前端封装</td>
+<td><code>file-api.ts</code></td>
+<td>统一上传入口</td>
+<td>待补充</td>
+</tr>
+<tr>
+<td>图片展示</td>
+<td><code>ImagePreview.vue</code></td>
+<td>根据 <code>fileKey</code> 获取展示地址</td>
+<td>待优化</td>
+</tr>
+</tbody></table>
+<h4 id="9-1-长文本表格"><a href="#9-1-长文本表格" class="headerlink" title="9.1 长文本表格"></a>9.1 长文本表格</h4><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐做法</th>
+<th>不推荐做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保存业务数据</td>
+<td>只保存 <code>fileKey</code>，展示时再换取 <code>fileUrl</code></td>
+<td>直接保存完整访问地址</td>
+</tr>
+<tr>
+<td>切换存储方式</td>
+<td>后端统一适配，本地和云存储共用规则</td>
+<td>前端根据环境拼接不同地址</td>
+</tr>
+<tr>
+<td>图片预览</td>
+<td>使用统一组件处理加载、失败、占位图</td>
+<td>每个页面各写一套逻辑</td>
+</tr>
+</tbody></table>
+<h3 id="10-分割线"><a href="#10-分割线" class="headerlink" title="10. 分割线"></a>10. 分割线</h3><p>上方内容。</p>
+<hr>
+<p>下方内容。观察分割线的颜色、上下间距和粗细。</p>
+<h3 id="11-图片测试"><a href="#11-图片测试" class="headerlink" title="11. 图片测试"></a>11. 图片测试</h3><p>以下图片使用远程占位图，方便复制或导入到飞书后直接显示。</p>
+<h4 id="11-1-默认-Markdown-图片"><a href="#11-1-默认-Markdown-图片" class="headerlink" title="11.1 默认 Markdown 图片"></a>11.1 默认 Markdown 图片</h4><p><img src="https://placehold.co/900x360/png?text=Default+Markdown+Image" alt="默认图片：宽 900 高 360"></p>
+<p>观察点：默认图片是否铺满正文宽度，是否有圆角，图片上下是否留白。</p>
+<h4 id="11-2-小图"><a href="#11-2-小图" class="headerlink" title="11.2 小图"></a>11.2 小图</h4><p><img src="https://placehold.co/240x160/png?text=Small+Image" alt="小图：宽 240 高 160"></p>
+<p>观察点：小图是否左对齐，是否和正文贴得太近。</p>
+<h4 id="11-3-HTML-控制宽度"><a href="#11-3-HTML-控制宽度" class="headerlink" title="11.3 HTML 控制宽度"></a>11.3 HTML 控制宽度</h4><img src="https://placehold.co/480x240/png?text=HTML+Width+480" alt="HTML 宽度 480 图片" width="480" />
+
+<p>观察点：飞书是否保留 HTML 图片宽度；Obsidian 是否正常显示。</p>
+<h4 id="11-4-居中图片"><a href="#11-4-居中图片" class="headerlink" title="11.4 居中图片"></a>11.4 居中图片</h4><p align="center">
+  <img src="https://placehold.co/520x260/png?text=Centered+Image" alt="居中图片" width="520" />
+</p>
+
+<p>观察点：飞书是否保留居中效果；如果不保留，后续需要手动调整或使用飞书原生图片居中。</p>
+<h4 id="11-5-左右图文混排：左图右文"><a href="#11-5-左右图文混排：左图右文" class="headerlink" title="11.5 左右图文混排：左图右文"></a>11.5 左右图文混排：左图右文</h4><img src="https://placehold.co/260x180/png?text=Left+Image" alt="左侧图片" width="260" align="left" />
+
+<p>这是一段用于测试左图右文的正文。图片如果浮动成功，文字会从图片右侧开始环绕；如果不支持浮动，图片会独占一行。飞书导入 Markdown 时不一定保留 <code>align=&quot;left&quot;</code>，因此这里主要用于观察兼容性。</p>
+<p>这是一段继续补充的正文，用来测试多行文字环绕时的行高和右侧留白。若效果不稳定，建议在飞书里使用表格或分栏来实现稳定的图文排版。</p>
+<br clear="both" />
+
+<h4 id="11-6-左右图文混排：右图左文"><a href="#11-6-左右图文混排：右图左文" class="headerlink" title="11.6 左右图文混排：右图左文"></a>11.6 左右图文混排：右图左文</h4><img src="https://placehold.co/260x180/png?text=Right+Image" alt="右侧图片" width="260" align="right" />
+
+<p>这是一段用于测试右图左文的正文。图片如果浮动成功，文字会在图片左侧排列；如果导入后浮动失效，说明目标平台对 HTML 图片布局支持有限。</p>
+<p>在技术文档里，右图左文适合放界面截图说明，但如果兼容性不好，推荐改用表格方式实现。</p>
+<br clear="both" />
+
+<h4 id="11-7-使用表格实现左右图片"><a href="#11-7-使用表格实现左右图片" class="headerlink" title="11.7 使用表格实现左右图片"></a>11.7 使用表格实现左右图片</h4><table>
+<thead>
+<tr>
+<th>左图</th>
+<th>右图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://placehold.co/360x220/png?text=Left+Column" alt="左图"></td>
+<td><img src="https://placehold.co/360x220/png?text=Right+Column" alt="右图"></td>
+</tr>
+</tbody></table>
+<p>观察点：表格内图片是否等宽、是否有额外边框、是否适合作为稳定的左右布局方案。</p>
+<h4 id="11-8-图片加说明文字"><a href="#11-8-图片加说明文字" class="headerlink" title="11.8 图片加说明文字"></a>11.8 图片加说明文字</h4><p><img src="https://placehold.co/820x360/png?text=Upload+Flow+Diagram" alt="接口流程图"></p>
+<p>图 1：文件上传流程示意图。观察图片说明文字是否应该使用普通段落、引用块或斜体。</p>
+<p><em>图 2：这是斜体说明文字，用来测试图片 caption 的视觉效果。</em></p>
+<h3 id="12-链接与路径"><a href="#12-链接与路径" class="headerlink" title="12. 链接与路径"></a>12. 链接与路径</h3><p>普通链接：<a href="https://www.feishu.cn/">飞书官网</a></p>
+<p>裸链接：<a href="https://www.feishu.cn/">https://www.feishu.cn/</a></p>
+<p>相对路径示例：<code>smart-admin-api-java8-springboot2/sa-base/src/main/java/net/lab1024/sa/base/module/support/file/</code></p>
+<p>接口路径示例：<code>POST /support/file/upload?folder=course</code></p>
+<h3 id="13-数学公式兼容性"><a href="#13-数学公式兼容性" class="headerlink" title="13. 数学公式兼容性"></a>13. 数学公式兼容性</h3><p>行内公式：$E &#x3D; mc^2$</p>
+<p>块级公式：</p>
+<p>$$<br>sum &#x3D; principal \times rate \times days &#x2F; 365<br>$$</p>
+<p>观察点：飞书导入后是否保留公式渲染；如果没有渲染，是否以纯文本展示。</p>
+<h3 id="14-Mermaid-兼容性"><a href="#14-Mermaid-兼容性" class="headerlink" title="14. Mermaid 兼容性"></a>14. Mermaid 兼容性</h3><pre><code class="highlight mermaid">flowchart TD
+  A[前端选择文件] --&gt; B[调用上传接口]
+  B --&gt; C[后端保存文件]
+  C --&gt; D[返回 fileKey/fileUrl]
+  D --&gt; E[业务表保存 fileKey]
+  E --&gt; F[展示时获取 fileUrl]</code></pre>
+
+<p>观察点：飞书是否将 Mermaid 渲染为图，还是保留为代码块。</p>
+<h3 id="15-折叠内容兼容性"><a href="#15-折叠内容兼容性" class="headerlink" title="15. 折叠内容兼容性"></a>15. 折叠内容兼容性</h3><details>
+<summary>点击展开更多说明</summary>
+
+<p>这里是折叠内容。用于测试飞书是否保留 HTML details 标签。如果不支持，通常会以普通文本或被过滤掉。</p>
+</details>
+
+<h3 id="16-综合样例：文件上传模块说明"><a href="#16-综合样例：文件上传模块说明" class="headerlink" title="16. 综合样例：文件上传模块说明"></a>16. 综合样例：文件上传模块说明</h3><h4 id="16-1-总体原则"><a href="#16-1-总体原则" class="headerlink" title="16.1 总体原则"></a>16.1 总体原则</h4><p>本项目文件上传的核心原则：</p>
+<ol>
+<li>业务表只保存 <code>fileKey</code>。</li>
+<li>页面展示使用 <code>fileUrl</code>。</li>
+<li><code>fileUrl</code> 由后端统一生成。</li>
+<li>前端不要手工拼接 <code>/upload/$&#123;fileKey&#125;</code>。</li>
+<li>上传目录由 <code>folder</code> 参数决定。</li>
+<li>本地存储和云存储共用同一套 <code>fileKey</code> 规则。</li>
+</ol>
+<h4 id="16-2-典型流程"><a href="#16-2-典型流程" class="headerlink" title="16.2 典型流程"></a>16.2 典型流程</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-3-推荐约定"><a href="#16-3-推荐约定" class="headerlink" title="16.3 推荐约定"></a>16.3 推荐约定</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>命名规则</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>课程封面</td>
+<td><code>course-cover</code></td>
+<td><code>course-cover/2026/05/demo.png</code></td>
+</tr>
+<tr>
+<td>老师资质</td>
+<td><code>teacher-cert</code></td>
+<td><code>teacher-cert/2026/05/cert.pdf</code></td>
+</tr>
+<tr>
+<td>临时文件</td>
+<td><code>temp</code></td>
+<td><code>temp/2026/05/upload.tmp</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>推荐将所有文件访问入口收口到后端服务，避免前端直接依赖具体存储实现。</p>
+</blockquote>
+<h3 id="17-视觉检查清单"><a href="#17-视觉检查清单" class="headerlink" title="17. 视觉检查清单"></a>17. 视觉检查清单</h3><ul>
+<li><input disabled="" type="checkbox"> 正文字号是否舒适。</li>
+<li><input disabled="" type="checkbox"> 正文行高是否接近飞书的 <code>1.8</code>。</li>
+<li><input disabled="" type="checkbox"> 正文宽度是否接近 <code>820px</code>。</li>
+<li><input disabled="" type="checkbox"> 标题上下间距是否清晰。</li>
+<li><input disabled="" type="checkbox"> 列表缩进是否自然。</li>
+<li><input disabled="" type="checkbox"> 代码块背景是否足够轻。</li>
+<li><input disabled="" type="checkbox"> 表格是否清晰但不沉重。</li>
+<li><input disabled="" type="checkbox"> 图片默认位置是否符合预期。</li>
+<li><input disabled="" type="checkbox"> 左右图文混排是否稳定。</li>
+<li><input disabled="" type="checkbox"> 复制到飞书后是否有明显样式丢失。</li>
+</ul>
+<hr>
+<h3 id="18-结论记录区"><a href="#18-结论记录区" class="headerlink" title="18. 结论记录区"></a>18. 结论记录区</h3><p>你可以在飞书中复制下面这段，用来记录观察结果：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Obsidian 效果</th>
+<th>飞书效果</th>
+<th>是否需要调整</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正文字号</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>正文行高</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>正文宽度</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>标题样式</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>代码块</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>表格</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>图片位置</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>图文混排</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 ]]></content>
-      <tags>
-        <tag>工具/dbeaver</tag>
-      </tags>
+  </entry>
+  <entry>
+    <title>ActiveMQ</title>
+    <url>/2024/12/09/archive/ActiveMQ/</url>
+    <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
+<p>MQ 就是消息中间件。MQ 是一种理念，ActiveMQ 是 MQ 的落地产品。不管是哪款消息中间件，都有如下一些技术维度：</p>
+</blockquote>
+<p><img src="/assets/ActiveMQ/image-20240408221948862.png" alt="|560"></p>
+<blockquote>
+<p>MQ 消息的详细比较</p>
+</blockquote>
+<p><img src="/assets/ActiveMQ/image-20240408222125860.png"></p>
+<blockquote>
+<p>各类 MQ 的擅长领域</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>MQ 种类</th>
+<th>变成语言</th>
+<th>擅长领域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>kafka</td>
+<td>scala</td>
+<td>大数据领域的主流 MQ。</td>
+</tr>
+<tr>
+<td>rabbitmq</td>
+<td>erlang</td>
+<td>基于 erlang 语言，不好修改底层，不好查找问题的原因，不建议选用</td>
+</tr>
+<tr>
+<td>rocketmq</td>
+<td>java</td>
+<td>适用于大型项目。适用于集群</td>
+</tr>
+<tr>
+<td>activemq</td>
+<td>java</td>
+<td>适用于中小型项目</td>
+</tr>
+</tbody></table>
+<h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>面向消息的中间件（message-oriented middleware）MOM 能够很好的解决以上问题。是指利用高效可靠的消息传递机制与平台无关的数据交流，并基于数据通信来进行分布式系统的集成。通过提供消息传递和消息排队模型在分布式环境下提供应用解耦，弹性伸缩，冗余存储、流量削峰，异步通信，数据同步等功能。</p>
+<p>大致的过程是这样的：发送者把消息发送给消息服务器，消息服务器将消息存放在若干队列&#x2F;主题 topic 中，在合适的时候，消息服务器回将消息转发给接受者。在这个过程中，发送和接收是异步的，也就是发送无需等待，而且发送者和接受者的生命周期也没有必然的关系；尤其在发布 pub&#x2F;订阅 sub 模式下，也可以完成一对多的通信，即让一个消息有多个接受者。</p>
+<p><img src="/assets/ActiveMQ/image-20240408224621057.png"></p>
+<h2 id="如何安装与查看控制台"><a href="#如何安装与查看控制台" class="headerlink" title="如何安装与查看控制台"></a>如何安装与查看控制台</h2><h3 id="Linux-系统直接安装"><a href="#Linux-系统直接安装" class="headerlink" title="Linux 系统直接安装"></a>Linux 系统直接安装</h3><h4 id="检查-JAVA-环境"><a href="#检查-JAVA-环境" class="headerlink" title="检查 JAVA 环境"></a>检查 JAVA 环境</h4><p>由于 ActiveMQ 是 java 编写的，因此需要有 jdk 的运行环境，检查 Java 版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240408234356463.png"></p>
+<h4 id="官网下载安装包"><a href="#官网下载安装包" class="headerlink" title="官网下载安装包"></a>官网下载安装包</h4><p>凡遇技术，必定官网 <a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></p>
+<blockquote>
+<p>注意：5.16.x 版本及以下支持 java8，5.17.x-5.18.x 需要 java11，6 版本则需要 java17</p>
+</blockquote>
+<p>下图中左侧是稳定版，右侧是开发版。</p>
+<p><img src="/assets/ActiveMQ/image-20240408231212252.png"></p>
+<p>按需要查找版本，此处贴一个 5.14.5 版本的链接 <a href="https://activemq.apache.org/components/classic/download/classic-05-14-05">ActiveMQ — ActiveMQ (apache.org)</a>，由于后续涉及集群的搭建，建议下载 Linux 的版本，毕竟没有见过 window 搭建集群的</p>
+<p><img src="/assets/ActiveMQ/image-20240409182551469.png"></p>
+<h4 id="上传安装包到-Linux-服务器"><a href="#上传安装包到-Linux-服务器" class="headerlink" title="上传安装包到 Linux 服务器"></a>上传安装包到 Linux 服务器</h4><p>安装包放到&#x2F;opt 目录下，放在哪个目录没有硬性要求</p>
+<p><img src="/assets/ActiveMQ/image-20240408235316664.png"></p>
+<h4 id="创建软件安装文件夹"><a href="#创建软件安装文件夹" class="headerlink" title="创建软件安装文件夹"></a>创建软件安装文件夹</h4><blockquote>
+<p>软件安装文件夹，没有路径要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建软件安装的文件夹 -p 父目录不存在，则循环创建</span></span><br><span class="line"><span class="built_in">mkdir</span> -p /software/activeMQ/</span><br></pre></td></tr></table></figure>
+
+<h4 id="解压缩安装包"><a href="#解压缩安装包" class="headerlink" title="解压缩安装包"></a>解压缩安装包</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf apache-activemq-5.14.5-bin.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409000433353.png"></p>
+<h4 id="拷贝解压文件"><a href="#拷贝解压文件" class="headerlink" title="拷贝解压文件"></a>拷贝解压文件</h4><p>拷贝解压的软件到指定的安装文件夹，直接解压过去也是可以的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> -r apache-activemq-5.14.5 /software/activeMQ/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409000715651.png"></p>
+<h4 id="普通启动"><a href="#普通启动" class="headerlink" title="普通启动"></a>普通启动</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 首先要跳转到 %软件的安装目录%/bin 目录下</span></span><br><span class="line"><span class="built_in">cd</span> /software/activeMQ/apache-activemq-5.14.5/bin</span><br><span class="line"><span class="comment"># 执行启动命令</span></span><br><span class="line">./activemq start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409001242335.png"></p>
+<h4 id="启动时指定日志输出文件（重要"><a href="#启动时指定日志输出文件（重要" class="headerlink" title="启动时指定日志输出文件（重要)"></a>启动时指定日志输出文件（重要)</h4><p>activemq 日志默认的位置是在：%activemq 安装目录%&#x2F;data&#x2F;activemq.log</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  activemq start  &gt;  %指定路径%</span></span><br><span class="line"> activemq start  &gt;  /usr/local/raohao/activemq.log</span><br></pre></td></tr></table></figure>
+
+<h3 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h3><blockquote>
+<p>前情提要：Docker 需要已经安装，Docker 的使用参考 <a href="Docker%E5%B0%8F%E5%86%8C.md">Docker小册</a></p>
+</blockquote>
+<h4 id="查询镜像"><a href="#查询镜像" class="headerlink" title="查询镜像"></a>查询镜像</h4><blockquote>
+<p>官方并没有为 ActiveMq 制作镜像，我们只能选择点赞数最多的一个下载使用。版本 5.14.3</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker search activemq</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409173028743.png"></p>
+<h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull webcenter/activemq</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409173703232.png"></p>
+<h4 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images webcenter/activemq</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409174536552.png"></p>
+<h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><blockquote>
+<p>也可以直接执行该指令，省去前面查询的步骤</p>
+</blockquote>
+<ul>
+<li>61616 是 activemq 的容器使用端口（映射为 61617）</li>
+<li>8161 是 web 页面管理端口（对外映射为 8161）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name=<span class="string">&#x27;activemq5.14.3&#x27;</span> \</span><br><span class="line">     -d \</span><br><span class="line">  -p 8161:8161 \</span><br><span class="line">  -p 61616:61616 \</span><br><span class="line">  -e ACTIVEMQ_ADMIN_LOGIN=admin \</span><br><span class="line">  -e ACTIVEMQ_ADMIN_PASSWORD=123456 \</span><br><span class="line">  -v /app/activemq/data:/data/activemq \</span><br><span class="line">  -v /app/activemq/log:/var/log/activemq \</span><br><span class="line">  webcenter/activemq:latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409175301711.png"></p>
+<h3 id="检查服务是否启动"><a href="#检查服务是否启动" class="headerlink" title="检查服务是否启动"></a>检查服务是否启动</h3><h4 id="方式-1：检查进程"><a href="#方式-1：检查进程" class="headerlink" title="方式 1：检查进程"></a>方式 1：检查进程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep activemq</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409015224394.png"></p>
+<h4 id="方式-2：检查端口是否被占用"><a href="#方式-2：检查端口是否被占用" class="headerlink" title="方式 2：检查端口是否被占用"></a>方式 2：检查端口是否被占用</h4><p>ActiveMQ 默认端口是 61616</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -anp | grep 61616</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409181131261.png"></p>
+<h4 id="方式-3：换种方式查看端口是否被占用"><a href="#方式-3：换种方式查看端口是否被占用" class="headerlink" title="方式 3：换种方式查看端口是否被占用"></a>方式 3：换种方式查看端口是否被占用</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsof -i:61616</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ActiveMQ/image-20240409181157709.png"></p>
+<h3 id="启动异常排查"><a href="#启动异常排查" class="headerlink" title="启动异常排查"></a>启动异常排查</h3><h4 id="JDK-版本不满足当前-MQ-的需求"><a href="#JDK-版本不满足当前-MQ-的需求" class="headerlink" title="JDK 版本不满足当前 MQ 的需求"></a>JDK 版本不满足当前 MQ 的需求</h4><blockquote>
+<p>现象描述：linux 系统直接安装的方式下，项目迟迟启动不起来，activemq.log 中也没有任何异常的抛出</p>
+</blockquote>
+<p><strong>排查结果：</strong> activeMQ5.17.x 版本要求的 JDK 版本为 11，而本地当前的 java 版本为 java8，因此导致的启动失败，这也是前面截图中部分操作的指令使用的是 6.1.1 做演示的原因</p>
+<p><img src="/assets/ActiveMQ/image-20240409181844086.png"></p>
+<h4 id="权限不够导致的-Web-页面无法启动"><a href="#权限不够导致的-Web-页面无法启动" class="headerlink" title="权限不够导致的 Web 页面无法启动"></a>权限不够导致的 Web 页面无法启动</h4><blockquote>
+<p>现象描述：无法连接控制页面，但是服务确已经启动，<code>activemq console</code> 爆出权限不够的异常</p>
+</blockquote>
+<p><img src="/assets/ActiveMQ/image-20240409215527343.png"></p>
+<p><strong>解决办法：</strong> 使用拥有足够权限的用户启动服务</p>
+<h4 id="外部访问不到"><a href="#外部访问不到" class="headerlink" title="外部访问不到"></a>外部访问不到</h4><blockquote>
+<p>现象描述：<code>curl 127.0.0.1:8161</code> 有返回的网页数据，但是在外部计算机中通过域名加端口，浏览器访问不到</p>
+</blockquote>
+<p>查看是否是 linux 防火墙导致 <a href="https://blog.csdn.net/jialexiaoxuan/article/details/134288680">linux系统中查看防火墙以及开放端口号命令_linux查看加入防火墙端口-CSDN博客</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看防火墙状态</span></span><br><span class="line">systemctl status firewalld</span><br><span class="line"><span class="comment"># 开启防火墙</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问控制台"><a href="#访问控制台" class="headerlink" title="访问控制台"></a>访问控制台</h3><blockquote>
+<p>访问地址：http:&#x2F;&#x2F;% 主机 IP%:8161，默认用户名密码均为 admin，</p>
+</blockquote>
+<p><img src="/assets/ActiveMQ/image-20240409220439596.png"></p>
+<h2 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>官网：<a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>Docker小册</title>
@@ -2401,6 +2346,61 @@
 ]]></content>
       <tags>
         <tag>数据/activemq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Dbeaver工具手册</title>
+    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
+<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
+</blockquote>
+<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
+<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
+<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
+</ul>
+<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
+<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
+<li>选择中要复制的代码</li>
+<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
+</ol>
+<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
+<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
+<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
+<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
+]]></content>
+      <tags>
+        <tag>工具/dbeaver</tag>
       </tags>
   </entry>
   <entry>
@@ -3927,33 +3927,132 @@
       </tags>
   </entry>
   <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
+    <title>Obsidian插件汇总</title>
+    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
+<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
+</blockquote>
+<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
+</blockquote>
+<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
+<p>Page Feature 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
+<blockquote>
+<p>Page Feature 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
+<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
+<p>Page Behaviors 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
+<blockquote>
+<p>Page Behaviors 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
+<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
+<ul>
+<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
+<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
+</ul>
+<blockquote>
+<p>Embedding options 英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
+<blockquote>
+<p>Embedding options 中文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的使用可以参考下 GIF</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
+<p>😀 导出时建议选择独立文档</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
+<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
+<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
+<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
+<blockquote>
+<p>开启了删除日志, 成功删除后会有如下界面</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
+<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
+</blockquote>
+<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
+<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
+<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
+</blockquote>
+<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>直接按照下图配置即可, 没什么按需调整的选项</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
+<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的集团使用可参考下 GIF 以及表格</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
+<table>
+<thead>
+<tr>
+<th>热键</th>
+<th>行为</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tab</td>
+<td>下一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>前一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>下一行</td>
+<td>跳转至下一行, 没有下一行则新增</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + D</td>
+<td>打开表格帮助面板</td>
+<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
+</tr>
+</tbody></table>
+<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>该插件主要</p>
+</blockquote>
+<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
+<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
+<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
 ]]></content>
       <tags>
-        <tag>数据/oracle</tag>
+        <tag>工具/obsidian</tag>
       </tags>
   </entry>
   <entry>
@@ -4013,6 +4112,36 @@
 <li><code>dir</code> 授权文件夹名称</li>
 </ul>
 <h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
@@ -5709,135 +5838,6 @@
       <tags>
         <tag>数据/kafka</tag>
         <tag>运维/docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Obsidian插件汇总</title>
-    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
-<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
-</blockquote>
-<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
-<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
-</blockquote>
-<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
-<p>Page Feature 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
-<blockquote>
-<p>Page Feature 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
-<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
-<p>Page Behaviors 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
-<blockquote>
-<p>Page Behaviors 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
-<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
-<ul>
-<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
-<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
-</ul>
-<blockquote>
-<p>Embedding options 英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
-<blockquote>
-<p>Embedding options 中文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
-<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的使用可以参考下 GIF</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
-<p>😀 导出时建议选择独立文档</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
-<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
-<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
-<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
-<blockquote>
-<p>开启了删除日志, 成功删除后会有如下界面</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
-<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
-</blockquote>
-<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
-<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
-<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
-</blockquote>
-<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>直接按照下图配置即可, 没什么按需调整的选项</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
-<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的集团使用可参考下 GIF 以及表格</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
-<table>
-<thead>
-<tr>
-<th>热键</th>
-<th>行为</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Tab</td>
-<td>下一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Shift + Tab</td>
-<td>前一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>下一行</td>
-<td>跳转至下一行, 没有下一行则新增</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + D</td>
-<td>打开表格帮助面板</td>
-<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
-</tr>
-</tbody></table>
-<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>该插件主要</p>
-</blockquote>
-<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
-<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
-<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
-]]></content>
-      <tags>
-        <tag>工具/obsidian</tag>
       </tags>
   </entry>
   <entry>
