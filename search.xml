@@ -1,8 +1,321 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>markdown-style-test-feishu</title>
+    <url>/2026/05/23/markdown-style-test-feishu/</url>
+    <content><![CDATA[<h2 id="Markdown-样式测试文档"><a href="#Markdown-样式测试文档" class="headerlink" title="Markdown 样式测试文档"></a>Markdown 样式测试文档</h2><blockquote>
+<p>用途：将本文导入或复制到飞书文档，用来对比 Obsidian、Minimal 主题、飞书云文档之间的排版差异</p>
+<p>重点观察：标题层级、段落行高、列表缩进、代码块、引用块、表格、图片位置、图片尺寸、图文混排。</p>
+</blockquote>
+<hr>
+<h3 id="1-基础正文"><a href="#1-基础正文" class="headerlink" title="1. 基础正文"></a>1. 基础正文</h3><p>这是一段普通正文，用来观察默认字号、行高、段落间距和正文宽度。理想的阅读效果应该是文字不拥挤、行距舒适、每行长度适中，长时间阅读时不会产生明显疲劳。</p>
+<p>这是第二段正文。这里包含一些中文、English words、数字 1234567890，以及常见标点符号：逗号，句号。冒号：分号；括号（内容）和引号“示例”。</p>
+<p>这是一段较长的正文，用来测试自动换行效果。如果正文容器过宽，读者的视线移动距离会变长；如果正文容器过窄，换行会过于频繁。飞书文档的正文宽度通常比较克制，这也是它看起来舒服的重要原因之一。</p>
+<h3 id="2-行内样式"><a href="#2-行内样式" class="headerlink" title="2. 行内样式"></a>2. 行内样式</h3><p>这是一段包含 <strong>加粗文本</strong>、<em>斜体文本</em>、<em><strong>加粗斜体</strong></em>、<del>删除线</del>、<code>inline code</code>、<a href="https://www.feishu.cn/">普通链接</a> 的正文。</p>
+<p>中文技术文档里经常会出现变量名，例如 <code>fileKey</code>、<code>fileUrl</code>、<code>folder</code>、<code>uploadPath</code>。这些行内代码应该足够醒目，但不应该打断阅读节奏。</p>
+<h3 id="3-标题层级"><a href="#3-标题层级" class="headerlink" title="3. 标题层级"></a>3. 标题层级</h3><h2 id="H1-一级标题：页面主标题"><a href="#H1-一级标题：页面主标题" class="headerlink" title="H1 一级标题：页面主标题"></a>H1 一级标题：页面主标题</h2><p>一级标题通常只应该在页面顶部出现一次，用来观察主标题字号、字重和上下间距。</p>
+<h3 id="H2-二级标题：主要章节"><a href="#H2-二级标题：主要章节" class="headerlink" title="H2 二级标题：主要章节"></a>H2 二级标题：主要章节</h3><p>二级标题适合划分主要章节，应该有明显的视觉权重。</p>
+<h4 id="H3-三级标题：小节标题"><a href="#H3-三级标题：小节标题" class="headerlink" title="H3 三级标题：小节标题"></a>H3 三级标题：小节标题</h4><p>三级标题适合进一步拆分内容，应该比正文突出，但不要过于夸张。</p>
+<h5 id="H4-四级标题"><a href="#H4-四级标题" class="headerlink" title="H4 四级标题"></a>H4 四级标题</h5><p>四级标题常用于技术文档中的细节说明。</p>
+<h6 id="H5-五级标题"><a href="#H5-五级标题" class="headerlink" title="H5 五级标题"></a>H5 五级标题</h6><p>五级标题测试较低层级标题的可读性。</p>
+<h6 id="H6-六级标题"><a href="#H6-六级标题" class="headerlink" title="H6 六级标题"></a>H6 六级标题</h6><p>六级标题测试最小标题样式。</p>
+<h3 id="4-无序列表"><a href="#4-无序列表" class="headerlink" title="4. 无序列表"></a>4. 无序列表</h3><ul>
+<li>第一层列表项，用来观察项目符号、左侧缩进和行高。</li>
+<li>第一层列表项较长时，会自动换行。换行后的第二行应该和正文内容对齐，而不是回到项目符号下面。</li>
+<li>第一层列表项包含 <code>inline code</code> 和 <strong>加粗文本</strong>。<ul>
+<li>第二层列表项，用来观察嵌套缩进。</li>
+<li>第二层列表项继续补充说明。<ul>
+<li>第三层列表项，用来观察更深层级缩进。</li>
+<li>第三层列表项包含中文和 English words。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-有序列表"><a href="#5-有序列表" class="headerlink" title="5. 有序列表"></a>5. 有序列表</h3><ol>
+<li>第一步：选择文件。</li>
+<li>第二步：上传到后端接口。</li>
+<li>第三步：后端返回 <code>fileKey</code> 和 <code>fileUrl</code>。</li>
+<li>第四步：业务表只保存 <code>fileKey</code>。</li>
+<li>第五步：页面展示时通过 <code>fileKey</code> 获取 <code>fileUrl</code>。</li>
+</ol>
+<h4 id="5-1-嵌套有序列表"><a href="#5-1-嵌套有序列表" class="headerlink" title="5.1 嵌套有序列表"></a>5.1 嵌套有序列表</h4><ol>
+<li>后端处理<ol>
+<li>校验文件类型。</li>
+<li>生成存储路径。</li>
+<li>保存文件记录。</li>
+</ol>
+</li>
+<li>前端处理<ol>
+<li>调用上传接口。</li>
+<li>保存返回结果。</li>
+<li>渲染图片或下载链接。</li>
+</ol>
+</li>
+</ol>
+<h3 id="6-任务列表"><a href="#6-任务列表" class="headerlink" title="6. 任务列表"></a>6. 任务列表</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 已完成任务：整理上传接口。</li>
+<li><input checked="" disabled="" type="checkbox"> 已完成任务：统一 <code>fileKey</code> 规则。</li>
+<li><input disabled="" type="checkbox"> 待完成任务：补充云存储配置。</li>
+<li><input disabled="" type="checkbox"> 待完成任务：增加异常场景说明。</li>
+</ul>
+<h3 id="7-引用块"><a href="#7-引用块" class="headerlink" title="7. 引用块"></a>7. 引用块</h3><blockquote>
+<p>这是普通引用块。适合放说明、提示、背景信息。需要观察引用块左边框、背景色、内边距和文字颜色。</p>
+</blockquote>
+<blockquote>
+<p>多段引用块第一段。</p>
+<p>多段引用块第二段。这里用来观察引用块内部段落间距。</p>
+</blockquote>
+<blockquote>
+<p><strong>注意：</strong> 如果引用块背景太深，会破坏页面的轻盈感；如果边框太重，也会显得像警告框。</p>
+</blockquote>
+<h3 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8. 代码块"></a>8. 代码块</h3><h4 id="8-1-普通文本代码块"><a href="#8-1-普通文本代码块" class="headerlink" title="8.1 普通文本代码块"></a>8.1 普通文本代码块</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-2-Java-代码块"><a href="#8-2-Java-代码块" class="headerlink" title="8.2 Java 代码块"></a>8.2 Java 代码块</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> FileUploadVO <span class="title function_">upload</span><span class="params">(MultipartFile file, String folder)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileKey</span> <span class="operator">=</span> fileStorageService.save(file, folder);</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileUrl</span> <span class="operator">=</span> fileUrlService.getUrl(fileKey);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">FileUploadVO</span>(fileKey, fileUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-3-TypeScript-代码块"><a href="#8-3-TypeScript-代码块" class="headerlink" title="8.3 TypeScript 代码块"></a>8.3 TypeScript 代码块</h4><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">uploadFile</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">File</span>, <span class="attr">folder</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">  formData.<span class="title function_">append</span>(<span class="string">&#x27;file&#x27;</span>, file);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> request.<span class="property">post</span>&lt;<span class="title class_">FileUploadVO</span>&gt;(<span class="string">`/support/file/upload?folder=<span class="subst">$&#123;folder&#125;</span>`</span>, formData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-4-JSON-代码块"><a href="#8-4-JSON-代码块" class="headerlink" title="8.4 JSON 代码块"></a>8.4 JSON 代码块</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;fileKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;fileUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://example.com/upload/course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;folder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-表格"><a href="#9-表格" class="headerlink" title="9. 表格"></a>9. 表格</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>路径</th>
+<th>说明</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后端接口</td>
+<td><code>FileController.java</code></td>
+<td>负责上传、下载、获取 URL</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>存储服务</td>
+<td><code>IFileStorageService.java</code></td>
+<td>屏蔽本地存储和云存储差异</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>前端封装</td>
+<td><code>file-api.ts</code></td>
+<td>统一上传入口</td>
+<td>待补充</td>
+</tr>
+<tr>
+<td>图片展示</td>
+<td><code>ImagePreview.vue</code></td>
+<td>根据 <code>fileKey</code> 获取展示地址</td>
+<td>待优化</td>
+</tr>
+</tbody></table>
+<h4 id="9-1-长文本表格"><a href="#9-1-长文本表格" class="headerlink" title="9.1 长文本表格"></a>9.1 长文本表格</h4><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐做法</th>
+<th>不推荐做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保存业务数据</td>
+<td>只保存 <code>fileKey</code>，展示时再换取 <code>fileUrl</code></td>
+<td>直接保存完整访问地址</td>
+</tr>
+<tr>
+<td>切换存储方式</td>
+<td>后端统一适配，本地和云存储共用规则</td>
+<td>前端根据环境拼接不同地址</td>
+</tr>
+<tr>
+<td>图片预览</td>
+<td>使用统一组件处理加载、失败、占位图</td>
+<td>每个页面各写一套逻辑</td>
+</tr>
+</tbody></table>
+<h3 id="10-分割线"><a href="#10-分割线" class="headerlink" title="10. 分割线"></a>10. 分割线</h3><p>上方内容。</p>
+<hr>
+<p>下方内容。观察分割线的颜色、上下间距和粗细。</p>
+<h3 id="11-图片测试"><a href="#11-图片测试" class="headerlink" title="11. 图片测试"></a>11. 图片测试</h3><p>以下图片使用远程占位图，方便复制或导入到飞书后直接显示。</p>
+<h4 id="11-1-默认-Markdown-图片"><a href="#11-1-默认-Markdown-图片" class="headerlink" title="11.1 默认 Markdown 图片"></a>11.1 默认 Markdown 图片</h4><p><img src="https://placehold.co/900x360/png?text=Default+Markdown+Image" alt="默认图片：宽 900 高 360"></p>
+<p>观察点：默认图片是否铺满正文宽度，是否有圆角，图片上下是否留白。</p>
+<h4 id="11-2-小图"><a href="#11-2-小图" class="headerlink" title="11.2 小图"></a>11.2 小图</h4><p><img src="https://placehold.co/240x160/png?text=Small+Image" alt="小图：宽 240 高 160"></p>
+<p>观察点：小图是否左对齐，是否和正文贴得太近。</p>
+<h4 id="11-3-HTML-控制宽度"><a href="#11-3-HTML-控制宽度" class="headerlink" title="11.3 HTML 控制宽度"></a>11.3 HTML 控制宽度</h4><img src="https://placehold.co/480x240/png?text=HTML+Width+480" alt="HTML 宽度 480 图片" width="480" />
+
+<p>观察点：飞书是否保留 HTML 图片宽度；Obsidian 是否正常显示。</p>
+<h4 id="11-4-居中图片"><a href="#11-4-居中图片" class="headerlink" title="11.4 居中图片"></a>11.4 居中图片</h4><p align="center">
+  <img src="https://placehold.co/520x260/png?text=Centered+Image" alt="居中图片" width="520" />
+</p>
+
+<p>观察点：飞书是否保留居中效果；如果不保留，后续需要手动调整或使用飞书原生图片居中。</p>
+<h4 id="11-5-左右图文混排：左图右文"><a href="#11-5-左右图文混排：左图右文" class="headerlink" title="11.5 左右图文混排：左图右文"></a>11.5 左右图文混排：左图右文</h4><img src="https://placehold.co/260x180/png?text=Left+Image" alt="左侧图片" width="260" align="left" />
+
+<p>这是一段用于测试左图右文的正文。图片如果浮动成功，文字会从图片右侧开始环绕；如果不支持浮动，图片会独占一行。飞书导入 Markdown 时不一定保留 <code>align=&quot;left&quot;</code>，因此这里主要用于观察兼容性。</p>
+<p>这是一段继续补充的正文，用来测试多行文字环绕时的行高和右侧留白。若效果不稳定，建议在飞书里使用表格或分栏来实现稳定的图文排版。</p>
+<br clear="both" />
+
+<h4 id="11-6-左右图文混排：右图左文"><a href="#11-6-左右图文混排：右图左文" class="headerlink" title="11.6 左右图文混排：右图左文"></a>11.6 左右图文混排：右图左文</h4><img src="https://placehold.co/260x180/png?text=Right+Image" alt="右侧图片" width="260" align="right" />
+
+<p>这是一段用于测试右图左文的正文。图片如果浮动成功，文字会在图片左侧排列；如果导入后浮动失效，说明目标平台对 HTML 图片布局支持有限。</p>
+<p>在技术文档里，右图左文适合放界面截图说明，但如果兼容性不好，推荐改用表格方式实现。</p>
+<br clear="both" />
+
+<h4 id="11-7-使用表格实现左右图片"><a href="#11-7-使用表格实现左右图片" class="headerlink" title="11.7 使用表格实现左右图片"></a>11.7 使用表格实现左右图片</h4><table>
+<thead>
+<tr>
+<th>左图</th>
+<th>右图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://placehold.co/360x220/png?text=Left+Column" alt="左图"></td>
+<td><img src="https://placehold.co/360x220/png?text=Right+Column" alt="右图"></td>
+</tr>
+</tbody></table>
+<p>观察点：表格内图片是否等宽、是否有额外边框、是否适合作为稳定的左右布局方案。</p>
+<h4 id="11-8-图片加说明文字"><a href="#11-8-图片加说明文字" class="headerlink" title="11.8 图片加说明文字"></a>11.8 图片加说明文字</h4><p><img src="https://placehold.co/820x360/png?text=Upload+Flow+Diagram" alt="接口流程图"></p>
+<p>图 1：文件上传流程示意图。观察图片说明文字是否应该使用普通段落、引用块或斜体。</p>
+<p><em>图 2：这是斜体说明文字，用来测试图片 caption 的视觉效果。</em></p>
+<h3 id="12-链接与路径"><a href="#12-链接与路径" class="headerlink" title="12. 链接与路径"></a>12. 链接与路径</h3><p>普通链接：<a href="https://www.feishu.cn/">飞书官网</a></p>
+<p>裸链接：<a href="https://www.feishu.cn/">https://www.feishu.cn/</a></p>
+<p>相对路径示例：<code>smart-admin-api-java8-springboot2/sa-base/src/main/java/net/lab1024/sa/base/module/support/file/</code></p>
+<p>接口路径示例：<code>POST /support/file/upload?folder=course</code></p>
+<h3 id="13-数学公式兼容性"><a href="#13-数学公式兼容性" class="headerlink" title="13. 数学公式兼容性"></a>13. 数学公式兼容性</h3><p>行内公式：$E &#x3D; mc^2$</p>
+<p>块级公式：</p>
+<p>$$<br>sum &#x3D; principal \times rate \times days &#x2F; 365<br>$$</p>
+<p>观察点：飞书导入后是否保留公式渲染；如果没有渲染，是否以纯文本展示。</p>
+<h3 id="14-Mermaid-兼容性"><a href="#14-Mermaid-兼容性" class="headerlink" title="14. Mermaid 兼容性"></a>14. Mermaid 兼容性</h3><pre><code class="highlight mermaid">flowchart TD
+  A[前端选择文件] --&gt; B[调用上传接口]
+  B --&gt; C[后端保存文件]
+  C --&gt; D[返回 fileKey/fileUrl]
+  D --&gt; E[业务表保存 fileKey]
+  E --&gt; F[展示时获取 fileUrl]</code></pre>
+
+<p>观察点：飞书是否将 Mermaid 渲染为图，还是保留为代码块。</p>
+<h3 id="15-折叠内容兼容性"><a href="#15-折叠内容兼容性" class="headerlink" title="15. 折叠内容兼容性"></a>15. 折叠内容兼容性</h3><details>
+<summary>点击展开更多说明</summary>
+
+<p>这里是折叠内容。用于测试飞书是否保留 HTML details 标签。如果不支持，通常会以普通文本或被过滤掉。</p>
+</details>
+
+<h3 id="16-综合样例：文件上传模块说明"><a href="#16-综合样例：文件上传模块说明" class="headerlink" title="16. 综合样例：文件上传模块说明"></a>16. 综合样例：文件上传模块说明</h3><h4 id="16-1-总体原则"><a href="#16-1-总体原则" class="headerlink" title="16.1 总体原则"></a>16.1 总体原则</h4><p>本项目文件上传的核心原则：</p>
+<ol>
+<li>业务表只保存 <code>fileKey</code>。</li>
+<li>页面展示使用 <code>fileUrl</code>。</li>
+<li><code>fileUrl</code> 由后端统一生成。</li>
+<li>前端不要手工拼接 <code>/upload/$&#123;fileKey&#125;</code>。</li>
+<li>上传目录由 <code>folder</code> 参数决定。</li>
+<li>本地存储和云存储共用同一套 <code>fileKey</code> 规则。</li>
+</ol>
+<h4 id="16-2-典型流程"><a href="#16-2-典型流程" class="headerlink" title="16.2 典型流程"></a>16.2 典型流程</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-3-推荐约定"><a href="#16-3-推荐约定" class="headerlink" title="16.3 推荐约定"></a>16.3 推荐约定</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>命名规则</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>课程封面</td>
+<td><code>course-cover</code></td>
+<td><code>course-cover/2026/05/demo.png</code></td>
+</tr>
+<tr>
+<td>老师资质</td>
+<td><code>teacher-cert</code></td>
+<td><code>teacher-cert/2026/05/cert.pdf</code></td>
+</tr>
+<tr>
+<td>临时文件</td>
+<td><code>temp</code></td>
+<td><code>temp/2026/05/upload.tmp</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>推荐将所有文件访问入口收口到后端服务，避免前端直接依赖具体存储实现。</p>
+</blockquote>
+<h3 id="17-视觉检查清单"><a href="#17-视觉检查清单" class="headerlink" title="17. 视觉检查清单"></a>17. 视觉检查清单</h3><ul>
+<li><input disabled="" type="checkbox"> 正文字号是否舒适。</li>
+<li><input disabled="" type="checkbox"> 正文行高是否接近飞书的 <code>1.8</code>。</li>
+<li><input disabled="" type="checkbox"> 正文宽度是否接近 <code>820px</code>。</li>
+<li><input disabled="" type="checkbox"> 标题上下间距是否清晰。</li>
+<li><input disabled="" type="checkbox"> 列表缩进是否自然。</li>
+<li><input disabled="" type="checkbox"> 代码块背景是否足够轻。</li>
+<li><input disabled="" type="checkbox"> 表格是否清晰但不沉重。</li>
+<li><input disabled="" type="checkbox"> 图片默认位置是否符合预期。</li>
+<li><input disabled="" type="checkbox"> 左右图文混排是否稳定。</li>
+<li><input disabled="" type="checkbox"> 复制到飞书后是否有明显样式丢失。</li>
+</ul>
+<hr>
+<h3 id="18-结论记录区"><a href="#18-结论记录区" class="headerlink" title="18. 结论记录区"></a>18. 结论记录区</h3><p>你可以在飞书中复制下面这段，用来记录观察结果：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>Obsidian 效果</th>
+<th>飞书效果</th>
+<th>是否需要调整</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正文字号</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>正文行高</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>正文宽度</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>标题样式</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>代码块</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>表格</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>图片位置</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>图文混排</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
     <title></title>
-    <url>/2026/05/24/obsidian-minimal-settings-guide/</url>
+    <url>/2026/06/09/obsidian-minimal-settings-guide/</url>
     <content><![CDATA[<h1 id="Obsidian-Minimal-两个设置插件说明书"><a href="#Obsidian-Minimal-两个设置插件说明书" class="headerlink" title="Obsidian Minimal 两个设置插件说明书"></a>Obsidian Minimal 两个设置插件说明书</h1><p>本文说明 Obsidian 的 Minimal 主题中两个常用插件的职责、配置位置、推荐用法和避坑原则：</p>
 <ul>
 <li>Minimal Theme Settings</li>
@@ -862,319 +1175,6 @@
 <li>Line width：<a href="https://minimal.guide/features/line-width">https://minimal.guide/features/line-width</a></li>
 <li>Background contrast：<a href="https://minimal.guide/features/contrast">https://minimal.guide/features/contrast</a></li>
 </ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>markdown-style-test-feishu</title>
-    <url>/2026/05/23/markdown-style-test-feishu/</url>
-    <content><![CDATA[<h2 id="Markdown-样式测试文档"><a href="#Markdown-样式测试文档" class="headerlink" title="Markdown 样式测试文档"></a>Markdown 样式测试文档</h2><blockquote>
-<p>用途：将本文导入或复制到飞书文档，用来对比 Obsidian、Minimal 主题、飞书云文档之间的排版差异</p>
-<p>重点观察：标题层级、段落行高、列表缩进、代码块、引用块、表格、图片位置、图片尺寸、图文混排。</p>
-</blockquote>
-<hr>
-<h3 id="1-基础正文"><a href="#1-基础正文" class="headerlink" title="1. 基础正文"></a>1. 基础正文</h3><p>这是一段普通正文，用来观察默认字号、行高、段落间距和正文宽度。理想的阅读效果应该是文字不拥挤、行距舒适、每行长度适中，长时间阅读时不会产生明显疲劳。</p>
-<p>这是第二段正文。这里包含一些中文、English words、数字 1234567890，以及常见标点符号：逗号，句号。冒号：分号；括号（内容）和引号“示例”。</p>
-<p>这是一段较长的正文，用来测试自动换行效果。如果正文容器过宽，读者的视线移动距离会变长；如果正文容器过窄，换行会过于频繁。飞书文档的正文宽度通常比较克制，这也是它看起来舒服的重要原因之一。</p>
-<h3 id="2-行内样式"><a href="#2-行内样式" class="headerlink" title="2. 行内样式"></a>2. 行内样式</h3><p>这是一段包含 <strong>加粗文本</strong>、<em>斜体文本</em>、<em><strong>加粗斜体</strong></em>、<del>删除线</del>、<code>inline code</code>、<a href="https://www.feishu.cn/">普通链接</a> 的正文。</p>
-<p>中文技术文档里经常会出现变量名，例如 <code>fileKey</code>、<code>fileUrl</code>、<code>folder</code>、<code>uploadPath</code>。这些行内代码应该足够醒目，但不应该打断阅读节奏。</p>
-<h3 id="3-标题层级"><a href="#3-标题层级" class="headerlink" title="3. 标题层级"></a>3. 标题层级</h3><h2 id="H1-一级标题：页面主标题"><a href="#H1-一级标题：页面主标题" class="headerlink" title="H1 一级标题：页面主标题"></a>H1 一级标题：页面主标题</h2><p>一级标题通常只应该在页面顶部出现一次，用来观察主标题字号、字重和上下间距。</p>
-<h3 id="H2-二级标题：主要章节"><a href="#H2-二级标题：主要章节" class="headerlink" title="H2 二级标题：主要章节"></a>H2 二级标题：主要章节</h3><p>二级标题适合划分主要章节，应该有明显的视觉权重。</p>
-<h4 id="H3-三级标题：小节标题"><a href="#H3-三级标题：小节标题" class="headerlink" title="H3 三级标题：小节标题"></a>H3 三级标题：小节标题</h4><p>三级标题适合进一步拆分内容，应该比正文突出，但不要过于夸张。</p>
-<h5 id="H4-四级标题"><a href="#H4-四级标题" class="headerlink" title="H4 四级标题"></a>H4 四级标题</h5><p>四级标题常用于技术文档中的细节说明。</p>
-<h6 id="H5-五级标题"><a href="#H5-五级标题" class="headerlink" title="H5 五级标题"></a>H5 五级标题</h6><p>五级标题测试较低层级标题的可读性。</p>
-<h6 id="H6-六级标题"><a href="#H6-六级标题" class="headerlink" title="H6 六级标题"></a>H6 六级标题</h6><p>六级标题测试最小标题样式。</p>
-<h3 id="4-无序列表"><a href="#4-无序列表" class="headerlink" title="4. 无序列表"></a>4. 无序列表</h3><ul>
-<li>第一层列表项，用来观察项目符号、左侧缩进和行高。</li>
-<li>第一层列表项较长时，会自动换行。换行后的第二行应该和正文内容对齐，而不是回到项目符号下面。</li>
-<li>第一层列表项包含 <code>inline code</code> 和 <strong>加粗文本</strong>。<ul>
-<li>第二层列表项，用来观察嵌套缩进。</li>
-<li>第二层列表项继续补充说明。<ul>
-<li>第三层列表项，用来观察更深层级缩进。</li>
-<li>第三层列表项包含中文和 English words。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-有序列表"><a href="#5-有序列表" class="headerlink" title="5. 有序列表"></a>5. 有序列表</h3><ol>
-<li>第一步：选择文件。</li>
-<li>第二步：上传到后端接口。</li>
-<li>第三步：后端返回 <code>fileKey</code> 和 <code>fileUrl</code>。</li>
-<li>第四步：业务表只保存 <code>fileKey</code>。</li>
-<li>第五步：页面展示时通过 <code>fileKey</code> 获取 <code>fileUrl</code>。</li>
-</ol>
-<h4 id="5-1-嵌套有序列表"><a href="#5-1-嵌套有序列表" class="headerlink" title="5.1 嵌套有序列表"></a>5.1 嵌套有序列表</h4><ol>
-<li>后端处理<ol>
-<li>校验文件类型。</li>
-<li>生成存储路径。</li>
-<li>保存文件记录。</li>
-</ol>
-</li>
-<li>前端处理<ol>
-<li>调用上传接口。</li>
-<li>保存返回结果。</li>
-<li>渲染图片或下载链接。</li>
-</ol>
-</li>
-</ol>
-<h3 id="6-任务列表"><a href="#6-任务列表" class="headerlink" title="6. 任务列表"></a>6. 任务列表</h3><ul>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务：整理上传接口。</li>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务：统一 <code>fileKey</code> 规则。</li>
-<li><input disabled="" type="checkbox"> 待完成任务：补充云存储配置。</li>
-<li><input disabled="" type="checkbox"> 待完成任务：增加异常场景说明。</li>
-</ul>
-<h3 id="7-引用块"><a href="#7-引用块" class="headerlink" title="7. 引用块"></a>7. 引用块</h3><blockquote>
-<p>这是普通引用块。适合放说明、提示、背景信息。需要观察引用块左边框、背景色、内边距和文字颜色。</p>
-</blockquote>
-<blockquote>
-<p>多段引用块第一段。</p>
-<p>多段引用块第二段。这里用来观察引用块内部段落间距。</p>
-</blockquote>
-<blockquote>
-<p><strong>注意：</strong> 如果引用块背景太深，会破坏页面的轻盈感；如果边框太重，也会显得像警告框。</p>
-</blockquote>
-<h3 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8. 代码块"></a>8. 代码块</h3><h4 id="8-1-普通文本代码块"><a href="#8-1-普通文本代码块" class="headerlink" title="8.1 普通文本代码块"></a>8.1 普通文本代码块</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-2-Java-代码块"><a href="#8-2-Java-代码块" class="headerlink" title="8.2 Java 代码块"></a>8.2 Java 代码块</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> FileUploadVO <span class="title function_">upload</span><span class="params">(MultipartFile file, String folder)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileKey</span> <span class="operator">=</span> fileStorageService.save(file, folder);</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileUrl</span> <span class="operator">=</span> fileUrlService.getUrl(fileKey);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">FileUploadVO</span>(fileKey, fileUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-3-TypeScript-代码块"><a href="#8-3-TypeScript-代码块" class="headerlink" title="8.3 TypeScript 代码块"></a>8.3 TypeScript 代码块</h4><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">uploadFile</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">File</span>, <span class="attr">folder</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">  formData.<span class="title function_">append</span>(<span class="string">&#x27;file&#x27;</span>, file);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> request.<span class="property">post</span>&lt;<span class="title class_">FileUploadVO</span>&gt;(<span class="string">`/support/file/upload?folder=<span class="subst">$&#123;folder&#125;</span>`</span>, formData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-4-JSON-代码块"><a href="#8-4-JSON-代码块" class="headerlink" title="8.4 JSON 代码块"></a>8.4 JSON 代码块</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;fileKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;fileUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://example.com/upload/course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;folder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="9-表格"><a href="#9-表格" class="headerlink" title="9. 表格"></a>9. 表格</h3><table>
-<thead>
-<tr>
-<th>模块</th>
-<th>路径</th>
-<th>说明</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>后端接口</td>
-<td><code>FileController.java</code></td>
-<td>负责上传、下载、获取 URL</td>
-<td>已完成</td>
-</tr>
-<tr>
-<td>存储服务</td>
-<td><code>IFileStorageService.java</code></td>
-<td>屏蔽本地存储和云存储差异</td>
-<td>已完成</td>
-</tr>
-<tr>
-<td>前端封装</td>
-<td><code>file-api.ts</code></td>
-<td>统一上传入口</td>
-<td>待补充</td>
-</tr>
-<tr>
-<td>图片展示</td>
-<td><code>ImagePreview.vue</code></td>
-<td>根据 <code>fileKey</code> 获取展示地址</td>
-<td>待优化</td>
-</tr>
-</tbody></table>
-<h4 id="9-1-长文本表格"><a href="#9-1-长文本表格" class="headerlink" title="9.1 长文本表格"></a>9.1 长文本表格</h4><table>
-<thead>
-<tr>
-<th>场景</th>
-<th>推荐做法</th>
-<th>不推荐做法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>保存业务数据</td>
-<td>只保存 <code>fileKey</code>，展示时再换取 <code>fileUrl</code></td>
-<td>直接保存完整访问地址</td>
-</tr>
-<tr>
-<td>切换存储方式</td>
-<td>后端统一适配，本地和云存储共用规则</td>
-<td>前端根据环境拼接不同地址</td>
-</tr>
-<tr>
-<td>图片预览</td>
-<td>使用统一组件处理加载、失败、占位图</td>
-<td>每个页面各写一套逻辑</td>
-</tr>
-</tbody></table>
-<h3 id="10-分割线"><a href="#10-分割线" class="headerlink" title="10. 分割线"></a>10. 分割线</h3><p>上方内容。</p>
-<hr>
-<p>下方内容。观察分割线的颜色、上下间距和粗细。</p>
-<h3 id="11-图片测试"><a href="#11-图片测试" class="headerlink" title="11. 图片测试"></a>11. 图片测试</h3><p>以下图片使用远程占位图，方便复制或导入到飞书后直接显示。</p>
-<h4 id="11-1-默认-Markdown-图片"><a href="#11-1-默认-Markdown-图片" class="headerlink" title="11.1 默认 Markdown 图片"></a>11.1 默认 Markdown 图片</h4><p><img src="https://placehold.co/900x360/png?text=Default+Markdown+Image" alt="默认图片：宽 900 高 360"></p>
-<p>观察点：默认图片是否铺满正文宽度，是否有圆角，图片上下是否留白。</p>
-<h4 id="11-2-小图"><a href="#11-2-小图" class="headerlink" title="11.2 小图"></a>11.2 小图</h4><p><img src="https://placehold.co/240x160/png?text=Small+Image" alt="小图：宽 240 高 160"></p>
-<p>观察点：小图是否左对齐，是否和正文贴得太近。</p>
-<h4 id="11-3-HTML-控制宽度"><a href="#11-3-HTML-控制宽度" class="headerlink" title="11.3 HTML 控制宽度"></a>11.3 HTML 控制宽度</h4><img src="https://placehold.co/480x240/png?text=HTML+Width+480" alt="HTML 宽度 480 图片" width="480" />
-
-<p>观察点：飞书是否保留 HTML 图片宽度；Obsidian 是否正常显示。</p>
-<h4 id="11-4-居中图片"><a href="#11-4-居中图片" class="headerlink" title="11.4 居中图片"></a>11.4 居中图片</h4><p align="center">
-  <img src="https://placehold.co/520x260/png?text=Centered+Image" alt="居中图片" width="520" />
-</p>
-
-<p>观察点：飞书是否保留居中效果；如果不保留，后续需要手动调整或使用飞书原生图片居中。</p>
-<h4 id="11-5-左右图文混排：左图右文"><a href="#11-5-左右图文混排：左图右文" class="headerlink" title="11.5 左右图文混排：左图右文"></a>11.5 左右图文混排：左图右文</h4><img src="https://placehold.co/260x180/png?text=Left+Image" alt="左侧图片" width="260" align="left" />
-
-<p>这是一段用于测试左图右文的正文。图片如果浮动成功，文字会从图片右侧开始环绕；如果不支持浮动，图片会独占一行。飞书导入 Markdown 时不一定保留 <code>align=&quot;left&quot;</code>，因此这里主要用于观察兼容性。</p>
-<p>这是一段继续补充的正文，用来测试多行文字环绕时的行高和右侧留白。若效果不稳定，建议在飞书里使用表格或分栏来实现稳定的图文排版。</p>
-<br clear="both" />
-
-<h4 id="11-6-左右图文混排：右图左文"><a href="#11-6-左右图文混排：右图左文" class="headerlink" title="11.6 左右图文混排：右图左文"></a>11.6 左右图文混排：右图左文</h4><img src="https://placehold.co/260x180/png?text=Right+Image" alt="右侧图片" width="260" align="right" />
-
-<p>这是一段用于测试右图左文的正文。图片如果浮动成功，文字会在图片左侧排列；如果导入后浮动失效，说明目标平台对 HTML 图片布局支持有限。</p>
-<p>在技术文档里，右图左文适合放界面截图说明，但如果兼容性不好，推荐改用表格方式实现。</p>
-<br clear="both" />
-
-<h4 id="11-7-使用表格实现左右图片"><a href="#11-7-使用表格实现左右图片" class="headerlink" title="11.7 使用表格实现左右图片"></a>11.7 使用表格实现左右图片</h4><table>
-<thead>
-<tr>
-<th>左图</th>
-<th>右图</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><img src="https://placehold.co/360x220/png?text=Left+Column" alt="左图"></td>
-<td><img src="https://placehold.co/360x220/png?text=Right+Column" alt="右图"></td>
-</tr>
-</tbody></table>
-<p>观察点：表格内图片是否等宽、是否有额外边框、是否适合作为稳定的左右布局方案。</p>
-<h4 id="11-8-图片加说明文字"><a href="#11-8-图片加说明文字" class="headerlink" title="11.8 图片加说明文字"></a>11.8 图片加说明文字</h4><p><img src="https://placehold.co/820x360/png?text=Upload+Flow+Diagram" alt="接口流程图"></p>
-<p>图 1：文件上传流程示意图。观察图片说明文字是否应该使用普通段落、引用块或斜体。</p>
-<p><em>图 2：这是斜体说明文字，用来测试图片 caption 的视觉效果。</em></p>
-<h3 id="12-链接与路径"><a href="#12-链接与路径" class="headerlink" title="12. 链接与路径"></a>12. 链接与路径</h3><p>普通链接：<a href="https://www.feishu.cn/">飞书官网</a></p>
-<p>裸链接：<a href="https://www.feishu.cn/">https://www.feishu.cn/</a></p>
-<p>相对路径示例：<code>smart-admin-api-java8-springboot2/sa-base/src/main/java/net/lab1024/sa/base/module/support/file/</code></p>
-<p>接口路径示例：<code>POST /support/file/upload?folder=course</code></p>
-<h3 id="13-数学公式兼容性"><a href="#13-数学公式兼容性" class="headerlink" title="13. 数学公式兼容性"></a>13. 数学公式兼容性</h3><p>行内公式：$E &#x3D; mc^2$</p>
-<p>块级公式：</p>
-<p>$$<br>sum &#x3D; principal \times rate \times days &#x2F; 365<br>$$</p>
-<p>观察点：飞书导入后是否保留公式渲染；如果没有渲染，是否以纯文本展示。</p>
-<h3 id="14-Mermaid-兼容性"><a href="#14-Mermaid-兼容性" class="headerlink" title="14. Mermaid 兼容性"></a>14. Mermaid 兼容性</h3><pre><code class="highlight mermaid">flowchart TD
-  A[前端选择文件] --&gt; B[调用上传接口]
-  B --&gt; C[后端保存文件]
-  C --&gt; D[返回 fileKey/fileUrl]
-  D --&gt; E[业务表保存 fileKey]
-  E --&gt; F[展示时获取 fileUrl]</code></pre>
-
-<p>观察点：飞书是否将 Mermaid 渲染为图，还是保留为代码块。</p>
-<h3 id="15-折叠内容兼容性"><a href="#15-折叠内容兼容性" class="headerlink" title="15. 折叠内容兼容性"></a>15. 折叠内容兼容性</h3><details>
-<summary>点击展开更多说明</summary>
-
-<p>这里是折叠内容。用于测试飞书是否保留 HTML details 标签。如果不支持，通常会以普通文本或被过滤掉。</p>
-</details>
-
-<h3 id="16-综合样例：文件上传模块说明"><a href="#16-综合样例：文件上传模块说明" class="headerlink" title="16. 综合样例：文件上传模块说明"></a>16. 综合样例：文件上传模块说明</h3><h4 id="16-1-总体原则"><a href="#16-1-总体原则" class="headerlink" title="16.1 总体原则"></a>16.1 总体原则</h4><p>本项目文件上传的核心原则：</p>
-<ol>
-<li>业务表只保存 <code>fileKey</code>。</li>
-<li>页面展示使用 <code>fileUrl</code>。</li>
-<li><code>fileUrl</code> 由后端统一生成。</li>
-<li>前端不要手工拼接 <code>/upload/$&#123;fileKey&#125;</code>。</li>
-<li>上传目录由 <code>folder</code> 参数决定。</li>
-<li>本地存储和云存储共用同一套 <code>fileKey</code> 规则。</li>
-</ol>
-<h4 id="16-2-典型流程"><a href="#16-2-典型流程" class="headerlink" title="16.2 典型流程"></a>16.2 典型流程</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
-
-<h4 id="16-3-推荐约定"><a href="#16-3-推荐约定" class="headerlink" title="16.3 推荐约定"></a>16.3 推荐约定</h4><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>命名规则</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>课程封面</td>
-<td><code>course-cover</code></td>
-<td><code>course-cover/2026/05/demo.png</code></td>
-</tr>
-<tr>
-<td>老师资质</td>
-<td><code>teacher-cert</code></td>
-<td><code>teacher-cert/2026/05/cert.pdf</code></td>
-</tr>
-<tr>
-<td>临时文件</td>
-<td><code>temp</code></td>
-<td><code>temp/2026/05/upload.tmp</code></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>推荐将所有文件访问入口收口到后端服务，避免前端直接依赖具体存储实现。</p>
-</blockquote>
-<h3 id="17-视觉检查清单"><a href="#17-视觉检查清单" class="headerlink" title="17. 视觉检查清单"></a>17. 视觉检查清单</h3><ul>
-<li><input disabled="" type="checkbox"> 正文字号是否舒适。</li>
-<li><input disabled="" type="checkbox"> 正文行高是否接近飞书的 <code>1.8</code>。</li>
-<li><input disabled="" type="checkbox"> 正文宽度是否接近 <code>820px</code>。</li>
-<li><input disabled="" type="checkbox"> 标题上下间距是否清晰。</li>
-<li><input disabled="" type="checkbox"> 列表缩进是否自然。</li>
-<li><input disabled="" type="checkbox"> 代码块背景是否足够轻。</li>
-<li><input disabled="" type="checkbox"> 表格是否清晰但不沉重。</li>
-<li><input disabled="" type="checkbox"> 图片默认位置是否符合预期。</li>
-<li><input disabled="" type="checkbox"> 左右图文混排是否稳定。</li>
-<li><input disabled="" type="checkbox"> 复制到飞书后是否有明显样式丢失。</li>
-</ul>
-<hr>
-<h3 id="18-结论记录区"><a href="#18-结论记录区" class="headerlink" title="18. 结论记录区"></a>18. 结论记录区</h3><p>你可以在飞书中复制下面这段，用来记录观察结果：</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>Obsidian 效果</th>
-<th>飞书效果</th>
-<th>是否需要调整</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>正文字号</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>正文行高</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>正文宽度</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>标题样式</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>代码块</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>表格</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>图片位置</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>图文混排</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
 ]]></content>
   </entry>
   <entry>
@@ -3927,6 +3927,36 @@
       </tags>
   </entry>
   <entry>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -4112,36 +4142,6 @@
 <li><code>dir</code> 授权文件夹名称</li>
 </ul>
 <h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
@@ -6056,6 +6056,113 @@
       </tags>
   </entry>
   <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>利息计算方式</title>
     <url>/2024/12/09/archive/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
@@ -6496,113 +6603,6 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
