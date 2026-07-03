@@ -315,7 +315,7 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2026/06/09/obsidian-minimal-settings-guide/</url>
+    <url>/2026/07/03/obsidian-minimal-settings-guide/</url>
     <content><![CDATA[<h1 id="Obsidian-Minimal-两个设置插件说明书"><a href="#Obsidian-Minimal-两个设置插件说明书" class="headerlink" title="Obsidian Minimal 两个设置插件说明书"></a>Obsidian Minimal 两个设置插件说明书</h1><p>本文说明 Obsidian 的 Minimal 主题中两个常用插件的职责、配置位置、推荐用法和避坑原则：</p>
 <ul>
 <li>Minimal Theme Settings</li>
@@ -1314,6 +1314,87 @@
 <li>官网：<a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Dbeaver工具手册</title>
+    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
+<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
+</blockquote>
+<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
+<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
+<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
+<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
+</ul>
+<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
+<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
+<li>选择中要复制的代码</li>
+<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
+</ol>
+<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
+<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
+<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
+<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
+<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
+]]></content>
+      <tags>
+        <tag>工具/dbeaver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git Worktree 常用命令</title>
+    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
+<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
+<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
+<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
+<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
+<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
+]]></content>
+      <tags>
+        <tag>工具/git</tag>
+      </tags>
   </entry>
   <entry>
     <title>Docker小册</title>
@@ -2349,87 +2430,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Dbeaver工具手册</title>
-    <url>/2024/12/10/archive/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<h2 id="安装-SQL-Formatter-插件"><a href="#安装-SQL-Formatter-插件" class="headerlink" title="安装 SQL Formatter 插件"></a>安装 SQL Formatter 插件</h2><blockquote>
-<p>由于 Dbeaver 自带的 sql 美化确实有点难看，因此选择使用第三方插件进行 sql 的格式美化</p>
-</blockquote>
-<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h3><p>系统需要安装 nodejs 环境</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418102138568.png" alt="|470"></p>
-<h3 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h3><p>新建希望插件安装的文件夹，并在文件夹下执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install sql-formatter</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418104132910.png"></p>
-<h3 id="配置-Dbeaver"><a href="#配置-Dbeaver" class="headerlink" title="配置 Dbeaver"></a>配置 Dbeaver</h3><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111657891.png"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240418111812734.png" alt="|600"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#  -c &quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot; 属于格式化的配置文件选项</span></span><br><span class="line">node <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\bin\\sql-formatter-cli.cjs&quot;</span> -c <span class="string">&quot;D:\\soft\\sql-formatter\\node_modules\\sql-formatter\\config.json&quot;</span> <span class="variable">$&#123;file&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Configuration-Options-配置选项"><a href="#Configuration-Options-配置选项" class="headerlink" title="Configuration Options 配置选项"></a>Configuration Options 配置选项</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sql&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;keywordCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;upper&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;dataTypeCase&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lower&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;linesBetweenQueries&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/language.md"><strong><code>language</code></strong></a> the SQL dialect to use (when using <code>format()</code>).<br><code>language</code>  要使用的 SQL 方言（使用  <code>format()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dialect.md"><strong><code>dialect</code></strong></a> the SQL dialect to use (when using <code>formatDialect()</code> since version 12).<br><code>dialect</code>  要使用的 SQL 方言（从版本 12 开始使用  <code>formatDialect()</code>  时）。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/tabWidth.md"><strong><code>tabWidth</code></strong></a> amount of indentation to use.<br><code>tabWidth</code>  要使用的缩进量。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/useTabs.md"><strong><code>useTabs</code></strong></a> to use tabs for indentation.<br><code>useTabs</code>  使用制表符进行缩进。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/keywordCase.md"><strong><code>keywordCase</code></strong></a> uppercases or lowercases keywords.<br><code>keywordCase</code>  大写或小写关键字。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/dataTypeCase.md"><strong><code>dataTypeCase</code></strong></a> uppercases or lowercases data types.<br><code>dataTypeCase</code>  大写或小写数据类型。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/functionCase.md"><strong><code>functionCase</code></strong></a> uppercases or lowercases function names.<br><code>functionCase</code>  大写或小写函数名称。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/identifierCase.md"><strong><code>identifierCase</code></strong></a> uppercases or lowercases identifiers. (<strong>experimental!</strong>)<br><code>identifierCase</code>  大写或小写标识符。（实验性！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/indentStyle.md"><strong><code>indentStyle</code></strong></a> defines overall indentation style. (<strong>deprecated!</strong>)<br><code>indentStyle</code>  定义整体缩进样式。（已弃用！</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/logicalOperatorNewline.md"><strong><code>logicalOperatorNewline</code></strong></a> newline before or after boolean operator (AND, OR, XOR).<br><code>logicalOperatorNewline</code>  布尔运算符（AND、OR、XOR）之前或之后的换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/expressionWidth.md"><strong><code>expressionWidth</code></strong></a> maximum number of characters in parenthesized expressions to be kept on single line.<br><code>expressionWidth</code>  括号表达式中要保留在单行上的最大字符数。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/linesBetweenQueries.md"><strong><code>linesBetweenQueries</code></strong></a> how many newlines to insert between queries.<br><code>linesBetweenQueries</code>  在查询之间插入多少个换行符。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/denseOperators.md"><strong><code>denseOperators</code></strong></a> packs operators densely without spaces.<br><code>denseOperators</code>  密集地打包运算符，没有空格。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/newlineBeforeSemicolon.md"><strong><code>newlineBeforeSemicolon</code></strong></a> places semicolon on separate line.<br><code>newlineBeforeSemicolon</code>  将分号放在单独的行上。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/params.md"><strong><code>params</code></strong></a> collection of values for placeholder replacement.<br><code>params</code>  占位符替换值的集合。</li>
-<li><a href="https://github.com/sql-formatter-org/sql-formatter/blob/master/docs/paramTypes.md"><strong><code>paramTypes</code></strong></a> specifies parameter placeholders types to support.<br><code>paramTypes</code>  指定要支持的参数占位符类型。</li>
-</ul>
-<h2 id="复制格式化-Sql-为一行"><a href="#复制格式化-Sql-为一行" class="headerlink" title="复制格式化 Sql 为一行"></a>复制格式化 Sql 为一行</h2><h3 id="使用鼠标点击面板的方式"><a href="#使用鼠标点击面板的方式" class="headerlink" title="使用鼠标点击面板的方式"></a>使用鼠标点击面板的方式</h3><p>具体过程参考一下 gif 图即可</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/recording.gif" alt="|840"></p>
-<h3 id="使用快捷键"><a href="#使用快捷键" class="headerlink" title="使用快捷键"></a>使用快捷键</h3><ol>
-<li>选择中要复制的代码</li>
-<li>使用快捷键 <code>ctrl</code> + <code>shift</code> +<code>C</code></li>
-</ol>
-<h2 id="快捷键优化"><a href="#快捷键优化" class="headerlink" title="快捷键优化"></a>快捷键优化</h2><h3 id="键位映射设置路径"><a href="#键位映射设置路径" class="headerlink" title="键位映射设置路径"></a>键位映射设置路径</h3><p>obsidian 的快捷键设置路径 <code>窗口| 首选项| 用户界面 |键</code> 选项卡下</p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133542562.png" alt="|520"></p>
-<p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133701768.png" alt="|520"></p>
-<h3 id="快捷键优化项"><a href="#快捷键优化项" class="headerlink" title="快捷键优化项"></a>快捷键优化项</h3><p>建议所有的开发工具厂商的快捷键能不能和 IDEA 对齐一下颗粒度啊……</p>
-<h4 id="注释快捷键"><a href="#注释快捷键" class="headerlink" title="注释快捷键"></a>注释快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422133938544.png" alt="|480"></p>
-<h4 id="格式化快捷键"><a href="#格式化快捷键" class="headerlink" title="格式化快捷键"></a>格式化快捷键</h4><p><img src="/assets/Dbeaver%E5%B7%A5%E5%85%B7%E6%89%8B%E5%86%8C/image-20240422134059052.png" alt="|480"></p>
-]]></content>
-      <tags>
-        <tag>工具/dbeaver</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git Worktree 常用命令</title>
-    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
-<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
-<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
-<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
-<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
-<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
-]]></content>
-      <tags>
-        <tag>工具/git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTPS 证书到底是什么？</title>
     <url>/2026/05/20/archive/HTTPS%20%E8%AF%81%E4%B9%A6%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
     <content><![CDATA[<blockquote>
@@ -3153,6 +3153,120 @@
       <tags>
         <tag>运维/linux</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Linux 导入 Java 证书教程</title>
+    <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
+<p>常见报错如下：</p>
+<p>javax.net.ssl.SSLHandshakeException: PKIX path building failed<br>sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">该错误表示 Java 应用不信任目标 HTTPS 服务的证书，需要将证书导入 Java 的信任库。</span><br><span class="line"></span><br><span class="line">## 二、准备证书文件</span><br><span class="line"></span><br><span class="line">将证书文件上传到 Linux 服务器，例如上传到：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">/tmp/test.com.cn.crt</span><br></pre></td></tr></table></figure>
+
+<p>常见可导入的证书文件格式包括：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.crt</span><br><span class="line">.cer</span><br><span class="line">.pem</span><br></pre></td></tr></table></figure>
+
+<p>以下文件不需要导入 Java 信任库：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.key  私钥文件，不需要导入</span><br><span class="line">.req  证书请求文件，不需要导入</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、确认-Java-安装路径"><a href="#三、确认-Java-安装路径" class="headerlink" title="三、确认 Java 安装路径"></a>三、确认 Java 安装路径</h2><p>在 Linux 服务器上执行以下命令，查看 Java 路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br><span class="line"><span class="built_in">readlink</span> -f $(<span class="built_in">which</span> java)</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器上有多个 JDK，需要确认 Java 应用实际使用的是哪个 JDK。</p>
+<p>可以通过以下命令查看 Java 应用启动命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、找到-Java-证书库-Cacerts"><a href="#四、找到-Java-证书库-Cacerts" class="headerlink" title="四、找到 Java 证书库 Cacerts"></a>四、找到 Java 证书库 Cacerts</h2><p>Java 默认信任库文件名为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cacerts</span><br></pre></td></tr></table></figure>
+
+<p>常见路径如下。</p>
+<p>JDK 8 常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>JDK 11 及以上常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>示例路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/local/jdk1.8.0_202/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、导入证书"><a href="#五、导入证书" class="headerlink" title="五、导入证书"></a>五、导入证书</h2><h3 id="1-JDK-8-导入方式"><a href="#1-JDK-8-导入方式" class="headerlink" title="1. JDK 8 导入方式"></a>1. JDK 8 导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDK-11-及以上导入方式"><a href="#2-JDK-11-及以上导入方式" class="headerlink" title="2. JDK 11 及以上导入方式"></a>2. JDK 11 及以上导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，如果出现以下提示：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Trust this certificate? [no]:</span><br></pre></td></tr></table></figure>
+
+<p>输入：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、参数说明"><a href="#六、参数说明" class="headerlink" title="六、参数说明"></a>六、参数说明</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-importcert</code></td>
+<td>导入证书</td>
+</tr>
+<tr>
+<td><code>-alias</code></td>
+<td>证书别名，可自定义</td>
+</tr>
+<tr>
+<td><code>-file</code></td>
+<td>要导入的证书文件路径</td>
+</tr>
+<tr>
+<td><code>-keystore</code></td>
+<td>Java 证书库路径</td>
+</tr>
+<tr>
+<td><code>-storepass</code></td>
+<td>证书库密码，默认通常为 <code>changeit</code></td>
+</tr>
+</tbody></table>
+<h2 id="七、验证证书是否导入成功"><a href="#七、验证证书是否导入成功" class="headerlink" title="七、验证证书是否导入成功"></a>七、验证证书是否导入成功</h2><h3 id="1-JDK-8-验证方式"><a href="#1-JDK-8-验证方式" class="headerlink" title="1. JDK 8 验证方式"></a>1. JDK 8 验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDK-11-及以上验证方式"><a href="#2-JDK-11-及以上验证方式" class="headerlink" title="2. JDK 11 及以上验证方式"></a>2. JDK 11 及以上验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
+
+<p>如果能看到类似以下内容，说明证书导入成功：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sdari-com-cn, Jul 3, 2026, trustedCertEntry</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、重启-Java-应用"><a href="#八、重启-Java-应用" class="headerlink" title="八、重启 Java 应用"></a>八、重启 Java 应用</h2><p>证书导入完成后，需要重启 Java 应用才会生效。</p>
+<p>如果是 systemd 服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart 服务名</span><br></pre></td></tr></table></figure>
+
+<p>如果是 Tomcat 或 TongWeb，根据实际部署方式重启服务，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./stop.sh</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、查看证书信息"><a href="#九、查看证书信息" class="headerlink" title="九、查看证书信息"></a>九、查看证书信息</h2><p>可以使用以下命令查看证书内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /tmp/sdari.com.cn.crt -noout -subject -issuer -dates</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、删除已导入的证书"><a href="#十、删除已导入的证书" class="headerlink" title="十、删除已导入的证书"></a>十、删除已导入的证书</h2><p>如果需要删除已导入的证书，可执行以下命令。</p>
+<p>JDK 8：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<p>JDK 11 及以上：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、注意事项"><a href="#十一、注意事项" class="headerlink" title="十一、注意事项"></a>十一、注意事项</h2><ol>
+<li>导入证书时，需要使用 Java 应用实际运行的 JDK。</li>
+<li>不要将 <code>.key</code> 私钥文件导入 Java 信任库。</li>
+<li><code>.req</code> 是证书请求文件，不需要导入。</li>
+<li>Java 默认 <code>cacerts</code> 密码通常是 <code>changeit</code>。</li>
+<li>导入完成后必须重启 Java 应用。</li>
+<li>如果应用启动参数指定了自定义 truststore，需要将证书导入到自定义 truststore 中。</li>
+</ol>
+<h2 id="十二、处理完成标志"><a href="#十二、处理完成标志" class="headerlink" title="十二、处理完成标志"></a>十二、处理完成标志</h2><p>完成以下步骤后，证书导入处理完成：</p>
+<ol>
+<li>证书文件已上传到 Linux 服务器。</li>
+<li>已确认 Java 应用实际使用的 JDK。</li>
+<li>已将证书导入对应 JDK 的 <code>cacerts</code>。</li>
+<li>已验证证书别名存在。</li>
+<li>已重启 Java 应用。</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>Linux常用命令汇总</title>
