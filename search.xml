@@ -1,1183 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>markdown-style-test-feishu</title>
-    <url>/2026/05/23/markdown-style-test-feishu/</url>
-    <content><![CDATA[<h2 id="Markdown-样式测试文档"><a href="#Markdown-样式测试文档" class="headerlink" title="Markdown 样式测试文档"></a>Markdown 样式测试文档</h2><blockquote>
-<p>用途：将本文导入或复制到飞书文档，用来对比 Obsidian、Minimal 主题、飞书云文档之间的排版差异</p>
-<p>重点观察：标题层级、段落行高、列表缩进、代码块、引用块、表格、图片位置、图片尺寸、图文混排。</p>
-</blockquote>
-<hr>
-<h3 id="1-基础正文"><a href="#1-基础正文" class="headerlink" title="1. 基础正文"></a>1. 基础正文</h3><p>这是一段普通正文，用来观察默认字号、行高、段落间距和正文宽度。理想的阅读效果应该是文字不拥挤、行距舒适、每行长度适中，长时间阅读时不会产生明显疲劳。</p>
-<p>这是第二段正文。这里包含一些中文、English words、数字 1234567890，以及常见标点符号：逗号，句号。冒号：分号；括号（内容）和引号“示例”。</p>
-<p>这是一段较长的正文，用来测试自动换行效果。如果正文容器过宽，读者的视线移动距离会变长；如果正文容器过窄，换行会过于频繁。飞书文档的正文宽度通常比较克制，这也是它看起来舒服的重要原因之一。</p>
-<h3 id="2-行内样式"><a href="#2-行内样式" class="headerlink" title="2. 行内样式"></a>2. 行内样式</h3><p>这是一段包含 <strong>加粗文本</strong>、<em>斜体文本</em>、<em><strong>加粗斜体</strong></em>、<del>删除线</del>、<code>inline code</code>、<a href="https://www.feishu.cn/">普通链接</a> 的正文。</p>
-<p>中文技术文档里经常会出现变量名，例如 <code>fileKey</code>、<code>fileUrl</code>、<code>folder</code>、<code>uploadPath</code>。这些行内代码应该足够醒目，但不应该打断阅读节奏。</p>
-<h3 id="3-标题层级"><a href="#3-标题层级" class="headerlink" title="3. 标题层级"></a>3. 标题层级</h3><h2 id="H1-一级标题：页面主标题"><a href="#H1-一级标题：页面主标题" class="headerlink" title="H1 一级标题：页面主标题"></a>H1 一级标题：页面主标题</h2><p>一级标题通常只应该在页面顶部出现一次，用来观察主标题字号、字重和上下间距。</p>
-<h3 id="H2-二级标题：主要章节"><a href="#H2-二级标题：主要章节" class="headerlink" title="H2 二级标题：主要章节"></a>H2 二级标题：主要章节</h3><p>二级标题适合划分主要章节，应该有明显的视觉权重。</p>
-<h4 id="H3-三级标题：小节标题"><a href="#H3-三级标题：小节标题" class="headerlink" title="H3 三级标题：小节标题"></a>H3 三级标题：小节标题</h4><p>三级标题适合进一步拆分内容，应该比正文突出，但不要过于夸张。</p>
-<h5 id="H4-四级标题"><a href="#H4-四级标题" class="headerlink" title="H4 四级标题"></a>H4 四级标题</h5><p>四级标题常用于技术文档中的细节说明。</p>
-<h6 id="H5-五级标题"><a href="#H5-五级标题" class="headerlink" title="H5 五级标题"></a>H5 五级标题</h6><p>五级标题测试较低层级标题的可读性。</p>
-<h6 id="H6-六级标题"><a href="#H6-六级标题" class="headerlink" title="H6 六级标题"></a>H6 六级标题</h6><p>六级标题测试最小标题样式。</p>
-<h3 id="4-无序列表"><a href="#4-无序列表" class="headerlink" title="4. 无序列表"></a>4. 无序列表</h3><ul>
-<li>第一层列表项，用来观察项目符号、左侧缩进和行高。</li>
-<li>第一层列表项较长时，会自动换行。换行后的第二行应该和正文内容对齐，而不是回到项目符号下面。</li>
-<li>第一层列表项包含 <code>inline code</code> 和 <strong>加粗文本</strong>。<ul>
-<li>第二层列表项，用来观察嵌套缩进。</li>
-<li>第二层列表项继续补充说明。<ul>
-<li>第三层列表项，用来观察更深层级缩进。</li>
-<li>第三层列表项包含中文和 English words。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-有序列表"><a href="#5-有序列表" class="headerlink" title="5. 有序列表"></a>5. 有序列表</h3><ol>
-<li>第一步：选择文件。</li>
-<li>第二步：上传到后端接口。</li>
-<li>第三步：后端返回 <code>fileKey</code> 和 <code>fileUrl</code>。</li>
-<li>第四步：业务表只保存 <code>fileKey</code>。</li>
-<li>第五步：页面展示时通过 <code>fileKey</code> 获取 <code>fileUrl</code>。</li>
-</ol>
-<h4 id="5-1-嵌套有序列表"><a href="#5-1-嵌套有序列表" class="headerlink" title="5.1 嵌套有序列表"></a>5.1 嵌套有序列表</h4><ol>
-<li>后端处理<ol>
-<li>校验文件类型。</li>
-<li>生成存储路径。</li>
-<li>保存文件记录。</li>
-</ol>
-</li>
-<li>前端处理<ol>
-<li>调用上传接口。</li>
-<li>保存返回结果。</li>
-<li>渲染图片或下载链接。</li>
-</ol>
-</li>
-</ol>
-<h3 id="6-任务列表"><a href="#6-任务列表" class="headerlink" title="6. 任务列表"></a>6. 任务列表</h3><ul>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务：整理上传接口。</li>
-<li><input checked="" disabled="" type="checkbox"> 已完成任务：统一 <code>fileKey</code> 规则。</li>
-<li><input disabled="" type="checkbox"> 待完成任务：补充云存储配置。</li>
-<li><input disabled="" type="checkbox"> 待完成任务：增加异常场景说明。</li>
-</ul>
-<h3 id="7-引用块"><a href="#7-引用块" class="headerlink" title="7. 引用块"></a>7. 引用块</h3><blockquote>
-<p>这是普通引用块。适合放说明、提示、背景信息。需要观察引用块左边框、背景色、内边距和文字颜色。</p>
-</blockquote>
-<blockquote>
-<p>多段引用块第一段。</p>
-<p>多段引用块第二段。这里用来观察引用块内部段落间距。</p>
-</blockquote>
-<blockquote>
-<p><strong>注意：</strong> 如果引用块背景太深，会破坏页面的轻盈感；如果边框太重，也会显得像警告框。</p>
-</blockquote>
-<h3 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8. 代码块"></a>8. 代码块</h3><h4 id="8-1-普通文本代码块"><a href="#8-1-普通文本代码块" class="headerlink" title="8.1 普通文本代码块"></a>8.1 普通文本代码块</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-2-Java-代码块"><a href="#8-2-Java-代码块" class="headerlink" title="8.2 Java 代码块"></a>8.2 Java 代码块</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> FileUploadVO <span class="title function_">upload</span><span class="params">(MultipartFile file, String folder)</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileKey</span> <span class="operator">=</span> fileStorageService.save(file, folder);</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileUrl</span> <span class="operator">=</span> fileUrlService.getUrl(fileKey);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">FileUploadVO</span>(fileKey, fileUrl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-3-TypeScript-代码块"><a href="#8-3-TypeScript-代码块" class="headerlink" title="8.3 TypeScript 代码块"></a>8.3 TypeScript 代码块</h4><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">uploadFile</span>(<span class="params"><span class="attr">file</span>: <span class="title class_">File</span>, <span class="attr">folder</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">  formData.<span class="title function_">append</span>(<span class="string">&#x27;file&#x27;</span>, file);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> request.<span class="property">post</span>&lt;<span class="title class_">FileUploadVO</span>&gt;(<span class="string">`/support/file/upload?folder=<span class="subst">$&#123;folder&#125;</span>`</span>, formData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="8-4-JSON-代码块"><a href="#8-4-JSON-代码块" class="headerlink" title="8.4 JSON 代码块"></a>8.4 JSON 代码块</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;fileKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;fileUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://example.com/upload/course/2026/05/demo.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;folder&quot;</span><span class="punctuation">:</span> <span class="string">&quot;course&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="9-表格"><a href="#9-表格" class="headerlink" title="9. 表格"></a>9. 表格</h3><table>
-<thead>
-<tr>
-<th>模块</th>
-<th>路径</th>
-<th>说明</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>后端接口</td>
-<td><code>FileController.java</code></td>
-<td>负责上传、下载、获取 URL</td>
-<td>已完成</td>
-</tr>
-<tr>
-<td>存储服务</td>
-<td><code>IFileStorageService.java</code></td>
-<td>屏蔽本地存储和云存储差异</td>
-<td>已完成</td>
-</tr>
-<tr>
-<td>前端封装</td>
-<td><code>file-api.ts</code></td>
-<td>统一上传入口</td>
-<td>待补充</td>
-</tr>
-<tr>
-<td>图片展示</td>
-<td><code>ImagePreview.vue</code></td>
-<td>根据 <code>fileKey</code> 获取展示地址</td>
-<td>待优化</td>
-</tr>
-</tbody></table>
-<h4 id="9-1-长文本表格"><a href="#9-1-长文本表格" class="headerlink" title="9.1 长文本表格"></a>9.1 长文本表格</h4><table>
-<thead>
-<tr>
-<th>场景</th>
-<th>推荐做法</th>
-<th>不推荐做法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>保存业务数据</td>
-<td>只保存 <code>fileKey</code>，展示时再换取 <code>fileUrl</code></td>
-<td>直接保存完整访问地址</td>
-</tr>
-<tr>
-<td>切换存储方式</td>
-<td>后端统一适配，本地和云存储共用规则</td>
-<td>前端根据环境拼接不同地址</td>
-</tr>
-<tr>
-<td>图片预览</td>
-<td>使用统一组件处理加载、失败、占位图</td>
-<td>每个页面各写一套逻辑</td>
-</tr>
-</tbody></table>
-<h3 id="10-分割线"><a href="#10-分割线" class="headerlink" title="10. 分割线"></a>10. 分割线</h3><p>上方内容。</p>
-<hr>
-<p>下方内容。观察分割线的颜色、上下间距和粗细。</p>
-<h3 id="11-图片测试"><a href="#11-图片测试" class="headerlink" title="11. 图片测试"></a>11. 图片测试</h3><p>以下图片使用远程占位图，方便复制或导入到飞书后直接显示。</p>
-<h4 id="11-1-默认-Markdown-图片"><a href="#11-1-默认-Markdown-图片" class="headerlink" title="11.1 默认 Markdown 图片"></a>11.1 默认 Markdown 图片</h4><p><img src="https://placehold.co/900x360/png?text=Default+Markdown+Image" alt="默认图片：宽 900 高 360"></p>
-<p>观察点：默认图片是否铺满正文宽度，是否有圆角，图片上下是否留白。</p>
-<h4 id="11-2-小图"><a href="#11-2-小图" class="headerlink" title="11.2 小图"></a>11.2 小图</h4><p><img src="https://placehold.co/240x160/png?text=Small+Image" alt="小图：宽 240 高 160"></p>
-<p>观察点：小图是否左对齐，是否和正文贴得太近。</p>
-<h4 id="11-3-HTML-控制宽度"><a href="#11-3-HTML-控制宽度" class="headerlink" title="11.3 HTML 控制宽度"></a>11.3 HTML 控制宽度</h4><img src="https://placehold.co/480x240/png?text=HTML+Width+480" alt="HTML 宽度 480 图片" width="480" />
-
-<p>观察点：飞书是否保留 HTML 图片宽度；Obsidian 是否正常显示。</p>
-<h4 id="11-4-居中图片"><a href="#11-4-居中图片" class="headerlink" title="11.4 居中图片"></a>11.4 居中图片</h4><p align="center">
-  <img src="https://placehold.co/520x260/png?text=Centered+Image" alt="居中图片" width="520" />
-</p>
-
-<p>观察点：飞书是否保留居中效果；如果不保留，后续需要手动调整或使用飞书原生图片居中。</p>
-<h4 id="11-5-左右图文混排：左图右文"><a href="#11-5-左右图文混排：左图右文" class="headerlink" title="11.5 左右图文混排：左图右文"></a>11.5 左右图文混排：左图右文</h4><img src="https://placehold.co/260x180/png?text=Left+Image" alt="左侧图片" width="260" align="left" />
-
-<p>这是一段用于测试左图右文的正文。图片如果浮动成功，文字会从图片右侧开始环绕；如果不支持浮动，图片会独占一行。飞书导入 Markdown 时不一定保留 <code>align=&quot;left&quot;</code>，因此这里主要用于观察兼容性。</p>
-<p>这是一段继续补充的正文，用来测试多行文字环绕时的行高和右侧留白。若效果不稳定，建议在飞书里使用表格或分栏来实现稳定的图文排版。</p>
-<br clear="both" />
-
-<h4 id="11-6-左右图文混排：右图左文"><a href="#11-6-左右图文混排：右图左文" class="headerlink" title="11.6 左右图文混排：右图左文"></a>11.6 左右图文混排：右图左文</h4><img src="https://placehold.co/260x180/png?text=Right+Image" alt="右侧图片" width="260" align="right" />
-
-<p>这是一段用于测试右图左文的正文。图片如果浮动成功，文字会在图片左侧排列；如果导入后浮动失效，说明目标平台对 HTML 图片布局支持有限。</p>
-<p>在技术文档里，右图左文适合放界面截图说明，但如果兼容性不好，推荐改用表格方式实现。</p>
-<br clear="both" />
-
-<h4 id="11-7-使用表格实现左右图片"><a href="#11-7-使用表格实现左右图片" class="headerlink" title="11.7 使用表格实现左右图片"></a>11.7 使用表格实现左右图片</h4><table>
-<thead>
-<tr>
-<th>左图</th>
-<th>右图</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><img src="https://placehold.co/360x220/png?text=Left+Column" alt="左图"></td>
-<td><img src="https://placehold.co/360x220/png?text=Right+Column" alt="右图"></td>
-</tr>
-</tbody></table>
-<p>观察点：表格内图片是否等宽、是否有额外边框、是否适合作为稳定的左右布局方案。</p>
-<h4 id="11-8-图片加说明文字"><a href="#11-8-图片加说明文字" class="headerlink" title="11.8 图片加说明文字"></a>11.8 图片加说明文字</h4><p><img src="https://placehold.co/820x360/png?text=Upload+Flow+Diagram" alt="接口流程图"></p>
-<p>图 1：文件上传流程示意图。观察图片说明文字是否应该使用普通段落、引用块或斜体。</p>
-<p><em>图 2：这是斜体说明文字，用来测试图片 caption 的视觉效果。</em></p>
-<h3 id="12-链接与路径"><a href="#12-链接与路径" class="headerlink" title="12. 链接与路径"></a>12. 链接与路径</h3><p>普通链接：<a href="https://www.feishu.cn/">飞书官网</a></p>
-<p>裸链接：<a href="https://www.feishu.cn/">https://www.feishu.cn/</a></p>
-<p>相对路径示例：<code>smart-admin-api-java8-springboot2/sa-base/src/main/java/net/lab1024/sa/base/module/support/file/</code></p>
-<p>接口路径示例：<code>POST /support/file/upload?folder=course</code></p>
-<h3 id="13-数学公式兼容性"><a href="#13-数学公式兼容性" class="headerlink" title="13. 数学公式兼容性"></a>13. 数学公式兼容性</h3><p>行内公式：$E &#x3D; mc^2$</p>
-<p>块级公式：</p>
-<p>$$<br>sum &#x3D; principal \times rate \times days &#x2F; 365<br>$$</p>
-<p>观察点：飞书导入后是否保留公式渲染；如果没有渲染，是否以纯文本展示。</p>
-<h3 id="14-Mermaid-兼容性"><a href="#14-Mermaid-兼容性" class="headerlink" title="14. Mermaid 兼容性"></a>14. Mermaid 兼容性</h3><pre><code class="highlight mermaid">flowchart TD
-  A[前端选择文件] --&gt; B[调用上传接口]
-  B --&gt; C[后端保存文件]
-  C --&gt; D[返回 fileKey/fileUrl]
-  D --&gt; E[业务表保存 fileKey]
-  E --&gt; F[展示时获取 fileUrl]</code></pre>
-
-<p>观察点：飞书是否将 Mermaid 渲染为图，还是保留为代码块。</p>
-<h3 id="15-折叠内容兼容性"><a href="#15-折叠内容兼容性" class="headerlink" title="15. 折叠内容兼容性"></a>15. 折叠内容兼容性</h3><details>
-<summary>点击展开更多说明</summary>
-
-<p>这里是折叠内容。用于测试飞书是否保留 HTML details 标签。如果不支持，通常会以普通文本或被过滤掉。</p>
-</details>
-
-<h3 id="16-综合样例：文件上传模块说明"><a href="#16-综合样例：文件上传模块说明" class="headerlink" title="16. 综合样例：文件上传模块说明"></a>16. 综合样例：文件上传模块说明</h3><h4 id="16-1-总体原则"><a href="#16-1-总体原则" class="headerlink" title="16.1 总体原则"></a>16.1 总体原则</h4><p>本项目文件上传的核心原则：</p>
-<ol>
-<li>业务表只保存 <code>fileKey</code>。</li>
-<li>页面展示使用 <code>fileUrl</code>。</li>
-<li><code>fileUrl</code> 由后端统一生成。</li>
-<li>前端不要手工拼接 <code>/upload/$&#123;fileKey&#125;</code>。</li>
-<li>上传目录由 <code>folder</code> 参数决定。</li>
-<li>本地存储和云存储共用同一套 <code>fileKey</code> 规则。</li>
-</ol>
-<h4 id="16-2-典型流程"><a href="#16-2-典型流程" class="headerlink" title="16.2 典型流程"></a>16.2 典型流程</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">前端选择文件</span><br><span class="line">  -&gt; POST /support/file/upload?folder=文件分类</span><br><span class="line">  -&gt; 后端保存文件</span><br><span class="line">  -&gt; 返回 fileKey/fileUrl</span><br><span class="line">  -&gt; 业务接口保存 fileKey</span><br><span class="line">  -&gt; 页面展示时通过 fileKey 获取 fileUrl</span><br></pre></td></tr></table></figure>
-
-<h4 id="16-3-推荐约定"><a href="#16-3-推荐约定" class="headerlink" title="16.3 推荐约定"></a>16.3 推荐约定</h4><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>命名规则</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>课程封面</td>
-<td><code>course-cover</code></td>
-<td><code>course-cover/2026/05/demo.png</code></td>
-</tr>
-<tr>
-<td>老师资质</td>
-<td><code>teacher-cert</code></td>
-<td><code>teacher-cert/2026/05/cert.pdf</code></td>
-</tr>
-<tr>
-<td>临时文件</td>
-<td><code>temp</code></td>
-<td><code>temp/2026/05/upload.tmp</code></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>推荐将所有文件访问入口收口到后端服务，避免前端直接依赖具体存储实现。</p>
-</blockquote>
-<h3 id="17-视觉检查清单"><a href="#17-视觉检查清单" class="headerlink" title="17. 视觉检查清单"></a>17. 视觉检查清单</h3><ul>
-<li><input disabled="" type="checkbox"> 正文字号是否舒适。</li>
-<li><input disabled="" type="checkbox"> 正文行高是否接近飞书的 <code>1.8</code>。</li>
-<li><input disabled="" type="checkbox"> 正文宽度是否接近 <code>820px</code>。</li>
-<li><input disabled="" type="checkbox"> 标题上下间距是否清晰。</li>
-<li><input disabled="" type="checkbox"> 列表缩进是否自然。</li>
-<li><input disabled="" type="checkbox"> 代码块背景是否足够轻。</li>
-<li><input disabled="" type="checkbox"> 表格是否清晰但不沉重。</li>
-<li><input disabled="" type="checkbox"> 图片默认位置是否符合预期。</li>
-<li><input disabled="" type="checkbox"> 左右图文混排是否稳定。</li>
-<li><input disabled="" type="checkbox"> 复制到飞书后是否有明显样式丢失。</li>
-</ul>
-<hr>
-<h3 id="18-结论记录区"><a href="#18-结论记录区" class="headerlink" title="18. 结论记录区"></a>18. 结论记录区</h3><p>你可以在飞书中复制下面这段，用来记录观察结果：</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>Obsidian 效果</th>
-<th>飞书效果</th>
-<th>是否需要调整</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>正文字号</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>正文行高</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>正文宽度</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>标题样式</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>代码块</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>表格</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>图片位置</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>图文混排</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2026/07/03/obsidian-minimal-settings-guide/</url>
-    <content><![CDATA[<h1 id="Obsidian-Minimal-两个设置插件说明书"><a href="#Obsidian-Minimal-两个设置插件说明书" class="headerlink" title="Obsidian Minimal 两个设置插件说明书"></a>Obsidian Minimal 两个设置插件说明书</h1><p>本文说明 Obsidian 的 Minimal 主题中两个常用插件的职责、配置位置、推荐用法和避坑原则：</p>
-<ul>
-<li>Minimal Theme Settings</li>
-<li>Style Settings</li>
-</ul>
-<p>适用场景：你正在使用 Minimal 主题，希望把 Obsidian 调成稳定、清爽、接近飞书文档的阅读体验。</p>
-<hr>
-<h2 id="1-总体结论"><a href="#1-总体结论" class="headerlink" title="1. 总体结论"></a>1. 总体结论</h2><p>Minimal 主题的配置不要全部写进 CSS，也不要只靠一个插件。推荐按三层管理：</p>
-<table>
-<thead>
-<tr>
-<th>层级</th>
-<th>用途</th>
-<th>典型配置</th>
-<th>是否推荐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Obsidian 外观设置</td>
-<td>Obsidian 原生基础配置</td>
-<td>当前主题、基础字号、界面字体、正文字体、代码字体</td>
-<td>推荐</td>
-</tr>
-<tr>
-<td>Minimal Theme Settings</td>
-<td>Minimal 的基础能力和全局开关</td>
-<td>配色方案、背景对比度、字号、行高、正文宽度、图片宽度</td>
-<td>强烈推荐</td>
-</tr>
-<tr>
-<td>Style Settings</td>
-<td>Minimal 暴露出的细节变量</td>
-<td>标题颜色、链接色、引用块、代码块、表格、Callout</td>
-<td>强烈推荐</td>
-</tr>
-<tr>
-<td>CSS snippets</td>
-<td>插件无法覆盖的最后补丁</td>
-<td>Live Preview 引用块、图片圆角、局部插件冲突</td>
-<td>谨慎使用</td>
-</tr>
-</tbody></table>
-<p>一句话原则：</p>
-<blockquote>
-<p>能用 Minimal Theme Settings 调的，不写进 CSS；能用 Style Settings 调的，也不写进 CSS；CSS 只做最后 10% 的补丁。</p>
-</blockquote>
-<hr>
-<h2 id="2-Minimal-Theme-Settings-是什么"><a href="#2-Minimal-Theme-Settings-是什么" class="headerlink" title="2. Minimal Theme Settings 是什么"></a>2. Minimal Theme Settings 是什么</h2><p>Minimal Theme Settings 是 Minimal 主题的官方配套插件。</p>
-<p>它不是必须安装，但官方强烈推荐安装。它的作用是把 Minimal 的常用配置放到 Obsidian 设置面板里，让你不用写 CSS 就能调整主题的核心体验。</p>
-<p>官方定位：</p>
-<blockquote>
-<p>用来控制 Minimal 的颜色、字体和功能开关。</p>
-</blockquote>
-<h3 id="2-1-它适合管理什么"><a href="#2-1-它适合管理什么" class="headerlink" title="2.1 它适合管理什么"></a>2.1 它适合管理什么</h3><p>Minimal Theme Settings 更适合管理“大开关”和“全局体验”：</p>
-<ul>
-<li>配色方案</li>
-<li>背景对比度</li>
-<li>正文字号</li>
-<li>侧栏字号</li>
-<li>行高</li>
-<li>正文宽度</li>
-<li>宽屏正文宽度</li>
-<li>最大内容宽度</li>
-<li>图片&#x2F;视频是否铺满正文宽度</li>
-<li>是否启用彩色标题</li>
-<li>是否启用彩色边框</li>
-<li>是否启用彩色选中状态</li>
-<li>是否显示导航标签</li>
-<li>是否开启 Focus mode</li>
-<li>是否显示链接下划线</li>
-<li>是否显示侧栏边框</li>
-</ul>
-<h3 id="2-2-配置文件位置"><a href="#2-2-配置文件位置" class="headerlink" title="2.2 配置文件位置"></a>2.2 配置文件位置</h3><p>在你的库里，它的配置保存在：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.obsidian/plugins/obsidian-minimal-settings/data.json</span><br></pre></td></tr></table></figure>
-
-<p>你当前库中的实际路径是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">C:\Users\hjsoft\Nutstore\1\我的坚果云\hexo\source\_posts\.obsidian\plugins\obsidian-minimal-settings\data.json</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-3-重要配置项说明"><a href="#2-3-重要配置项说明" class="headerlink" title="2.3 重要配置项说明"></a>2.3 重要配置项说明</h3><table>
-<thead>
-<tr>
-<th>配置项</th>
-<th>中文含义</th>
-<th>建议值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>lightStyle</code></td>
-<td>浅色模式背景风格</td>
-<td><code>minimal-light</code></td>
-<td>控制浅色模式背景对比度</td>
-</tr>
-<tr>
-<td><code>darkStyle</code></td>
-<td>深色模式背景风格</td>
-<td><code>minimal-dark</code></td>
-<td>控制深色模式背景对比度</td>
-</tr>
-<tr>
-<td><code>lightScheme</code></td>
-<td>浅色配色方案</td>
-<td>按喜好选择</td>
-<td>如 <code>minimal-default-light</code>、Flexoki、macOS 等</td>
-</tr>
-<tr>
-<td><code>darkScheme</code></td>
-<td>深色配色方案</td>
-<td>按喜好选择</td>
-<td>深色模式对应方案</td>
-</tr>
-<tr>
-<td><code>editorFont</code></td>
-<td>编辑器字体</td>
-<td>可留空</td>
-<td>通常用 Obsidian 外观设置统一管理字体</td>
-</tr>
-<tr>
-<td><code>lineHeight</code></td>
-<td>正文行高</td>
-<td><code>1.75</code> 到 <code>1.8</code></td>
-<td>接近飞书文档可用 <code>1.8</code></td>
-</tr>
-<tr>
-<td><code>lineWidth</code></td>
-<td>普通正文宽度</td>
-<td><code>50</code> 到 <code>52</code></td>
-<td>单位近似 <code>em</code>，<code>52</code> 接近 820px</td>
-</tr>
-<tr>
-<td><code>lineWidthWide</code></td>
-<td>宽屏元素宽度</td>
-<td><code>60</code></td>
-<td>表格、图片等宽元素可更宽</td>
-</tr>
-<tr>
-<td><code>maxWidth</code></td>
-<td>最大宽度百分比</td>
-<td><code>88</code></td>
-<td>官方默认值，通常不必改</td>
-</tr>
-<tr>
-<td><code>textNormal</code></td>
-<td>正文字号</td>
-<td><code>16</code></td>
-<td>飞书文档也是 16px 左右</td>
-</tr>
-<tr>
-<td><code>textSmall</code></td>
-<td>小字号</td>
-<td><code>13</code> 或 <code>14</code></td>
-<td>侧栏、辅助文字使用</td>
-</tr>
-<tr>
-<td><code>fullWidthMedia</code></td>
-<td>媒体是否铺满</td>
-<td><code>false</code></td>
-<td>图片不建议默认铺满，阅读更克制</td>
-</tr>
-<tr>
-<td><code>colorfulHeadings</code></td>
-<td>彩色标题</td>
-<td><code>false</code></td>
-<td>飞书风格不建议彩色标题</td>
-</tr>
-<tr>
-<td><code>colorfulFrame</code></td>
-<td>彩色窗口边框</td>
-<td><code>false</code></td>
-<td>保持干净</td>
-</tr>
-<tr>
-<td><code>colorfulActiveStates</code></td>
-<td>彩色激活状态</td>
-<td>看喜好</td>
-<td>想要飞书蓝高亮可开启或用 Style Settings 设置</td>
-</tr>
-<tr>
-<td><code>readableLineLength</code></td>
-<td>可读行宽</td>
-<td><code>true</code></td>
-<td>配合 Obsidian 原生设置生效</td>
-</tr>
-</tbody></table>
-<h3 id="2-4-配色方案"><a href="#2-4-配色方案" class="headerlink" title="2.4 配色方案"></a>2.4 配色方案</h3><p>Minimal Theme Settings 内置一些常见配色方案：</p>
-<ul>
-<li>Atom</li>
-<li>Ayu</li>
-<li>Catppuccin</li>
-<li>Dracula</li>
-<li>E-ink</li>
-<li>Everforest</li>
-<li>Flexoki</li>
-<li>Gruvbox</li>
-<li>macOS</li>
-<li>Nord</li>
-<li>Rosé Pine</li>
-<li>Sky</li>
-<li>Solarized</li>
-<li>Things</li>
-</ul>
-<p>如果你追求飞书文档那种低干扰、白底、浅灰、蓝色点缀的感觉，建议优先试：</p>
-<ul>
-<li>Minimal 默认浅色</li>
-<li>macOS</li>
-<li>Flexoki</li>
-<li>E-ink</li>
-</ul>
-<p>不要一开始就选高饱和配色，否则会偏离飞书那种“轻、白、克制”的感觉。</p>
-<h3 id="2-5-背景对比度"><a href="#2-5-背景对比度" class="headerlink" title="2.5 背景对比度"></a>2.5 背景对比度</h3><p>Minimal Theme Settings 支持不同背景对比度。</p>
-<p>浅色模式常见选项：</p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>效果</th>
-<th>适合场景</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Default</td>
-<td>侧栏比主区域略深</td>
-<td>Minimal 默认风格</td>
-</tr>
-<tr>
-<td>Low contrast</td>
-<td>侧栏和正文背景更接近</td>
-<td>更接近飞书、Notion 的轻量界面</td>
-</tr>
-<tr>
-<td>All white</td>
-<td>侧栏和正文都更白</td>
-<td>喜欢纯白文档感</td>
-</tr>
-<tr>
-<td>High contrast</td>
-<td>深色侧栏、浅色正文</td>
-<td>更像传统 IDE 或强分区界面</td>
-</tr>
-</tbody></table>
-<p>如果你觉得左侧栏“灰灰暗暗”，优先尝试：</p>
-<ol>
-<li><code>Low contrast</code></li>
-<li><code>All white</code></li>
-</ol>
-<p>不要优先用 CSS 强行改侧栏背景。</p>
-<h3 id="2-6-行宽设置注意事项"><a href="#2-6-行宽设置注意事项" class="headerlink" title="2.6 行宽设置注意事项"></a>2.6 行宽设置注意事项</h3><p>Minimal 官方说明里有一个关键点：</p>
-<blockquote>
-<p>要让 Minimal 的 line width 设置生效，需要打开 Obsidian 编辑器设置里的 Readable line length。</p>
-</blockquote>
-<p>也就是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Settings -&gt; Editor -&gt; Readable line length</span><br></pre></td></tr></table></figure>
-
-<p>如果这个没开，<code>lineWidth</code>、<code>lineWidthWide</code> 可能不会按预期生效。</p>
-<hr>
-<h2 id="3-Style-Settings-是什么"><a href="#3-Style-Settings-是什么" class="headerlink" title="3. Style Settings 是什么"></a>3. Style Settings 是什么</h2><p>Style Settings 是一个通用插件，不只服务 Minimal。</p>
-<p>它会读取主题或 CSS snippet 里的 <code>@settings</code> 配置声明，然后生成可视化设置面板。</p>
-<p>Minimal 对 Style Settings 支持非常完整，所以它可以调整很多 Minimal 的细节变量。</p>
-<p>官方定位：</p>
-<blockquote>
-<p>Minimal Theme Settings 负责基础自定义和快捷键；Style Settings 提供更深入的界面细节定制。</p>
-</blockquote>
-<h3 id="3-1-它适合管理什么"><a href="#3-1-它适合管理什么" class="headerlink" title="3.1 它适合管理什么"></a>3.1 它适合管理什么</h3><p>Style Settings 更适合管理“细节样式”：</p>
-<ul>
-<li>背景色</li>
-<li>边框色</li>
-<li>链接色</li>
-<li>标题字体、字号、字重、颜色</li>
-<li>引用块背景、文字、边框</li>
-<li>代码块背景、文字、语法高亮</li>
-<li>表格样式</li>
-<li>Callout 样式</li>
-<li>图标颜色</li>
-<li>图片透明度</li>
-<li>Dataview 显示样式</li>
-<li>Graph 节点颜色</li>
-<li>标签颜色</li>
-</ul>
-<h3 id="3-2-配置文件位置"><a href="#3-2-配置文件位置" class="headerlink" title="3.2 配置文件位置"></a>3.2 配置文件位置</h3><p>Style Settings 的配置保存在：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.obsidian/plugins/obsidian-style-settings/data.json</span><br></pre></td></tr></table></figure>
-
-<p>你当前库中的实际路径是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">C:\Users\hjsoft\Nutstore\1\我的坚果云\hexo\source\_posts\.obsidian\plugins\obsidian-style-settings\data.json</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-3-常见配置项说明"><a href="#3-3-常见配置项说明" class="headerlink" title="3.3 常见配置项说明"></a>3.3 常见配置项说明</h3><p>Minimal 的 Style Settings 配置项很多，下面列常用的。</p>
-<h4 id="3-3-1-界面颜色"><a href="#3-3-1-界面颜色" class="headerlink" title="3.3.1 界面颜色"></a>3.3.1 界面颜色</h4><table>
-<thead>
-<tr>
-<th>设置项</th>
-<th>CSS 变量</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Base color</td>
-<td><code>--base-h</code>, <code>--base-s</code>, <code>--base-l</code></td>
-<td>基础背景色系统</td>
-</tr>
-<tr>
-<td>Primary background</td>
-<td><code>--bg1</code></td>
-<td>主窗口背景</td>
-</tr>
-<tr>
-<td>Secondary background</td>
-<td><code>--bg2</code></td>
-<td>侧栏、菜单背景</td>
-</tr>
-<tr>
-<td>Active background</td>
-<td><code>--bg3</code></td>
-<td>当前项、悬停背景</td>
-</tr>
-<tr>
-<td>Border color</td>
-<td><code>--ui1</code></td>
-<td>普通边框</td>
-</tr>
-<tr>
-<td>Highlighted border color</td>
-<td><code>--ui2</code></td>
-<td>悬停边框</td>
-</tr>
-<tr>
-<td>Active border color</td>
-<td><code>--ui3</code></td>
-<td>激活边框</td>
-</tr>
-</tbody></table>
-<h4 id="3-3-2-强调色和链接色"><a href="#3-3-2-强调色和链接色" class="headerlink" title="3.3.2 强调色和链接色"></a>3.3.2 强调色和链接色</h4><table>
-<thead>
-<tr>
-<th>设置项</th>
-<th>CSS 变量</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Accent color</td>
-<td><code>--ax1</code></td>
-<td>链接、按钮等强调色</td>
-</tr>
-<tr>
-<td>Accent color hover</td>
-<td><code>--ax2</code></td>
-<td>悬停强调色</td>
-</tr>
-<tr>
-<td>Accent color interactive</td>
-<td><code>--ax3</code></td>
-<td>交互控件颜色</td>
-</tr>
-<tr>
-<td>Text on accent</td>
-<td><code>--sp1</code></td>
-<td>强调色上的文字</td>
-</tr>
-<tr>
-<td>Internal link color</td>
-<td><code>--link-color</code></td>
-<td>内链颜色</td>
-</tr>
-<tr>
-<td>Internal link color hover</td>
-<td><code>--link-color-hover</code></td>
-<td>内链悬停颜色</td>
-</tr>
-</tbody></table>
-<p>飞书风格建议：</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>建议值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>链接蓝</td>
-<td><code>#1456f0</code></td>
-</tr>
-<tr>
-<td>悬停蓝</td>
-<td><code>#0f48d8</code></td>
-</tr>
-<tr>
-<td>深色模式链接</td>
-<td><code>#78a0ff</code></td>
-</tr>
-</tbody></table>
-<h4 id="3-3-3-标题"><a href="#3-3-3-标题" class="headerlink" title="3.3.3 标题"></a>3.3.3 标题</h4><p>每一级标题都可以单独设置：</p>
-<table>
-<thead>
-<tr>
-<th>设置项</th>
-<th>示例变量</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Heading font</td>
-<td><code>--h1-font</code></td>
-<td>标题字体</td>
-</tr>
-<tr>
-<td>Heading font size</td>
-<td><code>--h1-size</code></td>
-<td>标题字号</td>
-</tr>
-<tr>
-<td>Heading font weight</td>
-<td><code>--h1-weight</code></td>
-<td>标题字重</td>
-</tr>
-<tr>
-<td>Heading font color</td>
-<td><code>--h1-color</code></td>
-<td>标题颜色</td>
-</tr>
-<tr>
-<td>Heading font variant</td>
-<td><code>--h1-variant</code></td>
-<td>大小写变体</td>
-</tr>
-<tr>
-<td>Heading font style</td>
-<td><code>--h1-style</code></td>
-<td>正常、斜体等</td>
-</tr>
-<tr>
-<td>Heading divider line</td>
-<td>class toggle</td>
-<td>标题下划线</td>
-</tr>
-</tbody></table>
-<p>飞书风格建议：</p>
-<table>
-<thead>
-<tr>
-<th>标题</th>
-<th>建议值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>H1</td>
-<td><code>34px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
-</tr>
-<tr>
-<td>H2</td>
-<td><code>22px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
-</tr>
-<tr>
-<td>H3</td>
-<td><code>20px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
-</tr>
-<tr>
-<td>H4</td>
-<td><code>18px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
-</tr>
-<tr>
-<td>H5&#x2F;H6</td>
-<td><code>16px</code>、字重 <code>600</code>、颜色 <code>#1f2329</code></td>
-</tr>
-</tbody></table>
-<h4 id="3-3-4-引用块"><a href="#3-3-4-引用块" class="headerlink" title="3.3.4 引用块"></a>3.3.4 引用块</h4><table>
-<thead>
-<tr>
-<th>设置项</th>
-<th>CSS 变量</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Blockquote text color</td>
-<td><code>--blockquote-color</code></td>
-<td>引用文字颜色</td>
-</tr>
-<tr>
-<td>Blockquote background color</td>
-<td><code>--blockquote-background-color</code></td>
-<td>引用背景</td>
-</tr>
-<tr>
-<td>Blockquote border color</td>
-<td><code>--blockquote-border-color</code></td>
-<td>左侧边框颜色</td>
-</tr>
-<tr>
-<td>Blockquote border thickness</td>
-<td><code>--blockquote-border-thickness</code></td>
-<td>左侧边框粗细</td>
-</tr>
-<tr>
-<td>Blockquote font size</td>
-<td><code>--blockquote-size</code></td>
-<td>引用字号</td>
-</tr>
-<tr>
-<td>Blockquote font style</td>
-<td><code>--blockquote-font-style</code></td>
-<td>引用是否斜体</td>
-</tr>
-</tbody></table>
-<p>飞书风格建议：</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>建议值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>背景</td>
-<td><code>#fafafa</code> 或 <code>#f5f6f7</code></td>
-</tr>
-<tr>
-<td>边框</td>
-<td><code>#dee0e3</code></td>
-</tr>
-<tr>
-<td>边框粗细</td>
-<td><code>3px</code></td>
-</tr>
-<tr>
-<td>文字</td>
-<td>使用 <code>--text-muted</code> 或接近 <code>#646a73</code></td>
-</tr>
-</tbody></table>
-<p>如果引用块看起来太灰，优先把背景从 <code>#f5f6f7</code> 改成 <code>#fafafa</code>。</p>
-<h4 id="3-3-5-代码块"><a href="#3-3-5-代码块" class="headerlink" title="3.3.5 代码块"></a>3.3.5 代码块</h4><table>
-<thead>
-<tr>
-<th>设置项</th>
-<th>CSS 变量</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Code font size</td>
-<td><code>--code-font-size</code></td>
-<td>代码字号</td>
-</tr>
-<tr>
-<td>Scroll long lines</td>
-<td>class toggle</td>
-<td>长代码是否横向滚动</td>
-</tr>
-<tr>
-<td>Code background color</td>
-<td><code>--code-background</code></td>
-<td>代码块背景</td>
-</tr>
-<tr>
-<td>Code text color</td>
-<td><code>--code-normal</code></td>
-<td>代码文字颜色</td>
-</tr>
-</tbody></table>
-<p>飞书风格建议：</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>建议值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>代码字号</td>
-<td><code>14px</code></td>
-</tr>
-<tr>
-<td>代码行高</td>
-<td><code>22px</code>，如果 Style Settings 不能调，再用 CSS snippet</td>
-</tr>
-<tr>
-<td>背景</td>
-<td><code>#f5f6f7</code></td>
-</tr>
-<tr>
-<td>边框</td>
-<td><code>#dee0e3</code>，如果 Style Settings 不能调，再用 CSS snippet</td>
-</tr>
-<tr>
-<td>圆角</td>
-<td><code>8px</code>，通常需要 CSS snippet</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="4-两个插件怎么分工"><a href="#4-两个插件怎么分工" class="headerlink" title="4. 两个插件怎么分工"></a>4. 两个插件怎么分工</h2><h3 id="4-1-推荐分工表"><a href="#4-1-推荐分工表" class="headerlink" title="4.1 推荐分工表"></a>4.1 推荐分工表</h3><table>
-<thead>
-<tr>
-<th>需求</th>
-<th>推荐位置</th>
-<th>原因</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>主题选择</td>
-<td>Obsidian 外观设置</td>
-<td>原生配置最稳定</td>
-</tr>
-<tr>
-<td>当前配色方案</td>
-<td>Minimal Theme Settings</td>
-<td>Minimal 官方支持</td>
-</tr>
-<tr>
-<td>背景对比度</td>
-<td>Minimal Theme Settings</td>
-<td>官方已有 Default&#x2F;Low contrast&#x2F;All white 等选项</td>
-</tr>
-<tr>
-<td>正文字号</td>
-<td>Minimal Theme Settings</td>
-<td>全局排版基础项</td>
-</tr>
-<tr>
-<td>正文行高</td>
-<td>Minimal Theme Settings</td>
-<td>官方配置，避免 CSS 冲突</td>
-</tr>
-<tr>
-<td>正文宽度</td>
-<td>Minimal Theme Settings</td>
-<td>官方 line width 配置</td>
-</tr>
-<tr>
-<td>图片是否铺满</td>
-<td>Minimal Theme Settings</td>
-<td>官方媒体宽度配置</td>
-</tr>
-<tr>
-<td>标题颜色</td>
-<td>Style Settings</td>
-<td>每级标题可独立调</td>
-</tr>
-<tr>
-<td>标题字号</td>
-<td>Style Settings</td>
-<td>每级标题可独立调</td>
-</tr>
-<tr>
-<td>链接颜色</td>
-<td>Style Settings</td>
-<td>Minimal 暴露了变量</td>
-</tr>
-<tr>
-<td>引用背景</td>
-<td>Style Settings</td>
-<td>Minimal 暴露了变量</td>
-</tr>
-<tr>
-<td>引用圆角</td>
-<td>CSS snippet</td>
-<td>Style Settings 通常不暴露圆角</td>
-</tr>
-<tr>
-<td>代码块背景</td>
-<td>Style Settings</td>
-<td>Minimal 暴露了变量</td>
-</tr>
-<tr>
-<td>代码块边框&#x2F;圆角</td>
-<td>CSS snippet</td>
-<td>细节补丁</td>
-</tr>
-<tr>
-<td>左侧文件树当前项样式</td>
-<td>CSS snippet 或 Minimal 功能</td>
-<td>具体效果通常要 CSS 微调</td>
-</tr>
-<tr>
-<td>插件样式冲突</td>
-<td>CSS snippet</td>
-<td>只能局部覆盖</td>
-</tr>
-</tbody></table>
-<h3 id="4-2-不推荐的做法"><a href="#4-2-不推荐的做法" class="headerlink" title="4.2 不推荐的做法"></a>4.2 不推荐的做法</h3><p>不要这样做：</p>
-<ul>
-<li>直接改 <code>themes/Minimal/theme.css</code></li>
-<li>同一个变量既在 Style Settings 里调，又在 CSS snippet 里调</li>
-<li>把所有视觉配置都塞进一个巨大 <code>customize.css</code></li>
-<li>同时启用多个全局美化 snippet</li>
-<li>看到不满意就加 <code>!important</code></li>
-</ul>
-<p>这些做法短期有效，长期会导致你不知道到底是谁在生效。</p>
-<hr>
-<h2 id="5-飞书风格推荐配置"><a href="#5-飞书风格推荐配置" class="headerlink" title="5. 飞书风格推荐配置"></a>5. 飞书风格推荐配置</h2><p>下面是一套适合“飞书式文档阅读”的配置思路。</p>
-<h3 id="5-1-Minimal-Theme-Settings"><a href="#5-1-Minimal-Theme-Settings" class="headerlink" title="5.1 Minimal Theme Settings"></a>5.1 Minimal Theme Settings</h3><table>
-<thead>
-<tr>
-<th>配置</th>
-<th>建议值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Body font size</td>
-<td><code>16</code></td>
-</tr>
-<tr>
-<td>Line height</td>
-<td><code>1.8</code></td>
-</tr>
-<tr>
-<td>Normal line width</td>
-<td><code>52</code></td>
-</tr>
-<tr>
-<td>Wide line width</td>
-<td><code>60</code></td>
-</tr>
-<tr>
-<td>Maximum line width</td>
-<td><code>88</code></td>
-</tr>
-<tr>
-<td>Maximize media</td>
-<td>关闭</td>
-</tr>
-<tr>
-<td>Colorful headings</td>
-<td>关闭</td>
-</tr>
-<tr>
-<td>Colorful frame</td>
-<td>关闭</td>
-</tr>
-<tr>
-<td>Readable line length</td>
-<td>开启</td>
-</tr>
-</tbody></table>
-<h3 id="5-2-Style-Settings"><a href="#5-2-Style-Settings" class="headerlink" title="5.2 Style Settings"></a>5.2 Style Settings</h3><table>
-<thead>
-<tr>
-<th>配置</th>
-<th>建议值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>H1 size</td>
-<td><code>34px</code></td>
-</tr>
-<tr>
-<td>H2 size</td>
-<td><code>22px</code></td>
-</tr>
-<tr>
-<td>H3 size</td>
-<td><code>20px</code></td>
-</tr>
-<tr>
-<td>Heading color</td>
-<td><code>#1f2329</code></td>
-</tr>
-<tr>
-<td>Link color</td>
-<td><code>#1456f0</code></td>
-</tr>
-<tr>
-<td>Link hover</td>
-<td><code>#0f48d8</code></td>
-</tr>
-<tr>
-<td>Blockquote background</td>
-<td><code>#fafafa</code></td>
-</tr>
-<tr>
-<td>Blockquote border</td>
-<td><code>#dee0e3</code></td>
-</tr>
-<tr>
-<td>Code background</td>
-<td><code>#f5f6f7</code></td>
-</tr>
-<tr>
-<td>Code size</td>
-<td><code>14px</code></td>
-</tr>
-</tbody></table>
-<h3 id="5-3-CSS-snippet-只保留这些"><a href="#5-3-CSS-snippet-只保留这些" class="headerlink" title="5.3 CSS snippet 只保留这些"></a>5.3 CSS snippet 只保留这些</h3><p>如果你追求飞书效果，CSS snippet 只建议保留：</p>
-<ul>
-<li>引用块圆角和内边距</li>
-<li>Live Preview 中连续引用块的背景修正</li>
-<li>代码块圆角、边框、内边距</li>
-<li>图片圆角</li>
-<li>左侧文件树当前项蓝色高亮</li>
-</ul>
-<p>不要把正文字号、正文宽度、行高、标题颜色写进 CSS snippet。</p>
-<hr>
-<h2 id="6-常见问题"><a href="#6-常见问题" class="headerlink" title="6. 常见问题"></a>6. 常见问题</h2><h3 id="6-1-为什么我改了-line-width-没效果"><a href="#6-1-为什么我改了-line-width-没效果" class="headerlink" title="6.1 为什么我改了 line width 没效果"></a>6.1 为什么我改了 line width 没效果</h3><p>检查 Obsidian 原生设置：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Settings -&gt; Editor -&gt; Readable line length</span><br></pre></td></tr></table></figure>
-
-<p>需要开启这个设置，Minimal 的 line width 才能更稳定地生效。</p>
-<h3 id="6-2-为什么左侧栏看起来灰灰暗暗"><a href="#6-2-为什么左侧栏看起来灰灰暗暗" class="headerlink" title="6.2 为什么左侧栏看起来灰灰暗暗"></a>6.2 为什么左侧栏看起来灰灰暗暗</h3><p>优先检查 Minimal Theme Settings 的 Background contrast。</p>
-<p>建议顺序：</p>
-<ol>
-<li>试 <code>Low contrast</code></li>
-<li>再试 <code>All white</code></li>
-<li>最后才考虑 CSS snippet</li>
-</ol>
-<p>不要一开始就写 CSS 强行改侧栏背景。</p>
-<h3 id="6-3-为什么引用块很灰"><a href="#6-3-为什么引用块很灰" class="headerlink" title="6.3 为什么引用块很灰"></a>6.3 为什么引用块很灰</h3><p>优先在 Style Settings 里调：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Blockquotes -&gt; Blockquote background color</span><br></pre></td></tr></table></figure>
-
-<p>如果 <code>#f5f6f7</code> 太灰，可以改成：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">#fafafa</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-4-为什么编辑模式和阅读模式不一致"><a href="#6-4-为什么编辑模式和阅读模式不一致" class="headerlink" title="6.4 为什么编辑模式和阅读模式不一致"></a>6.4 为什么编辑模式和阅读模式不一致</h3><p>Obsidian 的阅读模式和 Live Preview 使用的 DOM 结构不同。</p>
-<p>Style Settings 通常能影响变量，但一些细节，例如连续引用块的圆角、<code>&gt;</code> 符号隐藏、代码块内边距，可能需要 CSS snippet 补丁。</p>
-<h3 id="6-5-为什么-Style-Settings-里改了，文件又被自动清理"><a href="#6-5-为什么-Style-Settings-里改了，文件又被自动清理" class="headerlink" title="6.5 为什么 Style Settings 里改了，文件又被自动清理"></a>6.5 为什么 Style Settings 里改了，文件又被自动清理</h3><p>Style Settings 会根据主题声明的 <code>@settings</code> 校验配置项。</p>
-<p>如果你手动写入了主题没有声明的 key，插件可能会在加载后清理掉。</p>
-<p>所以手动改 <code>data.json</code> 时，最好确认 Minimal 的 <code>theme.css</code> 里确实存在对应 <code>id</code>。</p>
-<hr>
-<h2 id="7-当前库推荐维护规则"><a href="#7-当前库推荐维护规则" class="headerlink" title="7. 当前库推荐维护规则"></a>7. 当前库推荐维护规则</h2><p>你的库建议这样维护：</p>
-<table>
-<thead>
-<tr>
-<th>文件</th>
-<th>负责内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>.obsidian/appearance.json</code></td>
-<td>当前主题、基础字号、字体、启用哪些 CSS snippets</td>
-</tr>
-<tr>
-<td><code>.obsidian/plugins/obsidian-minimal-settings/data.json</code></td>
-<td>Minimal 的全局排版和功能开关</td>
-</tr>
-<tr>
-<td><code>.obsidian/plugins/obsidian-style-settings/data.json</code></td>
-<td>Minimal 的颜色、标题、代码、引用等细节变量</td>
-</tr>
-<tr>
-<td><code>.obsidian/snippets/feishu-doc-style.css</code></td>
-<td>飞书风格的最后补丁</td>
-</tr>
-<tr>
-<td><code>.obsidian/snippets/customize.css</code></td>
-<td>你已有的个人杂项补丁，后续建议继续拆小</td>
-</tr>
-</tbody></table>
-<p>如果以后你想调整外观，推荐顺序是：</p>
-<ol>
-<li>先看 Obsidian 原生设置能不能调。</li>
-<li>再看 Minimal Theme Settings 能不能调。</li>
-<li>再看 Style Settings 能不能调。</li>
-<li>最后才写 CSS snippet。</li>
-</ol>
-<hr>
-<h2 id="8-参考链接"><a href="#8-参考链接" class="headerlink" title="8. 参考链接"></a>8. 参考链接</h2><ul>
-<li>Minimal Theme Settings GitHub：<a href="https://github.com/kepano/obsidian-minimal-settings">https://github.com/kepano/obsidian-minimal-settings</a></li>
-<li>Minimal 官方文档：<a href="https://minimal.guide/">https://minimal.guide/</a></li>
-<li>Color schemes：<a href="https://minimal.guide/features/color-schemes">https://minimal.guide/features/color-schemes</a></li>
-<li>Minimal Theme Settings：<a href="https://minimal.guide/plugins/minimal-theme-settings">https://minimal.guide/plugins/minimal-theme-settings</a></li>
-<li>Style Settings：<a href="https://minimal.guide/plugins/style-settings">https://minimal.guide/plugins/style-settings</a></li>
-<li>Line width：<a href="https://minimal.guide/features/line-width">https://minimal.guide/features/line-width</a></li>
-<li>Background contrast：<a href="https://minimal.guide/features/contrast">https://minimal.guide/features/contrast</a></li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>ActiveMQ</title>
     <url>/2024/12/09/archive/ActiveMQ/</url>
     <content><![CDATA[<h2 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h2><h3 id="MQ-种类和对比"><a href="#MQ-种类和对比" class="headerlink" title="MQ 种类和对比"></a>MQ 种类和对比</h3><blockquote>
@@ -3155,91 +1978,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux常用命令汇总</title>
-    <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>👍 本篇文章是为了巩固和记录一些 linux 下的常用指令，相当于是自己的一本工具书。本文参考以下网站</p>
-</blockquote>
-<ul>
-<li><a href="https://www.linuxcool.com/">Linux 命令大全(手册) – 真正好用的 Linux 命令在线查询网站 (linuxcool.com)</a></li>
-<li><a href="https://www.linuxprobe.com/basic-learning-00.html">第 0 章 咱们先来谈谈为什么要学习 Linux 系统 | 《Linux 就该这么学》 (linuxprobe.com)</a></li>
-</ul>
-<h2 id="修改-Hosts-文件"><a href="#修改-Hosts-文件" class="headerlink" title="修改 Hosts 文件"></a>修改 Hosts 文件</h2><blockquote>
-<p>修改 hosts 文件需要拥有对该文件的读写权限</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/hosts</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>刷新 DNS 缓存, 使其立即生效。额，当前步骤好像不做也不会失败。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> /etc/init.d/network restart    <span class="comment"># 重启网络</span></span><br><span class="line"> </span><br><span class="line"> or</span><br><span class="line"> </span><br><span class="line"> /etc/init.d/net.eth0 restart   <span class="comment"># 这个就是重启网卡了</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查看-Jdk-版本，路径及配置环境变量"><a href="#查看-Jdk-版本，路径及配置环境变量" class="headerlink" title="查看 Jdk 版本，路径及配置环境变量"></a>查看 Jdk 版本，路径及配置环境变量</h2><h3 id="查看-JDK-版本"><a href="#查看-JDK-版本" class="headerlink" title="查看 JDK 版本"></a>查看 JDK 版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112222910749.png"></p>
-<h3 id="查看-JDK-安装目录"><a href="#查看-JDK-安装目录" class="headerlink" title="查看 JDK 安装目录"></a>查看 JDK 安装目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223413446.png"></p>
-<h3 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><blockquote>
-<p>进入环境变量的文件, 需要 <code>sudo</code> 或者 <code>root</code> 用户来执行, 普通用户如何添加 <code>sudo</code> 可参考 <a href="#sudo%E5%91%BD%E4%BB%A4">sudo 命令的使用</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/profile</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>修改文件,底部添加如下代码,可参考 <a href="#Vim%E7%9A%84%E4%BD%BF%E7%94%A8">Vim 的使用</a>, <code>JAVA_HOME</code> 的参数值来源于 <a href="#%E6%9F%A5%E7%9C%8BJDK%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">查看 JDK 安装目录</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/bin/java</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223931855.png"></p>
-<blockquote>
-<p>重新加载配置文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置-Sudo-用户"><a href="#设置-Sudo-用户" class="headerlink" title="设置 Sudo 用户"></a>设置 Sudo 用户</h2><blockquote>
-<p>你不知道 root 账号的密码，但是你需要 root 账号的权限来完成一些命令, 当然不是所有用户都用利用 sudo 使用 root 权限的资格，必须是添加在 <code>/etc/sudoers</code> 文件下用户</p>
-</blockquote>
-<h3 id="切换到-Root-用户"><a href="#切换到-Root-用户" class="headerlink" title="切换到 Root 用户"></a>切换到 Root 用户</h3><blockquote>
-<p>这一步需要 root 用户操作,</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225016655.png"></p>
-<h3 id="给-etc-sudoers-文件添加写权限"><a href="#给-etc-sudoers-文件添加写权限" class="headerlink" title="给&#x2F;etc&#x2F;sudoers 文件添加写权限"></a>给&#x2F;etc&#x2F;sudoers 文件添加写权限</h3><blockquote>
-<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+w /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改-sudoers-文件"><a href="#修改-sudoers-文件" class="headerlink" title="修改 sudoers 文件"></a>修改 <code>sudoers</code> 文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>找到这行：root ALL&#x3D;(ALL) ALL, 在这行下面添加 <code>&#123;需要添加的用户名&#125;</code> ALL&#x3D;(ALL) ALL</p>
-</blockquote>
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225904580.png"></p>
-<blockquote>
-<p>sudoers 下面添加普通用户可以使用 <code>sudo</code> 命令的格式 <code>xxx</code> 代表用户名称或者组名称，注意大小写。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xxx ALL=(ALL) ALL <span class="comment"># 普通用户可以使用sudo命令，但是需要密码</span></span><br><span class="line">%xxx ALL=(ALL) ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，但是需要密码</span></span><br><span class="line"></span><br><span class="line">xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 普通 用户可以使用sudo命令，不需要密码</span></span><br><span class="line"></span><br><span class="line">%xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，不需要密码</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="去除-Root-用户对-Sudoers-文件的写权限"><a href="#去除-Root-用户对-Sudoers-文件的写权限" class="headerlink" title="去除 Root 用户对 Sudoers 文件的写权限"></a>去除 Root 用户对 Sudoers 文件的写权限</h3><blockquote>
-<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u-w /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置静态-IP"><a href="#设置静态-IP" class="headerlink" title="设置静态 IP"></a>设置静态 IP</h2><h3 id="切换至-Root-用户-非必须"><a href="#切换至-Root-用户-非必须" class="headerlink" title="切换至 Root 用户 (非必须)"></a>切换至 Root 用户 (非必须)</h3><p>切换成 root 用户，或者后续指令一直使用 sudo</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ifconfig查看网卡信息，确认网卡名 ifcfg-enp0s3</span></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-        <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 导入 Java 证书教程</title>
     <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
@@ -3352,6 +2090,91 @@
 <li>已重启 Java 应用。</li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Linux常用命令汇总</title>
+    <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>👍 本篇文章是为了巩固和记录一些 linux 下的常用指令，相当于是自己的一本工具书。本文参考以下网站</p>
+</blockquote>
+<ul>
+<li><a href="https://www.linuxcool.com/">Linux 命令大全(手册) – 真正好用的 Linux 命令在线查询网站 (linuxcool.com)</a></li>
+<li><a href="https://www.linuxprobe.com/basic-learning-00.html">第 0 章 咱们先来谈谈为什么要学习 Linux 系统 | 《Linux 就该这么学》 (linuxprobe.com)</a></li>
+</ul>
+<h2 id="修改-Hosts-文件"><a href="#修改-Hosts-文件" class="headerlink" title="修改 Hosts 文件"></a>修改 Hosts 文件</h2><blockquote>
+<p>修改 hosts 文件需要拥有对该文件的读写权限</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>刷新 DNS 缓存, 使其立即生效。额，当前步骤好像不做也不会失败。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> /etc/init.d/network restart    <span class="comment"># 重启网络</span></span><br><span class="line"> </span><br><span class="line"> or</span><br><span class="line"> </span><br><span class="line"> /etc/init.d/net.eth0 restart   <span class="comment"># 这个就是重启网卡了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看-Jdk-版本，路径及配置环境变量"><a href="#查看-Jdk-版本，路径及配置环境变量" class="headerlink" title="查看 Jdk 版本，路径及配置环境变量"></a>查看 Jdk 版本，路径及配置环境变量</h2><h3 id="查看-JDK-版本"><a href="#查看-JDK-版本" class="headerlink" title="查看 JDK 版本"></a>查看 JDK 版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112222910749.png"></p>
+<h3 id="查看-JDK-安装目录"><a href="#查看-JDK-安装目录" class="headerlink" title="查看 JDK 安装目录"></a>查看 JDK 安装目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223413446.png"></p>
+<h3 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><blockquote>
+<p>进入环境变量的文件, 需要 <code>sudo</code> 或者 <code>root</code> 用户来执行, 普通用户如何添加 <code>sudo</code> 可参考 <a href="#sudo%E5%91%BD%E4%BB%A4">sudo 命令的使用</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>修改文件,底部添加如下代码,可参考 <a href="#Vim%E7%9A%84%E4%BD%BF%E7%94%A8">Vim 的使用</a>, <code>JAVA_HOME</code> 的参数值来源于 <a href="#%E6%9F%A5%E7%9C%8BJDK%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">查看 JDK 安装目录</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/bin/java</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223931855.png"></p>
+<blockquote>
+<p>重新加载配置文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置-Sudo-用户"><a href="#设置-Sudo-用户" class="headerlink" title="设置 Sudo 用户"></a>设置 Sudo 用户</h2><blockquote>
+<p>你不知道 root 账号的密码，但是你需要 root 账号的权限来完成一些命令, 当然不是所有用户都用利用 sudo 使用 root 权限的资格，必须是添加在 <code>/etc/sudoers</code> 文件下用户</p>
+</blockquote>
+<h3 id="切换到-Root-用户"><a href="#切换到-Root-用户" class="headerlink" title="切换到 Root 用户"></a>切换到 Root 用户</h3><blockquote>
+<p>这一步需要 root 用户操作,</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225016655.png"></p>
+<h3 id="给-etc-sudoers-文件添加写权限"><a href="#给-etc-sudoers-文件添加写权限" class="headerlink" title="给&#x2F;etc&#x2F;sudoers 文件添加写权限"></a>给&#x2F;etc&#x2F;sudoers 文件添加写权限</h3><blockquote>
+<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+w /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-sudoers-文件"><a href="#修改-sudoers-文件" class="headerlink" title="修改 sudoers 文件"></a>修改 <code>sudoers</code> 文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>找到这行：root ALL&#x3D;(ALL) ALL, 在这行下面添加 <code>&#123;需要添加的用户名&#125;</code> ALL&#x3D;(ALL) ALL</p>
+</blockquote>
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225904580.png"></p>
+<blockquote>
+<p>sudoers 下面添加普通用户可以使用 <code>sudo</code> 命令的格式 <code>xxx</code> 代表用户名称或者组名称，注意大小写。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xxx ALL=(ALL) ALL <span class="comment"># 普通用户可以使用sudo命令，但是需要密码</span></span><br><span class="line">%xxx ALL=(ALL) ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，但是需要密码</span></span><br><span class="line"></span><br><span class="line">xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 普通 用户可以使用sudo命令，不需要密码</span></span><br><span class="line"></span><br><span class="line">%xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，不需要密码</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="去除-Root-用户对-Sudoers-文件的写权限"><a href="#去除-Root-用户对-Sudoers-文件的写权限" class="headerlink" title="去除 Root 用户对 Sudoers 文件的写权限"></a>去除 Root 用户对 Sudoers 文件的写权限</h3><blockquote>
+<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u-w /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置静态-IP"><a href="#设置静态-IP" class="headerlink" title="设置静态 IP"></a>设置静态 IP</h2><h3 id="切换至-Root-用户-非必须"><a href="#切换至-Root-用户-非必须" class="headerlink" title="切换至 Root 用户 (非必须)"></a>切换至 Root 用户 (非必须)</h3><p>切换成 root 用户，或者后续指令一直使用 sudo</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ifconfig查看网卡信息，确认网卡名 ifcfg-enp0s3</span></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>运维/linux</tag>
+        <tag>持续更新</tag>
+      </tags>
   </entry>
   <entry>
     <title>Maven依赖管理项目构建工具</title>
@@ -4259,6 +3082,127 @@
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PGSQL基本概念</title>
+    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<blockquote>
+<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
+</blockquote>
+<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
+<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
+<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
+<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
+<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
+</li>
+</ul>
+<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
+<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
+<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
+<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
+<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
+<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
+<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
+<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
+</li>
+<li><p><strong>常见钥匙</strong>：</p>
+<ul>
+<li><code>SELECT</code>：查看货物（读数据）。</li>
+<li><code>INSERT</code>：放新货物（写数据）。</li>
+<li><code>DELETE</code>：扔货物（删数据）。</li>
+<li><code>UPDATE</code>：改货物（改数据）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
+<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
+</li>
+<li><p><strong>常见扩展</strong>：</p>
+<ul>
+<li><code>PostGIS</code>：地理数据处理。</li>
+<li><code>pgcrypto</code>：数据加密。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>拆解</strong>：</p>
+<ul>
+<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
+<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
+<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
+<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
+<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
+</ol>
+<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
+]]></content>
+      <tags>
+        <tag>数据</tag>
+        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -5319,127 +4263,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PGSQL基本概念</title>
-    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<blockquote>
-<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
-</blockquote>
-<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
-<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
-<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
-<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
-<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
-</li>
-</ul>
-<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
-<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
-<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
-<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
-<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
-<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
-<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
-<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
-</li>
-<li><p><strong>常见钥匙</strong>：</p>
-<ul>
-<li><code>SELECT</code>：查看货物（读数据）。</li>
-<li><code>INSERT</code>：放新货物（写数据）。</li>
-<li><code>DELETE</code>：扔货物（删数据）。</li>
-<li><code>UPDATE</code>：改货物（改数据）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
-<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
-</li>
-<li><p><strong>常见扩展</strong>：</p>
-<ul>
-<li><code>PostGIS</code>：地理数据处理。</li>
-<li><code>pgcrypto</code>：数据加密。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
-<li><p><strong>示例</strong>：</p>
-  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>拆解</strong>：</p>
-<ul>
-<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
-<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
-<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
-<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
-<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
-<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
-</ol>
-<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
-]]></content>
-      <tags>
-        <tag>数据</tag>
-        <tag>数据/数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SqlManger开发文档</title>
     <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<blockquote>
@@ -6170,113 +4993,6 @@
       </tags>
   </entry>
   <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>利息计算方式</title>
     <url>/2024/12/09/archive/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
@@ -6720,36 +5436,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何避免代码的深层嵌套</title>
-    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
-    <content><![CDATA[<blockquote>
-<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
-</blockquote>
-<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
-]]></content>
-      <tags>
-        <tag>代码/优化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
     <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
     <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
@@ -6781,6 +5467,36 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何避免代码的深层嵌套</title>
+    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
+    <content><![CDATA[<blockquote>
+<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
+</blockquote>
+<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
+]]></content>
+      <tags>
+        <tag>代码/优化</tag>
       </tags>
   </entry>
   <entry>
@@ -6841,6 +5557,113 @@
 <p>发布它，分享它，收集反馈，然后改进它。</p>
 <p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
+      </tags>
   </entry>
   <entry>
     <title>文章推荐</title>
@@ -6922,30 +5745,6 @@
 ]]></content>
       <tags>
         <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线程的几种状态</title>
-    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<pre><code class="highlight mermaid">mindmap
-	(线程的几种状态)
-		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)
-		(运行态-是就绪态和运行中的统称)
-			(就绪态-未抢占到cpu时间片)
-			(运行中-抢占到了时间片) 
-		(阻塞态)
-		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)
-		(超时等待-指定时间后，可以自行返回)
-		(终止态度-线程执行完毕)
-		
-    
-
-</code></pre>
-
-<p><img src="/assets/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/file-20250526135653833.png"></p>
-]]></content>
-      <tags>
-        <tag>后端/Java/八股</tag>
       </tags>
   </entry>
   <entry>
@@ -7038,6 +5837,30 @@
 ]]></content>
       <tags>
         <tag>工具/nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线程的几种状态</title>
+    <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<pre><code class="highlight mermaid">mindmap
+	(线程的几种状态)
+		(就绪态-已经生成创建完成了线程对象，但是未调用start方法)
+		(运行态-是就绪态和运行中的统称)
+			(就绪态-未抢占到cpu时间片)
+			(运行中-抢占到了时间片) 
+		(阻塞态)
+		(等待态-进入该线程需要其他线程做出特定动作 通知/中断)
+		(超时等待-指定时间后，可以自行返回)
+		(终止态度-线程执行完毕)
+		
+    
+
+</code></pre>
+
+<p><img src="/assets/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/file-20250526135653833.png"></p>
+]]></content>
+      <tags>
+        <tag>后端/Java/八股</tag>
       </tags>
   </entry>
   <entry>
