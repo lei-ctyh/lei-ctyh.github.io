@@ -1796,176 +1796,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux 卸载openjdk 安装oraclejdk</title>
-    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
-    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
-<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
-<p>如果有项目在运行，请先停止项目</p>
-</blockquote>
-<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
-<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
-<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
-<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
-<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
-<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
-<p>上传到 opt 路径下</p>
-</blockquote>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
-<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
-<p>安装路径不做要求，因此文件夹也不做要求</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
-<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
-<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
-
-<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 导入 Java 证书教程</title>
-    <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
-<p>常见报错如下：</p>
-<p>javax.net.ssl.SSLHandshakeException: PKIX path building failed<br>sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">该错误表示 Java 应用不信任目标 HTTPS 服务的证书，需要将证书导入 Java 的信任库。</span><br><span class="line"></span><br><span class="line">## 二、准备证书文件</span><br><span class="line"></span><br><span class="line">将证书文件上传到 Linux 服务器，例如上传到：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">/tmp/test.com.cn.crt</span><br></pre></td></tr></table></figure>
-
-<p>常见可导入的证书文件格式包括：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.crt</span><br><span class="line">.cer</span><br><span class="line">.pem</span><br></pre></td></tr></table></figure>
-
-<p>以下文件不需要导入 Java 信任库：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.key  私钥文件，不需要导入</span><br><span class="line">.req  证书请求文件，不需要导入</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、确认-Java-安装路径"><a href="#三、确认-Java-安装路径" class="headerlink" title="三、确认 Java 安装路径"></a>三、确认 Java 安装路径</h2><p>在 Linux 服务器上执行以下命令，查看 Java 路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br><span class="line"><span class="built_in">readlink</span> -f $(<span class="built_in">which</span> java)</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器上有多个 JDK，需要确认 Java 应用实际使用的是哪个 JDK。</p>
-<p>可以通过以下命令查看 Java 应用启动命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、找到-Java-证书库-Cacerts"><a href="#四、找到-Java-证书库-Cacerts" class="headerlink" title="四、找到 Java 证书库 Cacerts"></a>四、找到 Java 证书库 Cacerts</h2><p>Java 默认信任库文件名为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cacerts</span><br></pre></td></tr></table></figure>
-
-<p>常见路径如下。</p>
-<p>JDK 8 常见路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<p>JDK 11 及以上常见路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<p>示例路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/local/jdk1.8.0_202/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、导入证书"><a href="#五、导入证书" class="headerlink" title="五、导入证书"></a>五、导入证书</h2><h3 id="1-JDK-8-导入方式"><a href="#1-JDK-8-导入方式" class="headerlink" title="1. JDK 8 导入方式"></a>1. JDK 8 导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-JDK-11-及以上导入方式"><a href="#2-JDK-11-及以上导入方式" class="headerlink" title="2. JDK 11 及以上导入方式"></a>2. JDK 11 及以上导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<p>执行命令后，如果出现以下提示：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Trust this certificate? [no]:</span><br></pre></td></tr></table></figure>
-
-<p>输入：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
-
-<h2 id="六、参数说明"><a href="#六、参数说明" class="headerlink" title="六、参数说明"></a>六、参数说明</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>-importcert</code></td>
-<td>导入证书</td>
-</tr>
-<tr>
-<td><code>-alias</code></td>
-<td>证书别名，可自定义</td>
-</tr>
-<tr>
-<td><code>-file</code></td>
-<td>要导入的证书文件路径</td>
-</tr>
-<tr>
-<td><code>-keystore</code></td>
-<td>Java 证书库路径</td>
-</tr>
-<tr>
-<td><code>-storepass</code></td>
-<td>证书库密码，默认通常为 <code>changeit</code></td>
-</tr>
-</tbody></table>
-<h2 id="七、验证证书是否导入成功"><a href="#七、验证证书是否导入成功" class="headerlink" title="七、验证证书是否导入成功"></a>七、验证证书是否导入成功</h2><h3 id="1-JDK-8-验证方式"><a href="#1-JDK-8-验证方式" class="headerlink" title="1. JDK 8 验证方式"></a>1. JDK 8 验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-JDK-11-及以上验证方式"><a href="#2-JDK-11-及以上验证方式" class="headerlink" title="2. JDK 11 及以上验证方式"></a>2. JDK 11 及以上验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
-
-<p>如果能看到类似以下内容，说明证书导入成功：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sdari-com-cn, Jul 3, 2026, trustedCertEntry</span><br></pre></td></tr></table></figure>
-
-<h2 id="八、重启-Java-应用"><a href="#八、重启-Java-应用" class="headerlink" title="八、重启 Java 应用"></a>八、重启 Java 应用</h2><p>证书导入完成后，需要重启 Java 应用才会生效。</p>
-<p>如果是 systemd 服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart 服务名</span><br></pre></td></tr></table></figure>
-
-<p>如果是 Tomcat 或 TongWeb，根据实际部署方式重启服务，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./stop.sh</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、查看证书信息"><a href="#九、查看证书信息" class="headerlink" title="九、查看证书信息"></a>九、查看证书信息</h2><p>可以使用以下命令查看证书内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /tmp/sdari.com.cn.crt -noout -subject -issuer -dates</span><br></pre></td></tr></table></figure>
-
-<h2 id="十、删除已导入的证书"><a href="#十、删除已导入的证书" class="headerlink" title="十、删除已导入的证书"></a>十、删除已导入的证书</h2><p>如果需要删除已导入的证书，可执行以下命令。</p>
-<p>JDK 8：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<p>JDK 11 及以上：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<h2 id="十一、注意事项"><a href="#十一、注意事项" class="headerlink" title="十一、注意事项"></a>十一、注意事项</h2><ol>
-<li>导入证书时，需要使用 Java 应用实际运行的 JDK。</li>
-<li>不要将 <code>.key</code> 私钥文件导入 Java 信任库。</li>
-<li><code>.req</code> 是证书请求文件，不需要导入。</li>
-<li>Java 默认 <code>cacerts</code> 密码通常是 <code>changeit</code>。</li>
-<li>导入完成后必须重启 Java 应用。</li>
-<li>如果应用启动参数指定了自定义 truststore，需要将证书导入到自定义 truststore 中。</li>
-</ol>
-<h2 id="十二、处理完成标志"><a href="#十二、处理完成标志" class="headerlink" title="十二、处理完成标志"></a>十二、处理完成标志</h2><p>完成以下步骤后，证书导入处理完成：</p>
-<ol>
-<li>证书文件已上传到 Linux 服务器。</li>
-<li>已确认 Java 应用实际使用的 JDK。</li>
-<li>已将证书导入对应 JDK 的 <code>cacerts</code>。</li>
-<li>已验证证书别名存在。</li>
-<li>已重启 Java 应用。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>Kafka常用命令总结</title>
     <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
@@ -2092,6 +1922,62 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux 卸载openjdk 安装oraclejdk</title>
+    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
+    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
+<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
+<p>如果有项目在运行，请先停止项目</p>
+</blockquote>
+<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
+<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
+<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
+<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
+<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
+<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
+<p>上传到 opt 路径下</p>
+</blockquote>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
+<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
+<p>安装路径不做要求，因此文件夹也不做要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
+<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
+<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
+
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux常用命令汇总</title>
     <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
@@ -2175,6 +2061,120 @@
         <tag>运维/linux</tag>
         <tag>持续更新</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Linux 导入 Java 证书教程</title>
+    <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
+<p>常见报错如下：</p>
+<p>javax.net.ssl.SSLHandshakeException: PKIX path building failed<br>sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">该错误表示 Java 应用不信任目标 HTTPS 服务的证书，需要将证书导入 Java 的信任库。</span><br><span class="line"></span><br><span class="line">## 二、准备证书文件</span><br><span class="line"></span><br><span class="line">将证书文件上传到 Linux 服务器，例如上传到：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">/tmp/test.com.cn.crt</span><br></pre></td></tr></table></figure>
+
+<p>常见可导入的证书文件格式包括：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.crt</span><br><span class="line">.cer</span><br><span class="line">.pem</span><br></pre></td></tr></table></figure>
+
+<p>以下文件不需要导入 Java 信任库：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.key  私钥文件，不需要导入</span><br><span class="line">.req  证书请求文件，不需要导入</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、确认-Java-安装路径"><a href="#三、确认-Java-安装路径" class="headerlink" title="三、确认 Java 安装路径"></a>三、确认 Java 安装路径</h2><p>在 Linux 服务器上执行以下命令，查看 Java 路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br><span class="line"><span class="built_in">readlink</span> -f $(<span class="built_in">which</span> java)</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器上有多个 JDK，需要确认 Java 应用实际使用的是哪个 JDK。</p>
+<p>可以通过以下命令查看 Java 应用启动命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、找到-Java-证书库-Cacerts"><a href="#四、找到-Java-证书库-Cacerts" class="headerlink" title="四、找到 Java 证书库 Cacerts"></a>四、找到 Java 证书库 Cacerts</h2><p>Java 默认信任库文件名为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cacerts</span><br></pre></td></tr></table></figure>
+
+<p>常见路径如下。</p>
+<p>JDK 8 常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>JDK 11 及以上常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>示例路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/local/jdk1.8.0_202/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、导入证书"><a href="#五、导入证书" class="headerlink" title="五、导入证书"></a>五、导入证书</h2><h3 id="1-JDK-8-导入方式"><a href="#1-JDK-8-导入方式" class="headerlink" title="1. JDK 8 导入方式"></a>1. JDK 8 导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDK-11-及以上导入方式"><a href="#2-JDK-11-及以上导入方式" class="headerlink" title="2. JDK 11 及以上导入方式"></a>2. JDK 11 及以上导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，如果出现以下提示：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Trust this certificate? [no]:</span><br></pre></td></tr></table></figure>
+
+<p>输入：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、参数说明"><a href="#六、参数说明" class="headerlink" title="六、参数说明"></a>六、参数说明</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-importcert</code></td>
+<td>导入证书</td>
+</tr>
+<tr>
+<td><code>-alias</code></td>
+<td>证书别名，可自定义</td>
+</tr>
+<tr>
+<td><code>-file</code></td>
+<td>要导入的证书文件路径</td>
+</tr>
+<tr>
+<td><code>-keystore</code></td>
+<td>Java 证书库路径</td>
+</tr>
+<tr>
+<td><code>-storepass</code></td>
+<td>证书库密码，默认通常为 <code>changeit</code></td>
+</tr>
+</tbody></table>
+<h2 id="七、验证证书是否导入成功"><a href="#七、验证证书是否导入成功" class="headerlink" title="七、验证证书是否导入成功"></a>七、验证证书是否导入成功</h2><h3 id="1-JDK-8-验证方式"><a href="#1-JDK-8-验证方式" class="headerlink" title="1. JDK 8 验证方式"></a>1. JDK 8 验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDK-11-及以上验证方式"><a href="#2-JDK-11-及以上验证方式" class="headerlink" title="2. JDK 11 及以上验证方式"></a>2. JDK 11 及以上验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
+
+<p>如果能看到类似以下内容，说明证书导入成功：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sdari-com-cn, Jul 3, 2026, trustedCertEntry</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、重启-Java-应用"><a href="#八、重启-Java-应用" class="headerlink" title="八、重启 Java 应用"></a>八、重启 Java 应用</h2><p>证书导入完成后，需要重启 Java 应用才会生效。</p>
+<p>如果是 systemd 服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart 服务名</span><br></pre></td></tr></table></figure>
+
+<p>如果是 Tomcat 或 TongWeb，根据实际部署方式重启服务，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./stop.sh</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、查看证书信息"><a href="#九、查看证书信息" class="headerlink" title="九、查看证书信息"></a>九、查看证书信息</h2><p>可以使用以下命令查看证书内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /tmp/sdari.com.cn.crt -noout -subject -issuer -dates</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、删除已导入的证书"><a href="#十、删除已导入的证书" class="headerlink" title="十、删除已导入的证书"></a>十、删除已导入的证书</h2><p>如果需要删除已导入的证书，可执行以下命令。</p>
+<p>JDK 8：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<p>JDK 11 及以上：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、注意事项"><a href="#十一、注意事项" class="headerlink" title="十一、注意事项"></a>十一、注意事项</h2><ol>
+<li>导入证书时，需要使用 Java 应用实际运行的 JDK。</li>
+<li>不要将 <code>.key</code> 私钥文件导入 Java 信任库。</li>
+<li><code>.req</code> 是证书请求文件，不需要导入。</li>
+<li>Java 默认 <code>cacerts</code> 密码通常是 <code>changeit</code>。</li>
+<li>导入完成后必须重启 Java 应用。</li>
+<li>如果应用启动参数指定了自定义 truststore，需要将证书导入到自定义 truststore 中。</li>
+</ol>
+<h2 id="十二、处理完成标志"><a href="#十二、处理完成标志" class="headerlink" title="十二、处理完成标志"></a>十二、处理完成标志</h2><p>完成以下步骤后，证书导入处理完成：</p>
+<ol>
+<li>证书文件已上传到 Linux 服务器。</li>
+<li>已确认 Java 应用实际使用的 JDK。</li>
+<li>已将证书导入对应 JDK 的 <code>cacerts</code>。</li>
+<li>已验证证书别名存在。</li>
+<li>已重启 Java 应用。</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>Maven依赖管理项目构建工具</title>
@@ -2894,68 +2894,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
-</blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
-</li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
-</li>
-</ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
-</ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 被授权的用户名</li>
-</ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
-</ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
-</ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -3082,6 +3020,189 @@
 ]]></content>
       <tags>
         <tag>工具/obsidian</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
+</ul>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
+</ul>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PGSQL基本概念</title>
+    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<blockquote>
+<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
+</blockquote>
+<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
+<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
+<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
+<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
+<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
+</li>
+</ul>
+<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
+<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
+<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
+<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
+<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
+<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
+<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
+<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
+</li>
+<li><p><strong>常见钥匙</strong>：</p>
+<ul>
+<li><code>SELECT</code>：查看货物（读数据）。</li>
+<li><code>INSERT</code>：放新货物（写数据）。</li>
+<li><code>DELETE</code>：扔货物（删数据）。</li>
+<li><code>UPDATE</code>：改货物（改数据）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
+<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
+</li>
+<li><p><strong>常见扩展</strong>：</p>
+<ul>
+<li><code>PostGIS</code>：地理数据处理。</li>
+<li><code>pgcrypto</code>：数据加密。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>拆解</strong>：</p>
+<ul>
+<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
+<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
+<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
+<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
+<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
+</ol>
+<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
+]]></content>
+      <tags>
+        <tag>数据</tag>
+        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -4591,127 +4712,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PGSQL基本概念</title>
-    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<blockquote>
-<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
-</blockquote>
-<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
-<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
-<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
-<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
-<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
-</li>
-</ul>
-<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
-<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
-<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
-<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
-<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
-<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
-<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
-<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
-</li>
-<li><p><strong>常见钥匙</strong>：</p>
-<ul>
-<li><code>SELECT</code>：查看货物（读数据）。</li>
-<li><code>INSERT</code>：放新货物（写数据）。</li>
-<li><code>DELETE</code>：扔货物（删数据）。</li>
-<li><code>UPDATE</code>：改货物（改数据）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
-<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
-</li>
-<li><p><strong>常见扩展</strong>：</p>
-<ul>
-<li><code>PostGIS</code>：地理数据处理。</li>
-<li><code>pgcrypto</code>：数据加密。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
-<li><p><strong>示例</strong>：</p>
-  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>拆解</strong>：</p>
-<ul>
-<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
-<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
-<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
-<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
-<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
-<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
-</ol>
-<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
-]]></content>
-      <tags>
-        <tag>数据</tag>
-        <tag>数据/数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker安装kafka集群</title>
     <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
     <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
@@ -5666,88 +5666,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>文章推荐</title>
-    <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
-    <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
-<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
-<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
-<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><p><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
-<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
-<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
-<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
-<p>前提是已经安装了多线程下载工具 (也不是很好用)</p>
-</blockquote>
-<p><a href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
-<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
-<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
-<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
-<h2 id="GitHub-代码推送-kex-exchange-identification-报错"><a href="#GitHub-代码推送-kex-exchange-identification-报错" class="headerlink" title="GitHub 代码推送 kex_exchange_identification 报错"></a>GitHub 代码推送 kex_exchange_identification 报错</h2><p><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
-<p><a href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
-<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
-<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
-<h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
-<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
-<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
-<p><a href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
-<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
-<p><a href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
-<p><a href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
-<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
-<li><p>代码编写阶段</p>
-<ul>
-<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
-<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
-</ul>
-</li>
-<li><p>编译&#x2F;解释阶段</p>
-<ul>
-<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
-<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
-<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
-</ul>
-</li>
-<li><p>运行时阶段</p>
-<ul>
-<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
-<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
-</ul>
-</li>
-<li><p>网络传输阶段</p>
-<ul>
-<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
-<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
-</ul>
-</li>
-<li><p>总结</p>
-<ul>
-<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
-<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
-<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
-<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
-</blockquote>
-<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在GBK编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在UTF-8编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
-<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
-<h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
-<h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
-<h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
-<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
-<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><a href="https://blog.csdn.net/chushoufengli/article/details/104535873">RSA加密 和 SHA256签名函数_rsa sha256-CSDN博客</a></p>
-]]></content>
-      <tags>
-        <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>相对路径的使用</title>
     <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
@@ -6025,6 +5943,88 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文章推荐</title>
+    <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
+<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
+<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
+<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><p><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
+<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
+<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
+<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
+<p>前提是已经安装了多线程下载工具 (也不是很好用)</p>
+</blockquote>
+<p><a href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
+<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
+<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
+<h2 id="GitHub-代码推送-kex-exchange-identification-报错"><a href="#GitHub-代码推送-kex-exchange-identification-报错" class="headerlink" title="GitHub 代码推送 kex_exchange_identification 报错"></a>GitHub 代码推送 kex_exchange_identification 报错</h2><p><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
+<p><a href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
+<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
+<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
+<h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
+<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
+<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
+<p><a href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
+<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
+<p><a href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
+<p><a href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
+<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
+<li><p>代码编写阶段</p>
+<ul>
+<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
+<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
+</ul>
+</li>
+<li><p>编译&#x2F;解释阶段</p>
+<ul>
+<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
+<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
+</ul>
+</li>
+<li><p>运行时阶段</p>
+<ul>
+<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
+</ul>
+</li>
+<li><p>网络传输阶段</p>
+<ul>
+<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
+<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
+</ul>
+</li>
+<li><p>总结</p>
+<ul>
+<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
+<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
+</blockquote>
+<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在GBK编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在UTF-8编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
+<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
+<h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
+<h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
+<h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
+<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
+<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><a href="https://blog.csdn.net/chushoufengli/article/details/104535873">RSA加密 和 SHA256签名函数_rsa sha256-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>持续更新</tag>
       </tags>
   </entry>
   <entry>
