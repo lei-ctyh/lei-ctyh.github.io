@@ -1978,91 +1978,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux常用命令汇总</title>
-    <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>👍 本篇文章是为了巩固和记录一些 linux 下的常用指令，相当于是自己的一本工具书。本文参考以下网站</p>
-</blockquote>
-<ul>
-<li><a href="https://www.linuxcool.com/">Linux 命令大全(手册) – 真正好用的 Linux 命令在线查询网站 (linuxcool.com)</a></li>
-<li><a href="https://www.linuxprobe.com/basic-learning-00.html">第 0 章 咱们先来谈谈为什么要学习 Linux 系统 | 《Linux 就该这么学》 (linuxprobe.com)</a></li>
-</ul>
-<h2 id="修改-Hosts-文件"><a href="#修改-Hosts-文件" class="headerlink" title="修改 Hosts 文件"></a>修改 Hosts 文件</h2><blockquote>
-<p>修改 hosts 文件需要拥有对该文件的读写权限</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/hosts</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>刷新 DNS 缓存, 使其立即生效。额，当前步骤好像不做也不会失败。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> /etc/init.d/network restart    <span class="comment"># 重启网络</span></span><br><span class="line"> </span><br><span class="line"> or</span><br><span class="line"> </span><br><span class="line"> /etc/init.d/net.eth0 restart   <span class="comment"># 这个就是重启网卡了</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查看-Jdk-版本，路径及配置环境变量"><a href="#查看-Jdk-版本，路径及配置环境变量" class="headerlink" title="查看 Jdk 版本，路径及配置环境变量"></a>查看 Jdk 版本，路径及配置环境变量</h2><h3 id="查看-JDK-版本"><a href="#查看-JDK-版本" class="headerlink" title="查看 JDK 版本"></a>查看 JDK 版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112222910749.png"></p>
-<h3 id="查看-JDK-安装目录"><a href="#查看-JDK-安装目录" class="headerlink" title="查看 JDK 安装目录"></a>查看 JDK 安装目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223413446.png"></p>
-<h3 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><blockquote>
-<p>进入环境变量的文件, 需要 <code>sudo</code> 或者 <code>root</code> 用户来执行, 普通用户如何添加 <code>sudo</code> 可参考 <a href="#sudo%E5%91%BD%E4%BB%A4">sudo 命令的使用</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/profile</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>修改文件,底部添加如下代码,可参考 <a href="#Vim%E7%9A%84%E4%BD%BF%E7%94%A8">Vim 的使用</a>, <code>JAVA_HOME</code> 的参数值来源于 <a href="#%E6%9F%A5%E7%9C%8BJDK%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">查看 JDK 安装目录</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/bin/java</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223931855.png"></p>
-<blockquote>
-<p>重新加载配置文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置-Sudo-用户"><a href="#设置-Sudo-用户" class="headerlink" title="设置 Sudo 用户"></a>设置 Sudo 用户</h2><blockquote>
-<p>你不知道 root 账号的密码，但是你需要 root 账号的权限来完成一些命令, 当然不是所有用户都用利用 sudo 使用 root 权限的资格，必须是添加在 <code>/etc/sudoers</code> 文件下用户</p>
-</blockquote>
-<h3 id="切换到-Root-用户"><a href="#切换到-Root-用户" class="headerlink" title="切换到 Root 用户"></a>切换到 Root 用户</h3><blockquote>
-<p>这一步需要 root 用户操作,</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225016655.png"></p>
-<h3 id="给-etc-sudoers-文件添加写权限"><a href="#给-etc-sudoers-文件添加写权限" class="headerlink" title="给&#x2F;etc&#x2F;sudoers 文件添加写权限"></a>给&#x2F;etc&#x2F;sudoers 文件添加写权限</h3><blockquote>
-<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+w /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改-sudoers-文件"><a href="#修改-sudoers-文件" class="headerlink" title="修改 sudoers 文件"></a>修改 <code>sudoers</code> 文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>找到这行：root ALL&#x3D;(ALL) ALL, 在这行下面添加 <code>&#123;需要添加的用户名&#125;</code> ALL&#x3D;(ALL) ALL</p>
-</blockquote>
-<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225904580.png"></p>
-<blockquote>
-<p>sudoers 下面添加普通用户可以使用 <code>sudo</code> 命令的格式 <code>xxx</code> 代表用户名称或者组名称，注意大小写。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xxx ALL=(ALL) ALL <span class="comment"># 普通用户可以使用sudo命令，但是需要密码</span></span><br><span class="line">%xxx ALL=(ALL) ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，但是需要密码</span></span><br><span class="line"></span><br><span class="line">xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 普通 用户可以使用sudo命令，不需要密码</span></span><br><span class="line"></span><br><span class="line">%xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，不需要密码</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="去除-Root-用户对-Sudoers-文件的写权限"><a href="#去除-Root-用户对-Sudoers-文件的写权限" class="headerlink" title="去除 Root 用户对 Sudoers 文件的写权限"></a>去除 Root 用户对 Sudoers 文件的写权限</h3><blockquote>
-<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u-w /etc/sudoers</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置静态-IP"><a href="#设置静态-IP" class="headerlink" title="设置静态 IP"></a>设置静态 IP</h2><h3 id="切换至-Root-用户-非必须"><a href="#切换至-Root-用户-非必须" class="headerlink" title="切换至 Root 用户 (非必须)"></a>切换至 Root 用户 (非必须)</h3><p>切换成 root 用户，或者后续指令一直使用 sudo</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ifconfig查看网卡信息，确认网卡名 ifcfg-enp0s3</span></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-        <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 导入 Java 证书教程</title>
     <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
@@ -2175,6 +2090,91 @@
 <li>已重启 Java 应用。</li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Linux常用命令汇总</title>
+    <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>👍 本篇文章是为了巩固和记录一些 linux 下的常用指令，相当于是自己的一本工具书。本文参考以下网站</p>
+</blockquote>
+<ul>
+<li><a href="https://www.linuxcool.com/">Linux 命令大全(手册) – 真正好用的 Linux 命令在线查询网站 (linuxcool.com)</a></li>
+<li><a href="https://www.linuxprobe.com/basic-learning-00.html">第 0 章 咱们先来谈谈为什么要学习 Linux 系统 | 《Linux 就该这么学》 (linuxprobe.com)</a></li>
+</ul>
+<h2 id="修改-Hosts-文件"><a href="#修改-Hosts-文件" class="headerlink" title="修改 Hosts 文件"></a>修改 Hosts 文件</h2><blockquote>
+<p>修改 hosts 文件需要拥有对该文件的读写权限</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/hosts</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>刷新 DNS 缓存, 使其立即生效。额，当前步骤好像不做也不会失败。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> /etc/init.d/network restart    <span class="comment"># 重启网络</span></span><br><span class="line"> </span><br><span class="line"> or</span><br><span class="line"> </span><br><span class="line"> /etc/init.d/net.eth0 restart   <span class="comment"># 这个就是重启网卡了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看-Jdk-版本，路径及配置环境变量"><a href="#查看-Jdk-版本，路径及配置环境变量" class="headerlink" title="查看 Jdk 版本，路径及配置环境变量"></a>查看 Jdk 版本，路径及配置环境变量</h2><h3 id="查看-JDK-版本"><a href="#查看-JDK-版本" class="headerlink" title="查看 JDK 版本"></a>查看 JDK 版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112222910749.png"></p>
+<h3 id="查看-JDK-安装目录"><a href="#查看-JDK-安装目录" class="headerlink" title="查看 JDK 安装目录"></a>查看 JDK 安装目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223413446.png"></p>
+<h3 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><blockquote>
+<p>进入环境变量的文件, 需要 <code>sudo</code> 或者 <code>root</code> 用户来执行, 普通用户如何添加 <code>sudo</code> 可参考 <a href="#sudo%E5%91%BD%E4%BB%A4">sudo 命令的使用</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>修改文件,底部添加如下代码,可参考 <a href="#Vim%E7%9A%84%E4%BD%BF%E7%94%A8">Vim 的使用</a>, <code>JAVA_HOME</code> 的参数值来源于 <a href="#%E6%9F%A5%E7%9C%8BJDK%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">查看 JDK 安装目录</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/bin/java</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112223931855.png"></p>
+<blockquote>
+<p>重新加载配置文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置-Sudo-用户"><a href="#设置-Sudo-用户" class="headerlink" title="设置 Sudo 用户"></a>设置 Sudo 用户</h2><blockquote>
+<p>你不知道 root 账号的密码，但是你需要 root 账号的权限来完成一些命令, 当然不是所有用户都用利用 sudo 使用 root 权限的资格，必须是添加在 <code>/etc/sudoers</code> 文件下用户</p>
+</blockquote>
+<h3 id="切换到-Root-用户"><a href="#切换到-Root-用户" class="headerlink" title="切换到 Root 用户"></a>切换到 Root 用户</h3><blockquote>
+<p>这一步需要 root 用户操作,</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225016655.png"></p>
+<h3 id="给-etc-sudoers-文件添加写权限"><a href="#给-etc-sudoers-文件添加写权限" class="headerlink" title="给&#x2F;etc&#x2F;sudoers 文件添加写权限"></a>给&#x2F;etc&#x2F;sudoers 文件添加写权限</h3><blockquote>
+<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+w /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-sudoers-文件"><a href="#修改-sudoers-文件" class="headerlink" title="修改 sudoers 文件"></a>修改 <code>sudoers</code> 文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>找到这行：root ALL&#x3D;(ALL) ALL, 在这行下面添加 <code>&#123;需要添加的用户名&#125;</code> ALL&#x3D;(ALL) ALL</p>
+</blockquote>
+<p><img src="/assets/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/image-20240112225904580.png"></p>
+<blockquote>
+<p>sudoers 下面添加普通用户可以使用 <code>sudo</code> 命令的格式 <code>xxx</code> 代表用户名称或者组名称，注意大小写。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xxx ALL=(ALL) ALL <span class="comment"># 普通用户可以使用sudo命令，但是需要密码</span></span><br><span class="line">%xxx ALL=(ALL) ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，但是需要密码</span></span><br><span class="line"></span><br><span class="line">xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 普通 用户可以使用sudo命令，不需要密码</span></span><br><span class="line"></span><br><span class="line">%xxx ALL=(ALL) NOPASSWD:ALL <span class="comment"># 用户组xxx的用户可以使用sudo命令，不需要密码</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="去除-Root-用户对-Sudoers-文件的写权限"><a href="#去除-Root-用户对-Sudoers-文件的写权限" class="headerlink" title="去除 Root 用户对 Sudoers 文件的写权限"></a>去除 Root 用户对 Sudoers 文件的写权限</h3><blockquote>
+<p><a href="https://www.linuxcool.com/chmod">chmod 命令 – 改变文件或目录权限 – Linux 命令大全(手册) (linuxcool.com)</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u-w /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置静态-IP"><a href="#设置静态-IP" class="headerlink" title="设置静态 IP"></a>设置静态 IP</h2><h3 id="切换至-Root-用户-非必须"><a href="#切换至-Root-用户-非必须" class="headerlink" title="切换至 Root 用户 (非必须)"></a>切换至 Root 用户 (非必须)</h3><p>切换成 root 用户，或者后续指令一直使用 sudo</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ifconfig查看网卡信息，确认网卡名 ifcfg-enp0s3</span></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>运维/linux</tag>
+        <tag>持续更新</tag>
+      </tags>
   </entry>
   <entry>
     <title>Maven依赖管理项目构建工具</title>
@@ -5666,6 +5666,88 @@
 ]]></content>
   </entry>
   <entry>
+    <title>文章推荐</title>
+    <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
+<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
+<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
+<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><p><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
+<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
+<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
+<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
+<p>前提是已经安装了多线程下载工具 (也不是很好用)</p>
+</blockquote>
+<p><a href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
+<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
+<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
+<h2 id="GitHub-代码推送-kex-exchange-identification-报错"><a href="#GitHub-代码推送-kex-exchange-identification-报错" class="headerlink" title="GitHub 代码推送 kex_exchange_identification 报错"></a>GitHub 代码推送 kex_exchange_identification 报错</h2><p><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
+<p><a href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
+<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
+<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
+<h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
+<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
+<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
+<p><a href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
+<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
+<p><a href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
+<p><a href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
+<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
+<li><p>代码编写阶段</p>
+<ul>
+<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
+<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
+</ul>
+</li>
+<li><p>编译&#x2F;解释阶段</p>
+<ul>
+<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
+<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
+</ul>
+</li>
+<li><p>运行时阶段</p>
+<ul>
+<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
+</ul>
+</li>
+<li><p>网络传输阶段</p>
+<ul>
+<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
+<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
+</ul>
+</li>
+<li><p>总结</p>
+<ul>
+<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
+<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
+</blockquote>
+<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在GBK编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在UTF-8编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
+<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
+<h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
+<h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
+<h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
+<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
+<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><a href="https://blog.csdn.net/chushoufengli/article/details/104535873">RSA加密 和 SHA256签名函数_rsa sha256-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>持续更新</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>相对路径的使用</title>
     <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
@@ -5946,95 +6028,13 @@
       </tags>
   </entry>
   <entry>
-    <title>文章推荐</title>
-    <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
-    <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
-<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
-<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
-<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><p><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
-<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
-<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
-<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
-<p>前提是已经安装了多线程下载工具 (也不是很好用)</p>
-</blockquote>
-<p><a href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
-<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
-<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
-<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
-<h2 id="GitHub-代码推送-kex-exchange-identification-报错"><a href="#GitHub-代码推送-kex-exchange-identification-报错" class="headerlink" title="GitHub 代码推送 kex_exchange_identification 报错"></a>GitHub 代码推送 kex_exchange_identification 报错</h2><p><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
-<p><a href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
-<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
-<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
-<h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
-<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
-<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
-<p><a href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
-<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
-<p><a href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
-<p><a href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
-<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
-<li><p>代码编写阶段</p>
-<ul>
-<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
-<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
-</ul>
-</li>
-<li><p>编译&#x2F;解释阶段</p>
-<ul>
-<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
-<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
-<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
-</ul>
-</li>
-<li><p>运行时阶段</p>
-<ul>
-<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
-<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
-</ul>
-</li>
-<li><p>网络传输阶段</p>
-<ul>
-<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
-<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
-</ul>
-</li>
-<li><p>总结</p>
-<ul>
-<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
-<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
-<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
-<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
-</blockquote>
-<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在GBK编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在UTF-8编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
-<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
-<h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
-<h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
-<h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
-<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
-<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><a href="https://blog.csdn.net/chushoufengli/article/details/104535873">RSA加密 和 SHA256签名函数_rsa sha256-CSDN博客</a></p>
-]]></content>
-      <tags>
-        <tag>持续更新</tag>
-      </tags>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>标签</title>
     <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
