@@ -2177,36 +2177,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Maven依赖管理项目构建工具</title>
     <url>/2024/12/09/archive/Maven%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="一、Maven-简介"><a href="#一、Maven-简介" class="headerlink" title="一、Maven 简介"></a>一、Maven 简介</h2><h3 id="1、为什么学习-Maven"><a href="#1、为什么学习-Maven" class="headerlink" title="1、为什么学习 Maven"></a>1、为什么学习 Maven</h3><h4 id="1-1、Maven-是一个依赖管理工具"><a href="#1-1、Maven-是一个依赖管理工具" class="headerlink" title="1.1、Maven 是一个依赖管理工具"></a>1.1、Maven 是一个依赖管理工具</h4><p><strong>jar 包的规模</strong></p>
@@ -2894,6 +2864,36 @@
       </tags>
   </entry>
   <entry>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -3203,6 +3203,189 @@
       <tags>
         <tag>数据</tag>
         <tag>数据/数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SqlManger开发文档</title>
+    <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>教程地址 <a href="https://www.w3schools.cn/pyqt5/index.html">PyQt5 教程 (w3schools.cn)</a></p>
+</blockquote>
+<h2 id="开发记录"><a href="#开发记录" class="headerlink" title="开发记录"></a>开发记录</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><blockquote>
+<p>新建 python 项目, 环境选择新的 venv 环境</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212174014517.png"></p>
+<h3 id="安装必要依赖"><a href="#安装必要依赖" class="headerlink" title="安装必要依赖"></a>安装必要依赖</h3><blockquote>
+<p>当前依赖为项目新增依赖, 后续可能会随开发进行更新</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 提供了与 Python 3.5 或更高版本兼容的 32 位或 64 位架构的 wheels</span><br><span class="line">pip3 install PyQt5</span><br><span class="line"># 要安装 Qt Designer 等开发工具以支持 PyQt5 wheels</span><br><span class="line">pip3 install pyqt5-tools</span><br><span class="line"># 安装链接mysql所需依赖</span><br><span class="line">pip3 install pymysql</span><br><span class="line"># 链接mysql时所用到的加密方式</span><br><span class="line">pip3 install cryptography</span><br><span class="line"># 美化包依赖, 拉取依赖时, 不能使用豆瓣源, 豆瓣源没有这个依赖</span><br><span class="line">pip3 install qdarkstyle</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果直接使用官方镜像源出现安装失败的情况, 可以考虑国内的镜像源</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 豆瓣源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装依赖方式参考下图</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175153752.png"></p>
+<h3 id="设计-UI"><a href="#设计-UI" class="headerlink" title="设计 UI"></a>设计 UI</h3><blockquote>
+<p>打开设计器路径 {项目路径}\venv\Lib\site-packages\qt5_applications\Qt\bin\designer.exe</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175609378.png"></p>
+<blockquote>
+<p>设计以下 UI 文件<br>主窗口 UI: sqlManger_ui.ui<br>新增记录模态框 UI: addrowdialog_ui.ui</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150125976.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150325964.png"></p>
+<blockquote>
+<p>UI 文件转成成 Python 文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyuic5 -x sqlManger_ui.ui -o sqlManger_ui.py</span><br><span class="line"></span><br><span class="line">pyuic5 -x addrowdialog_ui.ui -o addrowdialog_ui.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213113642881.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150646257.png"></p>
+<blockquote>
+<p>转换完成后会生成以下文件</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150806994.png"></p>
+<blockquote>
+<p>新增记录时, 不同的表格数据不同, 因此需要动态加载模态框表单项,<br>💡 技术点: <code>setattr</code> 与 <code>getattr</code> 方法的使用</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setattr</span>(目标对象, 属性名, 属性值)</span><br><span class="line"><span class="built_in">getattr</span>(目标对象, 属性名, 属性值)</span><br></pre></td></tr></table></figure>
+
+<p>重构 <code>addrowdialog_ui.py</code> 下的 <code>setupUi</code> <code>retranslateUi</code> 方法, 设置表单项时, 设置成由传入参数动态加载, 文件调整如下</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215153026800.png"></p>
+<h3 id="各个功能点信号与槽函数建立链接"><a href="#各个功能点信号与槽函数建立链接" class="headerlink" title="各个功能点信号与槽函数建立链接"></a>各个功能点信号与槽函数建立链接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.connbut.clicked.connect(<span class="variable language_">self</span>.conn_database)</span><br><span class="line"><span class="comment"># 查询按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.querybut.clicked.connect(<span class="variable language_">self</span>.execute_query)</span><br><span class="line"><span class="comment"># 回滚按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.roolbackbut.clicked.connect(<span class="variable language_">self</span>.rollback_database)</span><br><span class="line"><span class="comment"># 提交按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.commitbut.clicked.connect(<span class="variable language_">self</span>.commit_database)</span><br><span class="line"><span class="comment"># 切换数据库选择</span></span><br><span class="line"><span class="variable language_">self</span>.ui.database.currentIndexChanged.connect(<span class="variable language_">self</span>.change_database)</span><br><span class="line"><span class="comment"># 更改主题</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br><span class="line"><span class="comment"># 右键表格, 展示菜单</span></span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.setContextMenuPolicy(Qt.CustomContextMenu)</span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.customContextMenuRequested.connect(<span class="variable language_">self</span>.display_table_menu)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mysql-数据库的使用"><a href="#Mysql-数据库的使用" class="headerlink" title="Mysql 数据库的使用"></a>Mysql 数据库的使用</h3><blockquote>
+<p>下载 mysql 相关依赖</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install mysql-connector-python</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为涉及到事务的回滚, 所以当前应用获取的数据库链接为单例, 代码如下</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_connection</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.connection</span><br><span class="line">    Utils.connection = pymysql.connect(</span><br><span class="line">        <span class="comment"># 数据库主机名</span></span><br><span class="line">        host=<span class="variable language_">self</span>.ui.host.text(),</span><br><span class="line">        <span class="comment"># 数据库端口号，默认为3306</span></span><br><span class="line">        port=<span class="built_in">int</span>(<span class="variable language_">self</span>.ui.port.text()),</span><br><span class="line">        <span class="comment"># 数据库用户名</span></span><br><span class="line">        user=<span class="variable language_">self</span>.ui.username.text(),</span><br><span class="line">        <span class="comment"># 数据库密码</span></span><br><span class="line">        passwd=<span class="variable language_">self</span>.ui.pwd.text(),</span><br><span class="line">        <span class="comment"># 字符编码</span></span><br><span class="line">        charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> Utils.connection</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_cursor</span>():</span><br><span class="line">    <span class="keyword">if</span> Utils.cursor <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.cursor</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Utils.connection = Utils.get_connection()</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的开启<br>开启时机: 与数据库建立链接之后</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 开启事务</span></span><br><span class="line">cursor.execute(<span class="string">&quot;BEGIN&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的提交<br>提交时机: 点击提交按钮</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).commit()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的回滚<br>回滚时机</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).rollback()</span><br></pre></td></tr></table></figure>
+
+<h3 id="增加美化包"><a href="#增加美化包" class="headerlink" title="增加美化包"></a>增加美化包</h3><blockquote>
+<p>原本的 QT 样式不怎么好看, 集成一下美化包</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install qdarkstyle -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装插件时, 不能使用豆瓣源, 豆瓣源没有这个依赖</p>
+<blockquote>
+<p>main.py 入口文件给实例设置浅色样式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>切换主题样式的实现</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215163133407.png"></p>
+<p>监控下拉框数据改变的信号, 链接对应的槽函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为主题切换的信号和槽函数简历链接</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br></pre></td></tr></table></figure>
+
+<p>切换主题的方法实现, 与启动项目时需要添加一步获取应用实例的操作 <code>Utils.get_app_self()</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change_theme</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="variable language_">self</span>.ui.themeComboBox.currentText() == <span class="string">&quot;Dark&quot;</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=DarkPalette()))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🔍 qt-material 有更丰富的样式</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install qt-material</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>应用样式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 动态加载qt-material主题</span></span><br><span class="line"><span class="keyword">import</span> site</span><br><span class="line"><span class="comment"># venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">site_packages_path = site.getsitepackages()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># self.ui.themeComboBox.addItems(&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&#x27;light_blue_500.xml&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增窗口增加滚动条"><a href="#新增窗口增加滚动条" class="headerlink" title="新增窗口增加滚动条"></a>新增窗口增加滚动条</h3><blockquote>
+<p>参考资料 <a href="https://blog.csdn.net/weixin_43749427/article/details/114883239">Qt designer + ScrollArea 实现滚动界面_qt designer scrollarea-CSDN 博客</a></p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215235502027.png"></p>
+<h3 id="虚拟环境-Venv-同步"><a href="#虚拟环境-Venv-同步" class="headerlink" title="虚拟环境 Venv 同步"></a>虚拟环境 Venv 同步</h3><blockquote>
+<p>参考资料: <a href="https://blog.csdn.net/pearl8899/article/details/113877334">python 项目自动生成环境配置文件 requirements.txt_如何生成 requirements.txt-CSDN 博客</a></p>
+</blockquote>
+<blockquote>
+<p>生成 requirements.txt 文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装依赖,根据 requirements.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="异常问题记录"><a href="#异常问题记录" class="headerlink" title="异常问题记录"></a>异常问题记录</h2><h3 id="QSqlDatabase-无法加载-MYSQL-驱动-未解决"><a href="#QSqlDatabase-无法加载-MYSQL-驱动-未解决" class="headerlink" title="QSqlDatabase 无法加载 MYSQL 驱动 (未解决)"></a>QSqlDatabase 无法加载 MYSQL 驱动 (未解决)</h3><blockquote>
+<p>问题现象</p>
+</blockquote>
+<p>QSqlDatabase 无法链接 MYSQL 数据库, 提示无法加载驱动问题</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213155858030.png"></p>
+<blockquote>
+<p>参考资料:</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_34769196/article/details/103898208">PyQt5 使用 QSqlDatabase 类连接 Mysql 的坑</a></p>
+<blockquote>
+<p>问题原因:</p>
+</blockquote>
+<p>最新版本的 QT 缺失 MYSQL 驱动的相关文件</p>
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<p>根据以上的参考文章操作后问题也没有解决, 最后该问题选择通过 pymysql 链接数据库, 获取数据, 使用标准的 model 来展示</p>
+<h3 id="获取-MYSQL-数据库链接报加密异常-已解决"><a href="#获取-MYSQL-数据库链接报加密异常-已解决" class="headerlink" title="获取 MYSQL 数据库链接报加密异常 (已解决)"></a>获取 MYSQL 数据库链接报加密异常 (已解决)</h3><blockquote>
+<p>问题现象</p>
+</blockquote>
+<p>链接 MYSQL 在密码, 端口等信息均正确的情况下, 报如下异常</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231214101243230.png"></p>
+<blockquote>
+<p>参考资料</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/coco56/article/details/107948413">RuntimeError: ‘cryptography‘ package is required for sha256_password or caching_sha2_password auth m-CSDN 博客</a></p>
+<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="项目基础环境"><a href="#项目基础环境" class="headerlink" title="项目基础环境"></a>项目基础环境</h3><blockquote>
+<p>已安装 Python3, 可使用以下版本查看 python 版本</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222735318.png"></p>
+<blockquote>
+<p>已安装 MySql8.0 及以上版本</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215913574.png"></p>
+<h3 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h3><blockquote>
+<p>首先从 GITHUB 拉取项目, GIT 命令行或者下图方式均可<br>项目地址: <a href="https://github.com/lei-ctyh/sqlManger.git">https://github.com/lei-ctyh/sqlManger.git</a></p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215158278.png"></p>
+<h3 id="配置项目解释器"><a href="#配置项目解释器" class="headerlink" title="配置项目解释器"></a>配置项目解释器</h3><blockquote>
+<p>按照自己需求配置项目解释器即可<br><code>ctrl</code> + <code>alt</code> + <code>s</code> 进入设置 , 具体操作如下图</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220223107.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220436985.png"></p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><blockquote>
+<p>安装依赖,根据 requirements.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222023427.png"></p>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215170946953.png"></p>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
@@ -4260,189 +4443,6 @@
 ]]></content>
       <tags>
         <tag>数据/redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SqlManger开发文档</title>
-    <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>教程地址 <a href="https://www.w3schools.cn/pyqt5/index.html">PyQt5 教程 (w3schools.cn)</a></p>
-</blockquote>
-<h2 id="开发记录"><a href="#开发记录" class="headerlink" title="开发记录"></a>开发记录</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><blockquote>
-<p>新建 python 项目, 环境选择新的 venv 环境</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212174014517.png"></p>
-<h3 id="安装必要依赖"><a href="#安装必要依赖" class="headerlink" title="安装必要依赖"></a>安装必要依赖</h3><blockquote>
-<p>当前依赖为项目新增依赖, 后续可能会随开发进行更新</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 提供了与 Python 3.5 或更高版本兼容的 32 位或 64 位架构的 wheels</span><br><span class="line">pip3 install PyQt5</span><br><span class="line"># 要安装 Qt Designer 等开发工具以支持 PyQt5 wheels</span><br><span class="line">pip3 install pyqt5-tools</span><br><span class="line"># 安装链接mysql所需依赖</span><br><span class="line">pip3 install pymysql</span><br><span class="line"># 链接mysql时所用到的加密方式</span><br><span class="line">pip3 install cryptography</span><br><span class="line"># 美化包依赖, 拉取依赖时, 不能使用豆瓣源, 豆瓣源没有这个依赖</span><br><span class="line">pip3 install qdarkstyle</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果直接使用官方镜像源出现安装失败的情况, 可以考虑国内的镜像源</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 豆瓣源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
-
-<p>安装依赖方式参考下图</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175153752.png"></p>
-<h3 id="设计-UI"><a href="#设计-UI" class="headerlink" title="设计 UI"></a>设计 UI</h3><blockquote>
-<p>打开设计器路径 {项目路径}\venv\Lib\site-packages\qt5_applications\Qt\bin\designer.exe</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175609378.png"></p>
-<blockquote>
-<p>设计以下 UI 文件<br>主窗口 UI: sqlManger_ui.ui<br>新增记录模态框 UI: addrowdialog_ui.ui</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150125976.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150325964.png"></p>
-<blockquote>
-<p>UI 文件转成成 Python 文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyuic5 -x sqlManger_ui.ui -o sqlManger_ui.py</span><br><span class="line"></span><br><span class="line">pyuic5 -x addrowdialog_ui.ui -o addrowdialog_ui.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213113642881.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150646257.png"></p>
-<blockquote>
-<p>转换完成后会生成以下文件</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150806994.png"></p>
-<blockquote>
-<p>新增记录时, 不同的表格数据不同, 因此需要动态加载模态框表单项,<br>💡 技术点: <code>setattr</code> 与 <code>getattr</code> 方法的使用</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setattr</span>(目标对象, 属性名, 属性值)</span><br><span class="line"><span class="built_in">getattr</span>(目标对象, 属性名, 属性值)</span><br></pre></td></tr></table></figure>
-
-<p>重构 <code>addrowdialog_ui.py</code> 下的 <code>setupUi</code> <code>retranslateUi</code> 方法, 设置表单项时, 设置成由传入参数动态加载, 文件调整如下</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215153026800.png"></p>
-<h3 id="各个功能点信号与槽函数建立链接"><a href="#各个功能点信号与槽函数建立链接" class="headerlink" title="各个功能点信号与槽函数建立链接"></a>各个功能点信号与槽函数建立链接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.connbut.clicked.connect(<span class="variable language_">self</span>.conn_database)</span><br><span class="line"><span class="comment"># 查询按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.querybut.clicked.connect(<span class="variable language_">self</span>.execute_query)</span><br><span class="line"><span class="comment"># 回滚按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.roolbackbut.clicked.connect(<span class="variable language_">self</span>.rollback_database)</span><br><span class="line"><span class="comment"># 提交按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.commitbut.clicked.connect(<span class="variable language_">self</span>.commit_database)</span><br><span class="line"><span class="comment"># 切换数据库选择</span></span><br><span class="line"><span class="variable language_">self</span>.ui.database.currentIndexChanged.connect(<span class="variable language_">self</span>.change_database)</span><br><span class="line"><span class="comment"># 更改主题</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br><span class="line"><span class="comment"># 右键表格, 展示菜单</span></span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.setContextMenuPolicy(Qt.CustomContextMenu)</span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.customContextMenuRequested.connect(<span class="variable language_">self</span>.display_table_menu)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Mysql-数据库的使用"><a href="#Mysql-数据库的使用" class="headerlink" title="Mysql 数据库的使用"></a>Mysql 数据库的使用</h3><blockquote>
-<p>下载 mysql 相关依赖</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install mysql-connector-python</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>因为涉及到事务的回滚, 所以当前应用获取的数据库链接为单例, 代码如下</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_connection</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.connection</span><br><span class="line">    Utils.connection = pymysql.connect(</span><br><span class="line">        <span class="comment"># 数据库主机名</span></span><br><span class="line">        host=<span class="variable language_">self</span>.ui.host.text(),</span><br><span class="line">        <span class="comment"># 数据库端口号，默认为3306</span></span><br><span class="line">        port=<span class="built_in">int</span>(<span class="variable language_">self</span>.ui.port.text()),</span><br><span class="line">        <span class="comment"># 数据库用户名</span></span><br><span class="line">        user=<span class="variable language_">self</span>.ui.username.text(),</span><br><span class="line">        <span class="comment"># 数据库密码</span></span><br><span class="line">        passwd=<span class="variable language_">self</span>.ui.pwd.text(),</span><br><span class="line">        <span class="comment"># 字符编码</span></span><br><span class="line">        charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> Utils.connection</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_cursor</span>():</span><br><span class="line">    <span class="keyword">if</span> Utils.cursor <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.cursor</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Utils.connection = Utils.get_connection()</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的开启<br>开启时机: 与数据库建立链接之后</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 开启事务</span></span><br><span class="line">cursor.execute(<span class="string">&quot;BEGIN&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的提交<br>提交时机: 点击提交按钮</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).commit()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的回滚<br>回滚时机</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).rollback()</span><br></pre></td></tr></table></figure>
-
-<h3 id="增加美化包"><a href="#增加美化包" class="headerlink" title="增加美化包"></a>增加美化包</h3><blockquote>
-<p>原本的 QT 样式不怎么好看, 集成一下美化包</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install qdarkstyle -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<p>安装插件时, 不能使用豆瓣源, 豆瓣源没有这个依赖</p>
-<blockquote>
-<p>main.py 入口文件给实例设置浅色样式</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>切换主题样式的实现</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215163133407.png"></p>
-<p>监控下拉框数据改变的信号, 链接对应的槽函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为主题切换的信号和槽函数简历链接</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br></pre></td></tr></table></figure>
-
-<p>切换主题的方法实现, 与启动项目时需要添加一步获取应用实例的操作 <code>Utils.get_app_self()</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change_theme</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="variable language_">self</span>.ui.themeComboBox.currentText() == <span class="string">&quot;Dark&quot;</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=DarkPalette()))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>🔍 qt-material 有更丰富的样式</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install qt-material</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>应用样式</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 动态加载qt-material主题</span></span><br><span class="line"><span class="keyword">import</span> site</span><br><span class="line"><span class="comment"># venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">site_packages_path = site.getsitepackages()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># self.ui.themeComboBox.addItems(&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&#x27;light_blue_500.xml&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="新增窗口增加滚动条"><a href="#新增窗口增加滚动条" class="headerlink" title="新增窗口增加滚动条"></a>新增窗口增加滚动条</h3><blockquote>
-<p>参考资料 <a href="https://blog.csdn.net/weixin_43749427/article/details/114883239">Qt designer + ScrollArea 实现滚动界面_qt designer scrollarea-CSDN 博客</a></p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215235502027.png"></p>
-<h3 id="虚拟环境-Venv-同步"><a href="#虚拟环境-Venv-同步" class="headerlink" title="虚拟环境 Venv 同步"></a>虚拟环境 Venv 同步</h3><blockquote>
-<p>参考资料: <a href="https://blog.csdn.net/pearl8899/article/details/113877334">python 项目自动生成环境配置文件 requirements.txt_如何生成 requirements.txt-CSDN 博客</a></p>
-</blockquote>
-<blockquote>
-<p>生成 requirements.txt 文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>安装依赖,根据 requirements.txt</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="异常问题记录"><a href="#异常问题记录" class="headerlink" title="异常问题记录"></a>异常问题记录</h2><h3 id="QSqlDatabase-无法加载-MYSQL-驱动-未解决"><a href="#QSqlDatabase-无法加载-MYSQL-驱动-未解决" class="headerlink" title="QSqlDatabase 无法加载 MYSQL 驱动 (未解决)"></a>QSqlDatabase 无法加载 MYSQL 驱动 (未解决)</h3><blockquote>
-<p>问题现象</p>
-</blockquote>
-<p>QSqlDatabase 无法链接 MYSQL 数据库, 提示无法加载驱动问题</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213155858030.png"></p>
-<blockquote>
-<p>参考资料:</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/qq_34769196/article/details/103898208">PyQt5 使用 QSqlDatabase 类连接 Mysql 的坑</a></p>
-<blockquote>
-<p>问题原因:</p>
-</blockquote>
-<p>最新版本的 QT 缺失 MYSQL 驱动的相关文件</p>
-<blockquote>
-<p>解决方案</p>
-</blockquote>
-<p>根据以上的参考文章操作后问题也没有解决, 最后该问题选择通过 pymysql 链接数据库, 获取数据, 使用标准的 model 来展示</p>
-<h3 id="获取-MYSQL-数据库链接报加密异常-已解决"><a href="#获取-MYSQL-数据库链接报加密异常-已解决" class="headerlink" title="获取 MYSQL 数据库链接报加密异常 (已解决)"></a>获取 MYSQL 数据库链接报加密异常 (已解决)</h3><blockquote>
-<p>问题现象</p>
-</blockquote>
-<p>链接 MYSQL 在密码, 端口等信息均正确的情况下, 报如下异常</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231214101243230.png"></p>
-<blockquote>
-<p>参考资料</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/coco56/article/details/107948413">RuntimeError: ‘cryptography‘ package is required for sha256_password or caching_sha2_password auth m-CSDN 博客</a></p>
-<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="项目基础环境"><a href="#项目基础环境" class="headerlink" title="项目基础环境"></a>项目基础环境</h3><blockquote>
-<p>已安装 Python3, 可使用以下版本查看 python 版本</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222735318.png"></p>
-<blockquote>
-<p>已安装 MySql8.0 及以上版本</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215913574.png"></p>
-<h3 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h3><blockquote>
-<p>首先从 GITHUB 拉取项目, GIT 命令行或者下图方式均可<br>项目地址: <a href="https://github.com/lei-ctyh/sqlManger.git">https://github.com/lei-ctyh/sqlManger.git</a></p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215158278.png"></p>
-<h3 id="配置项目解释器"><a href="#配置项目解释器" class="headerlink" title="配置项目解释器"></a>配置项目解释器</h3><blockquote>
-<p>按照自己需求配置项目解释器即可<br><code>ctrl</code> + <code>alt</code> + <code>s</code> 进入设置 , 具体操作如下图</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220223107.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220436985.png"></p>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><blockquote>
-<p>安装依赖,根据 requirements.txt</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222023427.png"></p>
-<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215170946953.png"></p>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
@@ -5543,6 +5543,36 @@
       </tags>
   </entry>
   <entry>
+    <title>如何避免代码的深层嵌套</title>
+    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
+    <content><![CDATA[<blockquote>
+<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
+</blockquote>
+<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
+]]></content>
+      <tags>
+        <tag>代码/优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
     <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
     <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
@@ -5574,36 +5604,6 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何避免代码的深层嵌套</title>
-    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
-    <content><![CDATA[<blockquote>
-<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
-</blockquote>
-<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
-]]></content>
-      <tags>
-        <tag>代码/优化</tag>
       </tags>
   </entry>
   <entry>
