@@ -132,7 +132,7 @@
 <h3 id="访问控制台"><a href="#访问控制台" class="headerlink" title="访问控制台"></a>访问控制台</h3><blockquote>
 <p>访问地址：http:&#x2F;&#x2F;% 主机 IP%:8161，默认用户名密码均为 admin，</p>
 </blockquote>
-<p><img src="/assets/ActiveMQ/image-20240409220439596.png"></p>
+<p><img src="/assets/ActiveMQ/image-20240409220439596.png" alt="341"></p>
 <h2 id="入门案例"><a href="#入门案例" class="headerlink" title="入门案例"></a>入门案例</h2><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li>官网：<a href="https://activemq.apache.org/">ActiveMQ (apache.org)</a></li>
 </ul>
@@ -1922,120 +1922,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux 导入 Java 证书教程</title>
-    <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
-<p>常见报错如下：</p>
-<p>javax.net.ssl.SSLHandshakeException: PKIX path building failed<br>sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">该错误表示 Java 应用不信任目标 HTTPS 服务的证书，需要将证书导入 Java 的信任库。</span><br><span class="line"></span><br><span class="line">## 二、准备证书文件</span><br><span class="line"></span><br><span class="line">将证书文件上传到 Linux 服务器，例如上传到：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">/tmp/test.com.cn.crt</span><br></pre></td></tr></table></figure>
-
-<p>常见可导入的证书文件格式包括：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.crt</span><br><span class="line">.cer</span><br><span class="line">.pem</span><br></pre></td></tr></table></figure>
-
-<p>以下文件不需要导入 Java 信任库：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.key  私钥文件，不需要导入</span><br><span class="line">.req  证书请求文件，不需要导入</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、确认-Java-安装路径"><a href="#三、确认-Java-安装路径" class="headerlink" title="三、确认 Java 安装路径"></a>三、确认 Java 安装路径</h2><p>在 Linux 服务器上执行以下命令，查看 Java 路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br><span class="line"><span class="built_in">readlink</span> -f $(<span class="built_in">which</span> java)</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器上有多个 JDK，需要确认 Java 应用实际使用的是哪个 JDK。</p>
-<p>可以通过以下命令查看 Java 应用启动命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、找到-Java-证书库-Cacerts"><a href="#四、找到-Java-证书库-Cacerts" class="headerlink" title="四、找到 Java 证书库 Cacerts"></a>四、找到 Java 证书库 Cacerts</h2><p>Java 默认信任库文件名为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cacerts</span><br></pre></td></tr></table></figure>
-
-<p>常见路径如下。</p>
-<p>JDK 8 常见路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<p>JDK 11 及以上常见路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<p>示例路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/local/jdk1.8.0_202/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、导入证书"><a href="#五、导入证书" class="headerlink" title="五、导入证书"></a>五、导入证书</h2><h3 id="1-JDK-8-导入方式"><a href="#1-JDK-8-导入方式" class="headerlink" title="1. JDK 8 导入方式"></a>1. JDK 8 导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-JDK-11-及以上导入方式"><a href="#2-JDK-11-及以上导入方式" class="headerlink" title="2. JDK 11 及以上导入方式"></a>2. JDK 11 及以上导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<p>执行命令后，如果出现以下提示：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Trust this certificate? [no]:</span><br></pre></td></tr></table></figure>
-
-<p>输入：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
-
-<h2 id="六、参数说明"><a href="#六、参数说明" class="headerlink" title="六、参数说明"></a>六、参数说明</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>-importcert</code></td>
-<td>导入证书</td>
-</tr>
-<tr>
-<td><code>-alias</code></td>
-<td>证书别名，可自定义</td>
-</tr>
-<tr>
-<td><code>-file</code></td>
-<td>要导入的证书文件路径</td>
-</tr>
-<tr>
-<td><code>-keystore</code></td>
-<td>Java 证书库路径</td>
-</tr>
-<tr>
-<td><code>-storepass</code></td>
-<td>证书库密码，默认通常为 <code>changeit</code></td>
-</tr>
-</tbody></table>
-<h2 id="七、验证证书是否导入成功"><a href="#七、验证证书是否导入成功" class="headerlink" title="七、验证证书是否导入成功"></a>七、验证证书是否导入成功</h2><h3 id="1-JDK-8-验证方式"><a href="#1-JDK-8-验证方式" class="headerlink" title="1. JDK 8 验证方式"></a>1. JDK 8 验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-JDK-11-及以上验证方式"><a href="#2-JDK-11-及以上验证方式" class="headerlink" title="2. JDK 11 及以上验证方式"></a>2. JDK 11 及以上验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
-
-<p>如果能看到类似以下内容，说明证书导入成功：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sdari-com-cn, Jul 3, 2026, trustedCertEntry</span><br></pre></td></tr></table></figure>
-
-<h2 id="八、重启-Java-应用"><a href="#八、重启-Java-应用" class="headerlink" title="八、重启 Java 应用"></a>八、重启 Java 应用</h2><p>证书导入完成后，需要重启 Java 应用才会生效。</p>
-<p>如果是 systemd 服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart 服务名</span><br></pre></td></tr></table></figure>
-
-<p>如果是 Tomcat 或 TongWeb，根据实际部署方式重启服务，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./stop.sh</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、查看证书信息"><a href="#九、查看证书信息" class="headerlink" title="九、查看证书信息"></a>九、查看证书信息</h2><p>可以使用以下命令查看证书内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /tmp/sdari.com.cn.crt -noout -subject -issuer -dates</span><br></pre></td></tr></table></figure>
-
-<h2 id="十、删除已导入的证书"><a href="#十、删除已导入的证书" class="headerlink" title="十、删除已导入的证书"></a>十、删除已导入的证书</h2><p>如果需要删除已导入的证书，可执行以下命令。</p>
-<p>JDK 8：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<p>JDK 11 及以上：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<h2 id="十一、注意事项"><a href="#十一、注意事项" class="headerlink" title="十一、注意事项"></a>十一、注意事项</h2><ol>
-<li>导入证书时，需要使用 Java 应用实际运行的 JDK。</li>
-<li>不要将 <code>.key</code> 私钥文件导入 Java 信任库。</li>
-<li><code>.req</code> 是证书请求文件，不需要导入。</li>
-<li>Java 默认 <code>cacerts</code> 密码通常是 <code>changeit</code>。</li>
-<li>导入完成后必须重启 Java 应用。</li>
-<li>如果应用启动参数指定了自定义 truststore，需要将证书导入到自定义 truststore 中。</li>
-</ol>
-<h2 id="十二、处理完成标志"><a href="#十二、处理完成标志" class="headerlink" title="十二、处理完成标志"></a>十二、处理完成标志</h2><p>完成以下步骤后，证书导入处理完成：</p>
-<ol>
-<li>证书文件已上传到 Linux 服务器。</li>
-<li>已确认 Java 应用实际使用的 JDK。</li>
-<li>已将证书导入对应 JDK 的 <code>cacerts</code>。</li>
-<li>已验证证书别名存在。</li>
-<li>已重启 Java 应用。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>Linux常用命令汇总</title>
     <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
@@ -2838,60 +2724,247 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux 卸载openjdk 安装oraclejdk</title>
-    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
-    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
-<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
-<p>如果有项目在运行，请先停止项目</p>
+    <title>Obsidian插件汇总</title>
+    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
+<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
 </blockquote>
-<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
-<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
-<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
+<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
+<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
-<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
-<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
-<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
-<p>上传到 opt 路径下</p>
+<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
+<p>Page Feature 英文配置截图</p>
 </blockquote>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
-<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
-<p>安装路径不做要求，因此文件夹也不做要求</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
+<blockquote>
+<p>Page Feature 中文配置截图</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
-<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
-<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
-
-<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
+<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
+<p>Page Behaviors 英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
+<blockquote>
+<p>Page Behaviors 中文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
+<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
+<ul>
+<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
+<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
 </ul>
+<blockquote>
+<p>Embedding options 英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
+<blockquote>
+<p>Embedding options 中文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
+<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的使用可以参考下 GIF</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
+<p>😀 导出时建议选择独立文档</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
+<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
+<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置截图</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
+<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
+<blockquote>
+<p>开启了删除日志, 成功删除后会有如下界面</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
+<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
+</blockquote>
+<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>英文配置</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
+<blockquote>
+<p>中文配置对照</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
+<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
+<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
+</blockquote>
+<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
+<p>直接按照下图配置即可, 没什么按需调整的选项</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
+<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
+<p>插件的集团使用可参考下 GIF 以及表格</p>
+</blockquote>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
+<table>
+<thead>
+<tr>
+<th>热键</th>
+<th>行为</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tab</td>
+<td>下一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>前一个单元格</td>
+<td>执行格式化</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>下一行</td>
+<td>跳转至下一行, 没有下一行则新增</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + D</td>
+<td>打开表格帮助面板</td>
+<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
+</tr>
+</tbody></table>
+<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
+<p>该插件主要</p>
+</blockquote>
+<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
+<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
+<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
+<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
 ]]></content>
       <tags>
-        <tag>运维/linux</tag>
+        <tag>工具/obsidian</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Linux 导入 Java 证书教程</title>
+    <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
+<p>常见报错如下：</p>
+<p>javax.net.ssl.SSLHandshakeException: PKIX path building failed<br>sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">该错误表示 Java 应用不信任目标 HTTPS 服务的证书，需要将证书导入 Java 的信任库。</span><br><span class="line"></span><br><span class="line">## 二、准备证书文件</span><br><span class="line"></span><br><span class="line">将证书文件上传到 Linux 服务器，例如上传到：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">/tmp/test.com.cn.crt</span><br></pre></td></tr></table></figure>
+
+<p>常见可导入的证书文件格式包括：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.crt</span><br><span class="line">.cer</span><br><span class="line">.pem</span><br></pre></td></tr></table></figure>
+
+<p>以下文件不需要导入 Java 信任库：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.key  私钥文件，不需要导入</span><br><span class="line">.req  证书请求文件，不需要导入</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、确认-Java-安装路径"><a href="#三、确认-Java-安装路径" class="headerlink" title="三、确认 Java 安装路径"></a>三、确认 Java 安装路径</h2><p>在 Linux 服务器上执行以下命令，查看 Java 路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br><span class="line"><span class="built_in">readlink</span> -f $(<span class="built_in">which</span> java)</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器上有多个 JDK，需要确认 Java 应用实际使用的是哪个 JDK。</p>
+<p>可以通过以下命令查看 Java 应用启动命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、找到-Java-证书库-Cacerts"><a href="#四、找到-Java-证书库-Cacerts" class="headerlink" title="四、找到 Java 证书库 Cacerts"></a>四、找到 Java 证书库 Cacerts</h2><p>Java 默认信任库文件名为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cacerts</span><br></pre></td></tr></table></figure>
+
+<p>常见路径如下。</p>
+<p>JDK 8 常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>JDK 11 及以上常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>示例路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/local/jdk1.8.0_202/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、导入证书"><a href="#五、导入证书" class="headerlink" title="五、导入证书"></a>五、导入证书</h2><h3 id="1-JDK-8-导入方式"><a href="#1-JDK-8-导入方式" class="headerlink" title="1. JDK 8 导入方式"></a>1. JDK 8 导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDK-11-及以上导入方式"><a href="#2-JDK-11-及以上导入方式" class="headerlink" title="2. JDK 11 及以上导入方式"></a>2. JDK 11 及以上导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，如果出现以下提示：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Trust this certificate? [no]:</span><br></pre></td></tr></table></figure>
+
+<p>输入：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、参数说明"><a href="#六、参数说明" class="headerlink" title="六、参数说明"></a>六、参数说明</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-importcert</code></td>
+<td>导入证书</td>
+</tr>
+<tr>
+<td><code>-alias</code></td>
+<td>证书别名，可自定义</td>
+</tr>
+<tr>
+<td><code>-file</code></td>
+<td>要导入的证书文件路径</td>
+</tr>
+<tr>
+<td><code>-keystore</code></td>
+<td>Java 证书库路径</td>
+</tr>
+<tr>
+<td><code>-storepass</code></td>
+<td>证书库密码，默认通常为 <code>changeit</code></td>
+</tr>
+</tbody></table>
+<h2 id="七、验证证书是否导入成功"><a href="#七、验证证书是否导入成功" class="headerlink" title="七、验证证书是否导入成功"></a>七、验证证书是否导入成功</h2><h3 id="1-JDK-8-验证方式"><a href="#1-JDK-8-验证方式" class="headerlink" title="1. JDK 8 验证方式"></a>1. JDK 8 验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDK-11-及以上验证方式"><a href="#2-JDK-11-及以上验证方式" class="headerlink" title="2. JDK 11 及以上验证方式"></a>2. JDK 11 及以上验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
+
+<p>如果能看到类似以下内容，说明证书导入成功：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sdari-com-cn, Jul 3, 2026, trustedCertEntry</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、重启-Java-应用"><a href="#八、重启-Java-应用" class="headerlink" title="八、重启 Java 应用"></a>八、重启 Java 应用</h2><p>证书导入完成后，需要重启 Java 应用才会生效。</p>
+<p>如果是 systemd 服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart 服务名</span><br></pre></td></tr></table></figure>
+
+<p>如果是 Tomcat 或 TongWeb，根据实际部署方式重启服务，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./stop.sh</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、查看证书信息"><a href="#九、查看证书信息" class="headerlink" title="九、查看证书信息"></a>九、查看证书信息</h2><p>可以使用以下命令查看证书内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /tmp/sdari.com.cn.crt -noout -subject -issuer -dates</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、删除已导入的证书"><a href="#十、删除已导入的证书" class="headerlink" title="十、删除已导入的证书"></a>十、删除已导入的证书</h2><p>如果需要删除已导入的证书，可执行以下命令。</p>
+<p>JDK 8：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<p>JDK 11 及以上：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、注意事项"><a href="#十一、注意事项" class="headerlink" title="十一、注意事项"></a>十一、注意事项</h2><ol>
+<li>导入证书时，需要使用 Java 应用实际运行的 JDK。</li>
+<li>不要将 <code>.key</code> 私钥文件导入 Java 信任库。</li>
+<li><code>.req</code> 是证书请求文件，不需要导入。</li>
+<li>Java 默认 <code>cacerts</code> 密码通常是 <code>changeit</code>。</li>
+<li>导入完成后必须重启 Java 应用。</li>
+<li>如果应用启动参数指定了自定义 truststore，需要将证书导入到自定义 truststore 中。</li>
+</ol>
+<h2 id="十二、处理完成标志"><a href="#十二、处理完成标志" class="headerlink" title="十二、处理完成标志"></a>十二、处理完成标志</h2><p>完成以下步骤后，证书导入处理完成：</p>
+<ol>
+<li>证书文件已上传到 Linux 服务器。</li>
+<li>已确认 Java 应用实际使用的 JDK。</li>
+<li>已将证书导入对应 JDK 的 <code>cacerts</code>。</li>
+<li>已验证证书别名存在。</li>
+<li>已重启 Java 应用。</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>Orecal数据库还原</title>
@@ -2953,6 +3026,62 @@
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 卸载openjdk 安装oraclejdk</title>
+    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
+    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
+<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
+<p>如果有项目在运行，请先停止项目</p>
+</blockquote>
+<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
+<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
+<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
+<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
+<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
+<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
+<p>上传到 opt 路径下</p>
+</blockquote>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
+<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
+<p>安装路径不做要求，因此文件夹也不做要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
+<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
+<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
+
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4134,135 +4263,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Obsidian插件汇总</title>
-    <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
-<p>❗❗❗ 该插件必须置顶, 强烈推荐</p>
-</blockquote>
-<h3 id="插件简介"><a href="#插件简介" class="headerlink" title="插件简介"></a>插件简介</h3><p>导出你的 markdown 文档成 HTML，毕竟不是所有人的电脑上都有 typora 或者 obsidian 这类的 markdown 编辑器, 但是所有人的电脑上都有浏览器呀 🎣</p>
-<h3 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>该插件配置项较多，但大部分参数均可按照默认值设置。我本人在使用时仅调整了了 <a href="#%E5%B5%8C%E5%85%A5%E9%85%8D%E7%BD%AE">嵌入配置</a>，仅在此处列举比较关键的几项配置</p>
-</blockquote>
-<h4 id="页面功能配置"><a href="#页面功能配置" class="headerlink" title="页面功能配置"></a>页面功能配置</h4><blockquote>
-<p>Page Feature 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220206502.png"></p>
-<blockquote>
-<p>Page Feature 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220512903.png"></p>
-<h4 id="页面行为配置"><a href="#页面行为配置" class="headerlink" title="页面行为配置"></a>页面行为配置</h4><blockquote>
-<p>Page Behaviors 英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144339762.png"></p>
-<blockquote>
-<p>Page Behaviors 中文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144502706.png"></p>
-<h4 id="嵌入配置"><a href="#嵌入配置" class="headerlink" title="嵌入配置"></a>嵌入配置</h4><p>简单在这讲一下嵌入配置是个什么东西，先说结论，再讲原理</p>
-<ul>
-<li>结论：下图中的三个配置全部打开，导出文件时就会仅导出一个 html 文件，否则将会多导出一个依赖文件。</li>
-<li>原理：该插件在生成 <code>html</code> 时，会根据下面的参数来判断是否把 <code>js</code> 和 <code>css</code> 代码导入到 <code>html</code>。这些 <code>js</code> 和 <code>css</code> 配置可能是有很大一部分是重复的，也就是说不一样的文章可以复用同一个 <code>js</code> 和 <code>css</code>。因此插件作者贴心的给你了是否选择代码复用的权利。不过，强烈建议按照我的配置来，毕竟你的存储内存不值钱。。。。。。</li>
-</ul>
-<blockquote>
-<p>Embedding options 英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144554664.png"></p>
-<blockquote>
-<p>Embedding options 中文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108145111699.png"></p>
-<h3 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的使用可以参考下 GIF</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/recording.gif"></p>
-<p>😀 导出时建议选择独立文档</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108220740346.png"></p>
-<h2 id="Clear-Images-Settings"><a href="#Clear-Images-Settings" class="headerlink" title="Clear Images Settings"></a>Clear Images Settings</h2><h3 id="插件简介-1"><a href="#插件简介-1" class="headerlink" title="插件简介"></a>插件简介</h3><p>我们在进行 markdown 写作时, 通常会粘贴一些截图. 但是有的时候, 我们对于截图中的某些内容进行了修改, 我们通常是截取新的截图, 而不是替换旧图片, 因此我们的附件文件夹会存在很多没有引用的文件, 该插件就是为了解决该问题</p>
-<h3 id="插件配置-1"><a href="#插件配置-1" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置截图</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132337125.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240108144104191.png"></p>
-<h3 id="插件使用-1"><a href="#插件使用-1" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p><code>ctrl</code> + <code>p</code> 打开对话面板, 输入 <code>clear</code>, 参考下图, 按需清除</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132651095.png"></p>
-<blockquote>
-<p>开启了删除日志, 成功删除后会有如下界面</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226132825609.png"></p>
-<h2 id="Custom-Attachment-Location"><a href="#Custom-Attachment-Location" class="headerlink" title="Custom Attachment Location"></a>Custom Attachment Location</h2><h3 id="插件简介-2"><a href="#插件简介-2" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>在以前写使用 typora 写文档时, 截图喜欢按照一个 md 文件对应一个附件文件夹的方式设置, 不过 Obsidian 不支持, 仅能选择一个固定的文件夹作为附件文件夹, 该插件就是为了解决该问题</p>
-</blockquote>
-<h3 id="插件配置-2"><a href="#插件配置-2" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>英文配置</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133823731.png"></p>
-<blockquote>
-<p>中文配置对照</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226133952006.png"></p>
-<h3 id="插件使用-2"><a href="#插件使用-2" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>复制图片后直接粘贴, 图片会放入按照规则放入对应的文件夹, 如果该文件夹不存在则自动生成,. 举个例子: 附件位置为 <code>./assets/$&#123;filename&#125;</code> , 文章为 <code>Obsidian插件汇总</code> , 则该文章下的所有图片均放在了 <code>./assets/Obsidian插件汇总</code> 文件夹下, 如下图所示</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20231226134708247.png"></p>
-<h2 id="Advanced-Tables-Plugin"><a href="#Advanced-Tables-Plugin" class="headerlink" title="Advanced Tables Plugin"></a>Advanced Tables Plugin</h2><h3 id="插件简介-3"><a href="#插件简介-3" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>markdown 写作时, 关于表格的使用也是一大难题, 该插件可以极大的方便了使用, Obsidian 的 15.13 版本提供了实施预览模式下的对表格的编辑功能。不过再源码模式下使用该插件依然是很好的</p>
-</blockquote>
-<h3 id="插件配置-3"><a href="#插件配置-3" class="headerlink" title="插件配置"></a>插件配置</h3><blockquote>
-<p>直接按照下图配置即可, 没什么按需调整的选项</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240104154542177.png"></p>
-<h3 id="插件使用-3"><a href="#插件使用-3" class="headerlink" title="插件使用"></a>插件使用</h3><blockquote>
-<p>插件的集团使用可参考下 GIF 以及表格</p>
-</blockquote>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/PixPin_2024-01-04_16-24-52.gif"></p>
-<table>
-<thead>
-<tr>
-<th>热键</th>
-<th>行为</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Tab</td>
-<td>下一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Shift + Tab</td>
-<td>前一个单元格</td>
-<td>执行格式化</td>
-</tr>
-<tr>
-<td>Enter</td>
-<td>下一行</td>
-<td>跳转至下一行, 没有下一行则新增</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + D</td>
-<td>打开表格帮助面板</td>
-<td>需要更新值 obsidian 的 v1.5.3 版本以上才可用</td>
-</tr>
-</tbody></table>
-<h2 id="Markdown-Prettifier"><a href="#Markdown-Prettifier" class="headerlink" title="Markdown Prettifier"></a>Markdown Prettifier</h2><h3 id="插件简介-4"><a href="#插件简介-4" class="headerlink" title="插件简介"></a>插件简介</h3><blockquote>
-<p>该插件主要</p>
-</blockquote>
-<h2 id="Mousewheel-image-zoom"><a href="#Mousewheel-image-zoom" class="headerlink" title="Mousewheel-image-zoom"></a>Mousewheel-image-zoom</h2><h3 id="插件简介-5"><a href="#插件简介-5" class="headerlink" title="插件简介"></a>插件简介</h3><p>主要作用是用来进行图片大小的控制</p>
-<h3 id="插件配置-4"><a href="#插件配置-4" class="headerlink" title="插件配置"></a>插件配置</h3><p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143729742.png" alt="|695"></p>
-<p><strong>注意事项：</strong> 如果选择了 <code>ctrl</code> 为快捷键，需要到设置 -&gt;选项 -&gt;外观下关闭快速调整字体大小功能</p>
-<p><img src="/assets/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/image-20240418143845538.png" alt="|635"></p>
-]]></content>
-      <tags>
-        <tag>工具/obsidian</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SqlManger开发文档</title>
     <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<blockquote>
@@ -4778,471 +4778,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git 入门指南：写给完全不懂版本控制的你</title>
-    <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
-<ul>
-<li>改代码改崩了，想恢复昨天的版本，却发现没备份</li>
-<li>和同事一起开发，不知道怎么合并各自的修改</li>
-<li>听别人说 “commit”、”push”、”rebase”，完全听不懂</li>
-</ul>
-<p>这篇文章用最通俗的语言，帮你搞懂 Git 是什么、怎么用。</p>
-<hr>
-<h2 id="一、Git-是什么？"><a href="#一、Git-是什么？" class="headerlink" title="一、Git 是什么？"></a>一、Git 是什么？</h2><p><strong>一句话解释</strong>：Git 是一个”代码时光机”，能帮你：</p>
-<ul>
-<li>保存代码的每一个历史版本</li>
-<li>随时穿越回任意时间点</li>
-<li>多人协作开发不打架</li>
-</ul>
-<hr>
-<h2 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h2><h3 id="2-1-仓库（Repository）"><a href="#2-1-仓库（Repository）" class="headerlink" title="2.1 仓库（Repository）"></a>2.1 仓库（Repository）</h3><p>仓库就是一个被 Git 管理的项目文件夹。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的项目/</span><br><span class="line">├── .git/          ← 隐藏文件夹，存储所有历史记录（本地仓库）</span><br><span class="line">├── src/           ← 你实际编辑的代码（工作目录）</span><br><span class="line">├── index.html</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
-
-<p><strong>重点</strong>：</p>
-<ul>
-<li><strong>工作目录</strong> &#x3D; 你能看到和编辑的文件</li>
-<li><strong>本地仓库 (.git)</strong> &#x3D; 隐藏的”存档库”，存着所有历史版本</li>
-</ul>
-<blockquote>
-<p>💡 只要 <code>.git</code> 文件夹不删，你就能恢复到任意一次 commit 的状态。</p>
-</blockquote>
-<h3 id="2-2-代码的三个状态"><a href="#2-2-代码的三个状态" class="headerlink" title="2.2 代码的三个状态"></a>2.2 代码的三个状态</h3><pre><code class="highlight mermaid">flowchart LR
-    A[工作目录&lt;br/&gt;Working Dir&lt;br/&gt;你正在改的文件] --&gt;|git add| B[暂存区&lt;br/&gt;Staging Area&lt;br/&gt;准备要提交的]
-    B --&gt;|git commit| C[本地仓库&lt;br/&gt;Local Repo&lt;br/&gt;已保存的历史]</code></pre>
-
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>说明</th>
-<th>类比</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>工作目录</td>
-<td>你正在编辑的文件</td>
-<td>正在写的作业</td>
-</tr>
-<tr>
-<td>暂存区</td>
-<td>准备提交的修改</td>
-<td>放进书包准备交的作业</td>
-</tr>
-<tr>
-<td>本地仓库</td>
-<td>已保存的历史记录</td>
-<td>老师收走存档的作业</td>
-</tr>
-</tbody></table>
-<h3 id="2-3-本地-vs-远端"><a href="#2-3-本地-vs-远端" class="headerlink" title="2.3 本地 vs 远端"></a>2.3 本地 vs 远端</h3><table>
-<thead>
-<tr>
-<th>概念</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>本地（Local）</strong></td>
-<td>你自己电脑上的仓库</td>
-</tr>
-<tr>
-<td><strong>远端（Remote）</strong></td>
-<td>服务器上的仓库（如 GitHub、GitLab）</td>
-</tr>
-</tbody></table>
-<p>它们之间的同步：</p>
-<pre><code class="highlight mermaid">flowchart LR
-    A[本地仓库] --&gt;|git push&lt;br/&gt;推送| B[远端仓库]
-    B --&gt;|git pull&lt;br/&gt;拉取| A</code></pre>
-
-<hr>
-<h2 id="三、分支（Branch）"><a href="#三、分支（Branch）" class="headerlink" title="三、分支（Branch）"></a>三、分支（Branch）</h2><h3 id="3-1-什么是分支？"><a href="#3-1-什么是分支？" class="headerlink" title="3.1 什么是分支？"></a>3.1 什么是分支？</h3><p>分支就是代码的”平行世界”。</p>
-<p>想象一下：你在写一个网站，老板突然说要加个新功能。你不想在正式代码上直接改（怕改崩），于是：</p>
-<ol>
-<li>创建一个新分支 <code>feature-xxx</code></li>
-<li>在新分支上随便折腾</li>
-<li>测试没问题后，合并回主分支</li>
-</ol>
-<pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;A&quot;
-    commit id: &quot;B&quot;
-    commit id: &quot;C&quot;
-    branch feature
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    checkout main
-    merge feature id: &quot;F&quot;</code></pre>
-
-<h3 id="3-2-常见分支"><a href="#3-2-常见分支" class="headerlink" title="3.2 常见分支"></a>3.2 常见分支</h3><table>
-<thead>
-<tr>
-<th>分支名</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>master</code> &#x2F; <code>main</code></td>
-<td>正式版本，稳定的代码</td>
-</tr>
-<tr>
-<td><code>develop</code></td>
-<td>开发中的代码</td>
-</tr>
-<tr>
-<td><code>feature-xxx</code></td>
-<td>某个新功能的开发</td>
-</tr>
-<tr>
-<td><code>hotfix-xxx</code></td>
-<td>紧急修复 bug</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="四、Merge-vs-Rebase"><a href="#四、Merge-vs-Rebase" class="headerlink" title="四、Merge vs Rebase"></a>四、Merge vs Rebase</h2><p>这是两种合并代码的方式，效果相同但历史记录不同。</p>
-<h3 id="Merge（合并）"><a href="#Merge（合并）" class="headerlink" title="Merge（合并）"></a>Merge（合并）</h3><pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    commit id: &quot;F&quot;
-    commit id: &quot;G&quot;
-    branch feature
-    checkout feature
-    commit id: &quot;A&quot;
-    commit id: &quot;B&quot;
-    commit id: &quot;C&quot;
-    checkout main
-    merge feature id: &quot;H (合并节点)&quot;</code></pre>
-
-<ul>
-<li>会产生一个”合并节点”</li>
-<li>历史记录能看出分支合并过程</li>
-</ul>
-<h3 id="Rebase（变基）"><a href="#Rebase（变基）" class="headerlink" title="Rebase（变基）"></a>Rebase（变基）</h3><pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    commit id: &quot;F&quot;
-    commit id: &quot;G&quot;
-    commit id: &quot;A&#x27;&quot;
-    commit id: &quot;B&#x27;&quot;
-    commit id: &quot;C&#x27;&quot;</code></pre>
-
-<ul>
-<li>把你的提交”嫁接”到最新节点后面</li>
-<li>历史记录更整洁（一条直线）</li>
-</ul>
-<h3 id="推荐工作流"><a href="#推荐工作流" class="headerlink" title="推荐工作流"></a>推荐工作流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 本地提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;完成了xxx功能&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远端最新代码并变基</span></span><br><span class="line">git pull --rebase origin develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 推送</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="五、常用命令速查表"><a href="#五、常用命令速查表" class="headerlink" title="五、常用命令速查表"></a>五、常用命令速查表</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status              <span class="comment"># 查看当前状态</span></span><br><span class="line">git add .               <span class="comment"># 暂存所有修改</span></span><br><span class="line">git commit -m <span class="string">&quot;说明&quot;</span>     <span class="comment"># 提交到本地仓库</span></span><br><span class="line">git <span class="built_in">log</span> --oneline       <span class="comment"># 查看提交历史</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch              <span class="comment"># 查看所有分支</span></span><br><span class="line">git checkout xxx        <span class="comment"># 切换到 xxx 分支</span></span><br><span class="line">git checkout -b xxx     <span class="comment"># 创建并切换到新分支</span></span><br><span class="line">git merge xxx           <span class="comment"># 合并 xxx 分支到当前分支</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="同步操作"><a href="#同步操作" class="headerlink" title="同步操作"></a>同步操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull                <span class="comment"># 拉取远端代码并合并</span></span><br><span class="line">git push                <span class="comment"># 推送到远端</span></span><br><span class="line">git fetch               <span class="comment"># 只拉取，不合并</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- file    <span class="comment"># 撤销工作目录的修改</span></span><br><span class="line">git reset HEAD file     <span class="comment"># 撤销暂存区的修改</span></span><br><span class="line">git reset --hard abc123 <span class="comment"># 回退到某个提交（谨慎使用）</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1：修改了但没-commit，能恢复吗？"><a href="#Q1：修改了但没-commit，能恢复吗？" class="headerlink" title="Q1：修改了但没 commit，能恢复吗？"></a>Q1：修改了但没 commit，能恢复吗？</h3><table>
-<thead>
-<tr>
-<th>情况</th>
-<th>能否恢复</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>已 commit</td>
-<td>✅ 永久保存，随时可恢复</td>
-</tr>
-<tr>
-<td>只 add 没 commit</td>
-<td>⚠️ 有办法但麻烦</td>
-</tr>
-<tr>
-<td>没 add 也没 commit</td>
-<td>❌ 丢了就是丢了</td>
-</tr>
-</tbody></table>
-<h3 id="Q2：-git-文件夹能删吗？"><a href="#Q2：-git-文件夹能删吗？" class="headerlink" title="Q2：.git 文件夹能删吗？"></a>Q2：.git 文件夹能删吗？</h3><p><strong>不能！</strong> 删了就等于删掉所有历史记录，只剩当前版本的文件。</p>
-<h3 id="Q3：push-和-pull-的区别？"><a href="#Q3：push-和-pull-的区别？" class="headerlink" title="Q3：push 和 pull 的区别？"></a>Q3：push 和 pull 的区别？</h3><ul>
-<li><code>push</code>：你 → 服务器（上传）</li>
-<li><code>pull</code>：服务器 → 你（下载）</li>
-</ul>
-<hr>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Git 的核心就三件事：</p>
-<ol>
-<li><strong>保存历史</strong>：每次 <code>commit</code> 就是一次存档</li>
-<li><strong>分支开发</strong>：在平行世界里随便折腾</li>
-<li><strong>多人协作</strong>：通过 <code>push/pull</code> 同步代码</li>
-</ol>
-<p>记住这张图：</p>
-<pre><code class="highlight mermaid">flowchart LR
-    A[工作目录] --&gt;|add| B[暂存区]
-    B --&gt;|commit| C[本地仓库]
-    C --&gt;|push| D[远端仓库]
-    D --&gt;|pull| C</code></pre>
-
-<hr>
-<p><strong>入门建议</strong>：先把 <code>add</code>、<code>commit</code>、<code>pull</code>、<code>push</code> 用熟，其他命令遇到再学。</p>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>版本控制</tag>
-        <tag>入门教程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java-nosuchmethoderror-varargs-jar-version-mismatch</title>
-    <url>/2026/08/05/archive/java-nosuchmethoderror-varargs-jar-version-mismatch/</url>
-    <content><![CDATA[<h2 id="一次特殊的-NoSuchMethodError：当-String…-遇上-Object…"><a href="#一次特殊的-NoSuchMethodError：当-String…-遇上-Object…" class="headerlink" title="一次特殊的 NoSuchMethodError：当 String… 遇上 Object…"></a>一次特殊的 <code>NoSuchMethodError</code>：当 <code>String…</code> 遇上 <code>Object…</code></h2><blockquote>
-<p>记录一次由编译期和运行期 Jar 不一致引起的 Java 二进制兼容问题。源码看起来完全合法，编译也能通过，但部署后执行到特定代码时却抛出了 <code>NoSuchMethodError</code>。</p>
-</blockquote>
-<h3 id="一、问题背景"><a href="#一、问题背景" class="headerlink" title="一、问题背景"></a>一、问题背景</h3><p>某次在项目环境执行“撤销合同”操作时，系统出现如下异常：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">java.lang.NoSuchMethodError:</span><br><span class="line">com.hrms.frame.dao.ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br><span class="line">    at com.hjsj.hrms.module.integrationcenter.apps.signture_v2.dao.impl.SignatureMonitorDaoImpl.updateSignState(SignatureMonitorDaoImpl.java:204)</span><br><span class="line">    at com.hjsj.hrms.module.integrationcenter.apps.signture_v2.businessobject.monitor.impl.SignatureMonitorOperateServiceImpl.revokeContract(SignatureMonitorOperateServiceImpl.java:69)</span><br></pre></td></tr></table></figure>
-
-<p>对应源码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">update</span> <span class="operator">=</span> dao.update(</span><br><span class="line">    <span class="string">&quot;update t_sys_signature_info set signstate = ? WHERE &quot;</span> + uniqueField + <span class="string">&quot; = ?&quot;</span>,</span><br><span class="line">    status,</span><br><span class="line">    uniqueValue</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>这段代码并没有明显问题：</p>
-<ul>
-<li>SQL 中有两个占位符；</li>
-<li>调用时传入了两个字符串参数；</li>
-<li>本地 IDE 没有报错；</li>
-<li>Maven 编译可以正常通过；</li>
-<li>其他使用 <code>ContentDAO</code> 的功能也能正常运行。</li>
-</ul>
-<p>因此，第一反应很容易是怀疑 SQL、数据库字段或者参数值。但异常类型其实已经给出了关键线索：这不是 SQL 执行错误，而是 JVM 在运行时找不到目标方法。</p>
-<h3 id="二、先读懂异常中的方法签名"><a href="#二、先读懂异常中的方法签名" class="headerlink" title="二、先读懂异常中的方法签名"></a>二、先读懂异常中的方法签名</h3><p>异常中的核心内容是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
-
-<p>这是 JVM 使用的方法描述符，可以拆解为：</p>
-<ul>
-<li><code>Ljava/lang/String;</code>：<code>java.lang.String</code></li>
-<li><code>[Ljava/lang/String;</code>：<code>java.lang.String[]</code></li>
-<li><code>I</code>：返回值 <code>int</code></li>
-</ul>
-<p>所以 JVM 实际尝试调用的方法是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update(String sql, String[] values)</span><br></pre></td></tr></table></figure>
-
-<p>如果还原为 Java 可变参数写法，就是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update(String sql, String... values)</span><br></pre></td></tr></table></figure>
-
-<p>这说明调用方 Class 文件在编译时，已经把调用目标固定成了 <code>update(String, String[])</code>。</p>
-<h3 id="三、对比编译期和运行期-Jar"><a href="#三、对比编译期和运行期-Jar" class="headerlink" title="三、对比编译期和运行期 Jar"></a>三、对比编译期和运行期 Jar</h3><p>排查时找到了两个不同的 <code>struts_extends.jar</code>：</p>
-<ul>
-<li>本地编译环境 <code>hrms/WEB-INF/lib/struts_extends.jar</code>：<code>8.6.0.4-SNAPSHOT</code>，构建于 2026-05-07 09:10:44。</li>
-<li>项目运行环境 <code>struts_extends.jar</code>：<code>8.6.1.1-SNAPSHOT</code>，构建于 2026-07-10 16:35:32。</li>
-</ul>
-<p>反编译后发现，两个版本的 <code>ContentDAO.update</code> 方法发生了变化。</p>
-<p>旧版本，也就是本地编译使用的 Jar：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, String... values) throws SQLException</span><br></pre></td></tr></table></figure>
-
-<p>新版本，也就是项目运行时使用的 Jar：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, Object... values) throws SQLException</span><br></pre></td></tr></table></figure>
-
-<p>两个版本同时都保留了下面这个重载：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, List values) throws SQLException</span><br></pre></td></tr></table></figure>
-
-<p>至此，问题已经明确：</p>
-<ol>
-<li>源码在旧 Jar 下编译。</li>
-<li>编译器将调用绑定到 <code>update(String, String[])</code>。</li>
-<li>部署后，JVM 加载的是新 Jar 中的 <code>ContentDAO</code>。</li>
-<li>新 Jar 只有 <code>update(String, Object[])</code>，没有 <code>update(String, String[])</code>。</li>
-<li>JVM 无法解析编译时记录的方法符号，最终抛出 <code>NoSuchMethodError</code>。</li>
-</ol>
-<h3 id="四、为什么-String-不能匹配-Object"><a href="#四、为什么-String-不能匹配-Object" class="headerlink" title="四、为什么 String[] 不能匹配 Object[]"></a>四、为什么 <code>String[]</code> 不能匹配 <code>Object[]</code></h3><p>从 Java 源码角度看，<code>String</code> 是 <code>Object</code> 的子类，<code>String[]</code> 也可以赋值给 <code>Object[]</code>：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">String[] strings = &#123;&quot;a&quot;, &quot;b&quot;&#125;;</span><br><span class="line">Object[] objects = strings;</span><br></pre></td></tr></table></figure>
-
-<p>因此很容易产生一个疑问：运行时既然有 <code>update(String, Object[])</code>，为什么 JVM 不自动调用它？</p>
-<p>原因在于，Java 的方法重载解析发生在编译期，而 JVM 执行的是已经确定的方法符号引用。</p>
-<p>旧版方法的字节码描述符是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
-
-<p>新版方法的字节码描述符是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">(Ljava/lang/String;[Ljava/lang/Object;)I</span><br></pre></td></tr></table></figure>
-
-<p>对 JVM 来说，这是两个不同的方法。运行时解析方法引用时，不会重新执行一次 Java 编译器的重载选择，也不会因为 <code>String[]</code> 可以向上转型为 <code>Object[]</code>，就自动改为调用另一个重载。</p>
-<p>换句话说：</p>
-<blockquote>
-<p>Java 类型系统允许数组向上转型，不代表 JVM 可以在链接阶段替换已经写入 Class 文件的方法描述符。</p>
-</blockquote>
-<p>这正是源码兼容和二进制兼容之间的区别。</p>
-<p>如果使用新版 Jar 重新编译原来的源码：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(sql, status, uniqueValue);</span><br></pre></td></tr></table></figure>
-
-<p>编译器会选择 <code>update(String, Object[])</code>，代码能够正常运行。但旧 Jar 编译出来的 Class 文件不能直接在只提供新签名的环境中运行。</p>
-<h3 id="五、为什么编译正常，运行到这里才报错"><a href="#五、为什么编译正常，运行到这里才报错" class="headerlink" title="五、为什么编译正常，运行到这里才报错"></a>五、为什么编译正常，运行到这里才报错</h3><p>这是 <code>NoSuchMethodError</code> 最容易让人困惑的地方。</p>
-<h4 id="1-编译时方法确实存在"><a href="#1-编译时方法确实存在" class="headerlink" title="1. 编译时方法确实存在"></a>1. 编译时方法确实存在</h4><p>本地编译使用的旧 Jar 中存在：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String, String...)</span><br></pre></td></tr></table></figure>
-
-<p>所以 IDE、<code>javac</code> 和 Maven 都认为代码合法，不会产生编译错误。</p>
-<h4 id="2-运行时加载了另一个版本"><a href="#2-运行时加载了另一个版本" class="headerlink" title="2. 运行时加载了另一个版本"></a>2. 运行时加载了另一个版本</h4><p>部署后，类加载器实际加载的是新版本 <code>ContentDAO</code>。新版本删除或替换了旧方法签名，导致调用方 Class 文件记录的方法无法解析。</p>
-<h4 id="3-只有执行到调用点才会暴露"><a href="#3-只有执行到调用点才会暴露" class="headerlink" title="3. 只有执行到调用点才会暴露"></a>3. 只有执行到调用点才会暴露</h4><p>JVM 通常不会在应用启动时提前解析所有业务代码中的每一个方法调用。只有真正执行到 <code>updateSignState()</code> 的目标调用点时，问题才暴露出来。</p>
-<p>因此可能出现以下现象：</p>
-<ul>
-<li>应用可以正常启动；</li>
-<li>签章模块的大部分页面可以正常打开；</li>
-<li>查询类功能可以正常使用；</li>
-<li>只有执行“撤销合同”时才报错。</li>
-</ul>
-<h4 id="4-catch-Exception-捕获不到它"><a href="#4-catch-Exception-捕获不到它" class="headerlink" title="4. catch (Exception) 捕获不到它"></a>4. <code>catch (Exception)</code> 捕获不到它</h4><p>业务代码外围虽然有：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    dao.update(...);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    // 业务异常处理</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但 <code>NoSuchMethodError</code> 继承自 <code>Error</code>，不是 <code>Exception</code>：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Throwable</span><br><span class="line">  └─ Error</span><br><span class="line">      └─ LinkageError</span><br><span class="line">          └─ IncompatibleClassChangeError</span><br><span class="line">              └─ NoSuchMethodError</span><br></pre></td></tr></table></figure>
-
-<p>所以普通的 <code>catch (Exception e)</code> 无法捕获它。也不应该通过增加 <code>catch (Error e)</code> 来掩盖问题，因为这类异常表示运行环境的二进制依赖已经不一致，需要修复依赖或重新编译。</p>
-<h3 id="六、最终修复方案"><a href="#六、最终修复方案" class="headerlink" title="六、最终修复方案"></a>六、最终修复方案</h3><p>本次采用两个版本中都存在的 <code>List</code> 重载：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update = dao.update(</span><br><span class="line">    &quot;update t_sys_signature_info set signstate = ? WHERE &quot; + uniqueField + &quot; = ?&quot;,</span><br><span class="line">    Arrays.asList(status, uniqueValue)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>对应的字节码目标签名为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(Ljava/lang/String;Ljava/util/List;)I</span><br></pre></td></tr></table></figure>
-
-<p>由于旧版和新版 Jar 都提供 <code>update(String, List)</code>，修改后的代码可以在两个环境中运行。</p>
-<p>同一模块中还有其他直接使用可变参数的 <code>update</code> 调用。为了避免后续在其他业务入口再次出现同类问题，本次一并改为 <code>List</code> 重载：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(sql, Arrays.asList(a0100, String.valueOf(i9999)));</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(</span><br><span class="line">    &quot;update t_sys_signature_form &quot;</span><br><span class="line">        + &quot;set ct_ownership_subject = ? &quot;</span><br><span class="line">        + &quot;where signaturetype_ = ? and templateid = ? and version = ?&quot;,</span><br><span class="line">    Arrays.asList(</span><br><span class="line">        ctOwnershipSubject,</span><br><span class="line">        String.valueOf(signatureType),</span><br><span class="line">        templateId,</span><br><span class="line">        version</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="七、为什么不直接替换项目环境的-Jar"><a href="#七、为什么不直接替换项目环境的-Jar" class="headerlink" title="七、为什么不直接替换项目环境的 Jar"></a>七、为什么不直接替换项目环境的 Jar</h3><p>解决这类问题通常有三种方式。</p>
-<h4 id="方案一：统一使用新版-Jar-重新编译和部署"><a href="#方案一：统一使用新版-Jar-重新编译和部署" class="headerlink" title="方案一：统一使用新版 Jar 重新编译和部署"></a>方案一：统一使用新版 Jar 重新编译和部署</h4><p>这是最彻底的方案：</p>
-<ol>
-<li>本地编译环境升级到 <code>8.6.1.1-SNAPSHOT</code>。</li>
-<li>CI&#x2F;CD 和所有开发环境使用相同依赖。</li>
-<li>使用新版 Jar 重新编译所有相关代码。</li>
-<li>部署时保证应用中只存在一个确定版本。</li>
-</ol>
-<p>优点是从根本上消除编译期和运行期差异。缺点是需要确认新版 Jar 对整个系统的影响，不能只验证当前一个功能。</p>
-<h4 id="方案二：将运行环境回退到旧版-Jar"><a href="#方案二：将运行环境回退到旧版-Jar" class="headerlink" title="方案二：将运行环境回退到旧版 Jar"></a>方案二：将运行环境回退到旧版 Jar</h4><p>虽然能让当前 Class 文件重新找到 <code>String[]</code> 方法，但项目环境可能已经依赖新版中的其他修复或功能。贸然回退公共基础 Jar，风险通常比修改一处业务调用更高，因此本次没有采用。</p>
-<h4 id="方案三：调用两个版本都稳定存在的方法"><a href="#方案三：调用两个版本都稳定存在的方法" class="headerlink" title="方案三：调用两个版本都稳定存在的方法"></a>方案三：调用两个版本都稳定存在的方法</h4><p>本次使用的是这个方案，即改为 <code>update(String, List)</code>。</p>
-<p>优点是：</p>
-<ul>
-<li>修改范围小；</li>
-<li>不需要立即替换公共 Jar；</li>
-<li>同时兼容当前两个版本；</li>
-<li>参数仍然通过占位符绑定，不需要拼接 SQL。</li>
-</ul>
-<p>但要注意，这属于兼容性修复。长期治理仍然应该统一编译期和运行期依赖，否则其他发生过签名变化的方法仍可能触发类似问题。</p>
-<h3 id="八、如何快速排查类似问题"><a href="#八、如何快速排查类似问题" class="headerlink" title="八、如何快速排查类似问题"></a>八、如何快速排查类似问题</h3><p>以后遇到 <code>NoSuchMethodError</code>，可以按下面的顺序排查。</p>
-<h4 id="第一步：不要先查业务参数"><a href="#第一步：不要先查业务参数" class="headerlink" title="第一步：不要先查业务参数"></a>第一步：不要先查业务参数</h4><p><code>NoSuchMethodError</code> 的重点不是传入的参数值是否正确，而是运行时类中是否存在 Class 文件请求的方法签名。</p>
-<p>优先关注异常中的三部分：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">类名.方法名(参数描述符)返回值描述符</span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
-
-<h4 id="第二步：确认类究竟来自哪个-Jar"><a href="#第二步：确认类究竟来自哪个-Jar" class="headerlink" title="第二步：确认类究竟来自哪个 Jar"></a>第二步：确认类究竟来自哪个 Jar</h4><p>在复杂 Web 应用中，同一个类可能存在于多个位置：</p>
-<ul>
-<li><code>WEB-INF/lib</code>；</li>
-<li>Tomcat 公共 <code>lib</code>；</li>
-<li>应用服务器共享目录；</li>
-<li>Maven 传递依赖；</li>
-<li>热部署残留目录；</li>
-<li>插件或扩展包。</li>
-</ul>
-<p>可以临时打印实际加载位置：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">System.out.println(</span><br><span class="line">    ContentDAO.class.getProtectionDomain()</span><br><span class="line">        .getCodeSource()</span><br><span class="line">        .getLocation()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>也可以启动 JVM 类加载日志。Java 8 常用：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">-verbose:class</span><br></pre></td></tr></table></figure>
-
-<p>然后在日志中搜索 <code>ContentDAO</code>，确认最终由哪个 Jar 提供。</p>
-<h4 id="第三步：查看-Jar-的版本和构建信息"><a href="#第三步：查看-Jar-的版本和构建信息" class="headerlink" title="第三步：查看 Jar 的版本和构建信息"></a>第三步：查看 Jar 的版本和构建信息</h4><p>优先检查：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">META-INF/MANIFEST.MF</span><br></pre></td></tr></table></figure>
-
-<p>本次两个 Jar 的 Manifest 分别记录了：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Implementation-Version: 8.6.0.4-SNAPSHOT</span><br><span class="line">Build-Time: 2026-05-07 09:10:44</span><br></pre></td></tr></table></figure>
-
-<p>以及：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Implementation-Version: 8.6.1.1-SNAPSHOT</span><br><span class="line">Build-Time: 2026-07-10 16:35:32</span><br></pre></td></tr></table></figure>
-
-<h4 id="第四步：对比真实方法签名"><a href="#第四步：对比真实方法签名" class="headerlink" title="第四步：对比真实方法签名"></a>第四步：对比真实方法签名</h4><p>可以使用 <code>javap</code> 查看 Class 的公开方法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javap -classpath struts_extends.jar com.hrms.frame.dao.ContentDAO</span><br></pre></td></tr></table></figure>
-
-<p>如果要查看字节码调用点，可以执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javap -classpath target/classes -c -s \</span><br><span class="line">  com.hjsj.hrms.module.integrationcenter.apps.signture_v2.dao.impl.SignatureMonitorDaoImpl</span><br></pre></td></tr></table></figure>
-
-<p>重点确认两件事：</p>
-<ul>
-<li>调用方 Class 文件请求的描述符是什么；</li>
-<li>运行时 Jar 中实际提供的描述符是什么。</li>
-</ul>
-<h4 id="第五步：检查依赖树和重复类"><a href="#第五步：检查依赖树和重复类" class="headerlink" title="第五步：检查依赖树和重复类"></a>第五步：检查依赖树和重复类</h4><p>Maven 项目可以执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn dependency:tree</span><br></pre></td></tr></table></figure>
-
-<p>但要注意：如果 Jar 是手工放入 <code>WEB-INF/lib</code>、Tomcat <code>lib</code> 或外部部署目录，Maven 依赖树不一定能展示它。此时必须结合部署包内容和 JVM 实际类加载位置判断。</p>
-<h3 id="九、NoSuchMethodError-与相似异常的区别"><a href="#九、NoSuchMethodError-与相似异常的区别" class="headerlink" title="九、NoSuchMethodError 与相似异常的区别"></a>九、<code>NoSuchMethodError</code> 与相似异常的区别</h3><h4 id="NoSuchMethodError"><a href="#NoSuchMethodError" class="headerlink" title="NoSuchMethodError"></a><code>NoSuchMethodError</code></h4><p>典型含义：编译时方法存在，运行时加载的类中不存在相同方法签名。</p>
-<p>常见原因：</p>
-<ul>
-<li>Jar 版本不一致；</li>
-<li>运行环境存在旧 Jar；</li>
-<li>方法参数或返回值发生变化；</li>
-<li>类加载顺序导致加载了非预期版本。</li>
-</ul>
-<h4 id="NoSuchMethodException"><a href="#NoSuchMethodException" class="headerlink" title="NoSuchMethodException"></a><code>NoSuchMethodException</code></h4><p>这是受检异常，通常发生在反射调用中：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">clazz.getMethod(&quot;update&quot;, String.class, String[].class);</span><br></pre></td></tr></table></figure>
-
-<p>它表示反射查找失败，和 JVM 链接阶段的 <code>NoSuchMethodError</code> 不是同一类问题。</p>
-<h4 id="AbstractMethodError"><a href="#AbstractMethodError" class="headerlink" title="AbstractMethodError"></a><code>AbstractMethodError</code></h4><p>通常表示接口或父类的方法契约发生变化，但实现类仍是旧版本。例如接口新增抽象方法后，运行时加载了没有实现该方法的旧实现类。</p>
-<h4 id="NoClassDefFoundError"><a href="#NoClassDefFoundError" class="headerlink" title="NoClassDefFoundError"></a><code>NoClassDefFoundError</code></h4><p>表示编译时存在的类在运行时无法加载，或该类此前初始化失败。它和 <code>NoSuchMethodError</code> 一样，都应优先检查运行时依赖和类加载环境。</p>
-<h3 id="十、这次问题带来的启示"><a href="#十、这次问题带来的启示" class="headerlink" title="十、这次问题带来的启示"></a>十、这次问题带来的启示</h3><h4 id="1-可变参数也是方法签名的一部分"><a href="#1-可变参数也是方法签名的一部分" class="headerlink" title="1. 可变参数也是方法签名的一部分"></a>1. 可变参数也是方法签名的一部分</h4><p>下面两个声明在调用体验上很相似：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String sql, String... values)</span><br><span class="line">update(String sql, Object... values)</span><br></pre></td></tr></table></figure>
-
-<p>但它们的底层参数分别是 <code>String[]</code> 和 <code>Object[]</code>。将公共 API 从前者修改为后者，即使源码重新编译后仍能调用，也会破坏已经编译好的旧代码的二进制兼容性。</p>
-<h4 id="2-“源码兼容”不等于“二进制兼容”"><a href="#2-“源码兼容”不等于“二进制兼容”" class="headerlink" title="2. “源码兼容”不等于“二进制兼容”"></a>2. “源码兼容”不等于“二进制兼容”</h4><p>使用新版 Jar 重新编译原源码可能完全正常，这只能说明源码兼容。旧 Class 文件能否不重新编译直接运行，则取决于新版是否继续保留原来的字节码方法描述符。</p>
-<p>公共基础库升级时，需要同时考虑：</p>
-<ul>
-<li>源码兼容性；</li>
-<li>二进制兼容性；</li>
-<li>行为兼容性；</li>
-<li>部署环境中的类加载顺序。</li>
-</ul>
-<h4 id="3-公共方法签名不要轻易原地替换"><a href="#3-公共方法签名不要轻易原地替换" class="headerlink" title="3. 公共方法签名不要轻易原地替换"></a>3. 公共方法签名不要轻易原地替换</h4><p>如果基础库确实需要把参数从 <code>String…</code> 扩展到 <code>Object…</code>，更稳妥的升级方式是暂时保留旧方法，并在内部转发：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, String... values) throws SQLException &#123;</span><br><span class="line">    return update(sql, (Object[]) values);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int update(String sql, Object... values) throws SQLException &#123;</span><br><span class="line">    return update(sql, Arrays.asList(values));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>不过，同时保留两个可变参数重载可能导致部分调用出现重载歧义，因此公共 API 设计阶段还需要谨慎评估。对于已经发布的基础库，更推荐通过新方法名、明确的集合参数，或者完整的兼容性测试来演进接口。</p>
-<h4 id="4-构建和运行必须使用同一套依赖"><a href="#4-构建和运行必须使用同一套依赖" class="headerlink" title="4. 构建和运行必须使用同一套依赖"></a>4. 构建和运行必须使用同一套依赖</h4><p>最重要的工程措施不是记住某个具体报错，而是消除环境漂移：</p>
-<ul>
-<li>不要依赖开发者手工复制 Jar；</li>
-<li>构建产物应携带确定版本的依赖；</li>
-<li>CI 构建和生产部署使用相同依赖来源；</li>
-<li>启动时输出核心基础包版本；</li>
-<li>升级公共 Jar 后执行完整回归；</li>
-<li>清理 Tomcat 缓存、旧部署目录和重复 Jar。</li>
-</ul>
-<h3 id="十一、排查清单"><a href="#十一、排查清单" class="headerlink" title="十一、排查清单"></a>十一、排查清单</h3><p>遇到下面这些错误时：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">NoSuchMethodError</span><br><span class="line">NoClassDefFoundError</span><br><span class="line">AbstractMethodError</span><br><span class="line">IncompatibleClassChangeError</span><br></pre></td></tr></table></figure>
-
-<p>可以快速检查：</p>
-<ul>
-<li><input disabled="" type="checkbox"> 编译环境和运行环境的 Jar 版本是否一致；</li>
-<li><input disabled="" type="checkbox"> 异常中的 JVM 方法描述符具体是什么；</li>
-<li><input disabled="" type="checkbox"> 运行时 Jar 是否真的包含这个完整签名；</li>
-<li><input disabled="" type="checkbox"> 是否同时存在多个包含相同类的 Jar；</li>
-<li><input disabled="" type="checkbox"> Tomcat 公共 <code>lib</code> 是否覆盖了应用内 <code>WEB-INF/lib</code>；</li>
-<li><input disabled="" type="checkbox"> 是否只替换了业务 Class，却没有同步基础 Jar；</li>
-<li><input disabled="" type="checkbox"> 是否只替换了基础 Jar，却没有重新编译业务代码；</li>
-<li><input disabled="" type="checkbox"> 公共 API 是否修改过参数类型、返回值或静态属性；</li>
-<li><input disabled="" type="checkbox"> 应用重启后是否仍加载旧缓存或旧部署目录；</li>
-<li><input disabled="" type="checkbox"> 是否存在两个版本都支持的稳定重载可用于临时兼容。</li>
-</ul>
-<h3 id="十二、总结"><a href="#十二、总结" class="headerlink" title="十二、总结"></a>十二、总结</h3><p>本次问题的完整因果链如下：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">本地使用旧版 Jar 编译</span><br><span class="line">        ↓</span><br><span class="line">调用被编译为 update(String, String[])</span><br><span class="line">        ↓</span><br><span class="line">项目运行时加载新版 Jar</span><br><span class="line">        ↓</span><br><span class="line">新版只有 update(String, Object[])</span><br><span class="line">        ↓</span><br><span class="line">JVM 无法解析原方法描述符</span><br><span class="line">        ↓</span><br><span class="line">抛出 NoSuchMethodError</span><br></pre></td></tr></table></figure>
-
-<p>最终通过改用两个版本都存在的：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String, List)</span><br></pre></td></tr></table></figure>
-
-<p>完成了兼容修复。</p>
-<p>这类问题虽然少见，但特征非常明确：</p>
-<blockquote>
-<p>只要看到 <code>NoSuchMethodError</code>，就应优先从 Jar 版本、方法描述符和类加载来源入手，而不是先排查业务逻辑。</p>
-</blockquote>
-<p>理解可变参数背后的数组签名，以及源码兼容与二进制兼容的区别，能够显著缩短此类问题的定位时间。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>obsidian-sync-cnblog</title>
     <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
     <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
@@ -5347,40 +4882,6 @@
 ]]></content>
       <tags>
         <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
-    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
-    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
-<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
-<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
-<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
-<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
-<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
-<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
-<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
-<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
-<ol>
-<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
-<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
-<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
-<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
-</ol>
-<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
-<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
-<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
-<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
-<ol>
-<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
-<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
-<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
-</ol>
-<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
-<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
-]]></content>
-      <tags>
-        <tag>其他</tag>
       </tags>
   </entry>
   <entry>
@@ -5827,6 +5328,70 @@
       </tags>
   </entry>
   <entry>
+    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
+    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
+    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
+<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
+<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
+<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
+<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
+<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
+<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
+<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
+<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
+<ol>
+<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
+<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
+<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
+<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
+</ol>
+<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
+<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
+<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
+<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
+<ol>
+<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
+<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
+<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
+</ol>
+<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
+<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
+]]></content>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何避免代码的深层嵌套</title>
+    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
+    <content><![CDATA[<blockquote>
+<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
+</blockquote>
+<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
+]]></content>
+      <tags>
+        <tag>代码/优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>完美主义者，为什么你总是离完美最远？</title>
     <url>/2026/03/11/archive/%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%80%BB%E6%98%AF%E7%A6%BB%E5%AE%8C%E7%BE%8E%E6%9C%80%E8%BF%9C%EF%BC%9F/</url>
     <content><![CDATA[<h2 id="完美主义者，为什么你总是离完美最远？"><a href="#完美主义者，为什么你总是离完美最远？" class="headerlink" title="完美主义者，为什么你总是离完美最远？"></a>完美主义者，为什么你总是离完美最远？</h2><blockquote>
@@ -5886,34 +5451,484 @@
 ]]></content>
   </entry>
   <entry>
-    <title>如何避免代码的深层嵌套</title>
-    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
-    <content><![CDATA[<blockquote>
-<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
+    <title>Git 入门指南：写给完全不懂版本控制的你</title>
+    <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
+<ul>
+<li>改代码改崩了，想恢复昨天的版本，却发现没备份</li>
+<li>和同事一起开发，不知道怎么合并各自的修改</li>
+<li>听别人说 “commit”、”push”、”rebase”，完全听不懂</li>
+</ul>
+<p>这篇文章用最通俗的语言，帮你搞懂 Git 是什么、怎么用。</p>
+<hr>
+<h2 id="一、Git-是什么？"><a href="#一、Git-是什么？" class="headerlink" title="一、Git 是什么？"></a>一、Git 是什么？</h2><p><strong>一句话解释</strong>：Git 是一个”代码时光机”，能帮你：</p>
+<ul>
+<li>保存代码的每一个历史版本</li>
+<li>随时穿越回任意时间点</li>
+<li>多人协作开发不打架</li>
+</ul>
+<hr>
+<h2 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h2><h3 id="2-1-仓库（Repository）"><a href="#2-1-仓库（Repository）" class="headerlink" title="2.1 仓库（Repository）"></a>2.1 仓库（Repository）</h3><p>仓库就是一个被 Git 管理的项目文件夹。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的项目/</span><br><span class="line">├── .git/          ← 隐藏文件夹，存储所有历史记录（本地仓库）</span><br><span class="line">├── src/           ← 你实际编辑的代码（工作目录）</span><br><span class="line">├── index.html</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>重点</strong>：</p>
+<ul>
+<li><strong>工作目录</strong> &#x3D; 你能看到和编辑的文件</li>
+<li><strong>本地仓库 (.git)</strong> &#x3D; 隐藏的”存档库”，存着所有历史版本</li>
+</ul>
+<blockquote>
+<p>💡 只要 <code>.git</code> 文件夹不删，你就能恢复到任意一次 commit 的状态。</p>
 </blockquote>
-<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-代码的三个状态"><a href="#2-2-代码的三个状态" class="headerlink" title="2.2 代码的三个状态"></a>2.2 代码的三个状态</h3><pre><code class="highlight mermaid">flowchart LR
+    A[工作目录&lt;br/&gt;Working Dir&lt;br/&gt;你正在改的文件] --&gt;|git add| B[暂存区&lt;br/&gt;Staging Area&lt;br/&gt;准备要提交的]
+    B --&gt;|git commit| C[本地仓库&lt;br/&gt;Local Repo&lt;br/&gt;已保存的历史]</code></pre>
 
-<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>说明</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作目录</td>
+<td>你正在编辑的文件</td>
+<td>正在写的作业</td>
+</tr>
+<tr>
+<td>暂存区</td>
+<td>准备提交的修改</td>
+<td>放进书包准备交的作业</td>
+</tr>
+<tr>
+<td>本地仓库</td>
+<td>已保存的历史记录</td>
+<td>老师收走存档的作业</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-本地-vs-远端"><a href="#2-3-本地-vs-远端" class="headerlink" title="2.3 本地 vs 远端"></a>2.3 本地 vs 远端</h3><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本地（Local）</strong></td>
+<td>你自己电脑上的仓库</td>
+</tr>
+<tr>
+<td><strong>远端（Remote）</strong></td>
+<td>服务器上的仓库（如 GitHub、GitLab）</td>
+</tr>
+</tbody></table>
+<p>它们之间的同步：</p>
+<pre><code class="highlight mermaid">flowchart LR
+    A[本地仓库] --&gt;|git push&lt;br/&gt;推送| B[远端仓库]
+    B --&gt;|git pull&lt;br/&gt;拉取| A</code></pre>
 
-<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="三、分支（Branch）"><a href="#三、分支（Branch）" class="headerlink" title="三、分支（Branch）"></a>三、分支（Branch）</h2><h3 id="3-1-什么是分支？"><a href="#3-1-什么是分支？" class="headerlink" title="3.1 什么是分支？"></a>3.1 什么是分支？</h3><p>分支就是代码的”平行世界”。</p>
+<p>想象一下：你在写一个网站，老板突然说要加个新功能。你不想在正式代码上直接改（怕改崩），于是：</p>
+<ol>
+<li>创建一个新分支 <code>feature-xxx</code></li>
+<li>在新分支上随便折腾</li>
+<li>测试没问题后，合并回主分支</li>
+</ol>
+<pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;A&quot;
+    commit id: &quot;B&quot;
+    commit id: &quot;C&quot;
+    branch feature
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    checkout main
+    merge feature id: &quot;F&quot;</code></pre>
 
-<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-常见分支"><a href="#3-2-常见分支" class="headerlink" title="3.2 常见分支"></a>3.2 常见分支</h3><table>
+<thead>
+<tr>
+<th>分支名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>master</code> &#x2F; <code>main</code></td>
+<td>正式版本，稳定的代码</td>
+</tr>
+<tr>
+<td><code>develop</code></td>
+<td>开发中的代码</td>
+</tr>
+<tr>
+<td><code>feature-xxx</code></td>
+<td>某个新功能的开发</td>
+</tr>
+<tr>
+<td><code>hotfix-xxx</code></td>
+<td>紧急修复 bug</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="四、Merge-vs-Rebase"><a href="#四、Merge-vs-Rebase" class="headerlink" title="四、Merge vs Rebase"></a>四、Merge vs Rebase</h2><p>这是两种合并代码的方式，效果相同但历史记录不同。</p>
+<h3 id="Merge（合并）"><a href="#Merge（合并）" class="headerlink" title="Merge（合并）"></a>Merge（合并）</h3><pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    commit id: &quot;F&quot;
+    commit id: &quot;G&quot;
+    branch feature
+    checkout feature
+    commit id: &quot;A&quot;
+    commit id: &quot;B&quot;
+    commit id: &quot;C&quot;
+    checkout main
+    merge feature id: &quot;H (合并节点)&quot;</code></pre>
 
-<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>会产生一个”合并节点”</li>
+<li>历史记录能看出分支合并过程</li>
+</ul>
+<h3 id="Rebase（变基）"><a href="#Rebase（变基）" class="headerlink" title="Rebase（变基）"></a>Rebase（变基）</h3><pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    commit id: &quot;F&quot;
+    commit id: &quot;G&quot;
+    commit id: &quot;A&#x27;&quot;
+    commit id: &quot;B&#x27;&quot;
+    commit id: &quot;C&#x27;&quot;</code></pre>
 
-<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>把你的提交”嫁接”到最新节点后面</li>
+<li>历史记录更整洁（一条直线）</li>
+</ul>
+<h3 id="推荐工作流"><a href="#推荐工作流" class="headerlink" title="推荐工作流"></a>推荐工作流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 本地提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;完成了xxx功能&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远端最新代码并变基</span></span><br><span class="line">git pull --rebase origin develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 推送</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
+<hr>
+<h2 id="五、常用命令速查表"><a href="#五、常用命令速查表" class="headerlink" title="五、常用命令速查表"></a>五、常用命令速查表</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status              <span class="comment"># 查看当前状态</span></span><br><span class="line">git add .               <span class="comment"># 暂存所有修改</span></span><br><span class="line">git commit -m <span class="string">&quot;说明&quot;</span>     <span class="comment"># 提交到本地仓库</span></span><br><span class="line">git <span class="built_in">log</span> --oneline       <span class="comment"># 查看提交历史</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch              <span class="comment"># 查看所有分支</span></span><br><span class="line">git checkout xxx        <span class="comment"># 切换到 xxx 分支</span></span><br><span class="line">git checkout -b xxx     <span class="comment"># 创建并切换到新分支</span></span><br><span class="line">git merge xxx           <span class="comment"># 合并 xxx 分支到当前分支</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="同步操作"><a href="#同步操作" class="headerlink" title="同步操作"></a>同步操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull                <span class="comment"># 拉取远端代码并合并</span></span><br><span class="line">git push                <span class="comment"># 推送到远端</span></span><br><span class="line">git fetch               <span class="comment"># 只拉取，不合并</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- file    <span class="comment"># 撤销工作目录的修改</span></span><br><span class="line">git reset HEAD file     <span class="comment"># 撤销暂存区的修改</span></span><br><span class="line">git reset --hard abc123 <span class="comment"># 回退到某个提交（谨慎使用）</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1：修改了但没-commit，能恢复吗？"><a href="#Q1：修改了但没-commit，能恢复吗？" class="headerlink" title="Q1：修改了但没 commit，能恢复吗？"></a>Q1：修改了但没 commit，能恢复吗？</h3><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>能否恢复</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已 commit</td>
+<td>✅ 永久保存，随时可恢复</td>
+</tr>
+<tr>
+<td>只 add 没 commit</td>
+<td>⚠️ 有办法但麻烦</td>
+</tr>
+<tr>
+<td>没 add 也没 commit</td>
+<td>❌ 丢了就是丢了</td>
+</tr>
+</tbody></table>
+<h3 id="Q2：-git-文件夹能删吗？"><a href="#Q2：-git-文件夹能删吗？" class="headerlink" title="Q2：.git 文件夹能删吗？"></a>Q2：.git 文件夹能删吗？</h3><p><strong>不能！</strong> 删了就等于删掉所有历史记录，只剩当前版本的文件。</p>
+<h3 id="Q3：push-和-pull-的区别？"><a href="#Q3：push-和-pull-的区别？" class="headerlink" title="Q3：push 和 pull 的区别？"></a>Q3：push 和 pull 的区别？</h3><ul>
+<li><code>push</code>：你 → 服务器（上传）</li>
+<li><code>pull</code>：服务器 → 你（下载）</li>
+</ul>
+<hr>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Git 的核心就三件事：</p>
+<ol>
+<li><strong>保存历史</strong>：每次 <code>commit</code> 就是一次存档</li>
+<li><strong>分支开发</strong>：在平行世界里随便折腾</li>
+<li><strong>多人协作</strong>：通过 <code>push/pull</code> 同步代码</li>
+</ol>
+<p>记住这张图：</p>
+<pre><code class="highlight mermaid">flowchart LR
+    A[工作目录] --&gt;|add| B[暂存区]
+    B --&gt;|commit| C[本地仓库]
+    C --&gt;|push| D[远端仓库]
+    D --&gt;|pull| C</code></pre>
+
+<hr>
+<p><strong>入门建议</strong>：先把 <code>add</code>、<code>commit</code>、<code>pull</code>、<code>push</code> 用熟，其他命令遇到再学。</p>
 ]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
       <tags>
-        <tag>代码/优化</tag>
+        <tag>Git</tag>
+        <tag>版本控制</tag>
+        <tag>入门教程</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>java-nosuchmethoderror-varargs-jar-version-mismatch</title>
+    <url>/2026/08/05/archive/%E5%BD%93%20String%E2%80%A6%20%E7%A2%B0%E4%B8%8A%20Object%E2%80%A6/</url>
+    <content><![CDATA[<h2 id="一次有点特别的-NoSuchMethodError：当-String…-碰上-Object…"><a href="#一次有点特别的-NoSuchMethodError：当-String…-碰上-Object…" class="headerlink" title="一次有点特别的 NoSuchMethodError：当 String… 碰上 Object…"></a>一次有点特别的 <code>NoSuchMethodError</code>：当 <code>String…</code> 碰上 <code>Object…</code></h2><blockquote>
+<p>记录一次由编译期和运行期 Jar 不一致引发的 Java 二进制兼容问题。源码看起来没毛病，编译也能顺利通过，但部署后只要执行到某段特定代码，就会直接抛出 <code>NoSuchMethodError</code>。</p>
+</blockquote>
+<h3 id="一、问题背景"><a href="#一、问题背景" class="headerlink" title="一、问题背景"></a>一、问题背景</h3><p>有一次在项目环境里执行“撤销合同”操作，系统突然报了下面这个异常：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">java.lang.NoSuchMethodError:</span><br><span class="line">com.hrms.frame.dao.ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br><span class="line">    at com.hjsj.hrms.module.integrationcenter.apps.signture_v2.dao.impl.SignatureMonitorDaoImpl.updateSignState(SignatureMonitorDaoImpl.java:204)</span><br><span class="line">    at com.hjsj.hrms.module.integrationcenter.apps.signture_v2.businessobject.monitor.impl.SignatureMonitorOperateServiceImpl.revokeContract(SignatureMonitorOperateServiceImpl.java:69)</span><br></pre></td></tr></table></figure>
+
+<p>对应的源码是：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">update</span> <span class="operator">=</span> dao.update(</span><br><span class="line">    <span class="string">&quot;update t_sys_signature_info set signstate = ? WHERE &quot;</span> + uniqueField + <span class="string">&quot; = ?&quot;</span>,</span><br><span class="line">    status,</span><br><span class="line">    uniqueValue</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>乍一看，这段代码没什么明显问题：</p>
+<ul>
+<li>SQL 里有两个占位符；</li>
+<li>调用时也传了两个字符串参数；</li>
+<li>本地 IDE 没有报错；</li>
+<li>Maven 可以正常编译；</li>
+<li>其他使用 <code>ContentDAO</code> 的功能也都能正常运行。</li>
+</ul>
+<p>所以第一反应很容易去怀疑 SQL、数据库字段或者参数值。</p>
+<p>但异常类型其实已经把关键线索摆出来了：这不是 SQL 执行失败，而是 JVM 在运行时根本找不到它要调用的那个方法。</p>
+<h3 id="二、先看懂异常里的方法签名"><a href="#二、先看懂异常里的方法签名" class="headerlink" title="二、先看懂异常里的方法签名"></a>二、先看懂异常里的方法签名</h3><p>异常里最关键的部分是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
+
+<p>这是 JVM 使用的方法描述符，拆开来看就是：</p>
+<ul>
+<li><code>Ljava/lang/String;</code>：<code>java.lang.String</code></li>
+<li><code>[Ljava/lang/String;</code>：<code>java.lang.String[]</code></li>
+<li><code>I</code>：返回值是 <code>int</code></li>
+</ul>
+<p>也就是说，JVM 实际想调用的方法是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update(String sql, String[] values)</span><br></pre></td></tr></table></figure>
+
+<p>如果换成 Java 里的可变参数写法，就是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update(String sql, String... values)</span><br></pre></td></tr></table></figure>
+
+<p>这说明调用方的 Class 文件在编译时，已经把目标方法确定成了 <code>update(String, String[])</code>。</p>
+<h3 id="三、对比编译期和运行期的-Jar"><a href="#三、对比编译期和运行期的-Jar" class="headerlink" title="三、对比编译期和运行期的 Jar"></a>三、对比编译期和运行期的 Jar</h3><p>继续排查后，发现环境里存在两个不同版本的 <code>struts_extends.jar</code>：</p>
+<ul>
+<li>本地编译环境 <code>hrms/WEB-INF/lib/struts_extends.jar</code>：<code>8.6.0.4-SNAPSHOT</code>，构建时间是 2026-05-07 09:10:44。</li>
+<li>项目运行环境 <code>struts_extends.jar</code>：<code>8.6.1.1-SNAPSHOT</code>，构建时间是 2026-07-10 16:35:32。</li>
+</ul>
+<p>把两个 Jar 反编译后，发现 <code>ContentDAO.update</code> 的方法签名变了。</p>
+<p>旧版本，也就是本地编译时使用的 Jar：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, String... values) throws SQLException</span><br></pre></td></tr></table></figure>
+
+<p>新版本，也就是项目运行时加载的 Jar：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, Object... values) throws SQLException</span><br></pre></td></tr></table></figure>
+
+<p>不过，两个版本都保留了下面这个重载：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, List values) throws SQLException</span><br></pre></td></tr></table></figure>
+
+<p>到这里，问题基本就清楚了：</p>
+<ol>
+<li>源码使用旧 Jar 编译。</li>
+<li>编译器把这次调用绑定到了 <code>update(String, String[])</code>。</li>
+<li>部署后，JVM 实际加载的是新 Jar 里的 <code>ContentDAO</code>。</li>
+<li>新 Jar 只有 <code>update(String, Object[])</code>，没有 <code>update(String, String[])</code>。</li>
+<li>JVM 找不到编译时记录的方法，最终抛出 <code>NoSuchMethodError</code>。</li>
+</ol>
+<h3 id="四、为什么-String-不能直接匹配-Object"><a href="#四、为什么-String-不能直接匹配-Object" class="headerlink" title="四、为什么 String[] 不能直接匹配 Object[]"></a>四、为什么 <code>String[]</code> 不能直接匹配 <code>Object[]</code></h3><p>从 Java 源码层面看，<code>String</code> 是 <code>Object</code> 的子类，<code>String[]</code> 也确实可以赋值给 <code>Object[]</code>：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">String[] strings = &#123;&quot;a&quot;, &quot;b&quot;&#125;;</span><br><span class="line">Object[] objects = strings;</span><br></pre></td></tr></table></figure>
+
+<p>所以这里很容易让人产生疑问：运行时明明有 <code>update(String, Object[])</code>，JVM 为什么不顺手调用它？</p>
+<p>原因是，Java 的方法重载解析发生在编译期，而 JVM 运行时执行的是已经确定好的方法符号引用。</p>
+<p>旧版方法的字节码描述符是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
+
+<p>新版方法的字节码描述符是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">(Ljava/lang/String;[Ljava/lang/Object;)I</span><br></pre></td></tr></table></figure>
+
+<p>对 JVM 来说，这就是两个完全不同的方法。</p>
+<p>运行时在解析方法引用时，JVM 不会重新执行一次 Java 编译器的重载选择逻辑，也不会因为 <code>String[]</code> 可以向上转型为 <code>Object[]</code>，就自动改去调用另一个重载。</p>
+<p>简单来说：</p>
+<blockquote>
+<p>Java 类型系统允许数组向上转型，不代表 JVM 能在链接阶段替换已经写进 Class 文件的方法描述符。</p>
+</blockquote>
+<p>这就是源码兼容和二进制兼容的区别。</p>
+<p>如果使用新版 Jar 重新编译原来的源码：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(sql, status, uniqueValue);</span><br></pre></td></tr></table></figure>
+
+<p>编译器会重新选择 <code>update(String, Object[])</code>，代码也就能正常运行。</p>
+<p>但问题在于，旧 Jar 编译出来的 Class 文件，不能直接放到只提供新签名的运行环境里使用。</p>
+<h3 id="五、为什么编译没问题，运行到这里才报错"><a href="#五、为什么编译没问题，运行到这里才报错" class="headerlink" title="五、为什么编译没问题，运行到这里才报错"></a>五、为什么编译没问题，运行到这里才报错</h3><p>这也是 <code>NoSuchMethodError</code> 最容易让人迷惑的地方。</p>
+<h4 id="1-编译时，这个方法确实存在"><a href="#1-编译时，这个方法确实存在" class="headerlink" title="1. 编译时，这个方法确实存在"></a>1. 编译时，这个方法确实存在</h4><p>本地编译使用的旧 Jar 里有：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String, String...)</span><br></pre></td></tr></table></figure>
+
+<p>所以无论是 IDE、<code>javac</code> 还是 Maven，都会认为这段代码合法，自然不会报编译错误。</p>
+<h4 id="2-运行时加载了另一个版本"><a href="#2-运行时加载了另一个版本" class="headerlink" title="2. 运行时加载了另一个版本"></a>2. 运行时加载了另一个版本</h4><p>部署之后，类加载器实际加载的是新版本 <code>ContentDAO</code>。</p>
+<p>而新版本删除或替换了原来的方法签名，导致调用方 Class 文件里记录的方法无法解析。</p>
+<h4 id="3-只有真正执行到调用点时才会暴露"><a href="#3-只有真正执行到调用点时才会暴露" class="headerlink" title="3. 只有真正执行到调用点时才会暴露"></a>3. 只有真正执行到调用点时才会暴露</h4><p>JVM 通常不会在应用启动时，就提前解析所有业务代码里的每一次方法调用。</p>
+<p>只有代码真正执行到 <code>updateSignState()</code> 里的目标调用点时，这个问题才会冒出来。</p>
+<p>所以实际现象可能是：</p>
+<ul>
+<li>应用能正常启动；</li>
+<li>签章模块的大部分页面都能打开；</li>
+<li>查询类功能可以正常使用；</li>
+<li>只有执行“撤销合同”时才报错。</li>
+</ul>
+<h4 id="4-catch-Exception-抓不到它"><a href="#4-catch-Exception-抓不到它" class="headerlink" title="4. catch (Exception) 抓不到它"></a>4. <code>catch (Exception)</code> 抓不到它</h4><p>业务代码外围虽然可能写了：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    dao.update(...);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    // 业务异常处理</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但 <code>NoSuchMethodError</code> 继承自 <code>Error</code>，并不是 <code>Exception</code>：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Throwable</span><br><span class="line">  └─ Error</span><br><span class="line">      └─ LinkageError</span><br><span class="line">          └─ IncompatibleClassChangeError</span><br><span class="line">              └─ NoSuchMethodError</span><br></pre></td></tr></table></figure>
+
+<p>所以普通的 <code>catch (Exception e)</code> 根本抓不到它。</p>
+<p>当然，也不应该为了兜住这个错误，直接加一个 <code>catch (Error e)</code>。这类异常说明运行环境里的二进制依赖已经不一致，正确做法是修复依赖或者重新编译，而不是把异常强行吞掉。</p>
+<h3 id="六、最终怎么修"><a href="#六、最终怎么修" class="headerlink" title="六、最终怎么修"></a>六、最终怎么修</h3><p>这次选择了两个版本里都存在的 <code>List</code> 重载：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update = dao.update(</span><br><span class="line">    &quot;update t_sys_signature_info set signstate = ? WHERE &quot; + uniqueField + &quot; = ?&quot;,</span><br><span class="line">    Arrays.asList(status, uniqueValue)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>对应的字节码目标签名是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(Ljava/lang/String;Ljava/util/List;)I</span><br></pre></td></tr></table></figure>
+
+<p>因为旧版和新版 Jar 都有 <code>update(String, List)</code>，所以改完后的代码可以同时兼容这两个环境。</p>
+<p>同一个模块里还有其他地方直接使用了可变参数版 <code>update</code>。为了避免以后从其他业务入口再次踩到同样的问题，这次也一起改成了 <code>List</code> 重载：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(sql, Arrays.asList(a0100, String.valueOf(i9999)));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(</span><br><span class="line">    &quot;update t_sys_signature_form &quot;</span><br><span class="line">        + &quot;set ct_ownership_subject = ? &quot;</span><br><span class="line">        + &quot;where signaturetype_ = ? and templateid = ? and version = ?&quot;,</span><br><span class="line">    Arrays.asList(</span><br><span class="line">        ctOwnershipSubject,</span><br><span class="line">        String.valueOf(signatureType),</span><br><span class="line">        templateId,</span><br><span class="line">        version</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="七、为什么不直接替换项目环境里的-Jar"><a href="#七、为什么不直接替换项目环境里的-Jar" class="headerlink" title="七、为什么不直接替换项目环境里的 Jar"></a>七、为什么不直接替换项目环境里的 Jar</h3><p>这类问题一般有三种解决方式。</p>
+<h4 id="方案一：统一使用新版-Jar，重新编译并部署"><a href="#方案一：统一使用新版-Jar，重新编译并部署" class="headerlink" title="方案一：统一使用新版 Jar，重新编译并部署"></a>方案一：统一使用新版 Jar，重新编译并部署</h4><p>这是最彻底的做法：</p>
+<ol>
+<li>本地编译环境升级到 <code>8.6.1.1-SNAPSHOT</code>。</li>
+<li>CI&#x2F;CD 和所有开发环境统一使用相同依赖。</li>
+<li>使用新版 Jar 重新编译所有相关代码。</li>
+<li>部署时保证应用里只存在一个确定版本。</li>
+</ol>
+<p>好处是可以从根本上消除编译期和运行期的差异。</p>
+<p>缺点也很明显：需要确认新版 Jar 对整个系统的影响，不能只验证当前这一个功能。</p>
+<h4 id="方案二：把运行环境回退到旧版-Jar"><a href="#方案二：把运行环境回退到旧版-Jar" class="headerlink" title="方案二：把运行环境回退到旧版 Jar"></a>方案二：把运行环境回退到旧版 Jar</h4><p>这样确实能让当前 Class 文件重新找到 <code>String[]</code> 版本的方法。</p>
+<p>但项目环境可能已经依赖了新版 Jar 里的其他修复或功能。贸然回退公共基础 Jar，风险通常比改一处业务调用更高，所以这次没有这么做。</p>
+<h4 id="方案三：调用两个版本里都稳定存在的方法"><a href="#方案三：调用两个版本里都稳定存在的方法" class="headerlink" title="方案三：调用两个版本里都稳定存在的方法"></a>方案三：调用两个版本里都稳定存在的方法</h4><p>这次采用的就是这个方案，也就是改用 <code>update(String, List)</code>。</p>
+<p>它的优点是：</p>
+<ul>
+<li>修改范围比较小；</li>
+<li>不需要马上替换公共 Jar；</li>
+<li>可以同时兼容当前两个版本；</li>
+<li>参数仍然通过占位符绑定，不需要拼接进 SQL。</li>
+</ul>
+<p>不过要注意，这只能算一次兼容性修复。</p>
+<p>从长期来看，还是应该统一编译期和运行期依赖。否则其他发生过签名变化的方法，之后仍然可能触发类似问题。</p>
+<h3 id="八、以后怎么快速排查类似问题"><a href="#八、以后怎么快速排查类似问题" class="headerlink" title="八、以后怎么快速排查类似问题"></a>八、以后怎么快速排查类似问题</h3><p>以后再遇到 <code>NoSuchMethodError</code>，可以按下面这个顺序来查。</p>
+<h4 id="第一步：先别急着查业务参数"><a href="#第一步：先别急着查业务参数" class="headerlink" title="第一步：先别急着查业务参数"></a>第一步：先别急着查业务参数</h4><p><code>NoSuchMethodError</code> 的重点不是参数值传得对不对，而是运行时类里有没有 Class 文件想调用的那个完整方法签名。</p>
+<p>先看异常里的这三部分：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">类名.方法名(参数描述符)返回值描述符</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步：确认这个类到底来自哪个-Jar"><a href="#第二步：确认这个类到底来自哪个-Jar" class="headerlink" title="第二步：确认这个类到底来自哪个 Jar"></a>第二步：确认这个类到底来自哪个 Jar</h4><p>复杂 Web 应用里，同一个类可能同时出现在很多地方：</p>
+<ul>
+<li><code>WEB-INF/lib</code>；</li>
+<li>Tomcat 公共 <code>lib</code>；</li>
+<li>应用服务器共享目录；</li>
+<li>Maven 传递依赖；</li>
+<li>热部署残留目录；</li>
+<li>插件或扩展包。</li>
+</ul>
+<p>可以临时打印这个类实际从哪里加载：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">System.out.println(</span><br><span class="line">    ContentDAO.class.getProtectionDomain()</span><br><span class="line">        .getCodeSource()</span><br><span class="line">        .getLocation()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>也可以打开 JVM 的类加载日志。Java 8 常用：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">-verbose:class</span><br></pre></td></tr></table></figure>
+
+<p>然后在日志里搜索 <code>ContentDAO</code>，看看最后到底是哪个 Jar 提供了这个类。</p>
+<h4 id="第三步：查看-Jar-的版本和构建信息"><a href="#第三步：查看-Jar-的版本和构建信息" class="headerlink" title="第三步：查看 Jar 的版本和构建信息"></a>第三步：查看 Jar 的版本和构建信息</h4><p>优先检查：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">META-INF/MANIFEST.MF</span><br></pre></td></tr></table></figure>
+
+<p>这次两个 Jar 的 Manifest 分别记录了：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Implementation-Version: 8.6.0.4-SNAPSHOT</span><br><span class="line">Build-Time: 2026-05-07 09:10:44</span><br></pre></td></tr></table></figure>
+
+<p>以及：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Implementation-Version: 8.6.1.1-SNAPSHOT</span><br><span class="line">Build-Time: 2026-07-10 16:35:32</span><br></pre></td></tr></table></figure>
+
+<h4 id="第四步：对比真实的方法签名"><a href="#第四步：对比真实的方法签名" class="headerlink" title="第四步：对比真实的方法签名"></a>第四步：对比真实的方法签名</h4><p>可以用 <code>javap</code> 查看 Class 里的公开方法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javap -classpath struts_extends.jar com.hrms.frame.dao.ContentDAO</span><br></pre></td></tr></table></figure>
+
+<p>如果还要查看字节码里的调用点，可以执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javap -classpath target/classes -c -s \</span><br><span class="line">  com.hjsj.hrms.module.integrationcenter.apps.signture_v2.dao.impl.SignatureMonitorDaoImpl</span><br></pre></td></tr></table></figure>
+
+<p>重点确认两件事：</p>
+<ul>
+<li>调用方 Class 文件请求的描述符是什么；</li>
+<li>运行时 Jar 实际提供的描述符是什么。</li>
+</ul>
+<h4 id="第五步：检查依赖树和重复类"><a href="#第五步：检查依赖树和重复类" class="headerlink" title="第五步：检查依赖树和重复类"></a>第五步：检查依赖树和重复类</h4><p>Maven 项目可以先执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn dependency:tree</span><br></pre></td></tr></table></figure>
+
+<p>不过要注意，如果 Jar 是手工放进 <code>WEB-INF/lib</code>、Tomcat <code>lib</code> 或外部部署目录的，Maven 依赖树里不一定能看到。</p>
+<p>这种情况下，还是要结合部署包内容和 JVM 实际的类加载位置来判断。</p>
+<h3 id="九、NoSuchMethodError-和几个相似异常有什么区别"><a href="#九、NoSuchMethodError-和几个相似异常有什么区别" class="headerlink" title="九、NoSuchMethodError 和几个相似异常有什么区别"></a>九、<code>NoSuchMethodError</code> 和几个相似异常有什么区别</h3><h4 id="NoSuchMethodError"><a href="#NoSuchMethodError" class="headerlink" title="NoSuchMethodError"></a><code>NoSuchMethodError</code></h4><p>典型情况是：编译时方法存在，但运行时加载的类里没有相同的方法签名。</p>
+<p>常见原因包括：</p>
+<ul>
+<li>Jar 版本不一致；</li>
+<li>运行环境里残留了旧 Jar；</li>
+<li>方法参数或返回值发生了变化；</li>
+<li>类加载顺序导致加载了非预期版本。</li>
+</ul>
+<h4 id="NoSuchMethodException"><a href="#NoSuchMethodException" class="headerlink" title="NoSuchMethodException"></a><code>NoSuchMethodException</code></h4><p>这是一个受检异常，通常出现在反射调用里：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">clazz.getMethod(&quot;update&quot;, String.class, String[].class);</span><br></pre></td></tr></table></figure>
+
+<p>它表示反射查找方法失败，和 JVM 链接阶段抛出的 <code>NoSuchMethodError</code> 不是一回事。</p>
+<h4 id="AbstractMethodError"><a href="#AbstractMethodError" class="headerlink" title="AbstractMethodError"></a><code>AbstractMethodError</code></h4><p>通常表示接口或父类的方法契约发生了变化，但实现类还是旧版本。</p>
+<p>例如接口新增了一个抽象方法，运行时却加载了一个没有实现该方法的旧实现类。</p>
+<h4 id="NoClassDefFoundError"><a href="#NoClassDefFoundError" class="headerlink" title="NoClassDefFoundError"></a><code>NoClassDefFoundError</code></h4><p>表示编译时存在的类，在运行时无法加载，或者这个类之前初始化失败了。</p>
+<p>它和 <code>NoSuchMethodError</code> 一样，都应该优先检查运行时依赖和类加载环境。</p>
+<h3 id="十、这次问题带来的几个启示"><a href="#十、这次问题带来的几个启示" class="headerlink" title="十、这次问题带来的几个启示"></a>十、这次问题带来的几个启示</h3><h4 id="1-可变参数也是方法签名的一部分"><a href="#1-可变参数也是方法签名的一部分" class="headerlink" title="1. 可变参数也是方法签名的一部分"></a>1. 可变参数也是方法签名的一部分</h4><p>下面两个声明看起来很像：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String sql, String... values)</span><br><span class="line">update(String sql, Object... values)</span><br></pre></td></tr></table></figure>
+
+<p>调用方式也差不多，但它们底层的参数类型分别是 <code>String[]</code> 和 <code>Object[]</code>。</p>
+<p>把公共 API 从前者直接改成后者，就算原源码用新版 Jar 重新编译后还能正常调用，也会破坏已经编译好的旧代码的二进制兼容性。</p>
+<h4 id="2-“源码兼容”不等于“二进制兼容”"><a href="#2-“源码兼容”不等于“二进制兼容”" class="headerlink" title="2. “源码兼容”不等于“二进制兼容”"></a>2. “源码兼容”不等于“二进制兼容”</h4><p>使用新版 Jar 重新编译原来的源码，如果一切正常，只能说明源码兼容。</p>
+<p>旧 Class 文件能不能不重新编译，直接放到新环境里运行，要看新版是否还保留了旧的字节码方法描述符。</p>
+<p>升级公共基础库时，最好同时考虑：</p>
+<ul>
+<li>源码兼容性；</li>
+<li>二进制兼容性；</li>
+<li>行为兼容性；</li>
+<li>部署环境里的类加载顺序。</li>
+</ul>
+<h4 id="3-公共方法签名不要轻易原地替换"><a href="#3-公共方法签名不要轻易原地替换" class="headerlink" title="3. 公共方法签名不要轻易原地替换"></a>3. 公共方法签名不要轻易原地替换</h4><p>如果基础库确实需要把参数从 <code>String…</code> 扩展成 <code>Object…</code>，更稳妥的方式是先保留旧方法，再在内部转发：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, String... values) throws SQLException &#123;</span><br><span class="line">    return update(sql, (Object[]) values);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int update(String sql, Object... values) throws SQLException &#123;</span><br><span class="line">    return update(sql, Arrays.asList(values));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过，同时保留两个可变参数重载，也可能让部分调用出现重载歧义，所以公共 API 的设计还是要谨慎评估。</p>
+<p>对于已经发布的基础库，更推荐通过新方法名、明确的集合参数，或者完整的兼容性测试来演进接口。</p>
+<h4 id="4-构建和运行必须使用同一套依赖"><a href="#4-构建和运行必须使用同一套依赖" class="headerlink" title="4. 构建和运行必须使用同一套依赖"></a>4. 构建和运行必须使用同一套依赖</h4><p>最重要的工程措施，不是记住这次具体报了什么错，而是尽量消除环境漂移：</p>
+<ul>
+<li>不要依赖开发者手工复制 Jar；</li>
+<li>构建产物应该带上确定版本的依赖；</li>
+<li>CI 构建和生产部署使用相同的依赖来源；</li>
+<li>启动时输出核心基础包版本；</li>
+<li>升级公共 Jar 后做完整回归；</li>
+<li>清理 Tomcat 缓存、旧部署目录和重复 Jar。</li>
+</ul>
+<h3 id="十一、排查清单"><a href="#十一、排查清单" class="headerlink" title="十一、排查清单"></a>十一、排查清单</h3><p>遇到下面这些错误时：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">NoSuchMethodError</span><br><span class="line">NoClassDefFoundError</span><br><span class="line">AbstractMethodError</span><br><span class="line">IncompatibleClassChangeError</span><br></pre></td></tr></table></figure>
+
+<p>可以快速检查：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 编译环境和运行环境的 Jar 版本是否一致；</li>
+<li><input disabled="" type="checkbox"> 异常里的 JVM 方法描述符具体是什么；</li>
+<li><input disabled="" type="checkbox"> 运行时 Jar 是否真的包含这个完整签名；</li>
+<li><input disabled="" type="checkbox"> 是否同时存在多个包含相同类的 Jar；</li>
+<li><input disabled="" type="checkbox"> Tomcat 公共 <code>lib</code> 是否覆盖了应用里的 <code>WEB-INF/lib</code>；</li>
+<li><input disabled="" type="checkbox"> 是否只替换了业务 Class，却没有同步基础 Jar；</li>
+<li><input disabled="" type="checkbox"> 是否只替换了基础 Jar，却没有重新编译业务代码；</li>
+<li><input disabled="" type="checkbox"> 公共 API 是否修改过参数类型、返回值或静态属性；</li>
+<li><input disabled="" type="checkbox"> 应用重启后是否仍然加载了旧缓存或旧部署目录；</li>
+<li><input disabled="" type="checkbox"> 是否存在两个版本都支持的稳定重载，可以先做临时兼容。</li>
+</ul>
+<h3 id="十二、总结"><a href="#十二、总结" class="headerlink" title="十二、总结"></a>十二、总结</h3><p>这次问题的完整因果链是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">本地使用旧版 Jar 编译</span><br><span class="line">        ↓</span><br><span class="line">调用被编译为 update(String, String[])</span><br><span class="line">        ↓</span><br><span class="line">项目运行时加载新版 Jar</span><br><span class="line">        ↓</span><br><span class="line">新版只有 update(String, Object[])</span><br><span class="line">        ↓</span><br><span class="line">JVM 无法解析原方法描述符</span><br><span class="line">        ↓</span><br><span class="line">抛出 NoSuchMethodError</span><br></pre></td></tr></table></figure>
+
+<p>最后通过改用两个版本都存在的：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String, List)</span><br></pre></td></tr></table></figure>
+
+<p>完成了兼容修复。</p>
+<p>这类问题虽然不算常见，但特征其实很明确：</p>
+<blockquote>
+<p>只要看到 <code>NoSuchMethodError</code>，就应该优先检查 Jar 版本、方法描述符和类加载来源，而不是一上来就排查业务逻辑。</p>
+</blockquote>
+<p>搞清楚可变参数背后的数组签名，以及源码兼容和二进制兼容的区别，能大幅缩短这类问题的定位时间。</p>
+]]></content>
   </entry>
   <entry>
     <title>文章推荐</title>
@@ -6116,96 +6131,102 @@
   <entry>
     <title>高效时间管理核心：待办清单与日程管理的艺术</title>
     <url>/2025/09/17/archive/%E9%AB%98%E6%95%88%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%E6%A0%B8%E5%BF%83%EF%BC%9A%E5%BE%85%E5%8A%9E%E6%B8%85%E5%8D%95%E4%B8%8E%E6%97%A5%E7%A8%8B%E7%AE%A1%E7%90%86%E7%9A%84%E8%89%BA%E6%9C%AF/</url>
-    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h2><p>为什么总感觉时间不够用？为什么事情总是拖到最后一刻才匆忙完成？问题的核心往往在于我们混淆了“需要做的事”和“时间”的概念。掌握“待办”与“日程”的区别，并有效运用相关管理法则，是摆脱忙碌、走向高效的关键。</p>
-<h2 id="核心概念——待办与日程的根本区别"><a href="#核心概念——待办与日程的根本区别" class="headerlink" title="核心概念——待办与日程的根本区别"></a>核心概念——待办与日程的根本区别</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
-<li><strong>待办 (To-do)<strong>：指的是</strong>需要完成的任务或事项本身</strong>，核心是“<strong>做什么</strong>”（What）。它是一个任务库。</li>
-<li><strong>日程 (Schedule)<strong>：指的是</strong>安排这些任务的具体时间</strong>，核心是“<strong>何时做</strong>”（When）。它是一个时间表。</li>
+    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a><strong>引言</strong></h2><p>是不是经常觉得时间怎么都不够用？很多事情明明早就知道要做，却总要拖到最后一刻才手忙脚乱地赶完？</p>
+<p>其实，问题往往不是事情太多，而是我们把“要做什么”和“什么时候做”混在了一起。搞清楚“待办”和“日程”的区别，再搭配一些简单实用的管理方法，就能少一点瞎忙，多一点从容。</p>
+<h2 id="核心概念——待办与日程到底有什么区别"><a href="#核心概念——待办与日程到底有什么区别" class="headerlink" title="核心概念——待办与日程到底有什么区别"></a>核心概念——待办与日程到底有什么区别</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li><strong>待办（To-do）</strong>：记录的是<strong>需要完成的任务或事项</strong>，重点在“<strong>做什么</strong>”（What）。简单来说，它就是你的任务库。</li>
+<li><strong>日程（Schedule）</strong>：记录的是<strong>具体什么时候处理这些任务</strong>，重点在“<strong>何时做</strong>”（When）。它更像一张时间表。</li>
 </ul>
-<h3 id="经典比喻"><a href="#经典比喻" class="headerlink" title="经典比喻"></a>经典比喻</h3><ul>
-<li><strong>待办清单</strong>就像你的<strong>购物清单</strong>，上面只列出了要买的东西（牛奶、鸡蛋、面包）。</li>
-<li><strong>日程安排</strong>就像你的<strong>出行路线图</strong>，精确规划了你几点去超市、几点开会、几点回家。</li>
+<h3 id="一个简单的比喻"><a href="#一个简单的比喻" class="headerlink" title="一个简单的比喻"></a>一个简单的比喻</h3><ul>
+<li><strong>待办清单</strong>就像一张<strong>购物清单</strong>，上面写着牛奶、鸡蛋、面包，告诉你要买什么。</li>
+<li><strong>日程安排</strong>则像一张<strong>出行路线图</strong>，明确告诉你几点去超市、几点开会、几点回家。</li>
 </ul>
 <h3 id="对比表格"><a href="#对比表格" class="headerlink" title="对比表格"></a>对比表格</h3><table>
 <thead>
 <tr>
 <th align="left">维度</th>
-<th align="left">待办 (To-do)</th>
-<th align="left">日程 (Schedule)</th>
+<th align="left">待办（To-do）</th>
+<th align="left">日程（Schedule）</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="left"><strong>核心焦点</strong></td>
-<td align="left"><strong>任务 (Task)</strong> - “做什么？”</td>
-<td align="left"><strong>时间 (Time)</strong> - “何时做？”</td>
+<td align="left"><strong>任务（Task）</strong>——“做什么？”</td>
+<td align="left"><strong>时间（Time）</strong>——“什么时候做？”</td>
 </tr>
 <tr>
 <td align="left"><strong>内容性质</strong></td>
-<td align="left">弹性任务（如：写报告、回邮件）</td>
-<td align="left">固定时间事件（如：10:00-11:00 开会）</td>
+<td align="left">可以灵活安排的任务，如写报告、回邮件</td>
+<td align="left">有固定时间的事件，如 10:00-11:00 开会</td>
 </tr>
 <tr>
 <td align="left"><strong>时间属性</strong></td>
-<td align="left">模糊，通常只有一个截止日期</td>
-<td align="left">精确，有明确的开始和结束时间</td>
+<td align="left">比较模糊，通常只有截止日期</td>
+<td align="left">比较精确，有明确的开始和结束时间</td>
 </tr>
 <tr>
 <td align="left"><strong>灵活性</strong></td>
-<td align="left">高，可自行安排顺序</td>
-<td align="left">低，需在特定时间段执行</td>
+<td align="left">高，可以自己调整顺序</td>
+<td align="left">低，需要在指定时间段内完成</td>
 </tr>
 <tr>
 <td align="left"><strong>主要工具</strong></td>
-<td align="left">待办 App（Todoist、滴答清单）、便签</td>
-<td align="left">日历 App（Google Calendar、Outlook）</td>
+<td align="left">待办 App，如 Todoist、滴答清单，以及便签</td>
+<td align="left">日历 App，如 Google Calendar、Outlook</td>
 </tr>
 </tbody></table>
 <hr>
-<h2 id="优先级排序——艾森豪威尔矩阵（四象限法则）"><a href="#优先级排序——艾森豪威尔矩阵（四象限法则）" class="headerlink" title="优先级排序——艾森豪威尔矩阵（四象限法则）"></a>优先级排序——艾森豪威尔矩阵（四象限法则）</h2><p>待办事项不应是杂乱无章的清单，而需按“重要性”和“紧急性”进行分类，以确定真正的工作优先级。</p>
+<h2 id="优先级排序——艾森豪威尔矩阵（四象限法则）"><a href="#优先级排序——艾森豪威尔矩阵（四象限法则）" class="headerlink" title="优先级排序——艾森豪威尔矩阵（四象限法则）"></a>优先级排序——艾森豪威尔矩阵（四象限法则）</h2><p>待办清单不能只是把任务一股脑地堆在一起，否则看起来每件事都很急，反而不知道该先做什么。</p>
+<p>更实用的方法，是按照“重要性”和“紧急性”给任务分类，快速判断真正的优先级。</p>
 <h3 id="矩阵详解"><a href="#矩阵详解" class="headerlink" title="矩阵详解"></a>矩阵详解</h3><ol>
-<li><p><strong>第一象限：重要且紧急 (Important &amp; Urgent) - 🔥</strong></p>
+<li><p><strong>第一象限：重要且紧急（Important &amp; Urgent）——🔥</strong></p>
 <ul>
-<li><strong>定义</strong>：对目标至关重要且需立即处理的任务。</li>
-<li><strong>处理原则</strong>：<strong>立即去做</strong>。</li>
-<li><strong>示例</strong>：项目危机、紧急故障、截止期临近的任务。</li>
+<li><strong>是什么</strong>：既关系到目标，又必须马上处理的任务。</li>
+<li><strong>怎么做</strong>：<strong>立刻去做</strong>。</li>
+<li><strong>常见例子</strong>：项目危机、紧急故障、马上要到截止期的任务。</li>
 </ul>
 </li>
-<li><p><strong>第二象限：重要但不紧急 (Important &amp; Not Urgent) - 🎯</strong></p>
+<li><p><strong>第二象限：重要但不紧急（Important &amp; Not Urgent）——🎯</strong></p>
 <ul>
-<li><strong>定义</strong>：对长远目标至关重要但无迫切期限的任务。</li>
-<li><strong>处理原则</strong>：<strong>有计划地去做</strong>（这是高效能的关键）。</li>
-<li><strong>示例</strong>：学习新技能、制定计划、锻炼身体、维护关系。</li>
+<li><strong>是什么</strong>：对长期目标很重要，但眼下没有迫切期限的任务。</li>
+<li><strong>怎么做</strong>：<strong>提前规划，有节奏地完成</strong>。这也是提升效率的关键。</li>
+<li><strong>常见例子</strong>：学习新技能、制定计划、锻炼身体、维护关系。</li>
 </ul>
 </li>
-<li><p><strong>第三象限：紧急但不重要 (Urgent &amp; Not Important) - 📢</strong></p>
+<li><p><strong>第三象限：紧急但不重要（Urgent &amp; Not Important）——📢</strong></p>
 <ul>
-<li><strong>定义</strong>：对目标帮助不大但会干扰你的任务。</li>
-<li><strong>处理原则</strong>：<strong>授权或拒绝</strong>。</li>
-<li><strong>示例</strong>：大部分临时会议、无关电话、可应付的社交。</li>
+<li><strong>是什么</strong>：看起来很着急，但对你的核心目标帮助不大，甚至会打断你的节奏。</li>
+<li><strong>怎么做</strong>：能<strong>授权</strong>就授权，不值得做的就直接<strong>拒绝</strong>。</li>
+<li><strong>常见例子</strong>：大部分临时会议、无关电话、可有可无的社交。</li>
 </ul>
 </li>
-<li><p><strong>第四象限：不紧急也不重要 (Not Urgent &amp; Not Important) - ⌛</strong></p>
+<li><p><strong>第四象限：不紧急也不重要（Not Urgent &amp; Not Important）——⌛</strong></p>
 <ul>
-<li><strong>定义</strong>：纯粹的消遣和干扰。</li>
-<li><strong>处理原则</strong>：<strong>尽量不做</strong>。</li>
-<li><strong>示例</strong>：无目的刷手机、看无聊电视、闲聊。</li>
+<li><strong>是什么</strong>：单纯消磨时间，或者让你分心的事情。</li>
+<li><strong>怎么做</strong>：<strong>能不做就不做</strong>。</li>
+<li><strong>常见例子</strong>：漫无目的地刷手机、看无聊的电视节目、无意义闲聊。</li>
 </ul>
 </li>
 </ol>
 <hr>
-<h2 id="关键策略——如何管理“会变紧急”的任务"><a href="#关键策略——如何管理“会变紧急”的任务" class="headerlink" title="关键策略——如何管理“会变紧急”的任务"></a>关键策略——如何管理“会变紧急”的任务</h2><p>许多任务（尤其是第二象限的任务）有一个遥远的截止日期，看似不紧急，但极易因拖延或低估耗时而演变成第一象限的危机。</p>
-<p><strong>解决方案：反向规划法（倒推法）</strong></p>
-<p><strong>步骤：</strong></p>
+<h2 id="关键策略——怎么处理那些“迟早会变急”的任务"><a href="#关键策略——怎么处理那些“迟早会变急”的任务" class="headerlink" title="关键策略——怎么处理那些“迟早会变急”的任务"></a>关键策略——怎么处理那些“迟早会变急”的任务</h2><p>很多任务，尤其是第二象限里的任务，截止日期看起来还很远，所以我们很容易告诉自己：“过几天再做也来得及。”</p>
+<p>但一旦开始拖延，或者低估了实际需要的时间，它们就会迅速从“重要但不紧急”变成“重要且紧急”，最后只能临时救火。</p>
+<p><strong>解决办法：反向规划法，也就是倒推法。</strong></p>
+<p><strong>具体步骤：</strong></p>
 <ol>
-<li><strong>拆解任务</strong>：将大任务分解为小的子任务。<ul>
-<li><em>示例（撰写季度报告）：收集数据 → 制作图表 → 撰写初稿 → 同事审阅 → 修改润色 → 提交。</em></li>
+<li><strong>拆解任务</strong>：把一个大任务拆成多个更容易执行的小任务。<ul>
+<li><em>比如撰写季度报告，可以拆成：收集数据 → 制作图表 → 撰写初稿 → 同事审阅 → 修改润色 → 提交。</em></li>
 </ul>
 </li>
-<li><strong>反向倒推</strong>：从截止日期开始，为每个子任务设置“迷你截止日期”。</li>
-<li><strong>安排日程</strong>：将最近的子任务立即安排到你的日历中，强制自己启动。</li>
+<li><strong>反向倒推</strong>：从最终截止日期往前推，为每个子任务设置一个“迷你截止日期”。</li>
+<li><strong>安排日程</strong>：把最近需要完成的子任务直接放进日历里，给它留出明确的时间，逼自己真正开始行动。</li>
 </ol>
-<p><strong>例如</strong>：报告截止日期为 3 月 31 日。通过倒推，你会发现“收集数据”这一步必须在 1 月 20 日完成。这时，你就需要在日历上预约：<strong>“1 月 20 日下午 2:00-4:00：完成 XX 报告数据收集”</strong>。这样，未来的任务就变成了当下的日程。</p>
+<p><strong>举个例子</strong>：季度报告需要在 3 月 31 日提交。倒推之后，你发现“收集数据”必须在 1 月 20 日之前完成。</p>
+<p>这时，不要只在待办清单里写一句“收集报告数据”，而是直接在日历上安排：</p>
+<p><strong>“1 月 20 日下午 2:00-4:00：完成 XX 报告数据收集。”</strong></p>
+<p>这样一来，原本属于未来的任务，就变成了眼下可以直接执行的日程。</p>
 <hr>
-<h2 id="视觉化管理——为任务添加-Emoji-标签"><a href="#视觉化管理——为任务添加-Emoji-标签" class="headerlink" title="视觉化管理——为任务添加 Emoji 标签"></a>视觉化管理——为任务添加 Emoji 标签</h2><p>使用 Emoji 可以让你对任务的性质和优先级一目了然，极大提升清单的可视化程度。</p>
+<h2 id="视觉化管理——给任务加上-Emoji-标签"><a href="#视觉化管理——给任务加上-Emoji-标签" class="headerlink" title="视觉化管理——给任务加上 Emoji 标签"></a>视觉化管理——给任务加上 Emoji 标签</h2><p>给任务加上 Emoji，可以帮你一眼看出它属于哪种类型、优先级有多高。清单不但更直观，也更容易快速扫描。</p>
 <table>
 <thead>
 <tr>
@@ -6217,74 +6238,87 @@
 <tbody><tr>
 <td align="left"><strong>重要且紧急</strong></td>
 <td align="left">🔥🚨</td>
-<td align="left">着火、警铃，需立刻处理</td>
+<td align="left">着火、警铃，需要立刻处理</td>
 </tr>
 <tr>
 <td align="left"><strong>重要不紧急</strong></td>
 <td align="left">⭐🎯</td>
-<td align="left">星星、靶心，需重点规划</td>
+<td align="left">星星、靶心，需要重点规划</td>
 </tr>
 <tr>
 <td align="left"><strong>紧急不重要</strong></td>
 <td align="left">📢👥</td>
-<td align="left">喇叭、人群，可授权或拒绝</td>
+<td align="left">喇叭、人群，可以授权或拒绝</td>
 </tr>
 <tr>
 <td align="left"><strong>不重要不紧急</strong></td>
 <td align="left">🐱⌛</td>
-<td align="left">休闲、消磨，尽量不做</td>
+<td align="left">休闲、消磨，尽量少做</td>
 </tr>
 </tbody></table>
 <p><strong>应用示例：</strong></p>
 <ul>
-<li><code>🔥 完成明天要交的PPT</code></li>
+<li><code>🔥 完成明天要交的 PPT</code></li>
 <li><code>⭐ 制定下周学习计划</code></li>
 <li><code>📢 参加下午的部门例会</code></li>
 <li><code>🐱 晚上看一集剧放松</code></li>
 </ul>
 <hr>
-<h2 id="最佳实践工作流"><a href="#最佳实践工作流" class="headerlink" title="最佳实践工作流"></a>最佳实践工作流</h2><p>将以上所有概念结合，形成你的高效日常管理流程：</p>
+<h2 id="最佳实践工作流"><a href="#最佳实践工作流" class="headerlink" title="最佳实践工作流"></a>最佳实践工作流</h2><p>把上面的概念组合起来，就能形成一套简单、顺手的日常管理流程：</p>
 <ol>
-<li><strong>收集</strong>：将所有想法和任务无一遗漏地放入“待办清单”。</li>
-<li><strong>处理与分类</strong>：<ul>
-<li>定期清点待办清单。</li>
-<li>使用<strong>四象限法则</strong>为每个任务分类、设定优先级。</li>
-<li>为任务添加<strong>Emoji 标签</strong>。</li>
-</ul>
-</li>
-<li><strong>规划</strong>：<ul>
-<li>将<strong>有固定时间</strong>的事件（会议、约会）放入日程。</li>
-<li>将<strong>重要但不紧急</strong>的任务进行<strong>反向规划</strong>，拆解后安排到日程中。</li>
-</ul>
-</li>
-<li><strong>执行</strong>：<ul>
-<li>严格遵循日程表的安排。</li>
-<li>利用碎片时间处理待办清单中的小任务。</li>
-</ul>
-</li>
-<li><strong>回顾</strong>：每周进行复盘，调整计划，优化系统。</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>待办是内容库，日程是时间表。</strong></p>
+<li><p><strong>收集</strong></p>
 <ul>
-<li>用<strong>待办清单</strong>收集一切，防止遗忘。</li>
-<li>用<strong>四象限法则</strong>区分轻重缓急，聚焦重点。</li>
-<li>用<strong>反向规划</strong>将未来的重要任务提前落实。</li>
-<li>用<strong>日程日历</strong>规划和保护你的时间，严格执行。</li>
+<li>把所有想到的任务、想法和提醒都放进“待办清单”。</li>
+<li>这一步先别急着分类，重点是不要遗漏。</li>
 </ul>
-<p>掌握并实践这套方法，你将从被动的“救火队员”转变为主动的“时间管理者”，真正掌控自己的工作和生活。</p>
+</li>
+<li><p><strong>处理与分类</strong></p>
+<ul>
+<li>定期清理待办清单。</li>
+<li>用<strong>四象限法则</strong>给任务分类，判断优先级。</li>
+<li>给任务加上对应的 <strong>Emoji 标签</strong>，方便快速识别。</li>
+</ul>
+</li>
+<li><p><strong>规划</strong></p>
+<ul>
+<li>把会议、约会等<strong>时间已经固定</strong>的事情直接放进日程。</li>
+<li>对<strong>重要但不紧急</strong>的任务使用<strong>反向规划</strong>，拆解后再安排进日历。</li>
+</ul>
+</li>
+<li><p><strong>执行</strong></p>
+<ul>
+<li>尽量按照日程里的时间安排推进任务。</li>
+<li>碎片时间可以用来处理待办清单中的简单小任务。</li>
+</ul>
+</li>
+<li><p><strong>回顾</strong></p>
+<ul>
+<li>每周做一次复盘，看看哪些任务完成了、哪些计划不太合理。</li>
+<li>根据实际情况及时调整，让这套系统越来越适合自己。</li>
+</ul>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>待办是任务库，日程是时间表。</strong></p>
+<ul>
+<li>用<strong>待办清单</strong>收集所有要做的事，避免遗忘。</li>
+<li>用<strong>四象限法则</strong>分清轻重缓急，把精力放在真正重要的事情上。</li>
+<li>用<strong>反向规划</strong>提前推进未来的重要任务，别等它们变成危机。</li>
+<li>用<strong>日程日历</strong>给任务留出时间，并尽量按计划执行。</li>
+</ul>
+<p>当你真正开始使用这套方法，就不会再天天被各种事情追着跑。你会慢慢从一个被动的“救火队员”，变成主动安排时间的人，更从容地掌控自己的工作和生活。</p>
 ]]></content>
       <tags>
         <tag>其他</tag>
       </tags>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
