@@ -1922,6 +1922,176 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux 卸载openjdk 安装oraclejdk</title>
+    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
+    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
+<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
+<p>如果有项目在运行，请先停止项目</p>
+</blockquote>
+<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
+<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
+<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
+<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
+<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
+<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
+<p>上传到 opt 路径下</p>
+</blockquote>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
+<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
+<p>安装路径不做要求，因此文件夹也不做要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
+<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
+<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
+
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 导入 Java 证书教程</title>
+    <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
+<p>常见报错如下：</p>
+<p>javax.net.ssl.SSLHandshakeException: PKIX path building failed<br>sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">该错误表示 Java 应用不信任目标 HTTPS 服务的证书，需要将证书导入 Java 的信任库。</span><br><span class="line"></span><br><span class="line">## 二、准备证书文件</span><br><span class="line"></span><br><span class="line">将证书文件上传到 Linux 服务器，例如上传到：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">/tmp/test.com.cn.crt</span><br></pre></td></tr></table></figure>
+
+<p>常见可导入的证书文件格式包括：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.crt</span><br><span class="line">.cer</span><br><span class="line">.pem</span><br></pre></td></tr></table></figure>
+
+<p>以下文件不需要导入 Java 信任库：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.key  私钥文件，不需要导入</span><br><span class="line">.req  证书请求文件，不需要导入</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、确认-Java-安装路径"><a href="#三、确认-Java-安装路径" class="headerlink" title="三、确认 Java 安装路径"></a>三、确认 Java 安装路径</h2><p>在 Linux 服务器上执行以下命令，查看 Java 路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br><span class="line"><span class="built_in">readlink</span> -f $(<span class="built_in">which</span> java)</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>如果服务器上有多个 JDK，需要确认 Java 应用实际使用的是哪个 JDK。</p>
+<p>可以通过以下命令查看 Java 应用启动命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、找到-Java-证书库-Cacerts"><a href="#四、找到-Java-证书库-Cacerts" class="headerlink" title="四、找到 Java 证书库 Cacerts"></a>四、找到 Java 证书库 Cacerts</h2><p>Java 默认信任库文件名为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cacerts</span><br></pre></td></tr></table></figure>
+
+<p>常见路径如下。</p>
+<p>JDK 8 常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>JDK 11 及以上常见路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>示例路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/local/jdk1.8.0_202/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、导入证书"><a href="#五、导入证书" class="headerlink" title="五、导入证书"></a>五、导入证书</h2><h3 id="1-JDK-8-导入方式"><a href="#1-JDK-8-导入方式" class="headerlink" title="1. JDK 8 导入方式"></a>1. JDK 8 导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDK-11-及以上导入方式"><a href="#2-JDK-11-及以上导入方式" class="headerlink" title="2. JDK 11 及以上导入方式"></a>2. JDK 11 及以上导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，如果出现以下提示：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Trust this certificate? [no]:</span><br></pre></td></tr></table></figure>
+
+<p>输入：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、参数说明"><a href="#六、参数说明" class="headerlink" title="六、参数说明"></a>六、参数说明</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-importcert</code></td>
+<td>导入证书</td>
+</tr>
+<tr>
+<td><code>-alias</code></td>
+<td>证书别名，可自定义</td>
+</tr>
+<tr>
+<td><code>-file</code></td>
+<td>要导入的证书文件路径</td>
+</tr>
+<tr>
+<td><code>-keystore</code></td>
+<td>Java 证书库路径</td>
+</tr>
+<tr>
+<td><code>-storepass</code></td>
+<td>证书库密码，默认通常为 <code>changeit</code></td>
+</tr>
+</tbody></table>
+<h2 id="七、验证证书是否导入成功"><a href="#七、验证证书是否导入成功" class="headerlink" title="七、验证证书是否导入成功"></a>七、验证证书是否导入成功</h2><h3 id="1-JDK-8-验证方式"><a href="#1-JDK-8-验证方式" class="headerlink" title="1. JDK 8 验证方式"></a>1. JDK 8 验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-JDK-11-及以上验证方式"><a href="#2-JDK-11-及以上验证方式" class="headerlink" title="2. JDK 11 及以上验证方式"></a>2. JDK 11 及以上验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
+
+<p>如果能看到类似以下内容，说明证书导入成功：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sdari-com-cn, Jul 3, 2026, trustedCertEntry</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、重启-Java-应用"><a href="#八、重启-Java-应用" class="headerlink" title="八、重启 Java 应用"></a>八、重启 Java 应用</h2><p>证书导入完成后，需要重启 Java 应用才会生效。</p>
+<p>如果是 systemd 服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart 服务名</span><br></pre></td></tr></table></figure>
+
+<p>如果是 Tomcat 或 TongWeb，根据实际部署方式重启服务，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./stop.sh</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、查看证书信息"><a href="#九、查看证书信息" class="headerlink" title="九、查看证书信息"></a>九、查看证书信息</h2><p>可以使用以下命令查看证书内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /tmp/sdari.com.cn.crt -noout -subject -issuer -dates</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、删除已导入的证书"><a href="#十、删除已导入的证书" class="headerlink" title="十、删除已导入的证书"></a>十、删除已导入的证书</h2><p>如果需要删除已导入的证书，可执行以下命令。</p>
+<p>JDK 8：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<p>JDK 11 及以上：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、注意事项"><a href="#十一、注意事项" class="headerlink" title="十一、注意事项"></a>十一、注意事项</h2><ol>
+<li>导入证书时，需要使用 Java 应用实际运行的 JDK。</li>
+<li>不要将 <code>.key</code> 私钥文件导入 Java 信任库。</li>
+<li><code>.req</code> 是证书请求文件，不需要导入。</li>
+<li>Java 默认 <code>cacerts</code> 密码通常是 <code>changeit</code>。</li>
+<li>导入完成后必须重启 Java 应用。</li>
+<li>如果应用启动参数指定了自定义 truststore，需要将证书导入到自定义 truststore 中。</li>
+</ol>
+<h2 id="十二、处理完成标志"><a href="#十二、处理完成标志" class="headerlink" title="十二、处理完成标志"></a>十二、处理完成标志</h2><p>完成以下步骤后，证书导入处理完成：</p>
+<ol>
+<li>证书文件已上传到 Linux 服务器。</li>
+<li>已确认 Java 应用实际使用的 JDK。</li>
+<li>已将证书导入对应 JDK 的 <code>cacerts</code>。</li>
+<li>已验证证书别名存在。</li>
+<li>已重启 Java 应用。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>Linux常用命令汇总</title>
     <url>/2024/12/09/archive/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
@@ -2002,8 +2172,38 @@
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>持续更新</tag>
         <tag>运维/linux</tag>
+        <tag>持续更新</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ORECAL19C安装</title>
+    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
+<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
+<p>🔑 admin!@#456</p>
+<p>🔒 orecal</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
+<p>此处的密码设置的 1234，要求不能设置简单密码</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
+<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
+<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
+<p>查看概要之后，点击安装</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
+<p>这一步就只剩下漫长的等待了</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
+<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
+<p>%42 的时候，进度很慢，耐心，耐心即可</p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
+<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -2694,36 +2894,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ORECAL19C安装</title>
-    <url>/2024/12/09/archive/ORECAL19C%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">下载了不会使用气死了, 气死了</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104952.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107104939.png"></p>
-<p>🌯 注意此处创建新的 windows 用户，不然会导致后续安装没有权限的问题。</p>
-<p>🔑 admin!@#456</p>
-<p>🔒 orecal</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107105313.png"></p>
-<p>此处的密码设置的 1234，要求不能设置简单密码</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114134.png"></p>
-<p>要求不能设置简单密码，非要用简单密码，会出现提示， 点击继续即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114406.png"></p>
-<p>先决条件检查这一步等待即可，不满足安装条件的话就木有啥办法了。</p>
-<p>查看概要之后，点击安装</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107114723.png"></p>
-<p>这一步就只剩下漫长的等待了</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115140.png"></p>
-<p>安装过程中会出现网络权限的获取，直接给权限即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115157.png"></p>
-<p>%42 的时候，进度很慢，耐心，耐心即可</p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107115629.png"></p>
-<p><img src="/assets/ORECAL19C%E5%AE%89%E8%A3%85/Pasted%20image%2020231107130049.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Obsidian插件汇总</title>
     <url>/2024/12/09/archive/Obsidian%E6%8F%92%E4%BB%B6%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="Webpage-HTML-Export"><a href="#Webpage-HTML-Export" class="headerlink" title="Webpage HTML Export"></a>Webpage HTML Export</h2><blockquote>
@@ -2853,120 +3023,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux 导入 Java 证书教程</title>
-    <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
-<p>常见报错如下：</p>
-<p>javax.net.ssl.SSLHandshakeException: PKIX path building failed<br>sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">该错误表示 Java 应用不信任目标 HTTPS 服务的证书，需要将证书导入 Java 的信任库。</span><br><span class="line"></span><br><span class="line">## 二、准备证书文件</span><br><span class="line"></span><br><span class="line">将证书文件上传到 Linux 服务器，例如上传到：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">/tmp/test.com.cn.crt</span><br></pre></td></tr></table></figure>
-
-<p>常见可导入的证书文件格式包括：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.crt</span><br><span class="line">.cer</span><br><span class="line">.pem</span><br></pre></td></tr></table></figure>
-
-<p>以下文件不需要导入 Java 信任库：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">.key  私钥文件，不需要导入</span><br><span class="line">.req  证书请求文件，不需要导入</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、确认-Java-安装路径"><a href="#三、确认-Java-安装路径" class="headerlink" title="三、确认 Java 安装路径"></a>三、确认 Java 安装路径</h2><p>在 Linux 服务器上执行以下命令，查看 Java 路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> java</span><br><span class="line"><span class="built_in">readlink</span> -f $(<span class="built_in">which</span> java)</span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器上有多个 JDK，需要确认 Java 应用实际使用的是哪个 JDK。</p>
-<p>可以通过以下命令查看 Java 应用启动命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、找到-Java-证书库-Cacerts"><a href="#四、找到-Java-证书库-Cacerts" class="headerlink" title="四、找到 Java 证书库 Cacerts"></a>四、找到 Java 证书库 Cacerts</h2><p>Java 默认信任库文件名为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cacerts</span><br></pre></td></tr></table></figure>
-
-<p>常见路径如下。</p>
-<p>JDK 8 常见路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<p>JDK 11 及以上常见路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$JAVA_HOME</span>/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<p>示例路径：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/local/jdk1.8.0_202/jre/lib/security/cacerts</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、导入证书"><a href="#五、导入证书" class="headerlink" title="五、导入证书"></a>五、导入证书</h2><h3 id="1-JDK-8-导入方式"><a href="#1-JDK-8-导入方式" class="headerlink" title="1. JDK 8 导入方式"></a>1. JDK 8 导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-JDK-11-及以上导入方式"><a href="#2-JDK-11-及以上导入方式" class="headerlink" title="2. JDK 11 及以上导入方式"></a>2. JDK 11 及以上导入方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -importcert \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -file /tmp/sdari.com.cn.crt \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<p>执行命令后，如果出现以下提示：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Trust this certificate? [no]:</span><br></pre></td></tr></table></figure>
-
-<p>输入：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
-
-<h2 id="六、参数说明"><a href="#六、参数说明" class="headerlink" title="六、参数说明"></a>六、参数说明</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>-importcert</code></td>
-<td>导入证书</td>
-</tr>
-<tr>
-<td><code>-alias</code></td>
-<td>证书别名，可自定义</td>
-</tr>
-<tr>
-<td><code>-file</code></td>
-<td>要导入的证书文件路径</td>
-</tr>
-<tr>
-<td><code>-keystore</code></td>
-<td>Java 证书库路径</td>
-</tr>
-<tr>
-<td><code>-storepass</code></td>
-<td>证书库密码，默认通常为 <code>changeit</code></td>
-</tr>
-</tbody></table>
-<h2 id="七、验证证书是否导入成功"><a href="#七、验证证书是否导入成功" class="headerlink" title="七、验证证书是否导入成功"></a>七、验证证书是否导入成功</h2><h3 id="1-JDK-8-验证方式"><a href="#1-JDK-8-验证方式" class="headerlink" title="1. JDK 8 验证方式"></a>1. JDK 8 验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-JDK-11-及以上验证方式"><a href="#2-JDK-11-及以上验证方式" class="headerlink" title="2. JDK 11 及以上验证方式"></a>2. JDK 11 及以上验证方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -list \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit \</span><br><span class="line">  | grep sdari</span><br></pre></td></tr></table></figure>
-
-<p>如果能看到类似以下内容，说明证书导入成功：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sdari-com-cn, Jul 3, 2026, trustedCertEntry</span><br></pre></td></tr></table></figure>
-
-<h2 id="八、重启-Java-应用"><a href="#八、重启-Java-应用" class="headerlink" title="八、重启 Java 应用"></a>八、重启 Java 应用</h2><p>证书导入完成后，需要重启 Java 应用才会生效。</p>
-<p>如果是 systemd 服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart 服务名</span><br></pre></td></tr></table></figure>
-
-<p>如果是 Tomcat 或 TongWeb，根据实际部署方式重启服务，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./stop.sh</span><br><span class="line">./start.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、查看证书信息"><a href="#九、查看证书信息" class="headerlink" title="九、查看证书信息"></a>九、查看证书信息</h2><p>可以使用以下命令查看证书内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -<span class="keyword">in</span> /tmp/sdari.com.cn.crt -noout -subject -issuer -dates</span><br></pre></td></tr></table></figure>
-
-<h2 id="十、删除已导入的证书"><a href="#十、删除已导入的证书" class="headerlink" title="十、删除已导入的证书"></a>十、删除已导入的证书</h2><p>如果需要删除已导入的证书，可执行以下命令。</p>
-<p>JDK 8：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/jre/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<p>JDK 11 及以上：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keytool -delete \</span><br><span class="line">  -<span class="built_in">alias</span> sdari-com-cn \</span><br><span class="line">  -keystore <span class="variable">$JAVA_HOME</span>/lib/security/cacerts \</span><br><span class="line">  -storepass changeit</span><br></pre></td></tr></table></figure>
-
-<h2 id="十一、注意事项"><a href="#十一、注意事项" class="headerlink" title="十一、注意事项"></a>十一、注意事项</h2><ol>
-<li>导入证书时，需要使用 Java 应用实际运行的 JDK。</li>
-<li>不要将 <code>.key</code> 私钥文件导入 Java 信任库。</li>
-<li><code>.req</code> 是证书请求文件，不需要导入。</li>
-<li>Java 默认 <code>cacerts</code> 密码通常是 <code>changeit</code>。</li>
-<li>导入完成后必须重启 Java 应用。</li>
-<li>如果应用启动参数指定了自定义 truststore，需要将证书导入到自定义 truststore 中。</li>
-</ol>
-<h2 id="十二、处理完成标志"><a href="#十二、处理完成标志" class="headerlink" title="十二、处理完成标志"></a>十二、处理完成标志</h2><p>完成以下步骤后，证书导入处理完成：</p>
-<ol>
-<li>证书文件已上传到 Linux 服务器。</li>
-<li>已确认 Java 应用实际使用的 JDK。</li>
-<li>已将证书导入对应 JDK 的 <code>cacerts</code>。</li>
-<li>已验证证书别名存在。</li>
-<li>已重启 Java 应用。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>Orecal数据库还原</title>
     <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
     <content><![CDATA[<blockquote>
@@ -3026,62 +3082,6 @@
 ]]></content>
       <tags>
         <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 卸载openjdk 安装oraclejdk</title>
-    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
-    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
-<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
-<p>如果有项目在运行，请先停止项目</p>
-</blockquote>
-<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
-<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
-<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
-<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
-<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
-<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
-<p>上传到 opt 路径下</p>
-</blockquote>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
-<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
-<p>安装路径不做要求，因此文件夹也不做要求</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
-<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
-<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
-
-<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4778,6 +4778,221 @@
       </tags>
   </entry>
   <entry>
+    <title>Git 入门指南：写给完全不懂版本控制的你</title>
+    <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
+<ul>
+<li>改代码改崩了，想恢复昨天的版本，却发现没备份</li>
+<li>和同事一起开发，不知道怎么合并各自的修改</li>
+<li>听别人说 “commit”、”push”、”rebase”，完全听不懂</li>
+</ul>
+<p>这篇文章用最通俗的语言，帮你搞懂 Git 是什么、怎么用。</p>
+<hr>
+<h2 id="一、Git-是什么？"><a href="#一、Git-是什么？" class="headerlink" title="一、Git 是什么？"></a>一、Git 是什么？</h2><p><strong>一句话解释</strong>：Git 是一个”代码时光机”，能帮你：</p>
+<ul>
+<li>保存代码的每一个历史版本</li>
+<li>随时穿越回任意时间点</li>
+<li>多人协作开发不打架</li>
+</ul>
+<hr>
+<h2 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h2><h3 id="2-1-仓库（Repository）"><a href="#2-1-仓库（Repository）" class="headerlink" title="2.1 仓库（Repository）"></a>2.1 仓库（Repository）</h3><p>仓库就是一个被 Git 管理的项目文件夹。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的项目/</span><br><span class="line">├── .git/          ← 隐藏文件夹，存储所有历史记录（本地仓库）</span><br><span class="line">├── src/           ← 你实际编辑的代码（工作目录）</span><br><span class="line">├── index.html</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>重点</strong>：</p>
+<ul>
+<li><strong>工作目录</strong> &#x3D; 你能看到和编辑的文件</li>
+<li><strong>本地仓库 (.git)</strong> &#x3D; 隐藏的”存档库”，存着所有历史版本</li>
+</ul>
+<blockquote>
+<p>💡 只要 <code>.git</code> 文件夹不删，你就能恢复到任意一次 commit 的状态。</p>
+</blockquote>
+<h3 id="2-2-代码的三个状态"><a href="#2-2-代码的三个状态" class="headerlink" title="2.2 代码的三个状态"></a>2.2 代码的三个状态</h3><pre><code class="highlight mermaid">flowchart LR
+    A[工作目录&lt;br/&gt;Working Dir&lt;br/&gt;你正在改的文件] --&gt;|git add| B[暂存区&lt;br/&gt;Staging Area&lt;br/&gt;准备要提交的]
+    B --&gt;|git commit| C[本地仓库&lt;br/&gt;Local Repo&lt;br/&gt;已保存的历史]</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>说明</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作目录</td>
+<td>你正在编辑的文件</td>
+<td>正在写的作业</td>
+</tr>
+<tr>
+<td>暂存区</td>
+<td>准备提交的修改</td>
+<td>放进书包准备交的作业</td>
+</tr>
+<tr>
+<td>本地仓库</td>
+<td>已保存的历史记录</td>
+<td>老师收走存档的作业</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-本地-vs-远端"><a href="#2-3-本地-vs-远端" class="headerlink" title="2.3 本地 vs 远端"></a>2.3 本地 vs 远端</h3><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本地（Local）</strong></td>
+<td>你自己电脑上的仓库</td>
+</tr>
+<tr>
+<td><strong>远端（Remote）</strong></td>
+<td>服务器上的仓库（如 GitHub、GitLab）</td>
+</tr>
+</tbody></table>
+<p>它们之间的同步：</p>
+<pre><code class="highlight mermaid">flowchart LR
+    A[本地仓库] --&gt;|git push&lt;br/&gt;推送| B[远端仓库]
+    B --&gt;|git pull&lt;br/&gt;拉取| A</code></pre>
+
+<hr>
+<h2 id="三、分支（Branch）"><a href="#三、分支（Branch）" class="headerlink" title="三、分支（Branch）"></a>三、分支（Branch）</h2><h3 id="3-1-什么是分支？"><a href="#3-1-什么是分支？" class="headerlink" title="3.1 什么是分支？"></a>3.1 什么是分支？</h3><p>分支就是代码的”平行世界”。</p>
+<p>想象一下：你在写一个网站，老板突然说要加个新功能。你不想在正式代码上直接改（怕改崩），于是：</p>
+<ol>
+<li>创建一个新分支 <code>feature-xxx</code></li>
+<li>在新分支上随便折腾</li>
+<li>测试没问题后，合并回主分支</li>
+</ol>
+<pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;A&quot;
+    commit id: &quot;B&quot;
+    commit id: &quot;C&quot;
+    branch feature
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    checkout main
+    merge feature id: &quot;F&quot;</code></pre>
+
+<h3 id="3-2-常见分支"><a href="#3-2-常见分支" class="headerlink" title="3.2 常见分支"></a>3.2 常见分支</h3><table>
+<thead>
+<tr>
+<th>分支名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>master</code> &#x2F; <code>main</code></td>
+<td>正式版本，稳定的代码</td>
+</tr>
+<tr>
+<td><code>develop</code></td>
+<td>开发中的代码</td>
+</tr>
+<tr>
+<td><code>feature-xxx</code></td>
+<td>某个新功能的开发</td>
+</tr>
+<tr>
+<td><code>hotfix-xxx</code></td>
+<td>紧急修复 bug</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="四、Merge-vs-Rebase"><a href="#四、Merge-vs-Rebase" class="headerlink" title="四、Merge vs Rebase"></a>四、Merge vs Rebase</h2><p>这是两种合并代码的方式，效果相同但历史记录不同。</p>
+<h3 id="Merge（合并）"><a href="#Merge（合并）" class="headerlink" title="Merge（合并）"></a>Merge（合并）</h3><pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    commit id: &quot;F&quot;
+    commit id: &quot;G&quot;
+    branch feature
+    checkout feature
+    commit id: &quot;A&quot;
+    commit id: &quot;B&quot;
+    commit id: &quot;C&quot;
+    checkout main
+    merge feature id: &quot;H (合并节点)&quot;</code></pre>
+
+<ul>
+<li>会产生一个”合并节点”</li>
+<li>历史记录能看出分支合并过程</li>
+</ul>
+<h3 id="Rebase（变基）"><a href="#Rebase（变基）" class="headerlink" title="Rebase（变基）"></a>Rebase（变基）</h3><pre><code class="highlight mermaid">gitGraph
+    commit id: &quot;D&quot;
+    commit id: &quot;E&quot;
+    commit id: &quot;F&quot;
+    commit id: &quot;G&quot;
+    commit id: &quot;A&#x27;&quot;
+    commit id: &quot;B&#x27;&quot;
+    commit id: &quot;C&#x27;&quot;</code></pre>
+
+<ul>
+<li>把你的提交”嫁接”到最新节点后面</li>
+<li>历史记录更整洁（一条直线）</li>
+</ul>
+<h3 id="推荐工作流"><a href="#推荐工作流" class="headerlink" title="推荐工作流"></a>推荐工作流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 本地提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;完成了xxx功能&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远端最新代码并变基</span></span><br><span class="line">git pull --rebase origin develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 推送</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、常用命令速查表"><a href="#五、常用命令速查表" class="headerlink" title="五、常用命令速查表"></a>五、常用命令速查表</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status              <span class="comment"># 查看当前状态</span></span><br><span class="line">git add .               <span class="comment"># 暂存所有修改</span></span><br><span class="line">git commit -m <span class="string">&quot;说明&quot;</span>     <span class="comment"># 提交到本地仓库</span></span><br><span class="line">git <span class="built_in">log</span> --oneline       <span class="comment"># 查看提交历史</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch              <span class="comment"># 查看所有分支</span></span><br><span class="line">git checkout xxx        <span class="comment"># 切换到 xxx 分支</span></span><br><span class="line">git checkout -b xxx     <span class="comment"># 创建并切换到新分支</span></span><br><span class="line">git merge xxx           <span class="comment"># 合并 xxx 分支到当前分支</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="同步操作"><a href="#同步操作" class="headerlink" title="同步操作"></a>同步操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull                <span class="comment"># 拉取远端代码并合并</span></span><br><span class="line">git push                <span class="comment"># 推送到远端</span></span><br><span class="line">git fetch               <span class="comment"># 只拉取，不合并</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- file    <span class="comment"># 撤销工作目录的修改</span></span><br><span class="line">git reset HEAD file     <span class="comment"># 撤销暂存区的修改</span></span><br><span class="line">git reset --hard abc123 <span class="comment"># 回退到某个提交（谨慎使用）</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1：修改了但没-commit，能恢复吗？"><a href="#Q1：修改了但没-commit，能恢复吗？" class="headerlink" title="Q1：修改了但没 commit，能恢复吗？"></a>Q1：修改了但没 commit，能恢复吗？</h3><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>能否恢复</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已 commit</td>
+<td>✅ 永久保存，随时可恢复</td>
+</tr>
+<tr>
+<td>只 add 没 commit</td>
+<td>⚠️ 有办法但麻烦</td>
+</tr>
+<tr>
+<td>没 add 也没 commit</td>
+<td>❌ 丢了就是丢了</td>
+</tr>
+</tbody></table>
+<h3 id="Q2：-git-文件夹能删吗？"><a href="#Q2：-git-文件夹能删吗？" class="headerlink" title="Q2：.git 文件夹能删吗？"></a>Q2：.git 文件夹能删吗？</h3><p><strong>不能！</strong> 删了就等于删掉所有历史记录，只剩当前版本的文件。</p>
+<h3 id="Q3：push-和-pull-的区别？"><a href="#Q3：push-和-pull-的区别？" class="headerlink" title="Q3：push 和 pull 的区别？"></a>Q3：push 和 pull 的区别？</h3><ul>
+<li><code>push</code>：你 → 服务器（上传）</li>
+<li><code>pull</code>：服务器 → 你（下载）</li>
+</ul>
+<hr>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Git 的核心就三件事：</p>
+<ol>
+<li><strong>保存历史</strong>：每次 <code>commit</code> 就是一次存档</li>
+<li><strong>分支开发</strong>：在平行世界里随便折腾</li>
+<li><strong>多人协作</strong>：通过 <code>push/pull</code> 同步代码</li>
+</ol>
+<p>记住这张图：</p>
+<pre><code class="highlight mermaid">flowchart LR
+    A[工作目录] --&gt;|add| B[暂存区]
+    B --&gt;|commit| C[本地仓库]
+    C --&gt;|push| D[远端仓库]
+    D --&gt;|pull| C</code></pre>
+
+<hr>
+<p><strong>入门建议</strong>：先把 <code>add</code>、<code>commit</code>、<code>pull</code>、<code>push</code> 用熟，其他命令遇到再学。</p>
+]]></content>
+      <categories>
+        <category>技术教程</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>版本控制</tag>
+        <tag>入门教程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>obsidian-sync-cnblog</title>
     <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
     <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
@@ -5449,221 +5664,6 @@
 <p>发布它，分享它，收集反馈，然后改进它。</p>
 <p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Git 入门指南：写给完全不懂版本控制的你</title>
-    <url>/2025/12/01/archive/git%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你刚接触编程，可能会有这样的经历：</p>
-<ul>
-<li>改代码改崩了，想恢复昨天的版本，却发现没备份</li>
-<li>和同事一起开发，不知道怎么合并各自的修改</li>
-<li>听别人说 “commit”、”push”、”rebase”，完全听不懂</li>
-</ul>
-<p>这篇文章用最通俗的语言，帮你搞懂 Git 是什么、怎么用。</p>
-<hr>
-<h2 id="一、Git-是什么？"><a href="#一、Git-是什么？" class="headerlink" title="一、Git 是什么？"></a>一、Git 是什么？</h2><p><strong>一句话解释</strong>：Git 是一个”代码时光机”，能帮你：</p>
-<ul>
-<li>保存代码的每一个历史版本</li>
-<li>随时穿越回任意时间点</li>
-<li>多人协作开发不打架</li>
-</ul>
-<hr>
-<h2 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h2><h3 id="2-1-仓库（Repository）"><a href="#2-1-仓库（Repository）" class="headerlink" title="2.1 仓库（Repository）"></a>2.1 仓库（Repository）</h3><p>仓库就是一个被 Git 管理的项目文件夹。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的项目/</span><br><span class="line">├── .git/          ← 隐藏文件夹，存储所有历史记录（本地仓库）</span><br><span class="line">├── src/           ← 你实际编辑的代码（工作目录）</span><br><span class="line">├── index.html</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
-
-<p><strong>重点</strong>：</p>
-<ul>
-<li><strong>工作目录</strong> &#x3D; 你能看到和编辑的文件</li>
-<li><strong>本地仓库 (.git)</strong> &#x3D; 隐藏的”存档库”，存着所有历史版本</li>
-</ul>
-<blockquote>
-<p>💡 只要 <code>.git</code> 文件夹不删，你就能恢复到任意一次 commit 的状态。</p>
-</blockquote>
-<h3 id="2-2-代码的三个状态"><a href="#2-2-代码的三个状态" class="headerlink" title="2.2 代码的三个状态"></a>2.2 代码的三个状态</h3><pre><code class="highlight mermaid">flowchart LR
-    A[工作目录&lt;br/&gt;Working Dir&lt;br/&gt;你正在改的文件] --&gt;|git add| B[暂存区&lt;br/&gt;Staging Area&lt;br/&gt;准备要提交的]
-    B --&gt;|git commit| C[本地仓库&lt;br/&gt;Local Repo&lt;br/&gt;已保存的历史]</code></pre>
-
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>说明</th>
-<th>类比</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>工作目录</td>
-<td>你正在编辑的文件</td>
-<td>正在写的作业</td>
-</tr>
-<tr>
-<td>暂存区</td>
-<td>准备提交的修改</td>
-<td>放进书包准备交的作业</td>
-</tr>
-<tr>
-<td>本地仓库</td>
-<td>已保存的历史记录</td>
-<td>老师收走存档的作业</td>
-</tr>
-</tbody></table>
-<h3 id="2-3-本地-vs-远端"><a href="#2-3-本地-vs-远端" class="headerlink" title="2.3 本地 vs 远端"></a>2.3 本地 vs 远端</h3><table>
-<thead>
-<tr>
-<th>概念</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>本地（Local）</strong></td>
-<td>你自己电脑上的仓库</td>
-</tr>
-<tr>
-<td><strong>远端（Remote）</strong></td>
-<td>服务器上的仓库（如 GitHub、GitLab）</td>
-</tr>
-</tbody></table>
-<p>它们之间的同步：</p>
-<pre><code class="highlight mermaid">flowchart LR
-    A[本地仓库] --&gt;|git push&lt;br/&gt;推送| B[远端仓库]
-    B --&gt;|git pull&lt;br/&gt;拉取| A</code></pre>
-
-<hr>
-<h2 id="三、分支（Branch）"><a href="#三、分支（Branch）" class="headerlink" title="三、分支（Branch）"></a>三、分支（Branch）</h2><h3 id="3-1-什么是分支？"><a href="#3-1-什么是分支？" class="headerlink" title="3.1 什么是分支？"></a>3.1 什么是分支？</h3><p>分支就是代码的”平行世界”。</p>
-<p>想象一下：你在写一个网站，老板突然说要加个新功能。你不想在正式代码上直接改（怕改崩），于是：</p>
-<ol>
-<li>创建一个新分支 <code>feature-xxx</code></li>
-<li>在新分支上随便折腾</li>
-<li>测试没问题后，合并回主分支</li>
-</ol>
-<pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;A&quot;
-    commit id: &quot;B&quot;
-    commit id: &quot;C&quot;
-    branch feature
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    checkout main
-    merge feature id: &quot;F&quot;</code></pre>
-
-<h3 id="3-2-常见分支"><a href="#3-2-常见分支" class="headerlink" title="3.2 常见分支"></a>3.2 常见分支</h3><table>
-<thead>
-<tr>
-<th>分支名</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>master</code> &#x2F; <code>main</code></td>
-<td>正式版本，稳定的代码</td>
-</tr>
-<tr>
-<td><code>develop</code></td>
-<td>开发中的代码</td>
-</tr>
-<tr>
-<td><code>feature-xxx</code></td>
-<td>某个新功能的开发</td>
-</tr>
-<tr>
-<td><code>hotfix-xxx</code></td>
-<td>紧急修复 bug</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="四、Merge-vs-Rebase"><a href="#四、Merge-vs-Rebase" class="headerlink" title="四、Merge vs Rebase"></a>四、Merge vs Rebase</h2><p>这是两种合并代码的方式，效果相同但历史记录不同。</p>
-<h3 id="Merge（合并）"><a href="#Merge（合并）" class="headerlink" title="Merge（合并）"></a>Merge（合并）</h3><pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    commit id: &quot;F&quot;
-    commit id: &quot;G&quot;
-    branch feature
-    checkout feature
-    commit id: &quot;A&quot;
-    commit id: &quot;B&quot;
-    commit id: &quot;C&quot;
-    checkout main
-    merge feature id: &quot;H (合并节点)&quot;</code></pre>
-
-<ul>
-<li>会产生一个”合并节点”</li>
-<li>历史记录能看出分支合并过程</li>
-</ul>
-<h3 id="Rebase（变基）"><a href="#Rebase（变基）" class="headerlink" title="Rebase（变基）"></a>Rebase（变基）</h3><pre><code class="highlight mermaid">gitGraph
-    commit id: &quot;D&quot;
-    commit id: &quot;E&quot;
-    commit id: &quot;F&quot;
-    commit id: &quot;G&quot;
-    commit id: &quot;A&#x27;&quot;
-    commit id: &quot;B&#x27;&quot;
-    commit id: &quot;C&#x27;&quot;</code></pre>
-
-<ul>
-<li>把你的提交”嫁接”到最新节点后面</li>
-<li>历史记录更整洁（一条直线）</li>
-</ul>
-<h3 id="推荐工作流"><a href="#推荐工作流" class="headerlink" title="推荐工作流"></a>推荐工作流</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 本地提交</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;完成了xxx功能&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 拉取远端最新代码并变基</span></span><br><span class="line">git pull --rebase origin develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 推送</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="五、常用命令速查表"><a href="#五、常用命令速查表" class="headerlink" title="五、常用命令速查表"></a>五、常用命令速查表</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status              <span class="comment"># 查看当前状态</span></span><br><span class="line">git add .               <span class="comment"># 暂存所有修改</span></span><br><span class="line">git commit -m <span class="string">&quot;说明&quot;</span>     <span class="comment"># 提交到本地仓库</span></span><br><span class="line">git <span class="built_in">log</span> --oneline       <span class="comment"># 查看提交历史</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch              <span class="comment"># 查看所有分支</span></span><br><span class="line">git checkout xxx        <span class="comment"># 切换到 xxx 分支</span></span><br><span class="line">git checkout -b xxx     <span class="comment"># 创建并切换到新分支</span></span><br><span class="line">git merge xxx           <span class="comment"># 合并 xxx 分支到当前分支</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="同步操作"><a href="#同步操作" class="headerlink" title="同步操作"></a>同步操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull                <span class="comment"># 拉取远端代码并合并</span></span><br><span class="line">git push                <span class="comment"># 推送到远端</span></span><br><span class="line">git fetch               <span class="comment"># 只拉取，不合并</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="回退操作"><a href="#回退操作" class="headerlink" title="回退操作"></a>回退操作</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -- file    <span class="comment"># 撤销工作目录的修改</span></span><br><span class="line">git reset HEAD file     <span class="comment"># 撤销暂存区的修改</span></span><br><span class="line">git reset --hard abc123 <span class="comment"># 回退到某个提交（谨慎使用）</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q1：修改了但没-commit，能恢复吗？"><a href="#Q1：修改了但没-commit，能恢复吗？" class="headerlink" title="Q1：修改了但没 commit，能恢复吗？"></a>Q1：修改了但没 commit，能恢复吗？</h3><table>
-<thead>
-<tr>
-<th>情况</th>
-<th>能否恢复</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>已 commit</td>
-<td>✅ 永久保存，随时可恢复</td>
-</tr>
-<tr>
-<td>只 add 没 commit</td>
-<td>⚠️ 有办法但麻烦</td>
-</tr>
-<tr>
-<td>没 add 也没 commit</td>
-<td>❌ 丢了就是丢了</td>
-</tr>
-</tbody></table>
-<h3 id="Q2：-git-文件夹能删吗？"><a href="#Q2：-git-文件夹能删吗？" class="headerlink" title="Q2：.git 文件夹能删吗？"></a>Q2：.git 文件夹能删吗？</h3><p><strong>不能！</strong> 删了就等于删掉所有历史记录，只剩当前版本的文件。</p>
-<h3 id="Q3：push-和-pull-的区别？"><a href="#Q3：push-和-pull-的区别？" class="headerlink" title="Q3：push 和 pull 的区别？"></a>Q3：push 和 pull 的区别？</h3><ul>
-<li><code>push</code>：你 → 服务器（上传）</li>
-<li><code>pull</code>：服务器 → 你（下载）</li>
-</ul>
-<hr>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Git 的核心就三件事：</p>
-<ol>
-<li><strong>保存历史</strong>：每次 <code>commit</code> 就是一次存档</li>
-<li><strong>分支开发</strong>：在平行世界里随便折腾</li>
-<li><strong>多人协作</strong>：通过 <code>push/pull</code> 同步代码</li>
-</ol>
-<p>记住这张图：</p>
-<pre><code class="highlight mermaid">flowchart LR
-    A[工作目录] --&gt;|add| B[暂存区]
-    B --&gt;|commit| C[本地仓库]
-    C --&gt;|push| D[远端仓库]
-    D --&gt;|pull| C</code></pre>
-
-<hr>
-<p><strong>入门建议</strong>：先把 <code>add</code>、<code>commit</code>、<code>pull</code>、<code>push</code> 用熟，其他命令遇到再学。</p>
-]]></content>
-      <categories>
-        <category>技术教程</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>版本控制</tag>
-        <tag>入门教程</tag>
-      </tags>
   </entry>
   <entry>
     <title>java-nosuchmethoderror-varargs-jar-version-mismatch</title>
