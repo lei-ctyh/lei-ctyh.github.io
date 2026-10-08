@@ -3085,127 +3085,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PGSQL基本概念</title>
-    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<blockquote>
-<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
-</blockquote>
-<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
-<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
-<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
-<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
-<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
-</li>
-</ul>
-<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
-<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
-<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
-<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
-<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
-<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
-</li>
-<li><p><strong>特点</strong>：</p>
-<ul>
-<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
-<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
-<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
-</li>
-<li><p><strong>常见钥匙</strong>：</p>
-<ul>
-<li><code>SELECT</code>：查看货物（读数据）。</li>
-<li><code>INSERT</code>：放新货物（写数据）。</li>
-<li><code>DELETE</code>：扔货物（删数据）。</li>
-<li><code>UPDATE</code>：改货物（改数据）。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
-<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
-</li>
-<li><p><strong>常见扩展</strong>：</p>
-<ul>
-<li><code>PostGIS</code>：地理数据处理。</li>
-<li><code>pgcrypto</code>：数据加密。</li>
-</ul>
-</li>
-<li><p><strong>操作</strong>：</p>
-  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
-<li><p><strong>示例</strong>：</p>
-  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>拆解</strong>：</p>
-<ul>
-<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
-<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
-<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
-
-<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
-<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
-<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
-<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
-</ol>
-<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
-]]></content>
-      <tags>
-        <tag>数据</tag>
-        <tag>数据/数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Redis小册</title>
     <url>/2024/12/09/archive/Redis%E5%B0%8F%E5%86%8C/</url>
     <content><![CDATA[<h2 id="安装-Redis"><a href="#安装-Redis" class="headerlink" title="安装 Redis"></a>安装 Redis</h2><h3 id="判断是否安装-GCC-环境"><a href="#判断是否安装-GCC-环境" class="headerlink" title="判断是否安装 GCC 环境"></a>判断是否安装 GCC 环境</h3><blockquote>
@@ -4446,6 +4325,272 @@
       </tags>
   </entry>
   <entry>
+    <title>Virtualbox7安装及使用详细步骤</title>
+    <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
+    <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
+<p>Virtualbox 软件安装包 <a href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a></p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317145609332.png"></p>
+<blockquote>
+<p>centerOS7 镜像 <a href="http://mirrors.aliyun.com/centos/7/isos/x86_64/">centos-7-isos-x86_64 安装包下载_开源镜像站-阿里云 (aliyun.com)</a></p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317145815189.png"></p>
+<h2 id="安装-Virtualbox"><a href="#安装-Virtualbox" class="headerlink" title="安装 Virtualbox"></a>安装 Virtualbox</h2><blockquote>
+<p>使用管理员身份运行 VirtualBox-7.0.14-161095-Win.exe</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317150126977.png"></p>
+<blockquote>
+<p>进入向导界面, 点击下一步</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004204897.png"></p>
+<blockquote>
+<p>点击 <code>浏览</code> 按钮，自定义安装路径，点击下一步</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004229962.png"></p>
+<blockquote>
+<p>此时会出现警告，这是由于安装时会增加虚拟网卡，属于正常现象，点击按钮 <code>是</code> 即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004306436.png"></p>
+<blockquote>
+<p>点击安装</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004325481.png"></p>
+<blockquote>
+<p>稍等片刻即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004414548.png"></p>
+<blockquote>
+<p>点击完成，此时会自动打开</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004445886.png"></p>
+<h2 id="创建虚拟电脑"><a href="#创建虚拟电脑" class="headerlink" title="创建虚拟电脑"></a>创建虚拟电脑</h2><blockquote>
+<p>在欢迎页点击新建</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172127494.png"></p>
+<blockquote>
+<p>切换为专家模式</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172308301.png"></p>
+<blockquote>
+<p>填写虚拟电脑名称和系统类型, 参照下图, 名称和文件夹可以按需填写</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172429508.png"></p>
+<blockquote>
+<p>分配硬件信息, 我这分配的运存为 4G, 4 个处理器,可以按照自己的电脑实际情况填写</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172634529.png"></p>
+<blockquote>
+<p>分配 50GB 的硬盘, 可以按需分配, 不要勾选 <code>预先分配全部空间</code>, 点击完成即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172830316.png"></p>
+<h2 id="配置电脑相关信息"><a href="#配置电脑相关信息" class="headerlink" title="配置电脑相关信息"></a>配置电脑相关信息</h2><blockquote>
+<p>右键新建的虚拟机，弹窗选项面板，点击设置</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321102313647.png"></p>
+<blockquote>
+<p>设置常规选项卡, 开启共享剪切板功能</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173209083.png"></p>
+<blockquote>
+<p>显示选项卡, 拉满显存大小</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173425672.png"></p>
+<blockquote>
+<p>选择启动映像, 即之前下载的 centos7 的 iso 文件</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173649026.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173722706.png"></p>
+<blockquote>
+<p>网络选项卡，链接方式设置为桥接网卡</p>
+</blockquote>
+<p>此处不推荐使用 NAT 网络的原因是由于, virtualBox 的 NAT 网络下, 主机无法访问虚拟机, 虽然会占用真实的 IP, 不过个人学习使用的话地址满够分配的</p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173824260.png"></p>
+<blockquote>
+<p>关于网卡名称的选择：</p>
+</blockquote>
+<p>查看当前使用的网卡名称：<code>设置</code> -&gt; <code>网络和Internet</code> -&gt; <code>属性</code> -&gt; <code>描述</code>，或者使用下图中的 gif 方式作为参考</p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/recording%201.gif"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323002631131.png"></p>
+<blockquote>
+<p>设置完毕, 点击确定, 启动虚拟机</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174153258.png"></p>
+<h2 id="安装-Centeros7"><a href="#安装-Centeros7" class="headerlink" title="安装 Centeros7"></a>安装 Centeros7</h2><blockquote>
+<p>加电启动虚拟机之后, 显示系统安装界面，启动时可能会出现一些问题，解决方法参考文章末尾</p>
+</blockquote>
+<p>通过键盘的 <code>↑</code> 和 <code>↓</code> 键选择安装选项, <code>Enter</code> 回车键确认, 下方红框内的代表为直接安装和先检测后安装, 选择哪个都可以</p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174515009.png"></p>
+<blockquote>
+<p>选择语言</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174821200.png"></p>
+<blockquote>
+<p>设置软件选择, 基本环境选择 <code>GHOME桌面</code>, 附加选项勾选 <code>开发环境和安全性工具</code></p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175037865.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175107836.png"></p>
+<blockquote>
+<p>配置分区, 设置为手动分区</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175257462.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175318593.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175359893.png"></p>
+<blockquote>
+<p>点击下图 <code>＋</code> 号, 开始添加分区, 分区建议参考 <a href="https://blog.csdn.net/weixin_39206909/article/details/120231440">CentOS7 手动磁盘分区详解_centos7 分区-CSDN 博客</a></p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/recording.gif"></p>
+<table>
+<thead>
+<tr>
+<th>分区类型</th>
+<th>分区大小</th>
+<th>设备类型</th>
+<th>文件系统</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;boot</td>
+<td>1G</td>
+<td>标准分区</td>
+<td>ext-4</td>
+<td>系统启动时的引导分区</td>
+</tr>
+<tr>
+<td>swap</td>
+<td>4G</td>
+<td>标准分区</td>
+<td>swap</td>
+<td>和自己的运存大小一致即可</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>45G</td>
+<td>标准分区</td>
+<td>ext-4</td>
+<td>剩余的全部硬盘容量</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>确认进行分区</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317180901204.png"></p>
+<blockquote>
+<p>设置网络和主机名</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181007501.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181709608.png"></p>
+<blockquote>
+<p>点击开始安装, 安装期间设置 Root 密码和创建用户即可, 参照下图, 如果密码过于简单需要按两次完成按钮</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181803113.png"></p>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181911658.png"></p>
+<blockquote>
+<p>安装完成, 点击重启即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317182529974.png"></p>
+<h2 id="Centeros-初始化配置"><a href="#Centeros-初始化配置" class="headerlink" title="Centeros 初始化配置"></a>Centeros 初始化配置</h2><blockquote>
+<p>接受许可证,完成配置</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185126489.png"></p>
+<blockquote>
+<p>输入账号密码, 进入系统</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185200374.png"></p>
+<blockquote>
+<p>测试网络状况, 右键桌面, 打开终端</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185352405.png"></p>
+<blockquote>
+<p>ping 百度</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185445969.png"></p>
+<h2 id="安装增强功能"><a href="#安装增强功能" class="headerlink" title="安装增强功能"></a>安装增强功能</h2><p>Virtualbox 在不安装增强功能扩展的情况下, 无法自适应分辨率和共享剪切板等操作, 下面为如何安装增强功能扩展</p>
+<blockquote>
+<p>安装 perl</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install perl</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185930677.png"></p>
+<blockquote>
+<p>安装 elfutils-libelf-devel</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install elfutils-libelf-devel</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190021805.png"></p>
+<blockquote>
+<p>点击安装增强功能</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190212133.png"></p>
+<blockquote>
+<p>点击运行增强功能的 iso 文件</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190250576.png"></p>
+<blockquote>
+<p>出现下图文字, 代表安装成功</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190436359.png"></p>
+<blockquote>
+<p>重启虚拟机, 显存不够的话可能渲染不出来</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317192159253.png"></p>
+<h2 id="配置优化项"><a href="#配置优化项" class="headerlink" title="配置优化项"></a>配置优化项</h2><h3 id="全局设置虚拟机安装路径"><a href="#全局设置虚拟机安装路径" class="headerlink" title="全局设置虚拟机安装路径"></a>全局设置虚拟机安装路径</h3><blockquote>
+<p>打开全局设置</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171608418.png"></p>
+<blockquote>
+<p>选择合适的路径，点击 <code>确定</code> 即可。💡 不建议装在 C 盘，当然电脑未分区的除外</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171714346.png"></p>
+<blockquote>
+<p>再次新建虚拟机，默认安装路径就变成刚刚设置的了</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171935263.png"></p>
+<h3 id="更改主机组合键"><a href="#更改主机组合键" class="headerlink" title="更改主机组合键"></a>更改主机组合键</h3><p>有一些小伙伴应该使用过 VmWare，VM 如果想要将鼠标从虚拟机移除到主集，需要按住 <code>Ctrl + Alt</code> 键，而 Virtualbox 则默认是 <code>右Ctrl</code> 键，不过我们可以做出更改</p>
+<blockquote>
+<p>打开全局设定</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171608418.png"></p>
+<blockquote>
+<p>选择左侧热键</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172453962.png"></p>
+<blockquote>
+<p>点击虚拟电脑</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172518434.png"></p>
+<blockquote>
+<p>更改此处的主机组合键，点击确定即可</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172549673.png"></p>
+<h2 id="常见问题及解决办法"><a href="#常见问题及解决办法" class="headerlink" title="常见问题及解决办法"></a>常见问题及解决办法</h2><h3 id="启动报错：E-FAIL-0X80004005"><a href="#启动报错：E-FAIL-0X80004005" class="headerlink" title="启动报错：E_FAIL (0X80004005)"></a>启动报错：E_FAIL (0X80004005)</h3><blockquote>
+<p>Q：启动报错</p>
+</blockquote>
+<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165234379.png"></p>
+<blockquote>
+<p>排查过程</p>
+</blockquote>
+<ul>
+<li>根据提示，查看相关日志<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165348661.png"></li>
+<li>跟踪日志异常，发现加载驱动的路径书写有误<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165507853.png"></li>
+<li>从官网查阅相关问题的解决方案：<a href="https://forums.virtualbox.org/viewtopic.php?t=108749">VM 无法启动 rc&#x3D;126 强化 VBoxRT.dll enmWhat&#x3D;4 - virtualbox.org</a></li>
+</ul>
+<blockquote>
+<p>解决步骤：</p>
+</blockquote>
+<ul>
+<li>下载方案中涉及的工具：<a href="https://www.wireshark.org/download.html">Wireshark · Download</a><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171132103.png"></li>
+<li>下载完成，右键以管理员运行，一路 <code>next</code> 即可，也可以更换安装路径以安装<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171339572.png"></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
+        <tag>工具/virtualbox</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker安装kafka集群</title>
     <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
     <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
@@ -4509,6 +4654,127 @@
       <tags>
         <tag>数据/kafka</tag>
         <tag>运维/docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PGSQL基本概念</title>
+    <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<blockquote>
+<p>本文用生活中常见的比喻帮你梳理 <strong>PostgreSQL 的核心概念</strong>，保证通俗易懂。👇</p>
+</blockquote>
+<h2 id="数据库（Database）-→-仓库"><a href="#数据库（Database）-→-仓库" class="headerlink" title="数据库（Database） → 仓库"></a>数据库（Database） → 仓库</h2><ul>
+<li><p><strong>是什么</strong>：一个独立的仓库，存放所有数据。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>完全隔离：不同仓库之间不能直接拿对方的货物（除非特殊操作）。</li>
+<li>仓库名示例：<code>订单库</code>、<code>用户库</code>、<code>日志库</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 订单库;   <span class="comment">-- 建一个仓库</span></span><br><span class="line"><span class="keyword">DROP</span> DATABASE 订单库;     <span class="comment">-- 拆掉仓库（慎用！）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="模式（Schema）-→-货架"><a href="#模式（Schema）-→-货架" class="headerlink" title="模式（Schema） → 货架"></a>模式（Schema） → 货架</h2><ul>
+<li><p><strong>是什么</strong>：仓库里的货架，用来分类存放货物。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>逻辑分区：一个仓库可以有多个货架（如 <code>公共货架</code>、<code>VIP货架</code>）。</li>
+<li>默认货架：<code>public</code>（如果没指定货架，默认放这里）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SCHEMA VIP货架;          <span class="comment">-- 新建货架 </span></span><br><span class="line"><span class="keyword">SET</span> search_path <span class="keyword">TO</span> VIP货架;     <span class="comment">-- 告诉仓库员：“以后默认找这个货架” 该值</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>补充</strong><br>PGSQL 的环境变量中包含一个 <code>search_path</code> 参数，<code>search_path</code> 路径中的第一个模式被称为 <code>current schema</code> 该值通常为 <code>&quot;$user&quot;,public</code> 代表先从和用户名一致的货架下查询，该货架查询不到，则查询公共货架 <code>public</code></p>
+</li>
+</ul>
+<h2 id="用户（User）-→-仓库管理员"><a href="#用户（User）-→-仓库管理员" class="headerlink" title="用户（User） → 仓库管理员"></a>用户（User） → 仓库管理员</h2><ul>
+<li><p><strong>是什么</strong>：管理仓库的人，不同管理员有不同的钥匙和权限。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>权限分级：有的能进货（写数据），有的只能查库存（读数据）。</li>
+<li>用户示例：<code>老板</code>、<code>库管员</code>、<code>财务员</code>。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> 库管员 <span class="keyword">WITH</span> PASSWORD <span class="string">&#x27;123&#x27;</span>;  <span class="comment">-- 招个新管理员 </span></span><br><span class="line"><span class="keyword">GRANT</span> 进货权限 <span class="keyword">TO</span> 库管员;                <span class="comment">-- 给权限</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="表（Table）-→-储物箱"><a href="#表（Table）-→-储物箱" class="headerlink" title="表（Table） → 储物箱"></a>表（Table） → 储物箱</h2><ul>
+<li><p><strong>是什么</strong>：货架上的储物箱，存放具体货物（数据）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>结构化：每个箱子有固定格子（字段），比如 <code>订单表</code> 包含 <code>订单号</code>、<code>金额</code> 等字段。</li>
+<li>唯一性：同一个货架下不能有同名箱子（但不同货架可以）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 订单表 (订单号 <span class="type">INT</span>, 金额 <span class="type">DECIMAL</span>);  <span class="comment">-- 造个箱子 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 订单表 <span class="keyword">VALUES</span> (<span class="number">1001</span>, <span class="number">99.9</span>);         <span class="comment">-- 往箱子里放货物</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="角色（Role）-→-工作证"><a href="#角色（Role）-→-工作证" class="headerlink" title="角色（Role） → 工作证"></a>角色（Role） → 工作证</h2><ul>
+<li><p><strong>是什么</strong>：一种身份标签，可以批量分配权限（类似公司里的“职位”）。</p>
+</li>
+<li><p><strong>特点</strong>：</p>
+<ul>
+<li>继承性：一个角色可以有多个权限，用户戴上这个角色就能获得权限。</li>
+<li>示例角色：<code>开发角色</code>（能建表、删表）、<code>只读角色</code>（仅查询）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> ROLE 只读角色;                     <span class="comment">-- 定义职位 </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> <span class="keyword">ALL</span> TABLES <span class="keyword">TO</span> 只读角色;   <span class="comment">-- 给职位配权限 </span></span><br><span class="line"><span class="keyword">GRANT</span> 只读角色 <span class="keyword">TO</span> 财务员;                 <span class="comment">-- 给用户分配职位</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="权限（Privileges）-→-钥匙"><a href="#权限（Privileges）-→-钥匙" class="headerlink" title="权限（Privileges） → 钥匙"></a>权限（Privileges） → 钥匙</h2><ul>
+<li><p><strong>是什么</strong>：控制谁能做什么（比如开门、拿货、整理货架）。</p>
+</li>
+<li><p><strong>常见钥匙</strong>：</p>
+<ul>
+<li><code>SELECT</code>：查看货物（读数据）。</li>
+<li><code>INSERT</code>：放新货物（写数据）。</li>
+<li><code>DELETE</code>：扔货物（删数据）。</li>
+<li><code>UPDATE</code>：改货物（改数据）。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 给钥匙：“允许财务员查订单表” </span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 订单表 <span class="keyword">TO</span> 财务员;</span><br><span class="line"><span class="comment">-- 收回钥匙：“库管员不能删订单”</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> 订单表 <span class="keyword">FROM</span> 库管员;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="扩展（Extensions）-→-工具包"><a href="#扩展（Extensions）-→-工具包" class="headerlink" title="扩展（Extensions） → 工具包"></a>扩展（Extensions） → 工具包</h2><ul>
+<li><p><strong>是什么</strong>：给仓库增加功能的插件（比如装个监控摄像头、自动分拣机）。</p>
+</li>
+<li><p><strong>常见扩展</strong>：</p>
+<ul>
+<li><code>PostGIS</code>：地理数据处理。</li>
+<li><code>pgcrypto</code>：数据加密。</li>
+</ul>
+</li>
+<li><p><strong>操作</strong>：</p>
+  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> EXTENSION pgcrypto;  <span class="comment">-- 安装加密工具包</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="连接信息（JDBC-URL）-→-仓库地址"><a href="#连接信息（JDBC-URL）-→-仓库地址" class="headerlink" title="连接信息（JDBC URL） → 仓库地址"></a>连接信息（JDBC URL） → 仓库地址</h2><ul>
+<li><p><strong>示例</strong>：</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url=&quot;jdbc:postgresql://IP地址:端口/仓库名?currentSchema=默认货架&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>拆解</strong>：</p>
+<ul>
+<li><code>IP地址:端口</code>：仓库位置（如 <code>172.172.100.5:5432</code>）。</li>
+<li><code>仓库名</code>：进哪个仓库（如 <code>订单库</code>）。</li>
+<li><code>currentSchema</code>：默认找哪个货架（如 <code>VIP货架</code>）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结关系图"><a href="#总结关系图" class="headerlink" title="总结关系图"></a>总结关系图</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">仓库（Database） </span><br><span class="line">│</span><br><span class="line">├── 管理员（User） → 用钥匙（权限）管理 </span><br><span class="line">│ </span><br><span class="line">├── 货架（Schema） → 分类放储物箱（表） </span><br><span class="line">│ </span><br><span class="line">├── 公共货架（public） </span><br><span class="line">	│ </span><br><span class="line">	└── VIP货架 </span><br><span class="line">	│ </span><br><span class="line">	└── 订单表（Table） </span><br><span class="line">│ </span><br><span class="line">└── 工具包（Extensions） → 增强功能</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见误区"><a href="#常见误区" class="headerlink" title="常见误区"></a>常见误区</h2><ol>
+<li><strong>误区</strong>：仓库名（如 <code>订单库</code>）就是货架名。 <strong>正解</strong>：仓库名和货架名是独立的，默认货架是 <code>public</code>。</li>
+<li><strong>误区</strong>：管理员（用户）自动拥有同名货架。 <strong>正解</strong>：需要手动建货架并授权（如 <code>CREATE SCHEMA AUTHORIZATION 库管员</code>）。</li>
+<li><strong>误区</strong>：不同仓库的货架可以重名。 <strong>正解</strong>：货架名只在当前仓库内有效，不同仓库互不影响。</li>
+</ol>
+<p>希望这个比喻让你对 PostgreSQL 的核心概念一目了然！ 😊</p>
+]]></content>
+      <tags>
+        <tag>数据</tag>
+        <tag>数据/数据库</tag>
       </tags>
   </entry>
   <entry>
@@ -5311,269 +5577,33 @@
       </tags>
   </entry>
   <entry>
-    <title>Virtualbox7安装及使用详细步骤</title>
-    <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
-    <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
-<p>Virtualbox 软件安装包 <a href="https://www.virtualbox.org/wiki/Downloads">Downloads – Oracle VM VirtualBox</a></p>
+    <title>如何避免代码的深层嵌套</title>
+    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
+    <content><![CDATA[<blockquote>
+<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
 </blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317145609332.png"></p>
-<blockquote>
-<p>centerOS7 镜像 <a href="http://mirrors.aliyun.com/centos/7/isos/x86_64/">centos-7-isos-x86_64 安装包下载_开源镜像站-阿里云 (aliyun.com)</a></p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317145815189.png"></p>
-<h2 id="安装-Virtualbox"><a href="#安装-Virtualbox" class="headerlink" title="安装 Virtualbox"></a>安装 Virtualbox</h2><blockquote>
-<p>使用管理员身份运行 VirtualBox-7.0.14-161095-Win.exe</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317150126977.png"></p>
-<blockquote>
-<p>进入向导界面, 点击下一步</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004204897.png"></p>
-<blockquote>
-<p>点击 <code>浏览</code> 按钮，自定义安装路径，点击下一步</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004229962.png"></p>
-<blockquote>
-<p>此时会出现警告，这是由于安装时会增加虚拟网卡，属于正常现象，点击按钮 <code>是</code> 即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004306436.png"></p>
-<blockquote>
-<p>点击安装</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004325481.png"></p>
-<blockquote>
-<p>稍等片刻即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004414548.png"></p>
-<blockquote>
-<p>点击完成，此时会自动打开</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323004445886.png"></p>
-<h2 id="创建虚拟电脑"><a href="#创建虚拟电脑" class="headerlink" title="创建虚拟电脑"></a>创建虚拟电脑</h2><blockquote>
-<p>在欢迎页点击新建</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172127494.png"></p>
-<blockquote>
-<p>切换为专家模式</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172308301.png"></p>
-<blockquote>
-<p>填写虚拟电脑名称和系统类型, 参照下图, 名称和文件夹可以按需填写</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172429508.png"></p>
-<blockquote>
-<p>分配硬件信息, 我这分配的运存为 4G, 4 个处理器,可以按照自己的电脑实际情况填写</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172634529.png"></p>
-<blockquote>
-<p>分配 50GB 的硬盘, 可以按需分配, 不要勾选 <code>预先分配全部空间</code>, 点击完成即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317172830316.png"></p>
-<h2 id="配置电脑相关信息"><a href="#配置电脑相关信息" class="headerlink" title="配置电脑相关信息"></a>配置电脑相关信息</h2><blockquote>
-<p>右键新建的虚拟机，弹窗选项面板，点击设置</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321102313647.png"></p>
-<blockquote>
-<p>设置常规选项卡, 开启共享剪切板功能</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173209083.png"></p>
-<blockquote>
-<p>显示选项卡, 拉满显存大小</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173425672.png"></p>
-<blockquote>
-<p>选择启动映像, 即之前下载的 centos7 的 iso 文件</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173649026.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173722706.png"></p>
-<blockquote>
-<p>网络选项卡，链接方式设置为桥接网卡</p>
-</blockquote>
-<p>此处不推荐使用 NAT 网络的原因是由于, virtualBox 的 NAT 网络下, 主机无法访问虚拟机, 虽然会占用真实的 IP, 不过个人学习使用的话地址满够分配的</p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317173824260.png"></p>
-<blockquote>
-<p>关于网卡名称的选择：</p>
-</blockquote>
-<p>查看当前使用的网卡名称：<code>设置</code> -&gt; <code>网络和Internet</code> -&gt; <code>属性</code> -&gt; <code>描述</code>，或者使用下图中的 gif 方式作为参考</p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/recording%201.gif"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240323002631131.png"></p>
-<blockquote>
-<p>设置完毕, 点击确定, 启动虚拟机</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174153258.png"></p>
-<h2 id="安装-Centeros7"><a href="#安装-Centeros7" class="headerlink" title="安装 Centeros7"></a>安装 Centeros7</h2><blockquote>
-<p>加电启动虚拟机之后, 显示系统安装界面，启动时可能会出现一些问题，解决方法参考文章末尾</p>
-</blockquote>
-<p>通过键盘的 <code>↑</code> 和 <code>↓</code> 键选择安装选项, <code>Enter</code> 回车键确认, 下方红框内的代表为直接安装和先检测后安装, 选择哪个都可以</p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174515009.png"></p>
-<blockquote>
-<p>选择语言</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317174821200.png"></p>
-<blockquote>
-<p>设置软件选择, 基本环境选择 <code>GHOME桌面</code>, 附加选项勾选 <code>开发环境和安全性工具</code></p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175037865.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175107836.png"></p>
-<blockquote>
-<p>配置分区, 设置为手动分区</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175257462.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175318593.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317175359893.png"></p>
-<blockquote>
-<p>点击下图 <code>＋</code> 号, 开始添加分区, 分区建议参考 <a href="https://blog.csdn.net/weixin_39206909/article/details/120231440">CentOS7 手动磁盘分区详解_centos7 分区-CSDN 博客</a></p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/recording.gif"></p>
-<table>
-<thead>
-<tr>
-<th>分区类型</th>
-<th>分区大小</th>
-<th>设备类型</th>
-<th>文件系统</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x2F;boot</td>
-<td>1G</td>
-<td>标准分区</td>
-<td>ext-4</td>
-<td>系统启动时的引导分区</td>
-</tr>
-<tr>
-<td>swap</td>
-<td>4G</td>
-<td>标准分区</td>
-<td>swap</td>
-<td>和自己的运存大小一致即可</td>
-</tr>
-<tr>
-<td>&#x2F;</td>
-<td>45G</td>
-<td>标准分区</td>
-<td>ext-4</td>
-<td>剩余的全部硬盘容量</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>确认进行分区</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317180901204.png"></p>
-<blockquote>
-<p>设置网络和主机名</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181007501.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181709608.png"></p>
-<blockquote>
-<p>点击开始安装, 安装期间设置 Root 密码和创建用户即可, 参照下图, 如果密码过于简单需要按两次完成按钮</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181803113.png"></p>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317181911658.png"></p>
-<blockquote>
-<p>安装完成, 点击重启即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317182529974.png"></p>
-<h2 id="Centeros-初始化配置"><a href="#Centeros-初始化配置" class="headerlink" title="Centeros 初始化配置"></a>Centeros 初始化配置</h2><blockquote>
-<p>接受许可证,完成配置</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185126489.png"></p>
-<blockquote>
-<p>输入账号密码, 进入系统</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185200374.png"></p>
-<blockquote>
-<p>测试网络状况, 右键桌面, 打开终端</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185352405.png"></p>
-<blockquote>
-<p>ping 百度</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
+<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185445969.png"></p>
-<h2 id="安装增强功能"><a href="#安装增强功能" class="headerlink" title="安装增强功能"></a>安装增强功能</h2><p>Virtualbox 在不安装增强功能扩展的情况下, 无法自适应分辨率和共享剪切板等操作, 下面为如何安装增强功能扩展</p>
-<blockquote>
-<p>安装 perl</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install perl</span><br></pre></td></tr></table></figure>
+<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317185930677.png"></p>
-<blockquote>
-<p>安装 elfutils-libelf-devel</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install elfutils-libelf-devel</span><br></pre></td></tr></table></figure>
+<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190021805.png"></p>
-<blockquote>
-<p>点击安装增强功能</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190212133.png"></p>
-<blockquote>
-<p>点击运行增强功能的 iso 文件</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190250576.png"></p>
-<blockquote>
-<p>出现下图文字, 代表安装成功</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317190436359.png"></p>
-<blockquote>
-<p>重启虚拟机, 显存不够的话可能渲染不出来</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240317192159253.png"></p>
-<h2 id="配置优化项"><a href="#配置优化项" class="headerlink" title="配置优化项"></a>配置优化项</h2><h3 id="全局设置虚拟机安装路径"><a href="#全局设置虚拟机安装路径" class="headerlink" title="全局设置虚拟机安装路径"></a>全局设置虚拟机安装路径</h3><blockquote>
-<p>打开全局设置</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171608418.png"></p>
-<blockquote>
-<p>选择合适的路径，点击 <code>确定</code> 即可。💡 不建议装在 C 盘，当然电脑未分区的除外</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171714346.png"></p>
-<blockquote>
-<p>再次新建虚拟机，默认安装路径就变成刚刚设置的了</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171935263.png"></p>
-<h3 id="更改主机组合键"><a href="#更改主机组合键" class="headerlink" title="更改主机组合键"></a>更改主机组合键</h3><p>有一些小伙伴应该使用过 VmWare，VM 如果想要将鼠标从虚拟机移除到主集，需要按住 <code>Ctrl + Alt</code> 键，而 Virtualbox 则默认是 <code>右Ctrl</code> 键，不过我们可以做出更改</p>
-<blockquote>
-<p>打开全局设定</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171608418.png"></p>
-<blockquote>
-<p>选择左侧热键</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172453962.png"></p>
-<blockquote>
-<p>点击虚拟电脑</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172518434.png"></p>
-<blockquote>
-<p>更改此处的主机组合键，点击确定即可</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321172549673.png"></p>
-<h2 id="常见问题及解决办法"><a href="#常见问题及解决办法" class="headerlink" title="常见问题及解决办法"></a>常见问题及解决办法</h2><h3 id="启动报错：E-FAIL-0X80004005"><a href="#启动报错：E-FAIL-0X80004005" class="headerlink" title="启动报错：E_FAIL (0X80004005)"></a>启动报错：E_FAIL (0X80004005)</h3><blockquote>
-<p>Q：启动报错</p>
-</blockquote>
-<p><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165234379.png"></p>
-<blockquote>
-<p>排查过程</p>
-</blockquote>
-<ul>
-<li>根据提示，查看相关日志<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165348661.png"></li>
-<li>跟踪日志异常，发现加载驱动的路径书写有误<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321165507853.png"></li>
-<li>从官网查阅相关问题的解决方案：<a href="https://forums.virtualbox.org/viewtopic.php?t=108749">VM 无法启动 rc&#x3D;126 强化 VBoxRT.dll enmWhat&#x3D;4 - virtualbox.org</a></li>
-</ul>
-<blockquote>
-<p>解决步骤：</p>
-</blockquote>
-<ul>
-<li>下载方案中涉及的工具：<a href="https://www.wireshark.org/download.html">Wireshark · Download</a><img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171132103.png"></li>
-<li>下载完成，右键以管理员运行，一路 <code>next</code> 即可，也可以更换安装路径以安装<img src="/assets/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/image-20240321171339572.png"></li>
-</ul>
+<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
 ]]></content>
       <tags>
-        <tag>运维/linux</tag>
-        <tag>工具/virtualbox</tag>
+        <tag>代码/优化</tag>
       </tags>
   </entry>
   <entry>
@@ -5634,36 +5664,6 @@
 <p>发布它，分享它，收集反馈，然后改进它。</p>
 <p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>如何避免代码的深层嵌套</title>
-    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
-    <content><![CDATA[<blockquote>
-<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
-</blockquote>
-<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
-]]></content>
-      <tags>
-        <tag>代码/优化</tag>
-      </tags>
   </entry>
   <entry>
     <title>java-nosuchmethoderror-varargs-jar-version-mismatch</title>
@@ -6040,71 +6040,6 @@
       </tags>
   </entry>
   <entry>
-    <title>若依系统生产环境图片不显示问题解决方案</title>
-    <url>/2025/10/22/archive/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在若依 (RuoYi) 系统部署到生产环境后，经常遇到图片无法显示的问题。这通常是由于 Nginx 配置中静态资源处理规则冲突导致的。</p>
-<h3 id="根本原因分析"><a href="#根本原因分析" class="headerlink" title="根本原因分析"></a>根本原因分析</h3><p>问题主要出现在 Nginx 配置中的静态资源缓存规则与若依系统的资源路径存在冲突：</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 这些通用规则会拦截所有图片和静态资源请求</span></span><br><span class="line"><span class="section">location</span> <span class="regexp">~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span> &#123;</span><br><span class="line">     <span class="attribute">expires</span>      <span class="number">30d</span>;</span><br><span class="line">     <span class="attribute">error_log</span> <span class="literal">off</span>;</span><br><span class="line">     <span class="attribute">access_log</span> /dev/null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="方案一：后端资源代理（推荐用于开发环境）"><a href="#方案一：后端资源代理（推荐用于开发环境）" class="headerlink" title="方案一：后端资源代理（推荐用于开发环境）"></a>方案一：后端资源代理（推荐用于开发环境）</h3><p>通过 Nginx 将静态资源请求代理到后端 Spring Boot 应用：</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> /profile/ &#123;</span><br><span class="line">    <span class="attribute">client_max_body_size</span> <span class="number">10000m</span>;  <span class="comment"># 支持大文件上传</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8088/profile/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>适用场景</strong>：</p>
-<ul>
-<li>开发测试环境</li>
-<li>资源文件存储在后端应用服务器</li>
-<li>需要统一通过应用服务器管理资源</li>
-</ul>
-<h3 id="方案二：Nginx-直接服务静态文件（推荐用于生产环境）"><a href="#方案二：Nginx-直接服务静态文件（推荐用于生产环境）" class="headerlink" title="方案二：Nginx 直接服务静态文件（推荐用于生产环境）"></a>方案二：Nginx 直接服务静态文件（推荐用于生产环境）</h3><p>使用 Nginx 的 <code>alias</code> 指令直接提供静态文件服务：</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> /profile/ &#123;</span><br><span class="line">    <span class="attribute">alias</span> /home/admin/app/attachments/;  <span class="comment"># 确保路径与 application.yml 中的 profile 配置一致</span></span><br><span class="line">    <span class="attribute">autoindex</span> <span class="literal">off</span>;  <span class="comment"># 禁止目录浏览</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>优势</strong>：</p>
-<ul>
-<li>性能更高，减少后端压力</li>
-<li>静态文件由 Web 服务器直接处理</li>
-<li>更好的缓存控制</li>
-</ul>
-<h2 id="关键配置步骤"><a href="#关键配置步骤" class="headerlink" title="关键配置步骤"></a>关键配置步骤</h2><h3 id="1-注释冲突的静态资源规则"><a href="#1-注释冲突的静态资源规则" class="headerlink" title="1. 注释冲突的静态资源规则"></a>1. 注释冲突的静态资源规则</h3><p>在 Nginx 配置中注释或删除以下冲突规则：</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 注释掉这些通用静态资源规则</span></span><br><span class="line"><span class="comment"># location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</span></span><br><span class="line"><span class="comment">#      expires      30d;</span></span><br><span class="line"><span class="comment">#      error_log off;</span></span><br><span class="line"><span class="comment">#      access_log /dev/null;</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># location ~ .*\.(js|css)?$ &#123;</span></span><br><span class="line"><span class="comment">#      expires      12h;</span></span><br><span class="line"><span class="comment">#      error_log off;</span></span><br><span class="line"><span class="comment">#      access_log /dev/null; </span></span><br><span class="line"><span class="comment"># &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-验证目录权限"><a href="#2-验证目录权限" class="headerlink" title="2. 验证目录权限"></a>2. 验证目录权限</h3><p>确保 Nginx 用户对静态资源目录有读取权限：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查目录是否存在</span></span><br><span class="line"><span class="built_in">ls</span> -la /home/admin/app/attachments/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改目录权限（如果需要）</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/admin/app/attachments/</span><br><span class="line"><span class="built_in">chown</span> -R nginx:nginx /home/admin/app/attachments/</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-检查若依配置"><a href="#3-检查若依配置" class="headerlink" title="3. 检查若依配置"></a>3. 检查若依配置</h3><p>确认 <code>application.yml</code> 中的文件存储路径与 Nginx 配置一致：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># application.yml</span></span><br><span class="line"><span class="attr">file:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">/home/admin/app/attachments/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="完整生产环境配置示例"><a href="#完整生产环境配置示例" class="headerlink" title="完整生产环境配置示例"></a>完整生产环境配置示例</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> your-domain.com;</span><br><span class="line">    <span class="attribute">root</span> /www/wwwroot/your-domain.com;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># API 代理配置</span></span><br><span class="line">    <span class="section">location</span> /prod-api/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8080/;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="attribute">proxy_connect_timeout</span> <span class="number">30s</span>;</span><br><span class="line">        <span class="attribute">proxy_send_timeout</span> <span class="number">30s</span>;</span><br><span class="line">        <span class="attribute">proxy_read_timeout</span> <span class="number">30s</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 静态资源配置 - 方案二（生产环境推荐）</span></span><br><span class="line">    <span class="section">location</span> /profile/ &#123;</span><br><span class="line">        <span class="attribute">alias</span> /home/admin/app/attachments/;</span><br><span class="line">        <span class="attribute">autoindex</span> <span class="literal">off</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 可选的缓存设置</span></span><br><span class="line">        <span class="attribute">expires</span> <span class="number">30d</span>;</span><br><span class="line">        <span class="attribute">add_header</span> Cache-Control <span class="string">&quot;public, immutable&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 安全配置</span></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ ^/(\.user.ini|\.htaccess|\.git|\.env|\.svn|\.project|LICENSE|README.md)</span> &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">404</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># SSL 证书验证</span></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ \.well-known</span> &#123;</span><br><span class="line">        <span class="attribute">allow</span> all;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">access_log</span> /www/wwwlogs/your-domain.com.log;</span><br><span class="line">    <span class="attribute">error_log</span> /www/wwwlogs/your-domain.com.<span class="literal">error</span>.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="故障排查清单"><a href="#故障排查清单" class="headerlink" title="故障排查清单"></a>故障排查清单</h2><ol>
-<li><p><strong>检查 Nginx 配置语法</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>重新加载 Nginx 配置</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>查看 Nginx 错误日志</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> -f /www/wwwlogs/your-domain.com.error.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>验证文件路径权限</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -la /home/admin/app/attachments/upload/image/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>测试静态资源访问</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -I http://your-domain.com/profile/upload/image/test.jpg</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="最佳实践建议"><a href="#最佳实践建议" class="headerlink" title="最佳实践建议"></a>最佳实践建议</h2><ol>
-<li><strong>生产环境优先使用方案二</strong>（Nginx 直接服务静态文件）</li>
-<li><strong>保持路径一致性</strong>：确保 Nginx 配置与 Spring Boot 配置中的路径完全一致</li>
-<li><strong>定期检查权限</strong>：部署更新后验证文件目录权限</li>
-<li><strong>配置适当的缓存策略</strong>：对静态资源设置合理的过期时间</li>
-<li><strong>监控日志文件</strong>：定期检查 Nginx 错误日志以发现潜在问题</li>
-</ol>
-<p>通过以上配置和排查步骤，可以有效解决若依系统在生产环境中图片不显示的问题。</p>
-]]></content>
-      <tags>
-        <tag>工具/nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>线程的几种状态</title>
     <url>/2025/05/26/archive/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<pre><code class="highlight mermaid">mindmap
@@ -6312,13 +6247,78 @@
       </tags>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
+    <title>若依系统生产环境图片不显示问题解决方案</title>
+    <url>/2025/10/22/archive/%E8%8B%A5%E4%BE%9D%E7%B3%BB%E7%BB%9F%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在若依 (RuoYi) 系统部署到生产环境后，经常遇到图片无法显示的问题。这通常是由于 Nginx 配置中静态资源处理规则冲突导致的。</p>
+<h3 id="根本原因分析"><a href="#根本原因分析" class="headerlink" title="根本原因分析"></a>根本原因分析</h3><p>问题主要出现在 Nginx 配置中的静态资源缓存规则与若依系统的资源路径存在冲突：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 这些通用规则会拦截所有图片和静态资源请求</span></span><br><span class="line"><span class="section">location</span> <span class="regexp">~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span> &#123;</span><br><span class="line">     <span class="attribute">expires</span>      <span class="number">30d</span>;</span><br><span class="line">     <span class="attribute">error_log</span> <span class="literal">off</span>;</span><br><span class="line">     <span class="attribute">access_log</span> /dev/null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="方案一：后端资源代理（推荐用于开发环境）"><a href="#方案一：后端资源代理（推荐用于开发环境）" class="headerlink" title="方案一：后端资源代理（推荐用于开发环境）"></a>方案一：后端资源代理（推荐用于开发环境）</h3><p>通过 Nginx 将静态资源请求代理到后端 Spring Boot 应用：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> /profile/ &#123;</span><br><span class="line">    <span class="attribute">client_max_body_size</span> <span class="number">10000m</span>;  <span class="comment"># 支持大文件上传</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8088/profile/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li>开发测试环境</li>
+<li>资源文件存储在后端应用服务器</li>
+<li>需要统一通过应用服务器管理资源</li>
+</ul>
+<h3 id="方案二：Nginx-直接服务静态文件（推荐用于生产环境）"><a href="#方案二：Nginx-直接服务静态文件（推荐用于生产环境）" class="headerlink" title="方案二：Nginx 直接服务静态文件（推荐用于生产环境）"></a>方案二：Nginx 直接服务静态文件（推荐用于生产环境）</h3><p>使用 Nginx 的 <code>alias</code> 指令直接提供静态文件服务：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">location</span> /profile/ &#123;</span><br><span class="line">    <span class="attribute">alias</span> /home/admin/app/attachments/;  <span class="comment"># 确保路径与 application.yml 中的 profile 配置一致</span></span><br><span class="line">    <span class="attribute">autoindex</span> <span class="literal">off</span>;  <span class="comment"># 禁止目录浏览</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优势</strong>：</p>
+<ul>
+<li>性能更高，减少后端压力</li>
+<li>静态文件由 Web 服务器直接处理</li>
+<li>更好的缓存控制</li>
+</ul>
+<h2 id="关键配置步骤"><a href="#关键配置步骤" class="headerlink" title="关键配置步骤"></a>关键配置步骤</h2><h3 id="1-注释冲突的静态资源规则"><a href="#1-注释冲突的静态资源规则" class="headerlink" title="1. 注释冲突的静态资源规则"></a>1. 注释冲突的静态资源规则</h3><p>在 Nginx 配置中注释或删除以下冲突规则：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 注释掉这些通用静态资源规则</span></span><br><span class="line"><span class="comment"># location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</span></span><br><span class="line"><span class="comment">#      expires      30d;</span></span><br><span class="line"><span class="comment">#      error_log off;</span></span><br><span class="line"><span class="comment">#      access_log /dev/null;</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># location ~ .*\.(js|css)?$ &#123;</span></span><br><span class="line"><span class="comment">#      expires      12h;</span></span><br><span class="line"><span class="comment">#      error_log off;</span></span><br><span class="line"><span class="comment">#      access_log /dev/null; </span></span><br><span class="line"><span class="comment"># &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-验证目录权限"><a href="#2-验证目录权限" class="headerlink" title="2. 验证目录权限"></a>2. 验证目录权限</h3><p>确保 Nginx 用户对静态资源目录有读取权限：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查目录是否存在</span></span><br><span class="line"><span class="built_in">ls</span> -la /home/admin/app/attachments/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改目录权限（如果需要）</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 /home/admin/app/attachments/</span><br><span class="line"><span class="built_in">chown</span> -R nginx:nginx /home/admin/app/attachments/</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-检查若依配置"><a href="#3-检查若依配置" class="headerlink" title="3. 检查若依配置"></a>3. 检查若依配置</h3><p>确认 <code>application.yml</code> 中的文件存储路径与 Nginx 配置一致：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># application.yml</span></span><br><span class="line"><span class="attr">file:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">/home/admin/app/attachments/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="完整生产环境配置示例"><a href="#完整生产环境配置示例" class="headerlink" title="完整生产环境配置示例"></a>完整生产环境配置示例</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> your-domain.com;</span><br><span class="line">    <span class="attribute">root</span> /www/wwwroot/your-domain.com;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># API 代理配置</span></span><br><span class="line">    <span class="section">location</span> /prod-api/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8080/;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="attribute">proxy_connect_timeout</span> <span class="number">30s</span>;</span><br><span class="line">        <span class="attribute">proxy_send_timeout</span> <span class="number">30s</span>;</span><br><span class="line">        <span class="attribute">proxy_read_timeout</span> <span class="number">30s</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 静态资源配置 - 方案二（生产环境推荐）</span></span><br><span class="line">    <span class="section">location</span> /profile/ &#123;</span><br><span class="line">        <span class="attribute">alias</span> /home/admin/app/attachments/;</span><br><span class="line">        <span class="attribute">autoindex</span> <span class="literal">off</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 可选的缓存设置</span></span><br><span class="line">        <span class="attribute">expires</span> <span class="number">30d</span>;</span><br><span class="line">        <span class="attribute">add_header</span> Cache-Control <span class="string">&quot;public, immutable&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 安全配置</span></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ ^/(\.user.ini|\.htaccess|\.git|\.env|\.svn|\.project|LICENSE|README.md)</span> &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">404</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># SSL 证书验证</span></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ \.well-known</span> &#123;</span><br><span class="line">        <span class="attribute">allow</span> all;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">access_log</span> /www/wwwlogs/your-domain.com.log;</span><br><span class="line">    <span class="attribute">error_log</span> /www/wwwlogs/your-domain.com.<span class="literal">error</span>.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="故障排查清单"><a href="#故障排查清单" class="headerlink" title="故障排查清单"></a>故障排查清单</h2><ol>
+<li><p><strong>检查 Nginx 配置语法</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重新加载 Nginx 配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看 Nginx 错误日志</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tail</span> -f /www/wwwlogs/your-domain.com.error.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>验证文件路径权限</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -la /home/admin/app/attachments/upload/image/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>测试静态资源访问</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -I http://your-domain.com/profile/upload/image/test.jpg</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="最佳实践建议"><a href="#最佳实践建议" class="headerlink" title="最佳实践建议"></a>最佳实践建议</h2><ol>
+<li><strong>生产环境优先使用方案二</strong>（Nginx 直接服务静态文件）</li>
+<li><strong>保持路径一致性</strong>：确保 Nginx 配置与 Spring Boot 配置中的路径完全一致</li>
+<li><strong>定期检查权限</strong>：部署更新后验证文件目录权限</li>
+<li><strong>配置适当的缓存策略</strong>：对静态资源设置合理的过期时间</li>
+<li><strong>监控日志文件</strong>：定期检查 Nginx 错误日志以发现潜在问题</li>
+</ol>
+<p>通过以上配置和排查步骤，可以有效解决若依系统在生产环境中图片不显示的问题。</p>
+]]></content>
+      <tags>
+        <tag>工具/nginx</tag>
+      </tags>
   </entry>
   <entry>
     <title>友情链接</title>
     <url>/link/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
