@@ -194,6 +194,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Git Worktree 常用命令</title>
+    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
+<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
+<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
+<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
+<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
+<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
+]]></content>
+      <tags>
+        <tag>工具/git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker小册</title>
     <url>/2024/12/09/archive/Docker%E5%B0%8F%E5%86%8C/</url>
     <content><![CDATA[<h2 id="Docker-简介"><a href="#Docker-简介" class="headerlink" title="Docker 简介"></a>Docker 简介</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>Docker 是一种开源的容器化平台，可以让开发者打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是一种轻量级、独立、可执行的软件包，包含了运行一个应用所需的所有内容：代码、运行时环境、系统工具、系统库等。Docker 可以让开发者快速地构建、测试和部署应用程序，而无需担心跨环境的兼容性问题。</p>
@@ -1227,32 +1253,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git Worktree 常用命令</title>
-    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
-<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
-<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
-<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
-<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
-<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
-]]></content>
-      <tags>
-        <tag>工具/git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTPS 证书到底是什么？</title>
     <url>/2026/05/20/archive/HTTPS%20%E8%AF%81%E4%B9%A6%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
     <content><![CDATA[<blockquote>
@@ -1922,62 +1922,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux 卸载openjdk 安装oraclejdk</title>
-    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
-    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
-<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
-<p>如果有项目在运行，请先停止项目</p>
-</blockquote>
-<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
-<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
-<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
-<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
-<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
-<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
-<p>上传到 opt 路径下</p>
-</blockquote>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
-<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
-<p>安装路径不做要求，因此文件夹也不做要求</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
-<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
-<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
-
-<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 导入 Java 证书教程</title>
     <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
@@ -2090,6 +2034,62 @@
 <li>已重启 Java 应用。</li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Linux 卸载openjdk 安装oraclejdk</title>
+    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
+    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
+<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
+<p>如果有项目在运行，请先停止项目</p>
+</blockquote>
+<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
+<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
+<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
+<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
+<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
+<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
+<p>上传到 opt 路径下</p>
+</blockquote>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
+<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
+<p>安装路径不做要求，因此文件夹也不做要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
+<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
+<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
+
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
+      </tags>
   </entry>
   <entry>
     <title>Linux常用命令汇总</title>
@@ -3020,68 +3020,6 @@
 ]]></content>
       <tags>
         <tag>工具/obsidian</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
-</blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
-</li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
-</li>
-</ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
-</ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 被授权的用户名</li>
-</ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
-</ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
-</ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -4712,69 +4650,172 @@
       </tags>
   </entry>
   <entry>
-    <title>docker安装kafka集群</title>
-    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
-    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
-<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
-<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
 </ul>
-<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
-<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><code>docker run</code>: 运行一个新的容器。</li>
-<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
-<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
-<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
-<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
-<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
-<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
-<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
-<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
 </ul>
-<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
-<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>查看所有的 topic 名字</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
-<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
 
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
-<blockquote>
-<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
 ]]></content>
       <tags>
-        <tag>数据/kafka</tag>
-        <tag>运维/docker</tag>
+        <tag>数据/oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>obsidian-sync-cnblog</title>
+    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
+    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
+<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
+</blockquote>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
+<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
+</blockquote>
+<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
+<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
+<blockquote>
+<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
+<blockquote>
+<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
+<blockquote>
+<p>点击搜索出的插件，点击安装</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
+<blockquote>
+<p>点击启用该插件</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
+<blockquote>
+<p>下载 obsidian-sync-cnblog</p>
+</blockquote>
+<p>操作步骤如上</p>
+<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
+<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
+<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
+<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
+<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
+<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参考值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>blog_url</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>按实际配置</td>
+<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
+</tr>
+<tr>
+<td><code>location_posts</code></td>
+<td>按需选择同步目录</td>
+<td>仅在同步目录下的文章才有上传功能</td>
+</tr>
+<tr>
+<td><code>throttling_mode</code></td>
+<td>开启</td>
+<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
+</tr>
+</tbody></table>
+<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
+<blockquote>
+<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
+<ul>
+<li>勾选允许 MetaWeblog 博客客户端访问</li>
+<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
+</ul>
+<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
+<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
+<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
+<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
+</blockquote>
+<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
+<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
+<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
+</blockquote>
+<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
+<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
@@ -4990,6 +5031,72 @@
         <tag>Git</tag>
         <tag>版本控制</tag>
         <tag>入门教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker安装kafka集群</title>
+    <url>/2024/12/09/archive/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/</url>
+    <content><![CDATA[<h2 id="搭建-Docker-基本环境"><a href="#搭建-Docker-基本环境" class="headerlink" title="搭建 Docker 基本环境"></a>搭建 Docker 基本环境</h2><p>搭建 docker 环境非本处详细讲解, 了解或查阅资料即可</p>
+<h2 id="拉取镜像-zookeeper-以及-Kafka-的"><a href="#拉取镜像-zookeeper-以及-Kafka-的" class="headerlink" title="拉取镜像 (zookeeper 以及 Kafka 的)"></a>拉取镜像 (zookeeper 以及 Kafka 的)</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动启动-Zookeeper-容器"><a href="#启动启动-Zookeeper-容器" class="headerlink" title="启动启动 Zookeeper 容器"></a>启动启动 Zookeeper 容器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name zookeeper</code>: 为容器指定一个名称，即 “zookeeper”。</li>
+<li><code>-p 2181:2181</code>: 将容器的 2181 端口映射到宿主机的 2181 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/zookeeper</code>: 使用 wurstmeister&#x2F;zookeeper 镜像创建容器。</li>
+</ul>
+<h2 id="启动启动-Kafka-容器"><a href="#启动启动-Kafka-容器" class="headerlink" title="启动启动 Kafka 容器"></a>启动启动 Kafka 容器</h2><blockquote>
+<p>宿主机 ip 需要以实际为准, 不能使用 localhost 的原因为: docker 各个容器的网络是相互通的, 所以需要将 docker 内部的接口映射到宿主机上, 然后实现各个容器之间的相互访问</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka1 -p 9093:9093 -e KAFKA_BROKER_ID=1 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9093 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9093 -t wurstmeister/kafka</span><br><span class="line">docker run  -d --name kafka2 -p 9094:9094 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9094 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9094 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docker run</code>: 运行一个新的容器。</li>
+<li><code>-d</code>: 指定容器在后台以守护进程模式运行。</li>
+<li><code>--name kafka</code>: 为容器指定一个名称，即 “kafka”。</li>
+<li><code>-p 9092:9092</code>: 将容器的 9092 端口映射到宿主机的 9092 端口。格式为 <code>&lt;宿主机端口&gt;:&lt;容器端口&gt;</code>。</li>
+<li><code>-e KAFKA_BROKER_ID=0</code>: 设置 Kafka Broker 的唯一标识符为 0。</li>
+<li><code>-e KAFKA_ZOOKEEPER_CONNECT=&lt;宿主机ip&gt;:2181</code>: 指定与 ZooKeeper 的连接地址，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;</code>: 设置 Kafka 的广告监听器地址，用于外部访问，其中 <code>&lt;宿主机ip&gt;</code> 需要替换为实际的宿主机 IP 地址。</li>
+<li><code>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092</code>: 设置 Kafka 的监听器地址，允许从任意地址访问 Kafka，监听 9092 端口。</li>
+<li><code>-t</code>: 分配一个伪终端（pseudo-TTY）。</li>
+<li><code>wurstmeister/kafka</code>: 使用 wurstmeister&#x2F;kafka 镜像创建容器。</li>
+</ul>
+<h2 id="创建和查看-Topic-，ip-改为宿主机器的-IP-地址"><a href="#创建和查看-Topic-，ip-改为宿主机器的-IP-地址" class="headerlink" title="创建和查看 Topic ，ip 改为宿主机器的 IP 地址"></a>创建和查看 Topic ，ip 改为宿主机器的 IP 地址</h2><blockquote>
+<p>创建 Replication 为 2，Partition 为 2 的 topic（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --create --zookeeper &lt;宿主机ip&gt;:2181 --replication-factor 2 --partitions 2 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看 topic 的状态（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）Isr 代表存活的备份机器中存活的。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --describe --zookeeper &lt;宿主机ip&gt;:2181 --topic &lt;主题名称&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>查看所有的 topic 名字</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin/kafka-topics.sh --bootstrap-server &lt;宿主机ip&gt;:9092 --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题"><a href="#发送测试-192-168-0-89-9092-宿主机-Ip-test-topic-主题" class="headerlink" title="发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题"></a>发送测试 192.168.0.89:9092 宿主机 Ip test_topic 主题</h2><blockquote>
+<p>启动消息发送方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-producer.sh --broker-list 192.168.0.89:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102816402.png"></p>
+<blockquote>
+<p>启动消息接收方（容器目录 opt&#x2F;kafka_2.11-2.0.0&#x2F;中执行）</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.89:9092:9092 --topic test_topic --from-beginning</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/docker%E5%AE%89%E8%A3%85kafka%E9%9B%86%E7%BE%A4/image-20240105102843546.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
+        <tag>运维/docker</tag>
       </tags>
   </entry>
   <entry>
@@ -5436,113 +5543,6 @@
       </tags>
   </entry>
   <entry>
-    <title>obsidian-sync-cnblog</title>
-    <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
-    <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
-<p>由于 Markdown 语法的便捷性, 我们从繁重的排版布局工作中解脱出来, 越来越多的人开始接受这种写作方式, 该插件可以将你的 md 笔记, 方便的同步到博客园中, 即使你是使用的本地图片, 也无须担心, 他都能轻松应对, 并且不会对你的本地文档造成任何影响</p>
-</blockquote>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><blockquote>
-<p>当你打开这个教程，我想我已经无需再向你介绍 Obsidian 这个笔记软件了，如果你也有博文创作，或者分享自己 md 文章的需求, 那么请看过来，希望本文对你能有所帮助。</p>
-</blockquote>
-<h3 id="下载依赖插件"><a href="#下载依赖插件" class="headerlink" title="下载依赖插件"></a>下载依赖插件</h3><blockquote>
-<p>关闭安全模式，如果已经关闭可跳过此步骤<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202744407.png"></p>
-<blockquote>
-<p>打开社区插件市场，这可能需要你会一点点的魔法<br>路径: <code>设置</code> -&gt; <code>选项</code> -&gt; <code>第三方插件</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220202927750.png"></p>
-<blockquote>
-<p>社区插件市场内搜索 <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203349000.png"></p>
-<blockquote>
-<p>点击搜索出的插件，点击安装</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203514909.png"></p>
-<blockquote>
-<p>点击启用该插件</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220203606565.png"></p>
-<blockquote>
-<p>下载 obsidian-sync-cnblog</p>
-</blockquote>
-<p>操作步骤如上</p>
-<h3 id="Obsidian-配置"><a href="#Obsidian-配置" class="headerlink" title="Obsidian 配置"></a>Obsidian 配置</h3><blockquote>
-<p>我们需要进入到 <code>设置</code> -&gt; <code>选项</code> -&gt; <code>文件与链接</code> 选项卡，将下图中红框内的设置项调整成与图片一致</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220201953115.png"></p>
-<h3 id="Custom-Attachment-Location-配置"><a href="#Custom-Attachment-Location-配置" class="headerlink" title="Custom Attachment Location 配置"></a>Custom Attachment Location 配置</h3><blockquote>
-<p>进入 <code>Custom Attachment Location</code> 选项卡，按照下图配置项依次配置即可<br>路径: <code>设置</code> -&gt; <code>第三方插件</code> -&gt; <code>Custom Attachment Location</code></p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231220204158099.png"></p>
-<h3 id="Sync-Cnblog-配置"><a href="#Sync-Cnblog-配置" class="headerlink" title="Sync Cnblog 配置"></a>Sync Cnblog 配置</h3><blockquote>
-<p>进入 <code>sync-cnblog</code> 选项卡，即可看到下图中的五个参数, 我们将依次介绍</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108111855289.png"></p>
-<table>
-<thead>
-<tr>
-<th>参数名称</th>
-<th>参考值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>blog_url</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>按实际配置</td>
-<td><a href="#%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%8E%B7%E5%8F%96">点我教给你</a></td>
-</tr>
-<tr>
-<td><code>location_posts</code></td>
-<td>按需选择同步目录</td>
-<td>仅在同步目录下的文章才有上传功能</td>
-</tr>
-<tr>
-<td><code>throttling_mode</code></td>
-<td>开启</td>
-<td>开启模式下，同一个文章中的图片不会反复上传，建议开启</td>
-</tr>
-</tbody></table>
-<h2 id="博客园相关参数获取"><a href="#博客园相关参数获取" class="headerlink" title="博客园相关参数获取"></a>博客园相关参数获取</h2><p>访问如下链接 <a href="https://i.cnblogs.com/settings">博客后台 - 博客园 (cnblogs.com)</a></p>
-<blockquote>
-<p>未登录用户会跳转登录页面, 输入自己的账号密码登录即可,登录成功后。会跳转博客园后台, 滑到页面底部即可看到如下页面</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20240108115936582.png"></p>
-<ul>
-<li>勾选允许 MetaWeblog 博客客户端访问</li>
-<li>参考上图配置如下参数 <code>blog_url</code>，<code>username</code>，<code>password</code></li>
-</ul>
-<h2 id="验证插件是否可用"><a href="#验证插件是否可用" class="headerlink" title="验证插件是否可用"></a>验证插件是否可用</h2><blockquote>
-<p>点击左侧按钮, 弹出博客园名称, 即代表参数正常, 插件可用</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/recording%201.gif"></p>
-<h2 id="上传文章"><a href="#上传文章" class="headerlink" title="上传文章"></a>上传文章</h2><blockquote>
-<p>启用插件后, 右键.md 结尾的文件会出现 <code>同步到博客园</code> 的按钮, 点击该按钮, 文章会自动发布到博客园</p>
-</blockquote>
-<p><img src="/assets/obsidian-sync-cnblog/image-20231225150705983.png"></p>
-<h2 id="修改文章"><a href="#修改文章" class="headerlink" title="修改文章"></a>修改文章</h2><blockquote>
-<p>如果已经上传的文章, 再次点击 <code>同步到博客园</code> 的按钮, 会对博客园已发布文章进行更新</p>
-</blockquote>
-<h2 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h2><blockquote>
-<p>当前插件会自动检查重命名操作, 如果该文章已经上传博客园, 并且进行了重命名, 博客园文章的名称也会自动进行重命名的操作，不过文章的内容不会进行更新，如果需要更新请手动上传</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
     <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
     <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
@@ -5664,88 +5664,6 @@
 <p>发布它，分享它，收集反馈，然后改进它。</p>
 <p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>文章推荐</title>
-    <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
-    <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
-<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
-<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
-<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><p><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
-<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
-<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
-<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
-<p>前提是已经安装了多线程下载工具 (也不是很好用)</p>
-</blockquote>
-<p><a href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
-<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
-<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
-<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
-<h2 id="GitHub-代码推送-kex-exchange-identification-报错"><a href="#GitHub-代码推送-kex-exchange-identification-报错" class="headerlink" title="GitHub 代码推送 kex_exchange_identification 报错"></a>GitHub 代码推送 kex_exchange_identification 报错</h2><p><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
-<p><a href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
-<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
-<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
-<h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
-<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
-<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
-<p><a href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
-<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
-<p><a href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
-<p><a href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
-<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
-<li><p>代码编写阶段</p>
-<ul>
-<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
-<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
-</ul>
-</li>
-<li><p>编译&#x2F;解释阶段</p>
-<ul>
-<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
-<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
-<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
-</ul>
-</li>
-<li><p>运行时阶段</p>
-<ul>
-<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
-<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
-</ul>
-</li>
-<li><p>网络传输阶段</p>
-<ul>
-<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
-<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
-</ul>
-</li>
-<li><p>总结</p>
-<ul>
-<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
-<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
-<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
-<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
-</blockquote>
-<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在GBK编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在UTF-8编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
-<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
-<h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
-<h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
-<h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
-<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
-<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><a href="https://blog.csdn.net/chushoufengli/article/details/104535873">RSA加密 和 SHA256签名函数_rsa sha256-CSDN博客</a></p>
-]]></content>
-      <tags>
-        <tag>持续更新</tag>
-      </tags>
   </entry>
   <entry>
     <title>java-nosuchmethoderror-varargs-jar-version-mismatch</title>
@@ -6011,6 +5929,88 @@
 </blockquote>
 <p>搞清楚可变参数背后的数组签名，以及源码兼容和二进制兼容的区别，能大幅缩短这类问题的定位时间。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>文章推荐</title>
+    <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
+<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
+<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
+<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><p><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
+<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
+<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
+<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
+<p>前提是已经安装了多线程下载工具 (也不是很好用)</p>
+</blockquote>
+<p><a href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
+<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
+<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
+<h2 id="GitHub-代码推送-kex-exchange-identification-报错"><a href="#GitHub-代码推送-kex-exchange-identification-报错" class="headerlink" title="GitHub 代码推送 kex_exchange_identification 报错"></a>GitHub 代码推送 kex_exchange_identification 报错</h2><p><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
+<p><a href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
+<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
+<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
+<h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
+<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
+<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
+<p><a href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
+<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
+<p><a href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
+<p><a href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
+<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
+<li><p>代码编写阶段</p>
+<ul>
+<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
+<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
+</ul>
+</li>
+<li><p>编译&#x2F;解释阶段</p>
+<ul>
+<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
+<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
+</ul>
+</li>
+<li><p>运行时阶段</p>
+<ul>
+<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
+</ul>
+</li>
+<li><p>网络传输阶段</p>
+<ul>
+<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
+<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
+</ul>
+</li>
+<li><p>总结</p>
+<ul>
+<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
+<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
+</blockquote>
+<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在GBK编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在UTF-8编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
+<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
+<h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
+<h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
+<h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
+<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
+<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><a href="https://blog.csdn.net/chushoufengli/article/details/104535873">RSA加密 和 SHA256签名函数_rsa sha256-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>持续更新</tag>
+      </tags>
   </entry>
   <entry>
     <title>相对路径的使用</title>
@@ -6312,13 +6312,13 @@
       </tags>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
