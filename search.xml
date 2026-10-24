@@ -1796,188 +1796,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kafka常用命令总结</title>
-    <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>操作的 topic 名称</td>
-</tr>
-<tr>
-<td>–create</td>
-<td>创建主题</td>
-</tr>
-<tr>
-<td>–delete</td>
-<td>删除主题</td>
-</tr>
-<tr>
-<td>–alter</td>
-<td>修改主题</td>
-</tr>
-<tr>
-<td>–list</td>
-<td>查看所有主题</td>
-</tr>
-<tr>
-<td>–describe</td>
-<td>查看主题详细描述</td>
-</tr>
-<tr>
-<td>–partitions <code>Integer</code></td>
-<td>设置分区数</td>
-</tr>
-<tr>
-<td>–replication-factor <code>Integer</code></td>
-<td>设置分区副本</td>
-</tr>
-</tbody></table>
-<p>这些参数可以与 <code>kafka-topics.sh</code>（Unix&#x2F;Linux）或 <code>kafka-topics.bat</code>（Windows）命令一起使用，用于管理 Kafka 主题。根据需要，选择使用适当的参数来执行相应的操作。</p>
-<h2 id="消费者脚本命令参数："><a href="#消费者脚本命令参数：" class="headerlink" title="消费者脚本命令参数："></a>消费者脚本命令参数：</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>消费的 topic 名称</td>
-</tr>
-<tr>
-<td>–group-id</td>
-<td>消费者所属的消费者组 ID</td>
-</tr>
-<tr>
-<td>–from-beginning</td>
-<td>从最早的偏移量开始消费</td>
-</tr>
-<tr>
-<td>–partition <code>Integer</code></td>
-<td>指定要消费的分区</td>
-</tr>
-<tr>
-<td>–offsets <code>String</code></td>
-<td>指定要消费的分区的偏移量</td>
-</tr>
-<tr>
-<td>–max-messages <code>Integer</code></td>
-<td>指定要消费的最大消息数量</td>
-</tr>
-<tr>
-<td>–timeout-ms <code>Integer</code></td>
-<td>指定超时时间（毫秒），在等待新消息时使用</td>
-</tr>
-<tr>
-<td>–property <code>String=String</code></td>
-<td>设置其他的消费者属性</td>
-</tr>
-</tbody></table>
-<h2 id="生成者脚本命令参数："><a href="#生成者脚本命令参数：" class="headerlink" title="生成者脚本命令参数："></a>生成者脚本命令参数：</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>发送消息的 topic 名称</td>
-</tr>
-<tr>
-<td>–key</td>
-<td>发送消息的键（可选）</td>
-</tr>
-<tr>
-<td>–value</td>
-<td>发送消息的值</td>
-</tr>
-<tr>
-<td>–property <code>String=String</code></td>
-<td>设置其他的生产者属性</td>
-</tr>
-</tbody></table>
-<p>这些参数可以与 Kafka 提供的相应脚本命令一起使用，用于执行消费者和生产者的操作。根据需要，您可以选择使用适当的参数来配置消费者和生成者的行为。</p>
-]]></content>
-      <tags>
-        <tag>数据/kafka</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 卸载openjdk 安装oraclejdk</title>
-    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
-    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
-<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
-<p>如果有项目在运行，请先停止项目</p>
-</blockquote>
-<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
-<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
-<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
-<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
-<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
-<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
-<p>上传到 opt 路径下</p>
-</blockquote>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
-<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
-<p>安装路径不做要求，因此文件夹也不做要求</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
-<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
-<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
-
-<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 导入 Java 证书教程</title>
     <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
@@ -2172,8 +1990,190 @@
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>运维/linux</tag>
         <tag>持续更新</tag>
+        <tag>运维/linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kafka常用命令总结</title>
+    <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>操作的 topic 名称</td>
+</tr>
+<tr>
+<td>–create</td>
+<td>创建主题</td>
+</tr>
+<tr>
+<td>–delete</td>
+<td>删除主题</td>
+</tr>
+<tr>
+<td>–alter</td>
+<td>修改主题</td>
+</tr>
+<tr>
+<td>–list</td>
+<td>查看所有主题</td>
+</tr>
+<tr>
+<td>–describe</td>
+<td>查看主题详细描述</td>
+</tr>
+<tr>
+<td>–partitions <code>Integer</code></td>
+<td>设置分区数</td>
+</tr>
+<tr>
+<td>–replication-factor <code>Integer</code></td>
+<td>设置分区副本</td>
+</tr>
+</tbody></table>
+<p>这些参数可以与 <code>kafka-topics.sh</code>（Unix&#x2F;Linux）或 <code>kafka-topics.bat</code>（Windows）命令一起使用，用于管理 Kafka 主题。根据需要，选择使用适当的参数来执行相应的操作。</p>
+<h2 id="消费者脚本命令参数："><a href="#消费者脚本命令参数：" class="headerlink" title="消费者脚本命令参数："></a>消费者脚本命令参数：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>消费的 topic 名称</td>
+</tr>
+<tr>
+<td>–group-id</td>
+<td>消费者所属的消费者组 ID</td>
+</tr>
+<tr>
+<td>–from-beginning</td>
+<td>从最早的偏移量开始消费</td>
+</tr>
+<tr>
+<td>–partition <code>Integer</code></td>
+<td>指定要消费的分区</td>
+</tr>
+<tr>
+<td>–offsets <code>String</code></td>
+<td>指定要消费的分区的偏移量</td>
+</tr>
+<tr>
+<td>–max-messages <code>Integer</code></td>
+<td>指定要消费的最大消息数量</td>
+</tr>
+<tr>
+<td>–timeout-ms <code>Integer</code></td>
+<td>指定超时时间（毫秒），在等待新消息时使用</td>
+</tr>
+<tr>
+<td>–property <code>String=String</code></td>
+<td>设置其他的消费者属性</td>
+</tr>
+</tbody></table>
+<h2 id="生成者脚本命令参数："><a href="#生成者脚本命令参数：" class="headerlink" title="生成者脚本命令参数："></a>生成者脚本命令参数：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>发送消息的 topic 名称</td>
+</tr>
+<tr>
+<td>–key</td>
+<td>发送消息的键（可选）</td>
+</tr>
+<tr>
+<td>–value</td>
+<td>发送消息的值</td>
+</tr>
+<tr>
+<td>–property <code>String=String</code></td>
+<td>设置其他的生产者属性</td>
+</tr>
+</tbody></table>
+<p>这些参数可以与 Kafka 提供的相应脚本命令一起使用，用于执行消费者和生产者的操作。根据需要，您可以选择使用适当的参数来配置消费者和生成者的行为。</p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 卸载openjdk 安装oraclejdk</title>
+    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
+    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
+<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
+<p>如果有项目在运行，请先停止项目</p>
+</blockquote>
+<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
+<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
+<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
+<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
+<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
+<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
+<p>上传到 opt 路径下</p>
+</blockquote>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
+<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
+<p>安装路径不做要求，因此文件夹也不做要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
+<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
+<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
+
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4263,6 +4263,189 @@
       </tags>
   </entry>
   <entry>
+    <title>SqlManger开发文档</title>
+    <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>教程地址 <a href="https://www.w3schools.cn/pyqt5/index.html">PyQt5 教程 (w3schools.cn)</a></p>
+</blockquote>
+<h2 id="开发记录"><a href="#开发记录" class="headerlink" title="开发记录"></a>开发记录</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><blockquote>
+<p>新建 python 项目, 环境选择新的 venv 环境</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212174014517.png"></p>
+<h3 id="安装必要依赖"><a href="#安装必要依赖" class="headerlink" title="安装必要依赖"></a>安装必要依赖</h3><blockquote>
+<p>当前依赖为项目新增依赖, 后续可能会随开发进行更新</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 提供了与 Python 3.5 或更高版本兼容的 32 位或 64 位架构的 wheels</span><br><span class="line">pip3 install PyQt5</span><br><span class="line"># 要安装 Qt Designer 等开发工具以支持 PyQt5 wheels</span><br><span class="line">pip3 install pyqt5-tools</span><br><span class="line"># 安装链接mysql所需依赖</span><br><span class="line">pip3 install pymysql</span><br><span class="line"># 链接mysql时所用到的加密方式</span><br><span class="line">pip3 install cryptography</span><br><span class="line"># 美化包依赖, 拉取依赖时, 不能使用豆瓣源, 豆瓣源没有这个依赖</span><br><span class="line">pip3 install qdarkstyle</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果直接使用官方镜像源出现安装失败的情况, 可以考虑国内的镜像源</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 豆瓣源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装依赖方式参考下图</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175153752.png"></p>
+<h3 id="设计-UI"><a href="#设计-UI" class="headerlink" title="设计 UI"></a>设计 UI</h3><blockquote>
+<p>打开设计器路径 {项目路径}\venv\Lib\site-packages\qt5_applications\Qt\bin\designer.exe</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175609378.png"></p>
+<blockquote>
+<p>设计以下 UI 文件<br>主窗口 UI: sqlManger_ui.ui<br>新增记录模态框 UI: addrowdialog_ui.ui</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150125976.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150325964.png"></p>
+<blockquote>
+<p>UI 文件转成成 Python 文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyuic5 -x sqlManger_ui.ui -o sqlManger_ui.py</span><br><span class="line"></span><br><span class="line">pyuic5 -x addrowdialog_ui.ui -o addrowdialog_ui.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213113642881.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150646257.png"></p>
+<blockquote>
+<p>转换完成后会生成以下文件</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150806994.png"></p>
+<blockquote>
+<p>新增记录时, 不同的表格数据不同, 因此需要动态加载模态框表单项,<br>💡 技术点: <code>setattr</code> 与 <code>getattr</code> 方法的使用</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setattr</span>(目标对象, 属性名, 属性值)</span><br><span class="line"><span class="built_in">getattr</span>(目标对象, 属性名, 属性值)</span><br></pre></td></tr></table></figure>
+
+<p>重构 <code>addrowdialog_ui.py</code> 下的 <code>setupUi</code> <code>retranslateUi</code> 方法, 设置表单项时, 设置成由传入参数动态加载, 文件调整如下</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215153026800.png"></p>
+<h3 id="各个功能点信号与槽函数建立链接"><a href="#各个功能点信号与槽函数建立链接" class="headerlink" title="各个功能点信号与槽函数建立链接"></a>各个功能点信号与槽函数建立链接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.connbut.clicked.connect(<span class="variable language_">self</span>.conn_database)</span><br><span class="line"><span class="comment"># 查询按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.querybut.clicked.connect(<span class="variable language_">self</span>.execute_query)</span><br><span class="line"><span class="comment"># 回滚按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.roolbackbut.clicked.connect(<span class="variable language_">self</span>.rollback_database)</span><br><span class="line"><span class="comment"># 提交按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.commitbut.clicked.connect(<span class="variable language_">self</span>.commit_database)</span><br><span class="line"><span class="comment"># 切换数据库选择</span></span><br><span class="line"><span class="variable language_">self</span>.ui.database.currentIndexChanged.connect(<span class="variable language_">self</span>.change_database)</span><br><span class="line"><span class="comment"># 更改主题</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br><span class="line"><span class="comment"># 右键表格, 展示菜单</span></span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.setContextMenuPolicy(Qt.CustomContextMenu)</span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.customContextMenuRequested.connect(<span class="variable language_">self</span>.display_table_menu)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mysql-数据库的使用"><a href="#Mysql-数据库的使用" class="headerlink" title="Mysql 数据库的使用"></a>Mysql 数据库的使用</h3><blockquote>
+<p>下载 mysql 相关依赖</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install mysql-connector-python</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为涉及到事务的回滚, 所以当前应用获取的数据库链接为单例, 代码如下</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_connection</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.connection</span><br><span class="line">    Utils.connection = pymysql.connect(</span><br><span class="line">        <span class="comment"># 数据库主机名</span></span><br><span class="line">        host=<span class="variable language_">self</span>.ui.host.text(),</span><br><span class="line">        <span class="comment"># 数据库端口号，默认为3306</span></span><br><span class="line">        port=<span class="built_in">int</span>(<span class="variable language_">self</span>.ui.port.text()),</span><br><span class="line">        <span class="comment"># 数据库用户名</span></span><br><span class="line">        user=<span class="variable language_">self</span>.ui.username.text(),</span><br><span class="line">        <span class="comment"># 数据库密码</span></span><br><span class="line">        passwd=<span class="variable language_">self</span>.ui.pwd.text(),</span><br><span class="line">        <span class="comment"># 字符编码</span></span><br><span class="line">        charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> Utils.connection</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_cursor</span>():</span><br><span class="line">    <span class="keyword">if</span> Utils.cursor <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.cursor</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Utils.connection = Utils.get_connection()</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的开启<br>开启时机: 与数据库建立链接之后</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 开启事务</span></span><br><span class="line">cursor.execute(<span class="string">&quot;BEGIN&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的提交<br>提交时机: 点击提交按钮</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).commit()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的回滚<br>回滚时机</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).rollback()</span><br></pre></td></tr></table></figure>
+
+<h3 id="增加美化包"><a href="#增加美化包" class="headerlink" title="增加美化包"></a>增加美化包</h3><blockquote>
+<p>原本的 QT 样式不怎么好看, 集成一下美化包</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install qdarkstyle -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装插件时, 不能使用豆瓣源, 豆瓣源没有这个依赖</p>
+<blockquote>
+<p>main.py 入口文件给实例设置浅色样式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>切换主题样式的实现</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215163133407.png"></p>
+<p>监控下拉框数据改变的信号, 链接对应的槽函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为主题切换的信号和槽函数简历链接</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br></pre></td></tr></table></figure>
+
+<p>切换主题的方法实现, 与启动项目时需要添加一步获取应用实例的操作 <code>Utils.get_app_self()</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change_theme</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="variable language_">self</span>.ui.themeComboBox.currentText() == <span class="string">&quot;Dark&quot;</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=DarkPalette()))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🔍 qt-material 有更丰富的样式</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install qt-material</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>应用样式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 动态加载qt-material主题</span></span><br><span class="line"><span class="keyword">import</span> site</span><br><span class="line"><span class="comment"># venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">site_packages_path = site.getsitepackages()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># self.ui.themeComboBox.addItems(&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&#x27;light_blue_500.xml&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增窗口增加滚动条"><a href="#新增窗口增加滚动条" class="headerlink" title="新增窗口增加滚动条"></a>新增窗口增加滚动条</h3><blockquote>
+<p>参考资料 <a href="https://blog.csdn.net/weixin_43749427/article/details/114883239">Qt designer + ScrollArea 实现滚动界面_qt designer scrollarea-CSDN 博客</a></p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215235502027.png"></p>
+<h3 id="虚拟环境-Venv-同步"><a href="#虚拟环境-Venv-同步" class="headerlink" title="虚拟环境 Venv 同步"></a>虚拟环境 Venv 同步</h3><blockquote>
+<p>参考资料: <a href="https://blog.csdn.net/pearl8899/article/details/113877334">python 项目自动生成环境配置文件 requirements.txt_如何生成 requirements.txt-CSDN 博客</a></p>
+</blockquote>
+<blockquote>
+<p>生成 requirements.txt 文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装依赖,根据 requirements.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="异常问题记录"><a href="#异常问题记录" class="headerlink" title="异常问题记录"></a>异常问题记录</h2><h3 id="QSqlDatabase-无法加载-MYSQL-驱动-未解决"><a href="#QSqlDatabase-无法加载-MYSQL-驱动-未解决" class="headerlink" title="QSqlDatabase 无法加载 MYSQL 驱动 (未解决)"></a>QSqlDatabase 无法加载 MYSQL 驱动 (未解决)</h3><blockquote>
+<p>问题现象</p>
+</blockquote>
+<p>QSqlDatabase 无法链接 MYSQL 数据库, 提示无法加载驱动问题</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213155858030.png"></p>
+<blockquote>
+<p>参考资料:</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_34769196/article/details/103898208">PyQt5 使用 QSqlDatabase 类连接 Mysql 的坑</a></p>
+<blockquote>
+<p>问题原因:</p>
+</blockquote>
+<p>最新版本的 QT 缺失 MYSQL 驱动的相关文件</p>
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<p>根据以上的参考文章操作后问题也没有解决, 最后该问题选择通过 pymysql 链接数据库, 获取数据, 使用标准的 model 来展示</p>
+<h3 id="获取-MYSQL-数据库链接报加密异常-已解决"><a href="#获取-MYSQL-数据库链接报加密异常-已解决" class="headerlink" title="获取 MYSQL 数据库链接报加密异常 (已解决)"></a>获取 MYSQL 数据库链接报加密异常 (已解决)</h3><blockquote>
+<p>问题现象</p>
+</blockquote>
+<p>链接 MYSQL 在密码, 端口等信息均正确的情况下, 报如下异常</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231214101243230.png"></p>
+<blockquote>
+<p>参考资料</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/coco56/article/details/107948413">RuntimeError: ‘cryptography‘ package is required for sha256_password or caching_sha2_password auth m-CSDN 博客</a></p>
+<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="项目基础环境"><a href="#项目基础环境" class="headerlink" title="项目基础环境"></a>项目基础环境</h3><blockquote>
+<p>已安装 Python3, 可使用以下版本查看 python 版本</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222735318.png"></p>
+<blockquote>
+<p>已安装 MySql8.0 及以上版本</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215913574.png"></p>
+<h3 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h3><blockquote>
+<p>首先从 GITHUB 拉取项目, GIT 命令行或者下图方式均可<br>项目地址: <a href="https://github.com/lei-ctyh/sqlManger.git">https://github.com/lei-ctyh/sqlManger.git</a></p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215158278.png"></p>
+<h3 id="配置项目解释器"><a href="#配置项目解释器" class="headerlink" title="配置项目解释器"></a>配置项目解释器</h3><blockquote>
+<p>按照自己需求配置项目解释器即可<br><code>ctrl</code> + <code>alt</code> + <code>s</code> 进入设置 , 具体操作如下图</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220223107.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220436985.png"></p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><blockquote>
+<p>安装依赖,根据 requirements.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222023427.png"></p>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215170946953.png"></p>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Virtualbox7安装及使用详细步骤</title>
     <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
@@ -4810,189 +4993,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SqlManger开发文档</title>
-    <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>教程地址 <a href="https://www.w3schools.cn/pyqt5/index.html">PyQt5 教程 (w3schools.cn)</a></p>
-</blockquote>
-<h2 id="开发记录"><a href="#开发记录" class="headerlink" title="开发记录"></a>开发记录</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><blockquote>
-<p>新建 python 项目, 环境选择新的 venv 环境</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212174014517.png"></p>
-<h3 id="安装必要依赖"><a href="#安装必要依赖" class="headerlink" title="安装必要依赖"></a>安装必要依赖</h3><blockquote>
-<p>当前依赖为项目新增依赖, 后续可能会随开发进行更新</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 提供了与 Python 3.5 或更高版本兼容的 32 位或 64 位架构的 wheels</span><br><span class="line">pip3 install PyQt5</span><br><span class="line"># 要安装 Qt Designer 等开发工具以支持 PyQt5 wheels</span><br><span class="line">pip3 install pyqt5-tools</span><br><span class="line"># 安装链接mysql所需依赖</span><br><span class="line">pip3 install pymysql</span><br><span class="line"># 链接mysql时所用到的加密方式</span><br><span class="line">pip3 install cryptography</span><br><span class="line"># 美化包依赖, 拉取依赖时, 不能使用豆瓣源, 豆瓣源没有这个依赖</span><br><span class="line">pip3 install qdarkstyle</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果直接使用官方镜像源出现安装失败的情况, 可以考虑国内的镜像源</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 豆瓣源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
-
-<p>安装依赖方式参考下图</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175153752.png"></p>
-<h3 id="设计-UI"><a href="#设计-UI" class="headerlink" title="设计 UI"></a>设计 UI</h3><blockquote>
-<p>打开设计器路径 {项目路径}\venv\Lib\site-packages\qt5_applications\Qt\bin\designer.exe</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175609378.png"></p>
-<blockquote>
-<p>设计以下 UI 文件<br>主窗口 UI: sqlManger_ui.ui<br>新增记录模态框 UI: addrowdialog_ui.ui</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150125976.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150325964.png"></p>
-<blockquote>
-<p>UI 文件转成成 Python 文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyuic5 -x sqlManger_ui.ui -o sqlManger_ui.py</span><br><span class="line"></span><br><span class="line">pyuic5 -x addrowdialog_ui.ui -o addrowdialog_ui.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213113642881.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150646257.png"></p>
-<blockquote>
-<p>转换完成后会生成以下文件</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150806994.png"></p>
-<blockquote>
-<p>新增记录时, 不同的表格数据不同, 因此需要动态加载模态框表单项,<br>💡 技术点: <code>setattr</code> 与 <code>getattr</code> 方法的使用</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setattr</span>(目标对象, 属性名, 属性值)</span><br><span class="line"><span class="built_in">getattr</span>(目标对象, 属性名, 属性值)</span><br></pre></td></tr></table></figure>
-
-<p>重构 <code>addrowdialog_ui.py</code> 下的 <code>setupUi</code> <code>retranslateUi</code> 方法, 设置表单项时, 设置成由传入参数动态加载, 文件调整如下</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215153026800.png"></p>
-<h3 id="各个功能点信号与槽函数建立链接"><a href="#各个功能点信号与槽函数建立链接" class="headerlink" title="各个功能点信号与槽函数建立链接"></a>各个功能点信号与槽函数建立链接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.connbut.clicked.connect(<span class="variable language_">self</span>.conn_database)</span><br><span class="line"><span class="comment"># 查询按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.querybut.clicked.connect(<span class="variable language_">self</span>.execute_query)</span><br><span class="line"><span class="comment"># 回滚按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.roolbackbut.clicked.connect(<span class="variable language_">self</span>.rollback_database)</span><br><span class="line"><span class="comment"># 提交按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.commitbut.clicked.connect(<span class="variable language_">self</span>.commit_database)</span><br><span class="line"><span class="comment"># 切换数据库选择</span></span><br><span class="line"><span class="variable language_">self</span>.ui.database.currentIndexChanged.connect(<span class="variable language_">self</span>.change_database)</span><br><span class="line"><span class="comment"># 更改主题</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br><span class="line"><span class="comment"># 右键表格, 展示菜单</span></span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.setContextMenuPolicy(Qt.CustomContextMenu)</span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.customContextMenuRequested.connect(<span class="variable language_">self</span>.display_table_menu)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Mysql-数据库的使用"><a href="#Mysql-数据库的使用" class="headerlink" title="Mysql 数据库的使用"></a>Mysql 数据库的使用</h3><blockquote>
-<p>下载 mysql 相关依赖</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install mysql-connector-python</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>因为涉及到事务的回滚, 所以当前应用获取的数据库链接为单例, 代码如下</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_connection</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.connection</span><br><span class="line">    Utils.connection = pymysql.connect(</span><br><span class="line">        <span class="comment"># 数据库主机名</span></span><br><span class="line">        host=<span class="variable language_">self</span>.ui.host.text(),</span><br><span class="line">        <span class="comment"># 数据库端口号，默认为3306</span></span><br><span class="line">        port=<span class="built_in">int</span>(<span class="variable language_">self</span>.ui.port.text()),</span><br><span class="line">        <span class="comment"># 数据库用户名</span></span><br><span class="line">        user=<span class="variable language_">self</span>.ui.username.text(),</span><br><span class="line">        <span class="comment"># 数据库密码</span></span><br><span class="line">        passwd=<span class="variable language_">self</span>.ui.pwd.text(),</span><br><span class="line">        <span class="comment"># 字符编码</span></span><br><span class="line">        charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> Utils.connection</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_cursor</span>():</span><br><span class="line">    <span class="keyword">if</span> Utils.cursor <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.cursor</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Utils.connection = Utils.get_connection()</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的开启<br>开启时机: 与数据库建立链接之后</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 开启事务</span></span><br><span class="line">cursor.execute(<span class="string">&quot;BEGIN&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的提交<br>提交时机: 点击提交按钮</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).commit()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的回滚<br>回滚时机</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).rollback()</span><br></pre></td></tr></table></figure>
-
-<h3 id="增加美化包"><a href="#增加美化包" class="headerlink" title="增加美化包"></a>增加美化包</h3><blockquote>
-<p>原本的 QT 样式不怎么好看, 集成一下美化包</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install qdarkstyle -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<p>安装插件时, 不能使用豆瓣源, 豆瓣源没有这个依赖</p>
-<blockquote>
-<p>main.py 入口文件给实例设置浅色样式</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>切换主题样式的实现</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215163133407.png"></p>
-<p>监控下拉框数据改变的信号, 链接对应的槽函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为主题切换的信号和槽函数简历链接</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br></pre></td></tr></table></figure>
-
-<p>切换主题的方法实现, 与启动项目时需要添加一步获取应用实例的操作 <code>Utils.get_app_self()</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change_theme</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="variable language_">self</span>.ui.themeComboBox.currentText() == <span class="string">&quot;Dark&quot;</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=DarkPalette()))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>🔍 qt-material 有更丰富的样式</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install qt-material</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>应用样式</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 动态加载qt-material主题</span></span><br><span class="line"><span class="keyword">import</span> site</span><br><span class="line"><span class="comment"># venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">site_packages_path = site.getsitepackages()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># self.ui.themeComboBox.addItems(&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&#x27;light_blue_500.xml&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="新增窗口增加滚动条"><a href="#新增窗口增加滚动条" class="headerlink" title="新增窗口增加滚动条"></a>新增窗口增加滚动条</h3><blockquote>
-<p>参考资料 <a href="https://blog.csdn.net/weixin_43749427/article/details/114883239">Qt designer + ScrollArea 实现滚动界面_qt designer scrollarea-CSDN 博客</a></p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215235502027.png"></p>
-<h3 id="虚拟环境-Venv-同步"><a href="#虚拟环境-Venv-同步" class="headerlink" title="虚拟环境 Venv 同步"></a>虚拟环境 Venv 同步</h3><blockquote>
-<p>参考资料: <a href="https://blog.csdn.net/pearl8899/article/details/113877334">python 项目自动生成环境配置文件 requirements.txt_如何生成 requirements.txt-CSDN 博客</a></p>
-</blockquote>
-<blockquote>
-<p>生成 requirements.txt 文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>安装依赖,根据 requirements.txt</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="异常问题记录"><a href="#异常问题记录" class="headerlink" title="异常问题记录"></a>异常问题记录</h2><h3 id="QSqlDatabase-无法加载-MYSQL-驱动-未解决"><a href="#QSqlDatabase-无法加载-MYSQL-驱动-未解决" class="headerlink" title="QSqlDatabase 无法加载 MYSQL 驱动 (未解决)"></a>QSqlDatabase 无法加载 MYSQL 驱动 (未解决)</h3><blockquote>
-<p>问题现象</p>
-</blockquote>
-<p>QSqlDatabase 无法链接 MYSQL 数据库, 提示无法加载驱动问题</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213155858030.png"></p>
-<blockquote>
-<p>参考资料:</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/qq_34769196/article/details/103898208">PyQt5 使用 QSqlDatabase 类连接 Mysql 的坑</a></p>
-<blockquote>
-<p>问题原因:</p>
-</blockquote>
-<p>最新版本的 QT 缺失 MYSQL 驱动的相关文件</p>
-<blockquote>
-<p>解决方案</p>
-</blockquote>
-<p>根据以上的参考文章操作后问题也没有解决, 最后该问题选择通过 pymysql 链接数据库, 获取数据, 使用标准的 model 来展示</p>
-<h3 id="获取-MYSQL-数据库链接报加密异常-已解决"><a href="#获取-MYSQL-数据库链接报加密异常-已解决" class="headerlink" title="获取 MYSQL 数据库链接报加密异常 (已解决)"></a>获取 MYSQL 数据库链接报加密异常 (已解决)</h3><blockquote>
-<p>问题现象</p>
-</blockquote>
-<p>链接 MYSQL 在密码, 端口等信息均正确的情况下, 报如下异常</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231214101243230.png"></p>
-<blockquote>
-<p>参考资料</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/coco56/article/details/107948413">RuntimeError: ‘cryptography‘ package is required for sha256_password or caching_sha2_password auth m-CSDN 博客</a></p>
-<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="项目基础环境"><a href="#项目基础环境" class="headerlink" title="项目基础环境"></a>项目基础环境</h3><blockquote>
-<p>已安装 Python3, 可使用以下版本查看 python 版本</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222735318.png"></p>
-<blockquote>
-<p>已安装 MySql8.0 及以上版本</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215913574.png"></p>
-<h3 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h3><blockquote>
-<p>首先从 GITHUB 拉取项目, GIT 命令行或者下图方式均可<br>项目地址: <a href="https://github.com/lei-ctyh/sqlManger.git">https://github.com/lei-ctyh/sqlManger.git</a></p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215158278.png"></p>
-<h3 id="配置项目解释器"><a href="#配置项目解释器" class="headerlink" title="配置项目解释器"></a>配置项目解释器</h3><blockquote>
-<p>按照自己需求配置项目解释器即可<br><code>ctrl</code> + <code>alt</code> + <code>s</code> 进入设置 , 具体操作如下图</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220223107.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220436985.png"></p>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><blockquote>
-<p>安装依赖,根据 requirements.txt</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222023427.png"></p>
-<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215170946953.png"></p>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>obsidian-sync-cnblog</title>
     <url>/2024/12/09/archive/obsidian-sync-cnblog/</url>
     <content><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><blockquote>
@@ -5097,6 +5097,476 @@
 ]]></content>
       <tags>
         <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
+    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
+    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
+<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
+<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
+<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
+<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
+<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
+<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
+<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
+<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
+<ol>
+<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
+<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
+<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
+<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
+</ol>
+<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
+<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
+<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
+<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
+<ol>
+<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
+<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
+<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
+</ol>
+<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
+<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
+]]></content>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何避免代码的深层嵌套</title>
+    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
+    <content><![CDATA[<blockquote>
+<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
+</blockquote>
+<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
+]]></content>
+      <tags>
+        <tag>代码/优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>完美主义者，为什么你总是离完美最远？</title>
+    <url>/2026/03/11/archive/%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%80%BB%E6%98%AF%E7%A6%BB%E5%AE%8C%E7%BE%8E%E6%9C%80%E8%BF%9C%EF%BC%9F/</url>
+    <content><![CDATA[<h2 id="完美主义者，为什么你总是离完美最远？"><a href="#完美主义者，为什么你总是离完美最远？" class="headerlink" title="完美主义者，为什么你总是离完美最远？"></a>完美主义者，为什么你总是离完美最远？</h2><blockquote>
+<p>一个不存在的作品，离完美当然最远</p>
+</blockquote>
+<p>“我一定要做到最好才敢开始。”</p>
+<p>“这个方案还不够完美，再等等。”</p>
+<p>“那个标点符号应该用斜体吗？我再调调。”</p>
+<p>这些话，听起来熟悉吗？</p>
+<p>如果你是那个总在等待“完美时机”的人，如果你常常因为一个细节反复修改而错过 deadline，那么今天这篇文章，就是写给你的。</p>
+<p>因为，完美主义者往往最终离完美最远。</p>
+<p>这听起来像一个悖论，但背后藏着深刻的心理学真相。</p>
+<h3 id="01-行动的瘫痪：想得越多，做得越少"><a href="#01-行动的瘫痪：想得越多，做得越少" class="headerlink" title="01 行动的瘫痪：想得越多，做得越少"></a>01 行动的瘫痪：想得越多，做得越少</h3><p>完美主义者的大脑里，住着一个极致清晰的“完美画面”。</p>
+<p>但当他们看向起点和终点之间的路程时，巨大的落差会带来压倒性的焦虑。</p>
+<p>“我必须第一次就把它做好。”</p>
+<p>这句话像一个魔咒。它让人无法接受“初稿”“草稿”这些正常的过程。因为任何不完美的开始，都被视为对最终目标的亵渎。</p>
+<p>结果呢？</p>
+<p>为了不做出“不完美”的东西，索性就不开始了。</p>
+<p>PPT 构思了三周，还没新建文件；想写公众号，注册账号半年一个字都没写；想换工作，简历改了无数版，始终没有投出去。</p>
+<p>事情永远停留在计划和构想阶段，永远无法成为现实。</p>
+<p>可一个不存在的作品，怎么可能完美？</p>
+<h3 id="02-效率的诅咒：在细枝末节上无限沉沦"><a href="#02-效率的诅咒：在细枝末节上无限沉沦" class="headerlink" title="02 效率的诅咒：在细枝末节上无限沉沦"></a>02 效率的诅咒：在细枝末节上无限沉沦</h3><p>如果完美主义者侥幸开始了行动，他们往往会陷入另一种困境：局部最优，而非全局最优。</p>
+<p>“这个标点符号应该用斜体吗？”</p>
+<p>“这张图的配色饱和度再调低 2%？”</p>
+<p>“这一段的第一句话是不是不够抓人？”</p>
+<p>他们会把 80% 的精力，花在只占整体价值 20%，甚至更少的细节上。</p>
+<p>就像一个画家，把一片叶子画得栩栩如生，却忘了画树干。</p>
+<p>精力和时间被无关紧要的“完美”消耗殆尽，整体进度停滞不前，核心任务无法完成。最终呈现的作品，可能细节精致，但整体框架是残缺的。</p>
+<p>这，真的是你想要的“完美”吗？</p>
+<h3 id="03-反馈的隔绝：无法承受的批评之重"><a href="#03-反馈的隔绝：无法承受的批评之重" class="headerlink" title="03 反馈的隔绝：无法承受的批评之重"></a>03 反馈的隔绝：无法承受的批评之重</h3><p>任何作品的诞生都离不开反馈和修正。但完美主义者往往将自己的作品与自我价值绑定。</p>
+<p>“我的作品不完美 &#x3D; 我是一个失败者。”</p>
+<p>这个等式一旦成立，任何对作品的批评，即使是善意的、建设性的，都会被解读为对自身的攻击。</p>
+<p>于是，他们害怕展示不完美的半成品。</p>
+<p>产品经理要 demo，说“还在优化”；导师要看初稿，说“还没写完”；朋友想提建议，说“不用了，我再改改”。</p>
+<p>他们闭门造车，直到最后一刻才拿出一个自以为完美的“成品”，结果却发现——与市场需求脱节，与用户期待不符，与实际情况偏差。</p>
+<p>这时候的打击，往往是毁灭性的。</p>
+<p>而如果当初早点拿出来，早点听取反馈，早点调整方向，结局会不会不一样？</p>
+<h3 id="04-标准的失焦：完美是一个移动的靶子"><a href="#04-标准的失焦：完美是一个移动的靶子" class="headerlink" title="04 标准的失焦：完美是一个移动的靶子"></a>04 标准的失焦：完美是一个移动的靶子</h3><p>最残酷的一点是：对于完美主义者而言，“完美”的标准是动态的，甚至是永远无法企及的。</p>
+<p>“等我做到 A，我就完美了……不，我应该还要做到 B……也许 C 才是真正完美的……”</p>
+<p>他们的内心缺乏一个“足够好”的锚点。</p>
+<p>于是，他们永远在追逐一个不断后退的地平线。即使外人看来他们已经做得很好了，他们自己依然感到挫败和焦虑。</p>
+<p>从未体验过“完成”的满足感，从未感受过“交付”的轻松感，永远在路上，永远不够好。</p>
+<h2 id="真正的完美，藏在“完成”里"><a href="#真正的完美，藏在“完成”里" class="headerlink" title="真正的完美，藏在“完成”里"></a>真正的完美，藏在“完成”里</h2><p>那些真正取得卓越成就的人，往往不是完美主义者，而是“追求卓越者”。</p>
+<p><strong>完美主义者关注的是“如何避免错误”。</strong></p>
+<p><strong>追求卓越者关注的是“如何不断进步”。</strong></p>
+<p>一字之差，天壤之别。</p>
+<p>追求卓越者接受初始版本的不完美。他们知道，完美的初稿不存在，伟大的作品都是改出来的。</p>
+<p>他们先完成，再完美。</p>
+<p>因为他们明白：一个交付了的、有瑕疵的作品，远比一个在脑海中构思了无数遍、但从未问世的完美作品，更有价值，也更接近“完美”本身。</p>
+<p>正如伏尔泰所说：“完美是优秀的敌人。”</p>
+<p>或者，用现代互联网的话来说：“先发布，再迭代。”</p>
+<p>所以，如果你也是一个被困在完美主义牢笼里的人，今天，我想对你说：</p>
+<p>放手去做吧。</p>
+<p>接受那个笨拙的开始，接纳那个不完美的初稿。</p>
+<p>发布它，分享它，收集反馈，然后改进它。</p>
+<p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>java-nosuchmethoderror-varargs-jar-version-mismatch</title>
+    <url>/2026/08/05/archive/%E5%BD%93%20String%E2%80%A6%20%E7%A2%B0%E4%B8%8A%20Object%E2%80%A6/</url>
+    <content><![CDATA[<h2 id="一次有点特别的-NoSuchMethodError：当-String…-碰上-Object…"><a href="#一次有点特别的-NoSuchMethodError：当-String…-碰上-Object…" class="headerlink" title="一次有点特别的 NoSuchMethodError：当 String… 碰上 Object…"></a>一次有点特别的 <code>NoSuchMethodError</code>：当 <code>String…</code> 碰上 <code>Object…</code></h2><blockquote>
+<p>记录一次由编译期和运行期 Jar 不一致引发的 Java 二进制兼容问题。源码看起来没毛病，编译也能顺利通过，但部署后只要执行到某段特定代码，就会直接抛出 <code>NoSuchMethodError</code>。</p>
+</blockquote>
+<h3 id="一、问题背景"><a href="#一、问题背景" class="headerlink" title="一、问题背景"></a>一、问题背景</h3><p>有一次在项目环境里执行“撤销合同”操作，系统突然报了下面这个异常：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">java.lang.NoSuchMethodError:</span><br><span class="line">com.hrms.frame.dao.ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br><span class="line">    at com.hjsj.hrms.module.integrationcenter.apps.signture_v2.dao.impl.SignatureMonitorDaoImpl.updateSignState(SignatureMonitorDaoImpl.java:204)</span><br><span class="line">    at com.hjsj.hrms.module.integrationcenter.apps.signture_v2.businessobject.monitor.impl.SignatureMonitorOperateServiceImpl.revokeContract(SignatureMonitorOperateServiceImpl.java:69)</span><br></pre></td></tr></table></figure>
+
+<p>对应的源码是：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">update</span> <span class="operator">=</span> dao.update(</span><br><span class="line">    <span class="string">&quot;update t_sys_signature_info set signstate = ? WHERE &quot;</span> + uniqueField + <span class="string">&quot; = ?&quot;</span>,</span><br><span class="line">    status,</span><br><span class="line">    uniqueValue</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>乍一看，这段代码没什么明显问题：</p>
+<ul>
+<li>SQL 里有两个占位符；</li>
+<li>调用时也传了两个字符串参数；</li>
+<li>本地 IDE 没有报错；</li>
+<li>Maven 可以正常编译；</li>
+<li>其他使用 <code>ContentDAO</code> 的功能也都能正常运行。</li>
+</ul>
+<p>所以第一反应很容易去怀疑 SQL、数据库字段或者参数值。</p>
+<p>但异常类型其实已经把关键线索摆出来了：这不是 SQL 执行失败，而是 JVM 在运行时根本找不到它要调用的那个方法。</p>
+<h3 id="二、先看懂异常里的方法签名"><a href="#二、先看懂异常里的方法签名" class="headerlink" title="二、先看懂异常里的方法签名"></a>二、先看懂异常里的方法签名</h3><p>异常里最关键的部分是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
+
+<p>这是 JVM 使用的方法描述符，拆开来看就是：</p>
+<ul>
+<li><code>Ljava/lang/String;</code>：<code>java.lang.String</code></li>
+<li><code>[Ljava/lang/String;</code>：<code>java.lang.String[]</code></li>
+<li><code>I</code>：返回值是 <code>int</code></li>
+</ul>
+<p>也就是说，JVM 实际想调用的方法是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update(String sql, String[] values)</span><br></pre></td></tr></table></figure>
+
+<p>如果换成 Java 里的可变参数写法，就是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update(String sql, String... values)</span><br></pre></td></tr></table></figure>
+
+<p>这说明调用方的 Class 文件在编译时，已经把目标方法确定成了 <code>update(String, String[])</code>。</p>
+<h3 id="三、对比编译期和运行期的-Jar"><a href="#三、对比编译期和运行期的-Jar" class="headerlink" title="三、对比编译期和运行期的 Jar"></a>三、对比编译期和运行期的 Jar</h3><p>继续排查后，发现环境里存在两个不同版本的 <code>struts_extends.jar</code>：</p>
+<ul>
+<li>本地编译环境 <code>hrms/WEB-INF/lib/struts_extends.jar</code>：<code>8.6.0.4-SNAPSHOT</code>，构建时间是 2026-05-07 09:10:44。</li>
+<li>项目运行环境 <code>struts_extends.jar</code>：<code>8.6.1.1-SNAPSHOT</code>，构建时间是 2026-07-10 16:35:32。</li>
+</ul>
+<p>把两个 Jar 反编译后，发现 <code>ContentDAO.update</code> 的方法签名变了。</p>
+<p>旧版本，也就是本地编译时使用的 Jar：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, String... values) throws SQLException</span><br></pre></td></tr></table></figure>
+
+<p>新版本，也就是项目运行时加载的 Jar：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, Object... values) throws SQLException</span><br></pre></td></tr></table></figure>
+
+<p>不过，两个版本都保留了下面这个重载：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, List values) throws SQLException</span><br></pre></td></tr></table></figure>
+
+<p>到这里，问题基本就清楚了：</p>
+<ol>
+<li>源码使用旧 Jar 编译。</li>
+<li>编译器把这次调用绑定到了 <code>update(String, String[])</code>。</li>
+<li>部署后，JVM 实际加载的是新 Jar 里的 <code>ContentDAO</code>。</li>
+<li>新 Jar 只有 <code>update(String, Object[])</code>，没有 <code>update(String, String[])</code>。</li>
+<li>JVM 找不到编译时记录的方法，最终抛出 <code>NoSuchMethodError</code>。</li>
+</ol>
+<h3 id="四、为什么-String-不能直接匹配-Object"><a href="#四、为什么-String-不能直接匹配-Object" class="headerlink" title="四、为什么 String[] 不能直接匹配 Object[]"></a>四、为什么 <code>String[]</code> 不能直接匹配 <code>Object[]</code></h3><p>从 Java 源码层面看，<code>String</code> 是 <code>Object</code> 的子类，<code>String[]</code> 也确实可以赋值给 <code>Object[]</code>：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">String[] strings = &#123;&quot;a&quot;, &quot;b&quot;&#125;;</span><br><span class="line">Object[] objects = strings;</span><br></pre></td></tr></table></figure>
+
+<p>所以这里很容易让人产生疑问：运行时明明有 <code>update(String, Object[])</code>，JVM 为什么不顺手调用它？</p>
+<p>原因是，Java 的方法重载解析发生在编译期，而 JVM 运行时执行的是已经确定好的方法符号引用。</p>
+<p>旧版方法的字节码描述符是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
+
+<p>新版方法的字节码描述符是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">(Ljava/lang/String;[Ljava/lang/Object;)I</span><br></pre></td></tr></table></figure>
+
+<p>对 JVM 来说，这就是两个完全不同的方法。</p>
+<p>运行时在解析方法引用时，JVM 不会重新执行一次 Java 编译器的重载选择逻辑，也不会因为 <code>String[]</code> 可以向上转型为 <code>Object[]</code>，就自动改去调用另一个重载。</p>
+<p>简单来说：</p>
+<blockquote>
+<p>Java 类型系统允许数组向上转型，不代表 JVM 能在链接阶段替换已经写进 Class 文件的方法描述符。</p>
+</blockquote>
+<p>这就是源码兼容和二进制兼容的区别。</p>
+<p>如果使用新版 Jar 重新编译原来的源码：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(sql, status, uniqueValue);</span><br></pre></td></tr></table></figure>
+
+<p>编译器会重新选择 <code>update(String, Object[])</code>，代码也就能正常运行。</p>
+<p>但问题在于，旧 Jar 编译出来的 Class 文件，不能直接放到只提供新签名的运行环境里使用。</p>
+<h3 id="五、为什么编译没问题，运行到这里才报错"><a href="#五、为什么编译没问题，运行到这里才报错" class="headerlink" title="五、为什么编译没问题，运行到这里才报错"></a>五、为什么编译没问题，运行到这里才报错</h3><p>这也是 <code>NoSuchMethodError</code> 最容易让人迷惑的地方。</p>
+<h4 id="1-编译时，这个方法确实存在"><a href="#1-编译时，这个方法确实存在" class="headerlink" title="1. 编译时，这个方法确实存在"></a>1. 编译时，这个方法确实存在</h4><p>本地编译使用的旧 Jar 里有：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String, String...)</span><br></pre></td></tr></table></figure>
+
+<p>所以无论是 IDE、<code>javac</code> 还是 Maven，都会认为这段代码合法，自然不会报编译错误。</p>
+<h4 id="2-运行时加载了另一个版本"><a href="#2-运行时加载了另一个版本" class="headerlink" title="2. 运行时加载了另一个版本"></a>2. 运行时加载了另一个版本</h4><p>部署之后，类加载器实际加载的是新版本 <code>ContentDAO</code>。</p>
+<p>而新版本删除或替换了原来的方法签名，导致调用方 Class 文件里记录的方法无法解析。</p>
+<h4 id="3-只有真正执行到调用点时才会暴露"><a href="#3-只有真正执行到调用点时才会暴露" class="headerlink" title="3. 只有真正执行到调用点时才会暴露"></a>3. 只有真正执行到调用点时才会暴露</h4><p>JVM 通常不会在应用启动时，就提前解析所有业务代码里的每一次方法调用。</p>
+<p>只有代码真正执行到 <code>updateSignState()</code> 里的目标调用点时，这个问题才会冒出来。</p>
+<p>所以实际现象可能是：</p>
+<ul>
+<li>应用能正常启动；</li>
+<li>签章模块的大部分页面都能打开；</li>
+<li>查询类功能可以正常使用；</li>
+<li>只有执行“撤销合同”时才报错。</li>
+</ul>
+<h4 id="4-catch-Exception-抓不到它"><a href="#4-catch-Exception-抓不到它" class="headerlink" title="4. catch (Exception) 抓不到它"></a>4. <code>catch (Exception)</code> 抓不到它</h4><p>业务代码外围虽然可能写了：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    dao.update(...);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    // 业务异常处理</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但 <code>NoSuchMethodError</code> 继承自 <code>Error</code>，并不是 <code>Exception</code>：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Throwable</span><br><span class="line">  └─ Error</span><br><span class="line">      └─ LinkageError</span><br><span class="line">          └─ IncompatibleClassChangeError</span><br><span class="line">              └─ NoSuchMethodError</span><br></pre></td></tr></table></figure>
+
+<p>所以普通的 <code>catch (Exception e)</code> 根本抓不到它。</p>
+<p>当然，也不应该为了兜住这个错误，直接加一个 <code>catch (Error e)</code>。这类异常说明运行环境里的二进制依赖已经不一致，正确做法是修复依赖或者重新编译，而不是把异常强行吞掉。</p>
+<h3 id="六、最终怎么修"><a href="#六、最终怎么修" class="headerlink" title="六、最终怎么修"></a>六、最终怎么修</h3><p>这次选择了两个版本里都存在的 <code>List</code> 重载：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update = dao.update(</span><br><span class="line">    &quot;update t_sys_signature_info set signstate = ? WHERE &quot; + uniqueField + &quot; = ?&quot;,</span><br><span class="line">    Arrays.asList(status, uniqueValue)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>对应的字节码目标签名是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(Ljava/lang/String;Ljava/util/List;)I</span><br></pre></td></tr></table></figure>
+
+<p>因为旧版和新版 Jar 都有 <code>update(String, List)</code>，所以改完后的代码可以同时兼容这两个环境。</p>
+<p>同一个模块里还有其他地方直接使用了可变参数版 <code>update</code>。为了避免以后从其他业务入口再次踩到同样的问题，这次也一起改成了 <code>List</code> 重载：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(sql, Arrays.asList(a0100, String.valueOf(i9999)));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(</span><br><span class="line">    &quot;update t_sys_signature_form &quot;</span><br><span class="line">        + &quot;set ct_ownership_subject = ? &quot;</span><br><span class="line">        + &quot;where signaturetype_ = ? and templateid = ? and version = ?&quot;,</span><br><span class="line">    Arrays.asList(</span><br><span class="line">        ctOwnershipSubject,</span><br><span class="line">        String.valueOf(signatureType),</span><br><span class="line">        templateId,</span><br><span class="line">        version</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="七、为什么不直接替换项目环境里的-Jar"><a href="#七、为什么不直接替换项目环境里的-Jar" class="headerlink" title="七、为什么不直接替换项目环境里的 Jar"></a>七、为什么不直接替换项目环境里的 Jar</h3><p>这类问题一般有三种解决方式。</p>
+<h4 id="方案一：统一使用新版-Jar，重新编译并部署"><a href="#方案一：统一使用新版-Jar，重新编译并部署" class="headerlink" title="方案一：统一使用新版 Jar，重新编译并部署"></a>方案一：统一使用新版 Jar，重新编译并部署</h4><p>这是最彻底的做法：</p>
+<ol>
+<li>本地编译环境升级到 <code>8.6.1.1-SNAPSHOT</code>。</li>
+<li>CI&#x2F;CD 和所有开发环境统一使用相同依赖。</li>
+<li>使用新版 Jar 重新编译所有相关代码。</li>
+<li>部署时保证应用里只存在一个确定版本。</li>
+</ol>
+<p>好处是可以从根本上消除编译期和运行期的差异。</p>
+<p>缺点也很明显：需要确认新版 Jar 对整个系统的影响，不能只验证当前这一个功能。</p>
+<h4 id="方案二：把运行环境回退到旧版-Jar"><a href="#方案二：把运行环境回退到旧版-Jar" class="headerlink" title="方案二：把运行环境回退到旧版 Jar"></a>方案二：把运行环境回退到旧版 Jar</h4><p>这样确实能让当前 Class 文件重新找到 <code>String[]</code> 版本的方法。</p>
+<p>但项目环境可能已经依赖了新版 Jar 里的其他修复或功能。贸然回退公共基础 Jar，风险通常比改一处业务调用更高，所以这次没有这么做。</p>
+<h4 id="方案三：调用两个版本里都稳定存在的方法"><a href="#方案三：调用两个版本里都稳定存在的方法" class="headerlink" title="方案三：调用两个版本里都稳定存在的方法"></a>方案三：调用两个版本里都稳定存在的方法</h4><p>这次采用的就是这个方案，也就是改用 <code>update(String, List)</code>。</p>
+<p>它的优点是：</p>
+<ul>
+<li>修改范围比较小；</li>
+<li>不需要马上替换公共 Jar；</li>
+<li>可以同时兼容当前两个版本；</li>
+<li>参数仍然通过占位符绑定，不需要拼接进 SQL。</li>
+</ul>
+<p>不过要注意，这只能算一次兼容性修复。</p>
+<p>从长期来看，还是应该统一编译期和运行期依赖。否则其他发生过签名变化的方法，之后仍然可能触发类似问题。</p>
+<h3 id="八、以后怎么快速排查类似问题"><a href="#八、以后怎么快速排查类似问题" class="headerlink" title="八、以后怎么快速排查类似问题"></a>八、以后怎么快速排查类似问题</h3><p>以后再遇到 <code>NoSuchMethodError</code>，可以按下面这个顺序来查。</p>
+<h4 id="第一步：先别急着查业务参数"><a href="#第一步：先别急着查业务参数" class="headerlink" title="第一步：先别急着查业务参数"></a>第一步：先别急着查业务参数</h4><p><code>NoSuchMethodError</code> 的重点不是参数值传得对不对，而是运行时类里有没有 Class 文件想调用的那个完整方法签名。</p>
+<p>先看异常里的这三部分：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">类名.方法名(参数描述符)返回值描述符</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步：确认这个类到底来自哪个-Jar"><a href="#第二步：确认这个类到底来自哪个-Jar" class="headerlink" title="第二步：确认这个类到底来自哪个 Jar"></a>第二步：确认这个类到底来自哪个 Jar</h4><p>复杂 Web 应用里，同一个类可能同时出现在很多地方：</p>
+<ul>
+<li><code>WEB-INF/lib</code>；</li>
+<li>Tomcat 公共 <code>lib</code>；</li>
+<li>应用服务器共享目录；</li>
+<li>Maven 传递依赖；</li>
+<li>热部署残留目录；</li>
+<li>插件或扩展包。</li>
+</ul>
+<p>可以临时打印这个类实际从哪里加载：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">System.out.println(</span><br><span class="line">    ContentDAO.class.getProtectionDomain()</span><br><span class="line">        .getCodeSource()</span><br><span class="line">        .getLocation()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>也可以打开 JVM 的类加载日志。Java 8 常用：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">-verbose:class</span><br></pre></td></tr></table></figure>
+
+<p>然后在日志里搜索 <code>ContentDAO</code>，看看最后到底是哪个 Jar 提供了这个类。</p>
+<h4 id="第三步：查看-Jar-的版本和构建信息"><a href="#第三步：查看-Jar-的版本和构建信息" class="headerlink" title="第三步：查看 Jar 的版本和构建信息"></a>第三步：查看 Jar 的版本和构建信息</h4><p>优先检查：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">META-INF/MANIFEST.MF</span><br></pre></td></tr></table></figure>
+
+<p>这次两个 Jar 的 Manifest 分别记录了：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Implementation-Version: 8.6.0.4-SNAPSHOT</span><br><span class="line">Build-Time: 2026-05-07 09:10:44</span><br></pre></td></tr></table></figure>
+
+<p>以及：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Implementation-Version: 8.6.1.1-SNAPSHOT</span><br><span class="line">Build-Time: 2026-07-10 16:35:32</span><br></pre></td></tr></table></figure>
+
+<h4 id="第四步：对比真实的方法签名"><a href="#第四步：对比真实的方法签名" class="headerlink" title="第四步：对比真实的方法签名"></a>第四步：对比真实的方法签名</h4><p>可以用 <code>javap</code> 查看 Class 里的公开方法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javap -classpath struts_extends.jar com.hrms.frame.dao.ContentDAO</span><br></pre></td></tr></table></figure>
+
+<p>如果还要查看字节码里的调用点，可以执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javap -classpath target/classes -c -s \</span><br><span class="line">  com.hjsj.hrms.module.integrationcenter.apps.signture_v2.dao.impl.SignatureMonitorDaoImpl</span><br></pre></td></tr></table></figure>
+
+<p>重点确认两件事：</p>
+<ul>
+<li>调用方 Class 文件请求的描述符是什么；</li>
+<li>运行时 Jar 实际提供的描述符是什么。</li>
+</ul>
+<h4 id="第五步：检查依赖树和重复类"><a href="#第五步：检查依赖树和重复类" class="headerlink" title="第五步：检查依赖树和重复类"></a>第五步：检查依赖树和重复类</h4><p>Maven 项目可以先执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn dependency:tree</span><br></pre></td></tr></table></figure>
+
+<p>不过要注意，如果 Jar 是手工放进 <code>WEB-INF/lib</code>、Tomcat <code>lib</code> 或外部部署目录的，Maven 依赖树里不一定能看到。</p>
+<p>这种情况下，还是要结合部署包内容和 JVM 实际的类加载位置来判断。</p>
+<h3 id="九、NoSuchMethodError-和几个相似异常有什么区别"><a href="#九、NoSuchMethodError-和几个相似异常有什么区别" class="headerlink" title="九、NoSuchMethodError 和几个相似异常有什么区别"></a>九、<code>NoSuchMethodError</code> 和几个相似异常有什么区别</h3><h4 id="NoSuchMethodError"><a href="#NoSuchMethodError" class="headerlink" title="NoSuchMethodError"></a><code>NoSuchMethodError</code></h4><p>典型情况是：编译时方法存在，但运行时加载的类里没有相同的方法签名。</p>
+<p>常见原因包括：</p>
+<ul>
+<li>Jar 版本不一致；</li>
+<li>运行环境里残留了旧 Jar；</li>
+<li>方法参数或返回值发生了变化；</li>
+<li>类加载顺序导致加载了非预期版本。</li>
+</ul>
+<h4 id="NoSuchMethodException"><a href="#NoSuchMethodException" class="headerlink" title="NoSuchMethodException"></a><code>NoSuchMethodException</code></h4><p>这是一个受检异常，通常出现在反射调用里：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">clazz.getMethod(&quot;update&quot;, String.class, String[].class);</span><br></pre></td></tr></table></figure>
+
+<p>它表示反射查找方法失败，和 JVM 链接阶段抛出的 <code>NoSuchMethodError</code> 不是一回事。</p>
+<h4 id="AbstractMethodError"><a href="#AbstractMethodError" class="headerlink" title="AbstractMethodError"></a><code>AbstractMethodError</code></h4><p>通常表示接口或父类的方法契约发生了变化，但实现类还是旧版本。</p>
+<p>例如接口新增了一个抽象方法，运行时却加载了一个没有实现该方法的旧实现类。</p>
+<h4 id="NoClassDefFoundError"><a href="#NoClassDefFoundError" class="headerlink" title="NoClassDefFoundError"></a><code>NoClassDefFoundError</code></h4><p>表示编译时存在的类，在运行时无法加载，或者这个类之前初始化失败了。</p>
+<p>它和 <code>NoSuchMethodError</code> 一样，都应该优先检查运行时依赖和类加载环境。</p>
+<h3 id="十、这次问题带来的几个启示"><a href="#十、这次问题带来的几个启示" class="headerlink" title="十、这次问题带来的几个启示"></a>十、这次问题带来的几个启示</h3><h4 id="1-可变参数也是方法签名的一部分"><a href="#1-可变参数也是方法签名的一部分" class="headerlink" title="1. 可变参数也是方法签名的一部分"></a>1. 可变参数也是方法签名的一部分</h4><p>下面两个声明看起来很像：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String sql, String... values)</span><br><span class="line">update(String sql, Object... values)</span><br></pre></td></tr></table></figure>
+
+<p>调用方式也差不多，但它们底层的参数类型分别是 <code>String[]</code> 和 <code>Object[]</code>。</p>
+<p>把公共 API 从前者直接改成后者，就算原源码用新版 Jar 重新编译后还能正常调用，也会破坏已经编译好的旧代码的二进制兼容性。</p>
+<h4 id="2-“源码兼容”不等于“二进制兼容”"><a href="#2-“源码兼容”不等于“二进制兼容”" class="headerlink" title="2. “源码兼容”不等于“二进制兼容”"></a>2. “源码兼容”不等于“二进制兼容”</h4><p>使用新版 Jar 重新编译原来的源码，如果一切正常，只能说明源码兼容。</p>
+<p>旧 Class 文件能不能不重新编译，直接放到新环境里运行，要看新版是否还保留了旧的字节码方法描述符。</p>
+<p>升级公共基础库时，最好同时考虑：</p>
+<ul>
+<li>源码兼容性；</li>
+<li>二进制兼容性；</li>
+<li>行为兼容性；</li>
+<li>部署环境里的类加载顺序。</li>
+</ul>
+<h4 id="3-公共方法签名不要轻易原地替换"><a href="#3-公共方法签名不要轻易原地替换" class="headerlink" title="3. 公共方法签名不要轻易原地替换"></a>3. 公共方法签名不要轻易原地替换</h4><p>如果基础库确实需要把参数从 <code>String…</code> 扩展成 <code>Object…</code>，更稳妥的方式是先保留旧方法，再在内部转发：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, String... values) throws SQLException &#123;</span><br><span class="line">    return update(sql, (Object[]) values);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int update(String sql, Object... values) throws SQLException &#123;</span><br><span class="line">    return update(sql, Arrays.asList(values));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过，同时保留两个可变参数重载，也可能让部分调用出现重载歧义，所以公共 API 的设计还是要谨慎评估。</p>
+<p>对于已经发布的基础库，更推荐通过新方法名、明确的集合参数，或者完整的兼容性测试来演进接口。</p>
+<h4 id="4-构建和运行必须使用同一套依赖"><a href="#4-构建和运行必须使用同一套依赖" class="headerlink" title="4. 构建和运行必须使用同一套依赖"></a>4. 构建和运行必须使用同一套依赖</h4><p>最重要的工程措施，不是记住这次具体报了什么错，而是尽量消除环境漂移：</p>
+<ul>
+<li>不要依赖开发者手工复制 Jar；</li>
+<li>构建产物应该带上确定版本的依赖；</li>
+<li>CI 构建和生产部署使用相同的依赖来源；</li>
+<li>启动时输出核心基础包版本；</li>
+<li>升级公共 Jar 后做完整回归；</li>
+<li>清理 Tomcat 缓存、旧部署目录和重复 Jar。</li>
+</ul>
+<h3 id="十一、排查清单"><a href="#十一、排查清单" class="headerlink" title="十一、排查清单"></a>十一、排查清单</h3><p>遇到下面这些错误时：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">NoSuchMethodError</span><br><span class="line">NoClassDefFoundError</span><br><span class="line">AbstractMethodError</span><br><span class="line">IncompatibleClassChangeError</span><br></pre></td></tr></table></figure>
+
+<p>可以快速检查：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 编译环境和运行环境的 Jar 版本是否一致；</li>
+<li><input disabled="" type="checkbox"> 异常里的 JVM 方法描述符具体是什么；</li>
+<li><input disabled="" type="checkbox"> 运行时 Jar 是否真的包含这个完整签名；</li>
+<li><input disabled="" type="checkbox"> 是否同时存在多个包含相同类的 Jar；</li>
+<li><input disabled="" type="checkbox"> Tomcat 公共 <code>lib</code> 是否覆盖了应用里的 <code>WEB-INF/lib</code>；</li>
+<li><input disabled="" type="checkbox"> 是否只替换了业务 Class，却没有同步基础 Jar；</li>
+<li><input disabled="" type="checkbox"> 是否只替换了基础 Jar，却没有重新编译业务代码；</li>
+<li><input disabled="" type="checkbox"> 公共 API 是否修改过参数类型、返回值或静态属性；</li>
+<li><input disabled="" type="checkbox"> 应用重启后是否仍然加载了旧缓存或旧部署目录；</li>
+<li><input disabled="" type="checkbox"> 是否存在两个版本都支持的稳定重载，可以先做临时兼容。</li>
+</ul>
+<h3 id="十二、总结"><a href="#十二、总结" class="headerlink" title="十二、总结"></a>十二、总结</h3><p>这次问题的完整因果链是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">本地使用旧版 Jar 编译</span><br><span class="line">        ↓</span><br><span class="line">调用被编译为 update(String, String[])</span><br><span class="line">        ↓</span><br><span class="line">项目运行时加载新版 Jar</span><br><span class="line">        ↓</span><br><span class="line">新版只有 update(String, Object[])</span><br><span class="line">        ↓</span><br><span class="line">JVM 无法解析原方法描述符</span><br><span class="line">        ↓</span><br><span class="line">抛出 NoSuchMethodError</span><br></pre></td></tr></table></figure>
+
+<p>最后通过改用两个版本都存在的：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String, List)</span><br></pre></td></tr></table></figure>
+
+<p>完成了兼容修复。</p>
+<p>这类问题虽然不算常见，但特征其实很明确：</p>
+<blockquote>
+<p>只要看到 <code>NoSuchMethodError</code>，就应该优先检查 Jar 版本、方法描述符和类加载来源，而不是一上来就排查业务逻辑。</p>
+</blockquote>
+<p>搞清楚可变参数背后的数组签名，以及源码兼容和二进制兼容的区别，能大幅缩短这类问题的定位时间。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>文章推荐</title>
+    <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
+    <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
+<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
+<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
+<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><p><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
+<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
+<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
+<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
+<p>前提是已经安装了多线程下载工具 (也不是很好用)</p>
+</blockquote>
+<p><a href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
+<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
+<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
+<h2 id="GitHub-代码推送-kex-exchange-identification-报错"><a href="#GitHub-代码推送-kex-exchange-identification-报错" class="headerlink" title="GitHub 代码推送 kex_exchange_identification 报错"></a>GitHub 代码推送 kex_exchange_identification 报错</h2><p><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
+<p><a href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
+<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
+<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
+<h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
+<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
+<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
+<p><a href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
+<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
+<p><a href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
+<p><a href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
+<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
+<li><p>代码编写阶段</p>
+<ul>
+<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
+<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
+</ul>
+</li>
+<li><p>编译&#x2F;解释阶段</p>
+<ul>
+<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
+<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
+</ul>
+</li>
+<li><p>运行时阶段</p>
+<ul>
+<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
+</ul>
+</li>
+<li><p>网络传输阶段</p>
+<ul>
+<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
+<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
+</ul>
+</li>
+<li><p>总结</p>
+<ul>
+<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
+<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
+<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
+<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
+</blockquote>
+<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在GBK编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在UTF-8编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
+<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
+<h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
+<h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
+<h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
+<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
+<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><a href="https://blog.csdn.net/chushoufengli/article/details/104535873">RSA加密 和 SHA256签名函数_rsa sha256-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>持续更新</tag>
       </tags>
   </entry>
   <entry>
@@ -5543,476 +6013,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何避免代码的深层嵌套</title>
-    <url>/2024/12/09/archive/%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B7%B1%E5%B1%82%E5%B5%8C%E5%A5%97/</url>
-    <content><![CDATA[<blockquote>
-<p>在编写代码，尤其是在处理复杂的逻辑或数据结构时，深层嵌套（例如，深层的条件判断或循环）可能导致代码变得难以阅读和维护。以下是一些解决深层嵌套的方法和最佳实践：</p>
-</blockquote>
-<h2 id="1-使用早期返回（Early-Return）"><a href="#1-使用早期返回（Early-Return）" class="headerlink" title="1. 使用早期返回（Early Return）"></a>1. <strong>使用早期返回（Early Return）</strong></h2><p>在函数或方法中，使用早期返回可以减少嵌套层级。提前处理特殊情况，尽早返回。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>; <span class="comment">// 早期返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-避免嵌套循环"><a href="#2-避免嵌套循环" class="headerlink" title="2. 避免嵌套循环"></a>2. <strong>避免嵌套循环</strong></h2><p>如果可能，尝试将嵌套循环的逻辑分解到单独的方法中。这样可以保持主要逻辑的清晰性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Item item : items) &#123;</span><br><span class="line">    processItem(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独处理每个项</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">processItem</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (Detail detail : item.getDetails()) &#123;</span><br><span class="line">        <span class="comment">// 处理中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-使用数据结构"><a href="#3-使用数据结构" class="headerlink" title="3. 使用数据结构"></a>3. <strong>使用数据结构</strong></h2><p>通过适当的数据结构（如数组、列表或图）管理复杂的逻辑，避免多重嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, List&lt;Detail&gt;&gt; detailMap = groupDetailsByType(items);</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, List&lt;Detail&gt;&gt; entry : detailMap.entrySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    List&lt;Detail&gt; details = entry.getValue();</span><br><span class="line">    <span class="comment">// 对每种类型的详细信息进行处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-引入设计模式"><a href="#4-引入设计模式" class="headerlink" title="4. 引入设计模式"></a>4. <strong>引入设计模式</strong></h2><p>某些设计模式（如策略模式、状态模式）可以帮助组织代码，减少嵌套。例如，如果有复杂的条件逻辑，可以将其提取为策略类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyA</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 A</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteStrategyB</span> <span class="keyword">implements</span> <span class="title class_">ProcessingStrategy</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Item item)</span> &#123;</span><br><span class="line">        <span class="comment">// 逻辑 B</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-使用-前置条件退出-Guard-Clauses"><a href="#5-使用-前置条件退出-Guard-Clauses" class="headerlink" title="5. 使用 前置条件退出 (Guard Clauses)"></a>5. <strong>使用 前置条件退出 (Guard Clauses)</strong></h2><p>使用 guard clauses（前置条件）来提前退出，不需要一直进行嵌套。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">(Data data)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;Data cannot be null&quot;</span>); <span class="comment">// 前置条件</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主逻辑</span></span><br><span class="line">    process(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="6-分解函数"><a href="#6-分解函数" class="headerlink" title="6. 分解函数"></a>6. <strong>分解函数</strong></h2><p>将复杂的函数分解为多个小函数，每个小函数做一件事情。这样不仅减少嵌套，还提高了可读性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleRequest</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isValid(request)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    process(request);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(Request request)</span> &#123;</span><br><span class="line">    <span class="comment">// 验证逻辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 例如</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上述方法，你可以有效地减少代码中的深层嵌套，提高可读性和维护性。尽量保持函数的单一责任，将复杂的逻辑分解到多个层次中，以便进行清晰的组织与呈现。</p>
-]]></content>
-      <tags>
-        <tag>代码/优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>千年虫：一场耗资千亿美元、险些摧毁世界的数字危机</title>
-    <url>/2025/09/17/archive/%E5%8D%83%E5%B9%B4%E8%99%AB%EF%BC%9A%E4%B8%80%E5%9C%BA%E8%80%97%E8%B5%84%E5%8D%83%E4%BA%BF%E7%BE%8E%E5%85%83%E3%80%81%E9%99%A9%E4%BA%9B%E6%91%A7%E6%AF%81%E4%B8%96%E7%95%8C%E7%9A%84%E6%95%B0%E5%AD%97%E5%8D%B1%E6%9C%BA/</url>
-    <content><![CDATA[<p>还记得 1999 年 12 月 31 日那个夜晚吗？当全世界都在欢庆新千年来临时，却有一群人心急如焚地守在电脑前，他们不是在看晚会，而是在等待一场未知的灾难——千年虫（Y2K）危机。</p>
-<h2 id="什么是千年虫？"><a href="#什么是千年虫？" class="headerlink" title="什么是千年虫？"></a>什么是千年虫？</h2><p>千年虫，又被称为“Y2K 问题”，是计算机史上最著名的<strong>程序设计缺陷</strong>之一。它的根源可以追溯到计算机发展的早期。</p>
-<p>在 1960-1980 年代，计算机的存储空间<strong>极其昂贵</strong>。为节省每一个字节，程序员们想出了一个“聪明”的办法：用两位数字表示年份，而非四位。于是“1999”被简化为“99”，“1975”变成了“75”。</p>
-<p>这个看似聪明的做法埋下了一颗定时炸弹。当系统从“99”跃升至“00”时，计算机会将其识别为“1900”而非“2000”。这一小小的误解，足以让全球系统陷入瘫痪。</p>
-<h2 id="可能引发的灾难性后果"><a href="#可能引发的灾难性后果" class="headerlink" title="可能引发的灾难性后果"></a>可能引发的灾难性后果</h2><p>想象一下，如果时间突然从 2000 年跳回 1900 年，会发生什么？</p>
-<p><strong>金融系统崩溃</strong>：银行会认为你的存款已经存了 -99 年，利息计算全面错误；信用卡、贷款、保险等所有基于日期的金融产品全部失效。</p>
-<p><strong>基础设施停摆</strong>：电力系统可能自动关闭，认为设备已连续运行 100 年而未检修；航空管制系统陷入混乱，航班时刻表全面错乱。</p>
-<p><strong>社会秩序混乱</strong>：身份证、出生证明、毕业证书全部失效；医院的患者记录、药品有效期系统出错，甚至影响患者治疗。</p>
-<h2 id="全球规模的“灭虫”行动"><a href="#全球规模的“灭虫”行动" class="headerlink" title="全球规模的“灭虫”行动"></a>全球规模的“灭虫”行动</h2><p>面对这场迫在眉睫的危机，全球展开了史上最大规模的技术修复行动：</p>
-<ol>
-<li><strong>全面清查</strong>：各国政府和企业对所有关键系统进行彻底排查，寻找存在 Y2K 问题的代码</li>
-<li><strong>重写代码</strong>：程序员们夜以继日地修改代码，将两位数年份扩展为四位数</li>
-<li><strong>严格测试</strong>：搭建模拟环境，将系统时间调整到 2000 年进行测试</li>
-<li><strong>制定应急预案</strong>：各国都准备了详细应急方案，以应对可能发生的意外故障</li>
-</ol>
-<p>这场行动<strong>耗资高达 3000-5000 亿美元</strong>，是全球有史以来最昂贵的 Bug 修复工程。</p>
-<h2 id="虚惊一场？还是成功避险？"><a href="#虚惊一场？还是成功避险？" class="headerlink" title="虚惊一场？还是成功避险？"></a>虚惊一场？还是成功避险？</h2><p>2000 年 1 月 1 日零点，钟声敲响后，世界并没有陷入黑暗。只有少数小问题出现：西班牙某核电站监测系统出错、日本某医院系统故障等，但都被迅速解决。</p>
-<p>这是否意味着千年虫威胁被夸大了？恰恰相反！<strong>正是由于事前全球数年的艰苦努力，才成功避免了一场潜在的数字灾难</strong>。</p>
-<h2 id="留给我们的启示"><a href="#留给我们的启示" class="headerlink" title="留给我们的启示"></a>留给我们的启示</h2><p>千年虫危机虽然已成为历史，但它给我们留下了深刻教训：</p>
-<ol>
-<li><strong>技术债务必须偿还</strong>：短期的便利可能带来长期的风险</li>
-<li><strong>要有长远眼光</strong>：软件开发必须考虑未来的可扩展性和兼容性</li>
-<li><strong>全球协作的力量</strong>：面对全球性挑战，国际合作至关重要</li>
-</ol>
-<p>今天，我们面临着新的“时间炸弹”——<strong>2038 年问题</strong>（32 位系统的 Unix 时间戳将在 2038 年溢出）。感谢千年虫的经验，我们已经学会了如何未雨绸缪。</p>
-<p>技术进步总是伴随着挑战，而人类的智慧正是在解决这些挑战中不断前进。回顾千年虫危机，我们应当对那些在幕后避免灾难的 IT 工作者们表示敬意！</p>
-]]></content>
-      <tags>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>完美主义者，为什么你总是离完美最远？</title>
-    <url>/2026/03/11/archive/%E5%AE%8C%E7%BE%8E%E4%B8%BB%E4%B9%89%E8%80%85%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%80%BB%E6%98%AF%E7%A6%BB%E5%AE%8C%E7%BE%8E%E6%9C%80%E8%BF%9C%EF%BC%9F/</url>
-    <content><![CDATA[<h2 id="完美主义者，为什么你总是离完美最远？"><a href="#完美主义者，为什么你总是离完美最远？" class="headerlink" title="完美主义者，为什么你总是离完美最远？"></a>完美主义者，为什么你总是离完美最远？</h2><blockquote>
-<p>一个不存在的作品，离完美当然最远</p>
-</blockquote>
-<p>“我一定要做到最好才敢开始。”</p>
-<p>“这个方案还不够完美，再等等。”</p>
-<p>“那个标点符号应该用斜体吗？我再调调。”</p>
-<p>这些话，听起来熟悉吗？</p>
-<p>如果你是那个总在等待“完美时机”的人，如果你常常因为一个细节反复修改而错过 deadline，那么今天这篇文章，就是写给你的。</p>
-<p>因为，完美主义者往往最终离完美最远。</p>
-<p>这听起来像一个悖论，但背后藏着深刻的心理学真相。</p>
-<h3 id="01-行动的瘫痪：想得越多，做得越少"><a href="#01-行动的瘫痪：想得越多，做得越少" class="headerlink" title="01 行动的瘫痪：想得越多，做得越少"></a>01 行动的瘫痪：想得越多，做得越少</h3><p>完美主义者的大脑里，住着一个极致清晰的“完美画面”。</p>
-<p>但当他们看向起点和终点之间的路程时，巨大的落差会带来压倒性的焦虑。</p>
-<p>“我必须第一次就把它做好。”</p>
-<p>这句话像一个魔咒。它让人无法接受“初稿”“草稿”这些正常的过程。因为任何不完美的开始，都被视为对最终目标的亵渎。</p>
-<p>结果呢？</p>
-<p>为了不做出“不完美”的东西，索性就不开始了。</p>
-<p>PPT 构思了三周，还没新建文件；想写公众号，注册账号半年一个字都没写；想换工作，简历改了无数版，始终没有投出去。</p>
-<p>事情永远停留在计划和构想阶段，永远无法成为现实。</p>
-<p>可一个不存在的作品，怎么可能完美？</p>
-<h3 id="02-效率的诅咒：在细枝末节上无限沉沦"><a href="#02-效率的诅咒：在细枝末节上无限沉沦" class="headerlink" title="02 效率的诅咒：在细枝末节上无限沉沦"></a>02 效率的诅咒：在细枝末节上无限沉沦</h3><p>如果完美主义者侥幸开始了行动，他们往往会陷入另一种困境：局部最优，而非全局最优。</p>
-<p>“这个标点符号应该用斜体吗？”</p>
-<p>“这张图的配色饱和度再调低 2%？”</p>
-<p>“这一段的第一句话是不是不够抓人？”</p>
-<p>他们会把 80% 的精力，花在只占整体价值 20%，甚至更少的细节上。</p>
-<p>就像一个画家，把一片叶子画得栩栩如生，却忘了画树干。</p>
-<p>精力和时间被无关紧要的“完美”消耗殆尽，整体进度停滞不前，核心任务无法完成。最终呈现的作品，可能细节精致，但整体框架是残缺的。</p>
-<p>这，真的是你想要的“完美”吗？</p>
-<h3 id="03-反馈的隔绝：无法承受的批评之重"><a href="#03-反馈的隔绝：无法承受的批评之重" class="headerlink" title="03 反馈的隔绝：无法承受的批评之重"></a>03 反馈的隔绝：无法承受的批评之重</h3><p>任何作品的诞生都离不开反馈和修正。但完美主义者往往将自己的作品与自我价值绑定。</p>
-<p>“我的作品不完美 &#x3D; 我是一个失败者。”</p>
-<p>这个等式一旦成立，任何对作品的批评，即使是善意的、建设性的，都会被解读为对自身的攻击。</p>
-<p>于是，他们害怕展示不完美的半成品。</p>
-<p>产品经理要 demo，说“还在优化”；导师要看初稿，说“还没写完”；朋友想提建议，说“不用了，我再改改”。</p>
-<p>他们闭门造车，直到最后一刻才拿出一个自以为完美的“成品”，结果却发现——与市场需求脱节，与用户期待不符，与实际情况偏差。</p>
-<p>这时候的打击，往往是毁灭性的。</p>
-<p>而如果当初早点拿出来，早点听取反馈，早点调整方向，结局会不会不一样？</p>
-<h3 id="04-标准的失焦：完美是一个移动的靶子"><a href="#04-标准的失焦：完美是一个移动的靶子" class="headerlink" title="04 标准的失焦：完美是一个移动的靶子"></a>04 标准的失焦：完美是一个移动的靶子</h3><p>最残酷的一点是：对于完美主义者而言，“完美”的标准是动态的，甚至是永远无法企及的。</p>
-<p>“等我做到 A，我就完美了……不，我应该还要做到 B……也许 C 才是真正完美的……”</p>
-<p>他们的内心缺乏一个“足够好”的锚点。</p>
-<p>于是，他们永远在追逐一个不断后退的地平线。即使外人看来他们已经做得很好了，他们自己依然感到挫败和焦虑。</p>
-<p>从未体验过“完成”的满足感，从未感受过“交付”的轻松感，永远在路上，永远不够好。</p>
-<h2 id="真正的完美，藏在“完成”里"><a href="#真正的完美，藏在“完成”里" class="headerlink" title="真正的完美，藏在“完成”里"></a>真正的完美，藏在“完成”里</h2><p>那些真正取得卓越成就的人，往往不是完美主义者，而是“追求卓越者”。</p>
-<p><strong>完美主义者关注的是“如何避免错误”。</strong></p>
-<p><strong>追求卓越者关注的是“如何不断进步”。</strong></p>
-<p>一字之差，天壤之别。</p>
-<p>追求卓越者接受初始版本的不完美。他们知道，完美的初稿不存在，伟大的作品都是改出来的。</p>
-<p>他们先完成，再完美。</p>
-<p>因为他们明白：一个交付了的、有瑕疵的作品，远比一个在脑海中构思了无数遍、但从未问世的完美作品，更有价值，也更接近“完美”本身。</p>
-<p>正如伏尔泰所说：“完美是优秀的敌人。”</p>
-<p>或者，用现代互联网的话来说：“先发布，再迭代。”</p>
-<p>所以，如果你也是一个被困在完美主义牢笼里的人，今天，我想对你说：</p>
-<p>放手去做吧。</p>
-<p>接受那个笨拙的开始，接纳那个不完美的初稿。</p>
-<p>发布它，分享它，收集反馈，然后改进它。</p>
-<p>你会发现，当你不再执着于完美，你反而在不经意间，触碰到真正的卓越。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>文章推荐</title>
-    <url>/2024/12/09/archive/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/</url>
-    <content><![CDATA[<h2 id="VMware-虚拟机网络配置"><a href="#VMware-虚拟机网络配置" class="headerlink" title="VMware 虚拟机网络配置"></a>VMware 虚拟机网络配置</h2><p><a href="https://www.bilibili.com/read/cv7463717/">最详细的讲解，如何使用 VMnet8 模式给虚拟网络配置静态 IP，集群分布式都用它 - 哔哩哔哩 (bilibili.com)</a></p>
-<h2 id="什么是分布式，分布式和集群的区别又是什么"><a href="#什么是分布式，分布式和集群的区别又是什么" class="headerlink" title="什么是分布式，分布式和集群的区别又是什么"></a>什么是分布式，分布式和集群的区别又是什么</h2><p><a href="https://blog.csdn.net/weixin_42046751/article/details/109510811">什么是分布式，分布式和集群的区别又是什么？这一篇让你彻底明白！_什么叫分布式-CSDN 博客</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/144491375">什么是集群？什么又是负载均衡？你说得清楚吗？ - 知乎 (zhihu.com)</a></p>
-<h2 id="理解-IntellijIDEA-的项目配置和-Web-部署"><a href="#理解-IntellijIDEA-的项目配置和-Web-部署" class="headerlink" title="理解 IntellijIDEA 的项目配置和 Web 部署"></a>理解 IntellijIDEA 的项目配置和 Web 部署</h2><p><a href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和 Web 部署 - Dulk - 博客园 (cnblogs.com)</a></p>
-<h2 id="Github-配置-Ssh-Key-的步骤"><a href="#Github-配置-Ssh-Key-的步骤" class="headerlink" title="Github 配置 Ssh Key 的步骤"></a>Github 配置 Ssh Key 的步骤</h2><p><a href="https://blog.csdn.net/weixin_42310154/article/details/118340458">Github 配置 ssh key 的步骤（大白话+包含原理解释）_github 生成 ssh key-CSDN 博客</a></p>
-<h2 id="使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程"><a href="#使用-VirtualBox-搭建-Linux-系统——史上最详细图解教程" class="headerlink" title="使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程"></a>使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程</h2><p><a href="https://blog.csdn.net/AloneCoding/article/details/106809384">使用 VirtualBox 搭建 Linux 系统——史上最详细图解教程_virtualbox 屏幕监视器数量-CSDN 博客</a></p>
-<h2 id="怎么画业务流程图"><a href="#怎么画业务流程图" class="headerlink" title="怎么画业务流程图"></a>怎么画业务流程图</h2><p><a href="https://www.woshipm.com/pmd/4170517.html">大话业务流程图(一)——什么是业务流程图 | 人人都是产品经理 (woshipm.com)</a></p>
-<h2 id="如何使用-IDM-下载百度网盘的内容"><a href="#如何使用-IDM-下载百度网盘的内容" class="headerlink" title="如何使用 IDM 下载百度网盘的内容"></a>如何使用 IDM 下载百度网盘的内容</h2><blockquote>
-<p>前提是已经安装了多线程下载工具 (也不是很好用)</p>
-</blockquote>
-<p><a href="https://www.youxiaohou.com/zh-cn/windows.html#_1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86%E5%99%A8">Windows 平台使用教程 | 油小猴 (youxiaohou.com)</a></p>
-<h2 id="如何画-UML"><a href="#如何画-UML" class="headerlink" title="如何画 UML"></a>如何画 UML</h2><p><a href="https://blog.csdn.net/hejnhong/article/details/130190454">UML 简易使用教程_静态建模与动态建模-CSDN 博客</a></p>
-<h2 id="三层架构和-MVC-的区别"><a href="#三层架构和-MVC-的区别" class="headerlink" title="三层架构和 MVC 的区别"></a>三层架构和 MVC 的区别</h2><p><a href="https://cloud.tencent.com/developer/article/1779910">JavaWeb-MVC 与三层架构(看完这一篇就够了 最全)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
-<h2 id="如何在-Windows-下留存-Tomcat-的-Catalina-日志"><a href="#如何在-Windows-下留存-Tomcat-的-Catalina-日志" class="headerlink" title="如何在 Windows 下留存 Tomcat 的 Catalina 日志"></a>如何在 Windows 下留存 Tomcat 的 Catalina 日志</h2><p><a href="https://blog.csdn.net/peter_qyq/article/details/82886811#:~:text=%E5%A4%A7%E5%AE%B6%E9%83%BD%E6%9C%89%E5%9C%A8linux%E4%B8%8B%E4%BD%BF%E7%94%A8tail%20-f%20catalina.out%E6%9F%A5%E7%9C%8Btomcat%E6%97%A5%E5%BF%97%E7%9A%84%E4%B9%A0%E6%83%AF%EF%BC%8C%E5%9C%A8window%E4%B8%8B%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F%20%E5%BD%93%E7%84%B6%E5%8F%AF%E4%BB%A5%E4%B8%8B%E9%9D%A2%E5%B0%B1%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%A6%82%E4%BD%95%E6%93%8D%E4%BD%9C%E3%80%82%201%E3%80%81%E6%89%93%E5%BC%80bin%E4%B8%8B%E9%9D%A2%E7%9A%84startup.bat%E6%96%87%E4%BB%B6%EF%BC%8C%20%E6%8A%8Acall,%22%25EXECUTABLE%25%22%20start%20%25CMD_LINE_ARGS%25%20%E6%94%B9%E4%B8%BAcall%20%22%25EXECUTABLE%25%22%20run%20%25CMD_LINE_ARGS%252..._windows%E6%9F%A5%E7%9C%8Bcatalina.out%E6%96%87%E4%BB%B6">windows 下 查看 catalina.out 实时日志_windows 查看 catalina.out 文件-CSDN 博客</a></p>
-<h2 id="GitHub-代码推送-kex-exchange-identification-报错"><a href="#GitHub-代码推送-kex-exchange-identification-报错" class="headerlink" title="GitHub 代码推送 kex_exchange_identification 报错"></a>GitHub 代码推送 kex_exchange_identification 报错</h2><p><a href="https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">在 HTTPS 端口使用 SSH - GitHub 文档</a></p>
-<p><a href="https://blog.csdn.net/CoolBoySilverBullet/article/details/135736862">【日常踩坑】解决 kex_exchange_identification 报错_kex_exchange_identification: connection closed by -CSDN 博客</a></p>
-<h2 id="关于-HTMl-的行内元素"><a href="#关于-HTMl-的行内元素" class="headerlink" title="关于 HTMl 的行内元素"></a>关于 HTMl 的行内元素</h2><p><a href="https://blog.csdn.net/weixin_44706267/article/details/121022104">HTML 基础知识（一）：行内元素，块级元素，行内块元素-CSDN 博客</a></p>
-<h2 id="如何查看-Mysql-执行历史-SQL"><a href="#如何查看-Mysql-执行历史-SQL" class="headerlink" title="如何查看 Mysql 执行历史 SQL"></a>如何查看 Mysql 执行历史 SQL</h2><p><a href="https://blog.csdn.net/csd_nuser/article/details/121236625">mysql 查询历史执行 sql 记录_mysql 查看执行的历史 sql 语句-CSDN 博客</a></p>
-<h2 id="Git-提醒仓库所有权异常的问题"><a href="#Git-提醒仓库所有权异常的问题" class="headerlink" title="Git 提醒仓库所有权异常的问题"></a>Git 提醒仓库所有权异常的问题</h2><p><a href="https://www.cnblogs.com/live41/p/17290417.html">git bash 报错 fatal: detected dubious ownership in repository at 的解决方法 - Clotho_Lee - 博客园 (cnblogs.com)</a></p>
-<h2 id="只取重复数据的第一条-Sql-实现"><a href="#只取重复数据的第一条-Sql-实现" class="headerlink" title="只取重复数据的第一条 Sql 实现"></a>只取重复数据的第一条 Sql 实现</h2><p><a href="https://blog.csdn.net/hanshanyunhai/article/details/104926731">sql 语句：根据某一个字段重复，只取 list 中第一条数据_sql 字段重复的第一条数据设置-CSDN 博客</a></p>
-<h2 id="计算机单位"><a href="#计算机单位" class="headerlink" title="计算机单位"></a>计算机单位</h2><p><a href="https://blog.csdn.net/qq_41675254/article/details/86481615">bit、byte、KB、B、字节、位、字符之间关系详解_kb b bit-CSDN 博客</a></p>
-<p><a href="https://tech.sina.com.cn/roll/2020-07-09/doc-iirczymm1498194.shtml#:~:text=%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%20%E6%9D%A5%E6%BA%90%EF%BC%9AIT168%20%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89%EF%BC%9Abit%EF%BC%88binary%20digit%EF%BC%89%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9Ab%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E6%9C%80%E5%B0%8F%E7%9A%84%E5%8D%95%E4%BD%8D%EF%BC%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%EF%BC%8C0%E6%88%96%E8%80%851%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BD%8D%EF%BC%88%E6%AF%94%E7%89%B9%E4%BD%8D%EF%BC%89bit%E3%80%82%20%E5%AD%97%E8%8A%82%EF%BC%9A%20Byte%EF%BC%88%E7%AE%80%E5%86%99%EF%BC%9AB%EF%BC%89%EF%BC%8C%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%94%A8%E4%BA%8E%E8%AE%A1%E9%87%8F%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E4%B8%80%E7%A7%8D%E8%AE%A1%E9%87%8F%E5%8D%95%E4%BD%8D%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%83%85%E5%86%B5%E4%B8%8B%E4%B8%80%E5%AD%97%E8%8A%82%E7%AD%89%E4%BA%8E%E5%85%AB%E4%BD%8D%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%20%E2%86%92,1Byte%20%3D%208bit%20%3D%201B%20%3D%208b">位(bit)、字节(Byte)、KB、MB、GB … 之间的关系|计算机<em>新浪科技</em>新浪网 (sina.com.cn)</a></p>
-<h2 id="编码字符集的关系"><a href="#编码字符集的关系" class="headerlink" title="编码字符集的关系"></a>编码字符集的关系</h2><p><a href="https://www.51cto.com/article/789503.html">ASCII、Unicode、UTF-8、utf8mb4，有啥区别？-51CTO.COM</a></p>
-<p><a href="https://symbl.cc/cn/unicode-table/">Unicode 符号表 - 所有 Unicode 字符及其代码都在一页上 (◕‿◕) SYMBL</a></p>
-<p><a href="https://www.hello-algo.com/chapter_data_structure/character_encoding/">3.4   字符编码 * - Hello 算法 (hello-algo.com)</a></p>
-<h3 id="如何理解从代码到程序到网络的字符编码流程"><a href="#如何理解从代码到程序到网络的字符编码流程" class="headerlink" title="如何理解从代码到程序到网络的字符编码流程"></a>如何理解从代码到程序到网络的字符编码流程</h3><ol>
-<li><p>代码编写阶段</p>
-<ul>
-<li><strong>文本编辑器</strong>：程序员使用文本编辑器（如 VS Code、Notepad++、IntelliJ IDEA 等）编写源代码。</li>
-<li><strong>文本编码</strong>：文本编辑器通常会以某种字符编码（如 UTF-8、GBK、ISO-8859-1 等）保存文件。这个编码是程序员在保存文件时选择的，或者是文本编辑器的默认设置。</li>
-</ul>
-</li>
-<li><p>编译&#x2F;解释阶段</p>
-<ul>
-<li><strong>读取源代码</strong>：编译器或解释器（如 Java 编译器 <code>javac</code>）读取源代码文件。此时，编译器会根据文件的实际编码来解析字符。</li>
-<li><strong>转换为内部表示</strong>：编译器将读取的字符转换为内部使用的字符集（通常是 UTF-16，因为 Java 内部使用 UTF-16 编码字符）。这个转换过程确保了编译器能够正确理解源代码中的字符。</li>
-<li><strong>编译&#x2F;解释</strong>：编译器将源代码转换为字节码（对于 Java），或者解释器直接执行代码（对于 Python 等解释型语言）。</li>
-</ul>
-</li>
-<li><p>运行时阶段</p>
-<ul>
-<li><strong>加载字节码</strong>：Java 虚拟机（JVM）加载字节码并将其转换为机器码执行。在这个过程中，字符串和字符在内存中以 UTF-16 编码存储。</li>
-<li><strong>内存中的字符串</strong>：在运行时，Java 程序中的字符串以 UTF-16 编码存储在内存中。这意味着每个字符占用 2 个字节（对于 BMP 字符）或 4 个字节（对于辅助平面字符）。</li>
-</ul>
-</li>
-<li><p>网络传输阶段</p>
-<ul>
-<li><strong>字符串转换</strong>：当需要将字符串通过网络传输时，通常需要将其转换为特定的字节序列（如 UTF-8）。Java 提供了 <code>String.getBytes(Charset charset)</code> 方法，可以将字符串转换为指定编码的字节数组。<code>getBytes</code> 默认不传值的时候，采用的是虚拟机的默认字符编码，如果虚拟机未设置字符编码，则是按照 UTF-8</li>
-<li><strong>网络传输</strong>：转换后的字节数组通过网络传输。接收方在接收到字节数组后，需要使用相同的编码将其转换回字符串。</li>
-</ul>
-</li>
-<li><p>总结</p>
-<ul>
-<li><strong>代码编写</strong>：程序员使用特定编码保存源代码文件。</li>
-<li><strong>编译&#x2F;解释</strong>：编译器或解释器读取源代码文件并将其转换为内部字符集表示。</li>
-<li><strong>运行时</strong>：字符串和字符在内存中以 UTF-16 编码存储。</li>
-<li><strong>网络传输</strong>：字符串在传输前需要转换为特定编码的字节数组，接收方再将其转换回字符串。</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>通过这个流程，确保了从代码编写到程序执行再到网络传输的字符编码的一致性和正确性。</p>
-</blockquote>
-<p>控制台乱码的本质，也相当于写入到文本中的字符乱码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;这段话打印到控制台&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> System.out;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在GBK编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;GBK&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在UTF-8编码的控制台下能够显示正确</span></span><br><span class="line"></span><br><span class="line">outputStream.write(str.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/%E6%96%87%E7%AB%A0%E6%8E%A8%E8%8D%90/file-20240824150807221.png"></p>
-<h2 id="如何安装-JRebel-插件"><a href="#如何安装-JRebel-插件" class="headerlink" title="如何安装 JRebel 插件"></a>如何安装 JRebel 插件</h2><p><a href="https://blog.csdn.net/weixin_41791276/article/details/129185606">JRebel and XRebel 插件在IDEA中的安装、激活和使用_jrebel and xrebel激活-CSDN博客</a></p>
-<p><a href="https://blog.csdn.net/m0_46344165/article/details/117751425">基于JRebel实现Idea热部署和XRebel的性能监控，听叔的，别再手动重启项目了_idea xrebel-CSDN博客</a></p>
-<h2 id="如何理解-Python-中的模块，包的概念"><a href="#如何理解-Python-中的模块，包的概念" class="headerlink" title="如何理解 Python 中的模块，包的概念"></a>如何理解 Python 中的模块，包的概念</h2><p><a href="https://blog.csdn.net/Bit_Coders/article/details/119318000">详解Python模块化——模块（Modules）和包（Packages）_python包与模块-CSDN博客</a></p>
-<h2 id="Mysql-远程登录报错问题"><a href="#Mysql-远程登录报错问题" class="headerlink" title="Mysql 远程登录报错问题"></a>Mysql 远程登录报错问题</h2><p><a href="https://blog.csdn.net/mazaiting/article/details/106661158">MySQL 异常: “Host ‘xxx’ is not allowed to connect to this MySQL server”-CSDN博客</a></p>
-<h2 id="Element-Ui-流体表格报错"><a href="#Element-Ui-流体表格报错" class="headerlink" title="Element-Ui 流体表格报错"></a>Element-Ui 流体表格报错</h2><p><a href="https://blog.csdn.net/g2526/article/details/137841367">vue3: 报错ResizeObserver loop completed with undelivered notifications.解决方法_vue3 uncaught runtime errors: 脳 error resizeobserv-CSDN博客</a></p>
-<h2 id="Java-实现单例的几种方式"><a href="#Java-实现单例的几种方式" class="headerlink" title="Java 实现单例的几种方式"></a>Java 实现单例的几种方式</h2><p><a href="https://blog.csdn.net/u014672511/article/details/79774847">Java实现单例的5种方式_java单例模式创建方式-CSDN博客</a></p>
-<h2 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h2><p><a href="https://blog.csdn.net/chushoufengli/article/details/104535873">RSA加密 和 SHA256签名函数_rsa sha256-CSDN博客</a></p>
-]]></content>
-      <tags>
-        <tag>持续更新</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java-nosuchmethoderror-varargs-jar-version-mismatch</title>
-    <url>/2026/08/05/archive/%E5%BD%93%20String%E2%80%A6%20%E7%A2%B0%E4%B8%8A%20Object%E2%80%A6/</url>
-    <content><![CDATA[<h2 id="一次有点特别的-NoSuchMethodError：当-String…-碰上-Object…"><a href="#一次有点特别的-NoSuchMethodError：当-String…-碰上-Object…" class="headerlink" title="一次有点特别的 NoSuchMethodError：当 String… 碰上 Object…"></a>一次有点特别的 <code>NoSuchMethodError</code>：当 <code>String…</code> 碰上 <code>Object…</code></h2><blockquote>
-<p>记录一次由编译期和运行期 Jar 不一致引发的 Java 二进制兼容问题。源码看起来没毛病，编译也能顺利通过，但部署后只要执行到某段特定代码，就会直接抛出 <code>NoSuchMethodError</code>。</p>
-</blockquote>
-<h3 id="一、问题背景"><a href="#一、问题背景" class="headerlink" title="一、问题背景"></a>一、问题背景</h3><p>有一次在项目环境里执行“撤销合同”操作，系统突然报了下面这个异常：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">java.lang.NoSuchMethodError:</span><br><span class="line">com.hrms.frame.dao.ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br><span class="line">    at com.hjsj.hrms.module.integrationcenter.apps.signture_v2.dao.impl.SignatureMonitorDaoImpl.updateSignState(SignatureMonitorDaoImpl.java:204)</span><br><span class="line">    at com.hjsj.hrms.module.integrationcenter.apps.signture_v2.businessobject.monitor.impl.SignatureMonitorOperateServiceImpl.revokeContract(SignatureMonitorOperateServiceImpl.java:69)</span><br></pre></td></tr></table></figure>
-
-<p>对应的源码是：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">update</span> <span class="operator">=</span> dao.update(</span><br><span class="line">    <span class="string">&quot;update t_sys_signature_info set signstate = ? WHERE &quot;</span> + uniqueField + <span class="string">&quot; = ?&quot;</span>,</span><br><span class="line">    status,</span><br><span class="line">    uniqueValue</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>乍一看，这段代码没什么明显问题：</p>
-<ul>
-<li>SQL 里有两个占位符；</li>
-<li>调用时也传了两个字符串参数；</li>
-<li>本地 IDE 没有报错；</li>
-<li>Maven 可以正常编译；</li>
-<li>其他使用 <code>ContentDAO</code> 的功能也都能正常运行。</li>
-</ul>
-<p>所以第一反应很容易去怀疑 SQL、数据库字段或者参数值。</p>
-<p>但异常类型其实已经把关键线索摆出来了：这不是 SQL 执行失败，而是 JVM 在运行时根本找不到它要调用的那个方法。</p>
-<h3 id="二、先看懂异常里的方法签名"><a href="#二、先看懂异常里的方法签名" class="headerlink" title="二、先看懂异常里的方法签名"></a>二、先看懂异常里的方法签名</h3><p>异常里最关键的部分是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
-
-<p>这是 JVM 使用的方法描述符，拆开来看就是：</p>
-<ul>
-<li><code>Ljava/lang/String;</code>：<code>java.lang.String</code></li>
-<li><code>[Ljava/lang/String;</code>：<code>java.lang.String[]</code></li>
-<li><code>I</code>：返回值是 <code>int</code></li>
-</ul>
-<p>也就是说，JVM 实际想调用的方法是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update(String sql, String[] values)</span><br></pre></td></tr></table></figure>
-
-<p>如果换成 Java 里的可变参数写法，就是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update(String sql, String... values)</span><br></pre></td></tr></table></figure>
-
-<p>这说明调用方的 Class 文件在编译时，已经把目标方法确定成了 <code>update(String, String[])</code>。</p>
-<h3 id="三、对比编译期和运行期的-Jar"><a href="#三、对比编译期和运行期的-Jar" class="headerlink" title="三、对比编译期和运行期的 Jar"></a>三、对比编译期和运行期的 Jar</h3><p>继续排查后，发现环境里存在两个不同版本的 <code>struts_extends.jar</code>：</p>
-<ul>
-<li>本地编译环境 <code>hrms/WEB-INF/lib/struts_extends.jar</code>：<code>8.6.0.4-SNAPSHOT</code>，构建时间是 2026-05-07 09:10:44。</li>
-<li>项目运行环境 <code>struts_extends.jar</code>：<code>8.6.1.1-SNAPSHOT</code>，构建时间是 2026-07-10 16:35:32。</li>
-</ul>
-<p>把两个 Jar 反编译后，发现 <code>ContentDAO.update</code> 的方法签名变了。</p>
-<p>旧版本，也就是本地编译时使用的 Jar：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, String... values) throws SQLException</span><br></pre></td></tr></table></figure>
-
-<p>新版本，也就是项目运行时加载的 Jar：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, Object... values) throws SQLException</span><br></pre></td></tr></table></figure>
-
-<p>不过，两个版本都保留了下面这个重载：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, List values) throws SQLException</span><br></pre></td></tr></table></figure>
-
-<p>到这里，问题基本就清楚了：</p>
-<ol>
-<li>源码使用旧 Jar 编译。</li>
-<li>编译器把这次调用绑定到了 <code>update(String, String[])</code>。</li>
-<li>部署后，JVM 实际加载的是新 Jar 里的 <code>ContentDAO</code>。</li>
-<li>新 Jar 只有 <code>update(String, Object[])</code>，没有 <code>update(String, String[])</code>。</li>
-<li>JVM 找不到编译时记录的方法，最终抛出 <code>NoSuchMethodError</code>。</li>
-</ol>
-<h3 id="四、为什么-String-不能直接匹配-Object"><a href="#四、为什么-String-不能直接匹配-Object" class="headerlink" title="四、为什么 String[] 不能直接匹配 Object[]"></a>四、为什么 <code>String[]</code> 不能直接匹配 <code>Object[]</code></h3><p>从 Java 源码层面看，<code>String</code> 是 <code>Object</code> 的子类，<code>String[]</code> 也确实可以赋值给 <code>Object[]</code>：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">String[] strings = &#123;&quot;a&quot;, &quot;b&quot;&#125;;</span><br><span class="line">Object[] objects = strings;</span><br></pre></td></tr></table></figure>
-
-<p>所以这里很容易让人产生疑问：运行时明明有 <code>update(String, Object[])</code>，JVM 为什么不顺手调用它？</p>
-<p>原因是，Java 的方法重载解析发生在编译期，而 JVM 运行时执行的是已经确定好的方法符号引用。</p>
-<p>旧版方法的字节码描述符是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
-
-<p>新版方法的字节码描述符是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">(Ljava/lang/String;[Ljava/lang/Object;)I</span><br></pre></td></tr></table></figure>
-
-<p>对 JVM 来说，这就是两个完全不同的方法。</p>
-<p>运行时在解析方法引用时，JVM 不会重新执行一次 Java 编译器的重载选择逻辑，也不会因为 <code>String[]</code> 可以向上转型为 <code>Object[]</code>，就自动改去调用另一个重载。</p>
-<p>简单来说：</p>
-<blockquote>
-<p>Java 类型系统允许数组向上转型，不代表 JVM 能在链接阶段替换已经写进 Class 文件的方法描述符。</p>
-</blockquote>
-<p>这就是源码兼容和二进制兼容的区别。</p>
-<p>如果使用新版 Jar 重新编译原来的源码：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(sql, status, uniqueValue);</span><br></pre></td></tr></table></figure>
-
-<p>编译器会重新选择 <code>update(String, Object[])</code>，代码也就能正常运行。</p>
-<p>但问题在于，旧 Jar 编译出来的 Class 文件，不能直接放到只提供新签名的运行环境里使用。</p>
-<h3 id="五、为什么编译没问题，运行到这里才报错"><a href="#五、为什么编译没问题，运行到这里才报错" class="headerlink" title="五、为什么编译没问题，运行到这里才报错"></a>五、为什么编译没问题，运行到这里才报错</h3><p>这也是 <code>NoSuchMethodError</code> 最容易让人迷惑的地方。</p>
-<h4 id="1-编译时，这个方法确实存在"><a href="#1-编译时，这个方法确实存在" class="headerlink" title="1. 编译时，这个方法确实存在"></a>1. 编译时，这个方法确实存在</h4><p>本地编译使用的旧 Jar 里有：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String, String...)</span><br></pre></td></tr></table></figure>
-
-<p>所以无论是 IDE、<code>javac</code> 还是 Maven，都会认为这段代码合法，自然不会报编译错误。</p>
-<h4 id="2-运行时加载了另一个版本"><a href="#2-运行时加载了另一个版本" class="headerlink" title="2. 运行时加载了另一个版本"></a>2. 运行时加载了另一个版本</h4><p>部署之后，类加载器实际加载的是新版本 <code>ContentDAO</code>。</p>
-<p>而新版本删除或替换了原来的方法签名，导致调用方 Class 文件里记录的方法无法解析。</p>
-<h4 id="3-只有真正执行到调用点时才会暴露"><a href="#3-只有真正执行到调用点时才会暴露" class="headerlink" title="3. 只有真正执行到调用点时才会暴露"></a>3. 只有真正执行到调用点时才会暴露</h4><p>JVM 通常不会在应用启动时，就提前解析所有业务代码里的每一次方法调用。</p>
-<p>只有代码真正执行到 <code>updateSignState()</code> 里的目标调用点时，这个问题才会冒出来。</p>
-<p>所以实际现象可能是：</p>
-<ul>
-<li>应用能正常启动；</li>
-<li>签章模块的大部分页面都能打开；</li>
-<li>查询类功能可以正常使用；</li>
-<li>只有执行“撤销合同”时才报错。</li>
-</ul>
-<h4 id="4-catch-Exception-抓不到它"><a href="#4-catch-Exception-抓不到它" class="headerlink" title="4. catch (Exception) 抓不到它"></a>4. <code>catch (Exception)</code> 抓不到它</h4><p>业务代码外围虽然可能写了：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    dao.update(...);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    // 业务异常处理</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但 <code>NoSuchMethodError</code> 继承自 <code>Error</code>，并不是 <code>Exception</code>：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Throwable</span><br><span class="line">  └─ Error</span><br><span class="line">      └─ LinkageError</span><br><span class="line">          └─ IncompatibleClassChangeError</span><br><span class="line">              └─ NoSuchMethodError</span><br></pre></td></tr></table></figure>
-
-<p>所以普通的 <code>catch (Exception e)</code> 根本抓不到它。</p>
-<p>当然，也不应该为了兜住这个错误，直接加一个 <code>catch (Error e)</code>。这类异常说明运行环境里的二进制依赖已经不一致，正确做法是修复依赖或者重新编译，而不是把异常强行吞掉。</p>
-<h3 id="六、最终怎么修"><a href="#六、最终怎么修" class="headerlink" title="六、最终怎么修"></a>六、最终怎么修</h3><p>这次选择了两个版本里都存在的 <code>List</code> 重载：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">int update = dao.update(</span><br><span class="line">    &quot;update t_sys_signature_info set signstate = ? WHERE &quot; + uniqueField + &quot; = ?&quot;,</span><br><span class="line">    Arrays.asList(status, uniqueValue)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>对应的字节码目标签名是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(Ljava/lang/String;Ljava/util/List;)I</span><br></pre></td></tr></table></figure>
-
-<p>因为旧版和新版 Jar 都有 <code>update(String, List)</code>，所以改完后的代码可以同时兼容这两个环境。</p>
-<p>同一个模块里还有其他地方直接使用了可变参数版 <code>update</code>。为了避免以后从其他业务入口再次踩到同样的问题，这次也一起改成了 <code>List</code> 重载：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(sql, Arrays.asList(a0100, String.valueOf(i9999)));</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">dao.update(</span><br><span class="line">    &quot;update t_sys_signature_form &quot;</span><br><span class="line">        + &quot;set ct_ownership_subject = ? &quot;</span><br><span class="line">        + &quot;where signaturetype_ = ? and templateid = ? and version = ?&quot;,</span><br><span class="line">    Arrays.asList(</span><br><span class="line">        ctOwnershipSubject,</span><br><span class="line">        String.valueOf(signatureType),</span><br><span class="line">        templateId,</span><br><span class="line">        version</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="七、为什么不直接替换项目环境里的-Jar"><a href="#七、为什么不直接替换项目环境里的-Jar" class="headerlink" title="七、为什么不直接替换项目环境里的 Jar"></a>七、为什么不直接替换项目环境里的 Jar</h3><p>这类问题一般有三种解决方式。</p>
-<h4 id="方案一：统一使用新版-Jar，重新编译并部署"><a href="#方案一：统一使用新版-Jar，重新编译并部署" class="headerlink" title="方案一：统一使用新版 Jar，重新编译并部署"></a>方案一：统一使用新版 Jar，重新编译并部署</h4><p>这是最彻底的做法：</p>
-<ol>
-<li>本地编译环境升级到 <code>8.6.1.1-SNAPSHOT</code>。</li>
-<li>CI&#x2F;CD 和所有开发环境统一使用相同依赖。</li>
-<li>使用新版 Jar 重新编译所有相关代码。</li>
-<li>部署时保证应用里只存在一个确定版本。</li>
-</ol>
-<p>好处是可以从根本上消除编译期和运行期的差异。</p>
-<p>缺点也很明显：需要确认新版 Jar 对整个系统的影响，不能只验证当前这一个功能。</p>
-<h4 id="方案二：把运行环境回退到旧版-Jar"><a href="#方案二：把运行环境回退到旧版-Jar" class="headerlink" title="方案二：把运行环境回退到旧版 Jar"></a>方案二：把运行环境回退到旧版 Jar</h4><p>这样确实能让当前 Class 文件重新找到 <code>String[]</code> 版本的方法。</p>
-<p>但项目环境可能已经依赖了新版 Jar 里的其他修复或功能。贸然回退公共基础 Jar，风险通常比改一处业务调用更高，所以这次没有这么做。</p>
-<h4 id="方案三：调用两个版本里都稳定存在的方法"><a href="#方案三：调用两个版本里都稳定存在的方法" class="headerlink" title="方案三：调用两个版本里都稳定存在的方法"></a>方案三：调用两个版本里都稳定存在的方法</h4><p>这次采用的就是这个方案，也就是改用 <code>update(String, List)</code>。</p>
-<p>它的优点是：</p>
-<ul>
-<li>修改范围比较小；</li>
-<li>不需要马上替换公共 Jar；</li>
-<li>可以同时兼容当前两个版本；</li>
-<li>参数仍然通过占位符绑定，不需要拼接进 SQL。</li>
-</ul>
-<p>不过要注意，这只能算一次兼容性修复。</p>
-<p>从长期来看，还是应该统一编译期和运行期依赖。否则其他发生过签名变化的方法，之后仍然可能触发类似问题。</p>
-<h3 id="八、以后怎么快速排查类似问题"><a href="#八、以后怎么快速排查类似问题" class="headerlink" title="八、以后怎么快速排查类似问题"></a>八、以后怎么快速排查类似问题</h3><p>以后再遇到 <code>NoSuchMethodError</code>，可以按下面这个顺序来查。</p>
-<h4 id="第一步：先别急着查业务参数"><a href="#第一步：先别急着查业务参数" class="headerlink" title="第一步：先别急着查业务参数"></a>第一步：先别急着查业务参数</h4><p><code>NoSuchMethodError</code> 的重点不是参数值传得对不对，而是运行时类里有没有 Class 文件想调用的那个完整方法签名。</p>
-<p>先看异常里的这三部分：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">类名.方法名(参数描述符)返回值描述符</span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ContentDAO.update(Ljava/lang/String;[Ljava/lang/String;)I</span><br></pre></td></tr></table></figure>
-
-<h4 id="第二步：确认这个类到底来自哪个-Jar"><a href="#第二步：确认这个类到底来自哪个-Jar" class="headerlink" title="第二步：确认这个类到底来自哪个 Jar"></a>第二步：确认这个类到底来自哪个 Jar</h4><p>复杂 Web 应用里，同一个类可能同时出现在很多地方：</p>
-<ul>
-<li><code>WEB-INF/lib</code>；</li>
-<li>Tomcat 公共 <code>lib</code>；</li>
-<li>应用服务器共享目录；</li>
-<li>Maven 传递依赖；</li>
-<li>热部署残留目录；</li>
-<li>插件或扩展包。</li>
-</ul>
-<p>可以临时打印这个类实际从哪里加载：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">System.out.println(</span><br><span class="line">    ContentDAO.class.getProtectionDomain()</span><br><span class="line">        .getCodeSource()</span><br><span class="line">        .getLocation()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>也可以打开 JVM 的类加载日志。Java 8 常用：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">-verbose:class</span><br></pre></td></tr></table></figure>
-
-<p>然后在日志里搜索 <code>ContentDAO</code>，看看最后到底是哪个 Jar 提供了这个类。</p>
-<h4 id="第三步：查看-Jar-的版本和构建信息"><a href="#第三步：查看-Jar-的版本和构建信息" class="headerlink" title="第三步：查看 Jar 的版本和构建信息"></a>第三步：查看 Jar 的版本和构建信息</h4><p>优先检查：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">META-INF/MANIFEST.MF</span><br></pre></td></tr></table></figure>
-
-<p>这次两个 Jar 的 Manifest 分别记录了：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Implementation-Version: 8.6.0.4-SNAPSHOT</span><br><span class="line">Build-Time: 2026-05-07 09:10:44</span><br></pre></td></tr></table></figure>
-
-<p>以及：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Implementation-Version: 8.6.1.1-SNAPSHOT</span><br><span class="line">Build-Time: 2026-07-10 16:35:32</span><br></pre></td></tr></table></figure>
-
-<h4 id="第四步：对比真实的方法签名"><a href="#第四步：对比真实的方法签名" class="headerlink" title="第四步：对比真实的方法签名"></a>第四步：对比真实的方法签名</h4><p>可以用 <code>javap</code> 查看 Class 里的公开方法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javap -classpath struts_extends.jar com.hrms.frame.dao.ContentDAO</span><br></pre></td></tr></table></figure>
-
-<p>如果还要查看字节码里的调用点，可以执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javap -classpath target/classes -c -s \</span><br><span class="line">  com.hjsj.hrms.module.integrationcenter.apps.signture_v2.dao.impl.SignatureMonitorDaoImpl</span><br></pre></td></tr></table></figure>
-
-<p>重点确认两件事：</p>
-<ul>
-<li>调用方 Class 文件请求的描述符是什么；</li>
-<li>运行时 Jar 实际提供的描述符是什么。</li>
-</ul>
-<h4 id="第五步：检查依赖树和重复类"><a href="#第五步：检查依赖树和重复类" class="headerlink" title="第五步：检查依赖树和重复类"></a>第五步：检查依赖树和重复类</h4><p>Maven 项目可以先执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn dependency:tree</span><br></pre></td></tr></table></figure>
-
-<p>不过要注意，如果 Jar 是手工放进 <code>WEB-INF/lib</code>、Tomcat <code>lib</code> 或外部部署目录的，Maven 依赖树里不一定能看到。</p>
-<p>这种情况下，还是要结合部署包内容和 JVM 实际的类加载位置来判断。</p>
-<h3 id="九、NoSuchMethodError-和几个相似异常有什么区别"><a href="#九、NoSuchMethodError-和几个相似异常有什么区别" class="headerlink" title="九、NoSuchMethodError 和几个相似异常有什么区别"></a>九、<code>NoSuchMethodError</code> 和几个相似异常有什么区别</h3><h4 id="NoSuchMethodError"><a href="#NoSuchMethodError" class="headerlink" title="NoSuchMethodError"></a><code>NoSuchMethodError</code></h4><p>典型情况是：编译时方法存在，但运行时加载的类里没有相同的方法签名。</p>
-<p>常见原因包括：</p>
-<ul>
-<li>Jar 版本不一致；</li>
-<li>运行环境里残留了旧 Jar；</li>
-<li>方法参数或返回值发生了变化；</li>
-<li>类加载顺序导致加载了非预期版本。</li>
-</ul>
-<h4 id="NoSuchMethodException"><a href="#NoSuchMethodException" class="headerlink" title="NoSuchMethodException"></a><code>NoSuchMethodException</code></h4><p>这是一个受检异常，通常出现在反射调用里：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">clazz.getMethod(&quot;update&quot;, String.class, String[].class);</span><br></pre></td></tr></table></figure>
-
-<p>它表示反射查找方法失败，和 JVM 链接阶段抛出的 <code>NoSuchMethodError</code> 不是一回事。</p>
-<h4 id="AbstractMethodError"><a href="#AbstractMethodError" class="headerlink" title="AbstractMethodError"></a><code>AbstractMethodError</code></h4><p>通常表示接口或父类的方法契约发生了变化，但实现类还是旧版本。</p>
-<p>例如接口新增了一个抽象方法，运行时却加载了一个没有实现该方法的旧实现类。</p>
-<h4 id="NoClassDefFoundError"><a href="#NoClassDefFoundError" class="headerlink" title="NoClassDefFoundError"></a><code>NoClassDefFoundError</code></h4><p>表示编译时存在的类，在运行时无法加载，或者这个类之前初始化失败了。</p>
-<p>它和 <code>NoSuchMethodError</code> 一样，都应该优先检查运行时依赖和类加载环境。</p>
-<h3 id="十、这次问题带来的几个启示"><a href="#十、这次问题带来的几个启示" class="headerlink" title="十、这次问题带来的几个启示"></a>十、这次问题带来的几个启示</h3><h4 id="1-可变参数也是方法签名的一部分"><a href="#1-可变参数也是方法签名的一部分" class="headerlink" title="1. 可变参数也是方法签名的一部分"></a>1. 可变参数也是方法签名的一部分</h4><p>下面两个声明看起来很像：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String sql, String... values)</span><br><span class="line">update(String sql, Object... values)</span><br></pre></td></tr></table></figure>
-
-<p>调用方式也差不多，但它们底层的参数类型分别是 <code>String[]</code> 和 <code>Object[]</code>。</p>
-<p>把公共 API 从前者直接改成后者，就算原源码用新版 Jar 重新编译后还能正常调用，也会破坏已经编译好的旧代码的二进制兼容性。</p>
-<h4 id="2-“源码兼容”不等于“二进制兼容”"><a href="#2-“源码兼容”不等于“二进制兼容”" class="headerlink" title="2. “源码兼容”不等于“二进制兼容”"></a>2. “源码兼容”不等于“二进制兼容”</h4><p>使用新版 Jar 重新编译原来的源码，如果一切正常，只能说明源码兼容。</p>
-<p>旧 Class 文件能不能不重新编译，直接放到新环境里运行，要看新版是否还保留了旧的字节码方法描述符。</p>
-<p>升级公共基础库时，最好同时考虑：</p>
-<ul>
-<li>源码兼容性；</li>
-<li>二进制兼容性；</li>
-<li>行为兼容性；</li>
-<li>部署环境里的类加载顺序。</li>
-</ul>
-<h4 id="3-公共方法签名不要轻易原地替换"><a href="#3-公共方法签名不要轻易原地替换" class="headerlink" title="3. 公共方法签名不要轻易原地替换"></a>3. 公共方法签名不要轻易原地替换</h4><p>如果基础库确实需要把参数从 <code>String…</code> 扩展成 <code>Object…</code>，更稳妥的方式是先保留旧方法，再在内部转发：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">public int update(String sql, String... values) throws SQLException &#123;</span><br><span class="line">    return update(sql, (Object[]) values);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int update(String sql, Object... values) throws SQLException &#123;</span><br><span class="line">    return update(sql, Arrays.asList(values));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>不过，同时保留两个可变参数重载，也可能让部分调用出现重载歧义，所以公共 API 的设计还是要谨慎评估。</p>
-<p>对于已经发布的基础库，更推荐通过新方法名、明确的集合参数，或者完整的兼容性测试来演进接口。</p>
-<h4 id="4-构建和运行必须使用同一套依赖"><a href="#4-构建和运行必须使用同一套依赖" class="headerlink" title="4. 构建和运行必须使用同一套依赖"></a>4. 构建和运行必须使用同一套依赖</h4><p>最重要的工程措施，不是记住这次具体报了什么错，而是尽量消除环境漂移：</p>
-<ul>
-<li>不要依赖开发者手工复制 Jar；</li>
-<li>构建产物应该带上确定版本的依赖；</li>
-<li>CI 构建和生产部署使用相同的依赖来源；</li>
-<li>启动时输出核心基础包版本；</li>
-<li>升级公共 Jar 后做完整回归；</li>
-<li>清理 Tomcat 缓存、旧部署目录和重复 Jar。</li>
-</ul>
-<h3 id="十一、排查清单"><a href="#十一、排查清单" class="headerlink" title="十一、排查清单"></a>十一、排查清单</h3><p>遇到下面这些错误时：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">NoSuchMethodError</span><br><span class="line">NoClassDefFoundError</span><br><span class="line">AbstractMethodError</span><br><span class="line">IncompatibleClassChangeError</span><br></pre></td></tr></table></figure>
-
-<p>可以快速检查：</p>
-<ul>
-<li><input disabled="" type="checkbox"> 编译环境和运行环境的 Jar 版本是否一致；</li>
-<li><input disabled="" type="checkbox"> 异常里的 JVM 方法描述符具体是什么；</li>
-<li><input disabled="" type="checkbox"> 运行时 Jar 是否真的包含这个完整签名；</li>
-<li><input disabled="" type="checkbox"> 是否同时存在多个包含相同类的 Jar；</li>
-<li><input disabled="" type="checkbox"> Tomcat 公共 <code>lib</code> 是否覆盖了应用里的 <code>WEB-INF/lib</code>；</li>
-<li><input disabled="" type="checkbox"> 是否只替换了业务 Class，却没有同步基础 Jar；</li>
-<li><input disabled="" type="checkbox"> 是否只替换了基础 Jar，却没有重新编译业务代码；</li>
-<li><input disabled="" type="checkbox"> 公共 API 是否修改过参数类型、返回值或静态属性；</li>
-<li><input disabled="" type="checkbox"> 应用重启后是否仍然加载了旧缓存或旧部署目录；</li>
-<li><input disabled="" type="checkbox"> 是否存在两个版本都支持的稳定重载，可以先做临时兼容。</li>
-</ul>
-<h3 id="十二、总结"><a href="#十二、总结" class="headerlink" title="十二、总结"></a>十二、总结</h3><p>这次问题的完整因果链是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">本地使用旧版 Jar 编译</span><br><span class="line">        ↓</span><br><span class="line">调用被编译为 update(String, String[])</span><br><span class="line">        ↓</span><br><span class="line">项目运行时加载新版 Jar</span><br><span class="line">        ↓</span><br><span class="line">新版只有 update(String, Object[])</span><br><span class="line">        ↓</span><br><span class="line">JVM 无法解析原方法描述符</span><br><span class="line">        ↓</span><br><span class="line">抛出 NoSuchMethodError</span><br></pre></td></tr></table></figure>
-
-<p>最后通过改用两个版本都存在的：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">update(String, List)</span><br></pre></td></tr></table></figure>
-
-<p>完成了兼容修复。</p>
-<p>这类问题虽然不算常见，但特征其实很明确：</p>
-<blockquote>
-<p>只要看到 <code>NoSuchMethodError</code>，就应该优先检查 Jar 版本、方法描述符和类加载来源，而不是一上来就排查业务逻辑。</p>
-</blockquote>
-<p>搞清楚可变参数背后的数组签名，以及源码兼容和二进制兼容的区别，能大幅缩短这类问题的定位时间。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>相对路径的使用</title>
     <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
@@ -6312,13 +6312,13 @@
       </tags>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
