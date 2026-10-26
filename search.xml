@@ -194,6 +194,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Git Worktree 常用命令</title>
+    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
+<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
+<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
+<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
+<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
+<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
+
+<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
+]]></content>
+      <tags>
+        <tag>工具/git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker小册</title>
     <url>/2024/12/09/archive/Docker%E5%B0%8F%E5%86%8C/</url>
     <content><![CDATA[<h2 id="Docker-简介"><a href="#Docker-简介" class="headerlink" title="Docker 简介"></a>Docker 简介</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>Docker 是一种开源的容器化平台，可以让开发者打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是一种轻量级、独立、可执行的软件包，包含了运行一个应用所需的所有内容：代码、运行时环境、系统工具、系统库等。Docker 可以让开发者快速地构建、测试和部署应用程序，而无需担心跨环境的兼容性问题。</p>
@@ -1227,32 +1253,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git Worktree 常用命令</title>
-    <url>/2025/09/09/archive/Git%20Worktree%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="创建-Worktree"><a href="#创建-Worktree" class="headerlink" title="创建 Worktree"></a>创建 Worktree</h2><h3 id="基于现有分支创建"><a href="#基于现有分支创建" class="headerlink" title="基于现有分支创建"></a>基于现有分支创建</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add &lt;路径&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：在上级目录创建 hotfix-worktree 文件夹，检出 hotfix 分支</span></span><br><span class="line">git worktree add ../hotfix-worktree hotfix</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：当需要同时工作在两个不同分支上，比如一个分支用于开发新功能，另一个分支用于修复紧急 bug，无需来回切换分支。</p>
-<h3 id="创建新分支并检出"><a href="#创建新分支并检出" class="headerlink" title="创建新分支并检出"></a>创建新分支并检出</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本语法</span></span><br><span class="line">git worktree add -b &lt;新分支名&gt; &lt;路径&gt; [起点分支/提交]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于 develop 分支创建新分支 feature-x 并检出</span></span><br><span class="line">git worktree add -b feature-x ../feature-worktree develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：基于远程分支创建新分支</span></span><br><span class="line">git worktree add -b hotfix ../hotfix-worktree origin/hotfixes</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：需要从特定分支或提交创建新分支进行功能开发或问题排查，同时保持主工作区不受影响。</p>
-<h2 id="列出所有-Worktree"><a href="#列出所有-Worktree" class="headerlink" title="列出所有 Worktree"></a>列出所有 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有工作树及其状态</span></span><br><span class="line">git worktree list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细列出（包括分支信息和提交哈希）</span></span><br><span class="line">git worktree list --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出示例：</span></span><br><span class="line"><span class="comment"># /path/to/main-worktree    abc1234 [main]</span></span><br><span class="line"><span class="comment"># /path/to/feature-worktree def5678 [feature-x]</span></span><br><span class="line"><span class="comment"># /path/to/hotfix-worktree  ghi9012 [hotfix]</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：查看当前所有活跃的工作树，了解各个工作树的状态、所在分支和位置，便于管理和切换。</p>
-<h2 id="删除-Worktree"><a href="#删除-Worktree" class="headerlink" title="删除 Worktree"></a>删除 Worktree</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 安全删除工作树（确保工作树没有未提交的更改）</span></span><br><span class="line">git worktree remove &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 强制删除工作树（即使有未提交的更改也会删除，不建议使用）</span></span><br><span class="line">git worktree remove --force &lt;路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例：删除 Hotfix-worktree 工作树</span></span><br><span class="line">git worktree remove ../hotfix-worktree</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：完成特定功能开发或问题修复后，清理不再需要的工作树，释放磁盘空间。</p>
-<h2 id="锁定工作树（防止被意外删除）"><a href="#锁定工作树（防止被意外删除）" class="headerlink" title="锁定工作树（防止被意外删除）"></a>锁定工作树（防止被意外删除）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 上锁工作树，即使删除文件夹也不行，会提示文件已经被占用</span></span><br><span class="line">git worktree lock &lt;worktree&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁工作树</span></span><br><span class="line">git worktree unlock &lt;worktree&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：1.保护长期存在的功能分支工作树; 2.保护用于 CI&#x2F;CD 或自动化构建的工作树;3. 在共享存储或网络位置上使用工作树; 4. 防止自己误操作</p>
-<h2 id="清理工作树"><a href="#清理工作树" class="headerlink" title="清理工作树"></a>清理工作树</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理已删除但Git仍记录的工作树</span></span><br><span class="line">git worktree prune</span><br></pre></td></tr></table></figure>
-
-<p><strong>应用场景</strong>：你用正确的方式 (<code>git worktree remove</code>) 删除工作树，你永远不需要 <code>prune</code>。但如果你不小心直接删了文件夹，就需要 <code>prune</code> 来帮 Git 收拾烂摊子。</p>
-]]></content>
-      <tags>
-        <tag>工具/git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTPS 证书到底是什么？</title>
     <url>/2026/05/20/archive/HTTPS%20%E8%AF%81%E4%B9%A6%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/</url>
     <content><![CDATA[<blockquote>
@@ -1796,6 +1796,188 @@
       </tags>
   </entry>
   <entry>
+    <title>Kafka常用命令总结</title>
+    <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>操作的 topic 名称</td>
+</tr>
+<tr>
+<td>–create</td>
+<td>创建主题</td>
+</tr>
+<tr>
+<td>–delete</td>
+<td>删除主题</td>
+</tr>
+<tr>
+<td>–alter</td>
+<td>修改主题</td>
+</tr>
+<tr>
+<td>–list</td>
+<td>查看所有主题</td>
+</tr>
+<tr>
+<td>–describe</td>
+<td>查看主题详细描述</td>
+</tr>
+<tr>
+<td>–partitions <code>Integer</code></td>
+<td>设置分区数</td>
+</tr>
+<tr>
+<td>–replication-factor <code>Integer</code></td>
+<td>设置分区副本</td>
+</tr>
+</tbody></table>
+<p>这些参数可以与 <code>kafka-topics.sh</code>（Unix&#x2F;Linux）或 <code>kafka-topics.bat</code>（Windows）命令一起使用，用于管理 Kafka 主题。根据需要，选择使用适当的参数来执行相应的操作。</p>
+<h2 id="消费者脚本命令参数："><a href="#消费者脚本命令参数：" class="headerlink" title="消费者脚本命令参数："></a>消费者脚本命令参数：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>消费的 topic 名称</td>
+</tr>
+<tr>
+<td>–group-id</td>
+<td>消费者所属的消费者组 ID</td>
+</tr>
+<tr>
+<td>–from-beginning</td>
+<td>从最早的偏移量开始消费</td>
+</tr>
+<tr>
+<td>–partition <code>Integer</code></td>
+<td>指定要消费的分区</td>
+</tr>
+<tr>
+<td>–offsets <code>String</code></td>
+<td>指定要消费的分区的偏移量</td>
+</tr>
+<tr>
+<td>–max-messages <code>Integer</code></td>
+<td>指定要消费的最大消息数量</td>
+</tr>
+<tr>
+<td>–timeout-ms <code>Integer</code></td>
+<td>指定超时时间（毫秒），在等待新消息时使用</td>
+</tr>
+<tr>
+<td>–property <code>String=String</code></td>
+<td>设置其他的消费者属性</td>
+</tr>
+</tbody></table>
+<h2 id="生成者脚本命令参数："><a href="#生成者脚本命令参数：" class="headerlink" title="生成者脚本命令参数："></a>生成者脚本命令参数：</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–bootstrap-server</td>
+<td>连接的 Kafka Broker 主机名称和端口号</td>
+</tr>
+<tr>
+<td>–topic</td>
+<td>发送消息的 topic 名称</td>
+</tr>
+<tr>
+<td>–key</td>
+<td>发送消息的键（可选）</td>
+</tr>
+<tr>
+<td>–value</td>
+<td>发送消息的值</td>
+</tr>
+<tr>
+<td>–property <code>String=String</code></td>
+<td>设置其他的生产者属性</td>
+</tr>
+</tbody></table>
+<p>这些参数可以与 Kafka 提供的相应脚本命令一起使用，用于执行消费者和生产者的操作。根据需要，您可以选择使用适当的参数来配置消费者和生成者的行为。</p>
+]]></content>
+      <tags>
+        <tag>数据/kafka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 卸载openjdk 安装oraclejdk</title>
+    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
+    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
+<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
+<p>如果有项目在运行，请先停止项目</p>
+</blockquote>
+<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
+<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
+<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
+<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
+<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
+<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
+<p>上传到 opt 路径下</p>
+</blockquote>
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
+<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
+<p>安装路径不做要求，因此文件夹也不做要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
+<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
+<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
+
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>运维/linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux 导入 Java 证书教程</title>
     <url>/2026/07/03/archive/Linux%20%E5%AF%BC%E5%85%A5%20Java%20%E8%AF%81%E4%B9%A6%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="一、适用场景"><a href="#一、适用场景" class="headerlink" title="一、适用场景"></a>一、适用场景</h2><p>本教程用于将 HTTPS 证书导入 Linux 服务器上的 Java 证书库，解决 Java 应用访问 HTTPS 接口时报证书信任失败的问题。</p>
@@ -1990,190 +2172,8 @@
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">TYPE=<span class="string">&quot;Ethernet&quot;</span></span><br><span class="line">PROXY_METHOD=<span class="string">&quot;none&quot;</span></span><br><span class="line">BROWSER_ONLY=<span class="string">&quot;no&quot;</span></span><br><span class="line"><span class="comment"># BOOTPROTO=&quot;dhcp&quot;   将ip由动态分配改为静态</span></span><br><span class="line">BOOTPROTO=<span class="string">&quot;static&quot;</span></span><br><span class="line">DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV4_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6INIT=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_AUTOCONF=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_DEFROUTE=<span class="string">&quot;yes&quot;</span></span><br><span class="line">IPV6_FAILURE_FATAL=<span class="string">&quot;no&quot;</span></span><br><span class="line">IPV6_ADDR_GEN_MODE=<span class="string">&quot;stable-privacy&quot;</span></span><br><span class="line">NAME=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line">UUID=<span class="string">&quot;243e2c84-cfa3-4a59-ba16-c656e69058c0&quot;</span></span><br><span class="line">DEVICE=<span class="string">&quot;enp0s3&quot;</span></span><br><span class="line"><span class="comment"># 网卡开机自启</span></span><br><span class="line">ONBOOT=<span class="string">&quot;yes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置静态IP地址</span></span><br><span class="line">ADDR=<span class="string">&quot;192.168.0.120&quot;</span></span><br><span class="line"><span class="comment"># 配置子网掩码</span></span><br><span class="line">NETMASK=<span class="string">&quot;255.255.255.0&quot;</span></span><br><span class="line"><span class="comment"># 配置网关</span></span><br><span class="line">GATEWAY=<span class="string">&quot;192.168.0.1&quot;</span> </span><br><span class="line"><span class="comment"># 配置谷歌DNS解析</span></span><br><span class="line">DNS1=<span class="string">&quot;8.8.8.8&quot;</span></span><br><span class="line"><span class="comment"># 配置电信的DNS解析</span></span><br><span class="line">DNS2=<span class="string">&quot;114.114.114.114&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
+        <tag>运维/linux</tag>
         <tag>持续更新</tag>
-        <tag>运维/linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kafka常用命令总结</title>
-    <url>/2024/12/09/archive/Kafka%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="主题脚本命令及其参数"><a href="#主题脚本命令及其参数" class="headerlink" title="主题脚本命令及其参数"></a>主题脚本命令及其参数</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>操作的 topic 名称</td>
-</tr>
-<tr>
-<td>–create</td>
-<td>创建主题</td>
-</tr>
-<tr>
-<td>–delete</td>
-<td>删除主题</td>
-</tr>
-<tr>
-<td>–alter</td>
-<td>修改主题</td>
-</tr>
-<tr>
-<td>–list</td>
-<td>查看所有主题</td>
-</tr>
-<tr>
-<td>–describe</td>
-<td>查看主题详细描述</td>
-</tr>
-<tr>
-<td>–partitions <code>Integer</code></td>
-<td>设置分区数</td>
-</tr>
-<tr>
-<td>–replication-factor <code>Integer</code></td>
-<td>设置分区副本</td>
-</tr>
-</tbody></table>
-<p>这些参数可以与 <code>kafka-topics.sh</code>（Unix&#x2F;Linux）或 <code>kafka-topics.bat</code>（Windows）命令一起使用，用于管理 Kafka 主题。根据需要，选择使用适当的参数来执行相应的操作。</p>
-<h2 id="消费者脚本命令参数："><a href="#消费者脚本命令参数：" class="headerlink" title="消费者脚本命令参数："></a>消费者脚本命令参数：</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>消费的 topic 名称</td>
-</tr>
-<tr>
-<td>–group-id</td>
-<td>消费者所属的消费者组 ID</td>
-</tr>
-<tr>
-<td>–from-beginning</td>
-<td>从最早的偏移量开始消费</td>
-</tr>
-<tr>
-<td>–partition <code>Integer</code></td>
-<td>指定要消费的分区</td>
-</tr>
-<tr>
-<td>–offsets <code>String</code></td>
-<td>指定要消费的分区的偏移量</td>
-</tr>
-<tr>
-<td>–max-messages <code>Integer</code></td>
-<td>指定要消费的最大消息数量</td>
-</tr>
-<tr>
-<td>–timeout-ms <code>Integer</code></td>
-<td>指定超时时间（毫秒），在等待新消息时使用</td>
-</tr>
-<tr>
-<td>–property <code>String=String</code></td>
-<td>设置其他的消费者属性</td>
-</tr>
-</tbody></table>
-<h2 id="生成者脚本命令参数："><a href="#生成者脚本命令参数：" class="headerlink" title="生成者脚本命令参数："></a>生成者脚本命令参数：</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–bootstrap-server</td>
-<td>连接的 Kafka Broker 主机名称和端口号</td>
-</tr>
-<tr>
-<td>–topic</td>
-<td>发送消息的 topic 名称</td>
-</tr>
-<tr>
-<td>–key</td>
-<td>发送消息的键（可选）</td>
-</tr>
-<tr>
-<td>–value</td>
-<td>发送消息的值</td>
-</tr>
-<tr>
-<td>–property <code>String=String</code></td>
-<td>设置其他的生产者属性</td>
-</tr>
-</tbody></table>
-<p>这些参数可以与 Kafka 提供的相应脚本命令一起使用，用于执行消费者和生产者的操作。根据需要，您可以选择使用适当的参数来配置消费者和生成者的行为。</p>
-]]></content>
-      <tags>
-        <tag>数据/kafka</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 卸载openjdk 安装oraclejdk</title>
-    <url>/2024/12/09/archive/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/</url>
-    <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>卸载 openjdk 并且安装 oracle 的 jdk</p>
-<h2 id="卸载-Openjdk"><a href="#卸载-Openjdk" class="headerlink" title="卸载 Openjdk"></a>卸载 Openjdk</h2><blockquote>
-<p>如果有项目在运行，请先停止项目</p>
-</blockquote>
-<h3 id="查看现有版本"><a href="#查看现有版本" class="headerlink" title="查看现有版本"></a>查看现有版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005151150.png"></p>
-<h3 id="查询所有跟-Java-相关的安装的-Rpm-包"><a href="#查询所有跟-Java-相关的安装的-Rpm-包" class="headerlink" title="查询所有跟 Java 相关的安装的 Rpm 包"></a>查询所有跟 Java 相关的安装的 Rpm 包</h3><blockquote>
-<p>查询 Java 相关的软件包，并过滤掉 noarch 结尾的软件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep java |grep -v noarch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409005937120.png"></p>
-<h3 id="卸载所有跟-Openjdk-相关的包"><a href="#卸载所有跟-Openjdk-相关的包" class="headerlink" title="卸载所有跟 Openjdk 相关的包"></a>卸载所有跟 Openjdk 相关的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rpm -e --nodeps 需要删除的软件</span></span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.261-2.6.22.2.el7_8.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.262.b10-1.el7.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="检查是否卸载成功"><a href="#检查是否卸载成功" class="headerlink" title="检查是否卸载成功"></a>检查是否卸载成功</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010349617.png"></p>
-<h2 id="安装-OracleJDK"><a href="#安装-OracleJDK" class="headerlink" title="安装 OracleJDK"></a>安装 OracleJDK</h2><p>下载地址：<a href="https://www.oracle.com/cn/java/technologies/javase/javase8u211-later-archive-downloads.html">Java Archive Downloads - Java SE 8u211 and later | Oracle 中国</a></p>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409010811448.png"></p>
-<h3 id="文件上传服务器"><a href="#文件上传服务器" class="headerlink" title="文件上传服务器"></a>文件上传服务器</h3><blockquote>
-<p>上传到 opt 路径下</p>
-</blockquote>
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011203319.png"></p>
-<h3 id="创建-Jdk-安装文件夹"><a href="#创建-Jdk-安装文件夹" class="headerlink" title="创建 Jdk 安装文件夹"></a>创建 Jdk 安装文件夹</h3><blockquote>
-<p>安装路径不做要求，因此文件夹也不做要求</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压文件夹到指定路径"><a href="#解压文件夹到指定路径" class="headerlink" title="解压文件夹到指定路径"></a>解压文件夹到指定路径</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf jdk-8u391-linux-x64.tar.gz -C 指定路径</span></span><br><span class="line">tar -zxvf jdk-8u391-linux-x64.tar.gz -C /software/jdk/</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409011657801.png"></p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><code>vim /etc/profile</code> 添加如下内容：</p>
-<p>其中 <code>/software/jdk/jdk1.8.0_391/</code> 需要按照实际路径填写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/software/jdk/jdk1.8.0_391</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012117509.png"></p>
-<h3 id="使是配置生效"><a href="#使是配置生效" class="headerlink" title="使是配置生效"></a>使是配置生效</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<h3 id="建立软链接"><a href="#建立软链接" class="headerlink" title="建立软链接"></a>建立软链接</h3><p>依次执行如下指令，需要注意&#x2F;software&#x2F;jdk&#x2F;jdk1.8.0_391 为实际目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /sbin/</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/java</span><br><span class="line"><span class="built_in">ln</span> -s -f /software/jdk/jdk1.8.0_391/jre/bin/javac</span><br></pre></td></tr></table></figure>
-
-<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/Linux%20%E5%8D%B8%E8%BD%BDopenjdk%20%E5%AE%89%E8%A3%85oraclejdk/image-20240409012712181.png"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://blog.csdn.net/luChenH/article/details/106940652">linux 卸载 openjdk 安装 jdk_linux 删除 openjdk 重新安装-CSDN 博客</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>运维/linux</tag>
       </tags>
   </entry>
   <entry>
@@ -3023,68 +3023,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Orecal数据库还原</title>
-    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
-    <content><![CDATA[<blockquote>
-<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
-</blockquote>
-<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
-<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
-</ul>
-<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
-<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>ykspace</code> 是表空间名称</p>
-</li>
-<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
-</li>
-</ul>
-<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 用户名</li>
-<li><code>yksoft1919</code> 密码</li>
-<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
-</ul>
-<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
-<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>yksoft</code> 被授权的用户名</li>
-</ul>
-<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
-<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
-<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
-<li><code>yksoft</code> 授权文件夹给该用户</li>
-</ul>
-<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
-<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>user</code> 用户名</li>
-<li><code>pwd</code> 密码</li>
-<li><code>yksoft</code> 原用户名</li>
-<li><code>ykspace</code> 原表空间名</li>
-<li><code>newykspace</code> 现表空间</li>
-<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
-<li><code>dir</code> 授权文件夹名称</li>
-</ul>
-<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
-]]></content>
-      <tags>
-        <tag>数据/oracle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PGSQL基本概念</title>
     <url>/2025/03/18/archive/PGSQL%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<blockquote>
@@ -3203,6 +3141,68 @@
       <tags>
         <tag>数据</tag>
         <tag>数据/数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Orecal数据库还原</title>
+    <url>/2024/12/09/archive/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>以下所有操作基于刚安装的 orecal11g 数据库, 本文中的所有命令都是在具有管理员权限的 cmd 中执行</p>
+</blockquote>
+<h2 id="使用-Dba-账号登录"><a href="#使用-Dba-账号登录" class="headerlink" title="使用 Dba 账号登录"></a>使用 Dba 账号登录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlplus/nolog</span><br><span class="line">conn &#123;sys&#125;/&#123;1234&#125;@orcl as sysdba;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sys</code> dba 的账号, 一般是 sys, 或者 system</li>
+<li><code>1234</code> 对应账号的密码, 安装数据库的时候有设置</li>
+</ul>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109161949928.png"></p>
+<h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE &#123;ykspace&#125; DATAFILE <span class="string">&#x27;&#123;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#125;&#x27;</span> SIZE <span class="number">1000</span>M AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>M EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">256</span>K;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>ykspace</code> 是表空间名称</p>
+</li>
+<li><p><code>&#39;D:\soft\Orecal\oradata\orcl\ykspace.dbf&#39;</code> 表空间所在路径, 已办基于 Orecal 安装路径</p>
+</li>
+</ul>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109162610185.png"></p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span>   &#123;yksoft&#125;  IDENTIFIED <span class="keyword">BY</span> &#123;yksoft1919&#125; <span class="keyword">DEFAULT</span> TABLESPACE &#123;ykspace&#125; TEMPORARY TABLESPACE temp;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 用户名</li>
+<li><code>yksoft1919</code> 密码</li>
+<li><code>ykspace</code> 上一步创建的表空间, 也就是给用户分配的表空间</li>
+</ul>
+<h3 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163029381.png"></p>
+<h2 id="授权给用户"><a href="#授权给用户" class="headerlink" title="授权给用户"></a>授权给用户</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">connect</span>,dba <span class="keyword">to</span>  &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>yksoft</code> 被授权的用户名</li>
+</ul>
+<h3 id="示例图-3"><a href="#示例图-3" class="headerlink" title="示例图"></a>示例图</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109163052788.png"></p>
+<h2 id="创建-Orecal-可以读取的文件夹"><a href="#创建-Orecal-可以读取的文件夹" class="headerlink" title="创建 Orecal 可以读取的文件夹"></a>创建 Orecal 可以读取的文件夹</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> directory &#123;gqys&#125; <span class="keyword">as</span> &#123;<span class="string">&#x27;D:\data&#x27;</span>&#125;;   <span class="comment">-- 这个路径是用来存放数据库备份文件的路径</span></span><br><span class="line"><span class="keyword">grant</span> read,write <span class="keyword">on</span> directory gqys <span class="keyword">to</span> &#123;yksoft&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>gqys</code> 创建的 orecl 可读取的文件夹名称</li>
+<li><code>&#39;D:\data&#39;</code> 文件夹的路径</li>
+<li><code>yksoft</code> 授权文件夹给该用户</li>
+</ul>
+<h2 id="执行还原"><a href="#执行还原" class="headerlink" title="执行还原"></a>执行还原</h2><p><code>yksoft/yksoft1919</code> 用户名&#x2F;用户密码 <code>yksoft:yksoft </code> 数据原属用户: 导入的目标用户</p>
+<p><code>gqys_oracle11201_20190802.DMP</code> 备份的文件 <code>gqys</code> 上一步创建的可读文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">impdp &#123;user&#125;/&#123;密码&#125;@orcl remap_schema=&#123;yksoft&#125;:&#123;user&#125; Remap_tablespace=&#123;ykspace&#125;:&#123;newykspace&#125; dumpfile=&#123;GQYS_ORACLE11201_20230802.DMP&#125;  DIRECTORY=&#123;dir&#125; table_exists_action=replace</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>user</code> 用户名</li>
+<li><code>pwd</code> 密码</li>
+<li><code>yksoft</code> 原用户名</li>
+<li><code>ykspace</code> 原表空间名</li>
+<li><code>newykspace</code> 现表空间</li>
+<li><code>GQYS_ORACLE11201_20230802.DMP</code> 备份文件, 需要在授权文件夹下</li>
+<li><code>dir</code> 授权文件夹名称</li>
+</ul>
+<h3 id="示例图（新终端）"><a href="#示例图（新终端）" class="headerlink" title="示例图（新终端）"></a>示例图（新终端）</h3><p><img src="/assets/Orecal%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%98%E5%8E%9F/image-20231109175030562.png"></p>
+]]></content>
+      <tags>
+        <tag>数据/oracle</tag>
       </tags>
   </entry>
   <entry>
@@ -4263,189 +4263,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SqlManger开发文档</title>
-    <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>教程地址 <a href="https://www.w3schools.cn/pyqt5/index.html">PyQt5 教程 (w3schools.cn)</a></p>
-</blockquote>
-<h2 id="开发记录"><a href="#开发记录" class="headerlink" title="开发记录"></a>开发记录</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><blockquote>
-<p>新建 python 项目, 环境选择新的 venv 环境</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212174014517.png"></p>
-<h3 id="安装必要依赖"><a href="#安装必要依赖" class="headerlink" title="安装必要依赖"></a>安装必要依赖</h3><blockquote>
-<p>当前依赖为项目新增依赖, 后续可能会随开发进行更新</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 提供了与 Python 3.5 或更高版本兼容的 32 位或 64 位架构的 wheels</span><br><span class="line">pip3 install PyQt5</span><br><span class="line"># 要安装 Qt Designer 等开发工具以支持 PyQt5 wheels</span><br><span class="line">pip3 install pyqt5-tools</span><br><span class="line"># 安装链接mysql所需依赖</span><br><span class="line">pip3 install pymysql</span><br><span class="line"># 链接mysql时所用到的加密方式</span><br><span class="line">pip3 install cryptography</span><br><span class="line"># 美化包依赖, 拉取依赖时, 不能使用豆瓣源, 豆瓣源没有这个依赖</span><br><span class="line">pip3 install qdarkstyle</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果直接使用官方镜像源出现安装失败的情况, 可以考虑国内的镜像源</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 豆瓣源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
-
-<p>安装依赖方式参考下图</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175153752.png"></p>
-<h3 id="设计-UI"><a href="#设计-UI" class="headerlink" title="设计 UI"></a>设计 UI</h3><blockquote>
-<p>打开设计器路径 {项目路径}\venv\Lib\site-packages\qt5_applications\Qt\bin\designer.exe</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175609378.png"></p>
-<blockquote>
-<p>设计以下 UI 文件<br>主窗口 UI: sqlManger_ui.ui<br>新增记录模态框 UI: addrowdialog_ui.ui</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150125976.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150325964.png"></p>
-<blockquote>
-<p>UI 文件转成成 Python 文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyuic5 -x sqlManger_ui.ui -o sqlManger_ui.py</span><br><span class="line"></span><br><span class="line">pyuic5 -x addrowdialog_ui.ui -o addrowdialog_ui.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213113642881.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150646257.png"></p>
-<blockquote>
-<p>转换完成后会生成以下文件</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150806994.png"></p>
-<blockquote>
-<p>新增记录时, 不同的表格数据不同, 因此需要动态加载模态框表单项,<br>💡 技术点: <code>setattr</code> 与 <code>getattr</code> 方法的使用</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setattr</span>(目标对象, 属性名, 属性值)</span><br><span class="line"><span class="built_in">getattr</span>(目标对象, 属性名, 属性值)</span><br></pre></td></tr></table></figure>
-
-<p>重构 <code>addrowdialog_ui.py</code> 下的 <code>setupUi</code> <code>retranslateUi</code> 方法, 设置表单项时, 设置成由传入参数动态加载, 文件调整如下</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215153026800.png"></p>
-<h3 id="各个功能点信号与槽函数建立链接"><a href="#各个功能点信号与槽函数建立链接" class="headerlink" title="各个功能点信号与槽函数建立链接"></a>各个功能点信号与槽函数建立链接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.connbut.clicked.connect(<span class="variable language_">self</span>.conn_database)</span><br><span class="line"><span class="comment"># 查询按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.querybut.clicked.connect(<span class="variable language_">self</span>.execute_query)</span><br><span class="line"><span class="comment"># 回滚按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.roolbackbut.clicked.connect(<span class="variable language_">self</span>.rollback_database)</span><br><span class="line"><span class="comment"># 提交按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.commitbut.clicked.connect(<span class="variable language_">self</span>.commit_database)</span><br><span class="line"><span class="comment"># 切换数据库选择</span></span><br><span class="line"><span class="variable language_">self</span>.ui.database.currentIndexChanged.connect(<span class="variable language_">self</span>.change_database)</span><br><span class="line"><span class="comment"># 更改主题</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br><span class="line"><span class="comment"># 右键表格, 展示菜单</span></span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.setContextMenuPolicy(Qt.CustomContextMenu)</span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.customContextMenuRequested.connect(<span class="variable language_">self</span>.display_table_menu)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Mysql-数据库的使用"><a href="#Mysql-数据库的使用" class="headerlink" title="Mysql 数据库的使用"></a>Mysql 数据库的使用</h3><blockquote>
-<p>下载 mysql 相关依赖</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install mysql-connector-python</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>因为涉及到事务的回滚, 所以当前应用获取的数据库链接为单例, 代码如下</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_connection</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.connection</span><br><span class="line">    Utils.connection = pymysql.connect(</span><br><span class="line">        <span class="comment"># 数据库主机名</span></span><br><span class="line">        host=<span class="variable language_">self</span>.ui.host.text(),</span><br><span class="line">        <span class="comment"># 数据库端口号，默认为3306</span></span><br><span class="line">        port=<span class="built_in">int</span>(<span class="variable language_">self</span>.ui.port.text()),</span><br><span class="line">        <span class="comment"># 数据库用户名</span></span><br><span class="line">        user=<span class="variable language_">self</span>.ui.username.text(),</span><br><span class="line">        <span class="comment"># 数据库密码</span></span><br><span class="line">        passwd=<span class="variable language_">self</span>.ui.pwd.text(),</span><br><span class="line">        <span class="comment"># 字符编码</span></span><br><span class="line">        charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> Utils.connection</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_cursor</span>():</span><br><span class="line">    <span class="keyword">if</span> Utils.cursor <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.cursor</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Utils.connection = Utils.get_connection()</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的开启<br>开启时机: 与数据库建立链接之后</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 开启事务</span></span><br><span class="line">cursor.execute(<span class="string">&quot;BEGIN&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的提交<br>提交时机: 点击提交按钮</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).commit()</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>事务的回滚<br>回滚时机</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).rollback()</span><br></pre></td></tr></table></figure>
-
-<h3 id="增加美化包"><a href="#增加美化包" class="headerlink" title="增加美化包"></a>增加美化包</h3><blockquote>
-<p>原本的 QT 样式不怎么好看, 集成一下美化包</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install qdarkstyle -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<p>安装插件时, 不能使用豆瓣源, 豆瓣源没有这个依赖</p>
-<blockquote>
-<p>main.py 入口文件给实例设置浅色样式</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>切换主题样式的实现</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215163133407.png"></p>
-<p>监控下拉框数据改变的信号, 链接对应的槽函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为主题切换的信号和槽函数简历链接</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br></pre></td></tr></table></figure>
-
-<p>切换主题的方法实现, 与启动项目时需要添加一步获取应用实例的操作 <code>Utils.get_app_self()</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change_theme</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="variable language_">self</span>.ui.themeComboBox.currentText() == <span class="string">&quot;Dark&quot;</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=DarkPalette()))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>🔍 qt-material 有更丰富的样式</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install qt-material</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>应用样式</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 动态加载qt-material主题</span></span><br><span class="line"><span class="keyword">import</span> site</span><br><span class="line"><span class="comment"># venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">site_packages_path = site.getsitepackages()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># self.ui.themeComboBox.addItems(&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&#x27;light_blue_500.xml&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="新增窗口增加滚动条"><a href="#新增窗口增加滚动条" class="headerlink" title="新增窗口增加滚动条"></a>新增窗口增加滚动条</h3><blockquote>
-<p>参考资料 <a href="https://blog.csdn.net/weixin_43749427/article/details/114883239">Qt designer + ScrollArea 实现滚动界面_qt designer scrollarea-CSDN 博客</a></p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215235502027.png"></p>
-<h3 id="虚拟环境-Venv-同步"><a href="#虚拟环境-Venv-同步" class="headerlink" title="虚拟环境 Venv 同步"></a>虚拟环境 Venv 同步</h3><blockquote>
-<p>参考资料: <a href="https://blog.csdn.net/pearl8899/article/details/113877334">python 项目自动生成环境配置文件 requirements.txt_如何生成 requirements.txt-CSDN 博客</a></p>
-</blockquote>
-<blockquote>
-<p>生成 requirements.txt 文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>安装依赖,根据 requirements.txt</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="异常问题记录"><a href="#异常问题记录" class="headerlink" title="异常问题记录"></a>异常问题记录</h2><h3 id="QSqlDatabase-无法加载-MYSQL-驱动-未解决"><a href="#QSqlDatabase-无法加载-MYSQL-驱动-未解决" class="headerlink" title="QSqlDatabase 无法加载 MYSQL 驱动 (未解决)"></a>QSqlDatabase 无法加载 MYSQL 驱动 (未解决)</h3><blockquote>
-<p>问题现象</p>
-</blockquote>
-<p>QSqlDatabase 无法链接 MYSQL 数据库, 提示无法加载驱动问题</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213155858030.png"></p>
-<blockquote>
-<p>参考资料:</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/qq_34769196/article/details/103898208">PyQt5 使用 QSqlDatabase 类连接 Mysql 的坑</a></p>
-<blockquote>
-<p>问题原因:</p>
-</blockquote>
-<p>最新版本的 QT 缺失 MYSQL 驱动的相关文件</p>
-<blockquote>
-<p>解决方案</p>
-</blockquote>
-<p>根据以上的参考文章操作后问题也没有解决, 最后该问题选择通过 pymysql 链接数据库, 获取数据, 使用标准的 model 来展示</p>
-<h3 id="获取-MYSQL-数据库链接报加密异常-已解决"><a href="#获取-MYSQL-数据库链接报加密异常-已解决" class="headerlink" title="获取 MYSQL 数据库链接报加密异常 (已解决)"></a>获取 MYSQL 数据库链接报加密异常 (已解决)</h3><blockquote>
-<p>问题现象</p>
-</blockquote>
-<p>链接 MYSQL 在密码, 端口等信息均正确的情况下, 报如下异常</p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231214101243230.png"></p>
-<blockquote>
-<p>参考资料</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/coco56/article/details/107948413">RuntimeError: ‘cryptography‘ package is required for sha256_password or caching_sha2_password auth m-CSDN 博客</a></p>
-<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="项目基础环境"><a href="#项目基础环境" class="headerlink" title="项目基础环境"></a>项目基础环境</h3><blockquote>
-<p>已安装 Python3, 可使用以下版本查看 python 版本</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222735318.png"></p>
-<blockquote>
-<p>已安装 MySql8.0 及以上版本</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215913574.png"></p>
-<h3 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h3><blockquote>
-<p>首先从 GITHUB 拉取项目, GIT 命令行或者下图方式均可<br>项目地址: <a href="https://github.com/lei-ctyh/sqlManger.git">https://github.com/lei-ctyh/sqlManger.git</a></p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215158278.png"></p>
-<h3 id="配置项目解释器"><a href="#配置项目解释器" class="headerlink" title="配置项目解释器"></a>配置项目解释器</h3><blockquote>
-<p>按照自己需求配置项目解释器即可<br><code>ctrl</code> + <code>alt</code> + <code>s</code> 进入设置 , 具体操作如下图</p>
-</blockquote>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220223107.png"></p>
-<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220436985.png"></p>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><blockquote>
-<p>安装依赖,根据 requirements.txt</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222023427.png"></p>
-<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215170946953.png"></p>
-]]></content>
-      <tags>
-        <tag>其他/技术文档</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Virtualbox7安装及使用详细步骤</title>
     <url>/2024/12/10/archive/Virtualbox7%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
     <content><![CDATA[<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote>
@@ -4709,6 +4526,189 @@
       <tags>
         <tag>运维/linux</tag>
         <tag>工具/virtualbox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SqlManger开发文档</title>
+    <url>/2024/12/09/archive/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>教程地址 <a href="https://www.w3schools.cn/pyqt5/index.html">PyQt5 教程 (w3schools.cn)</a></p>
+</blockquote>
+<h2 id="开发记录"><a href="#开发记录" class="headerlink" title="开发记录"></a>开发记录</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><blockquote>
+<p>新建 python 项目, 环境选择新的 venv 环境</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212174014517.png"></p>
+<h3 id="安装必要依赖"><a href="#安装必要依赖" class="headerlink" title="安装必要依赖"></a>安装必要依赖</h3><blockquote>
+<p>当前依赖为项目新增依赖, 后续可能会随开发进行更新</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 提供了与 Python 3.5 或更高版本兼容的 32 位或 64 位架构的 wheels</span><br><span class="line">pip3 install PyQt5</span><br><span class="line"># 要安装 Qt Designer 等开发工具以支持 PyQt5 wheels</span><br><span class="line">pip3 install pyqt5-tools</span><br><span class="line"># 安装链接mysql所需依赖</span><br><span class="line">pip3 install pymysql</span><br><span class="line"># 链接mysql时所用到的加密方式</span><br><span class="line">pip3 install cryptography</span><br><span class="line"># 美化包依赖, 拉取依赖时, 不能使用豆瓣源, 豆瓣源没有这个依赖</span><br><span class="line">pip3 install qdarkstyle</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果直接使用官方镜像源出现安装失败的情况, 可以考虑国内的镜像源</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清华源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 豆瓣源</span></span><br><span class="line">pip3 install &#123;package&#125; -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装依赖方式参考下图</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175153752.png"></p>
+<h3 id="设计-UI"><a href="#设计-UI" class="headerlink" title="设计 UI"></a>设计 UI</h3><blockquote>
+<p>打开设计器路径 {项目路径}\venv\Lib\site-packages\qt5_applications\Qt\bin\designer.exe</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231212175609378.png"></p>
+<blockquote>
+<p>设计以下 UI 文件<br>主窗口 UI: sqlManger_ui.ui<br>新增记录模态框 UI: addrowdialog_ui.ui</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150125976.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150325964.png"></p>
+<blockquote>
+<p>UI 文件转成成 Python 文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyuic5 -x sqlManger_ui.ui -o sqlManger_ui.py</span><br><span class="line"></span><br><span class="line">pyuic5 -x addrowdialog_ui.ui -o addrowdialog_ui.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213113642881.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150646257.png"></p>
+<blockquote>
+<p>转换完成后会生成以下文件</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215150806994.png"></p>
+<blockquote>
+<p>新增记录时, 不同的表格数据不同, 因此需要动态加载模态框表单项,<br>💡 技术点: <code>setattr</code> 与 <code>getattr</code> 方法的使用</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setattr</span>(目标对象, 属性名, 属性值)</span><br><span class="line"><span class="built_in">getattr</span>(目标对象, 属性名, 属性值)</span><br></pre></td></tr></table></figure>
+
+<p>重构 <code>addrowdialog_ui.py</code> 下的 <code>setupUi</code> <code>retranslateUi</code> 方法, 设置表单项时, 设置成由传入参数动态加载, 文件调整如下</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215153026800.png"></p>
+<h3 id="各个功能点信号与槽函数建立链接"><a href="#各个功能点信号与槽函数建立链接" class="headerlink" title="各个功能点信号与槽函数建立链接"></a>各个功能点信号与槽函数建立链接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.connbut.clicked.connect(<span class="variable language_">self</span>.conn_database)</span><br><span class="line"><span class="comment"># 查询按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.querybut.clicked.connect(<span class="variable language_">self</span>.execute_query)</span><br><span class="line"><span class="comment"># 回滚按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.roolbackbut.clicked.connect(<span class="variable language_">self</span>.rollback_database)</span><br><span class="line"><span class="comment"># 提交按钮</span></span><br><span class="line"><span class="variable language_">self</span>.ui.commitbut.clicked.connect(<span class="variable language_">self</span>.commit_database)</span><br><span class="line"><span class="comment"># 切换数据库选择</span></span><br><span class="line"><span class="variable language_">self</span>.ui.database.currentIndexChanged.connect(<span class="variable language_">self</span>.change_database)</span><br><span class="line"><span class="comment"># 更改主题</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br><span class="line"><span class="comment"># 右键表格, 展示菜单</span></span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.setContextMenuPolicy(Qt.CustomContextMenu)</span><br><span class="line"><span class="variable language_">self</span>.ui.tableView.customContextMenuRequested.connect(<span class="variable language_">self</span>.display_table_menu)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mysql-数据库的使用"><a href="#Mysql-数据库的使用" class="headerlink" title="Mysql 数据库的使用"></a>Mysql 数据库的使用</h3><blockquote>
+<p>下载 mysql 相关依赖</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install mysql-connector-python</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为涉及到事务的回滚, 所以当前应用获取的数据库链接为单例, 代码如下</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_connection</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.connection</span><br><span class="line">    Utils.connection = pymysql.connect(</span><br><span class="line">        <span class="comment"># 数据库主机名</span></span><br><span class="line">        host=<span class="variable language_">self</span>.ui.host.text(),</span><br><span class="line">        <span class="comment"># 数据库端口号，默认为3306</span></span><br><span class="line">        port=<span class="built_in">int</span>(<span class="variable language_">self</span>.ui.port.text()),</span><br><span class="line">        <span class="comment"># 数据库用户名</span></span><br><span class="line">        user=<span class="variable language_">self</span>.ui.username.text(),</span><br><span class="line">        <span class="comment"># 数据库密码</span></span><br><span class="line">        passwd=<span class="variable language_">self</span>.ui.pwd.text(),</span><br><span class="line">        <span class="comment"># 字符编码</span></span><br><span class="line">        charset=<span class="string">&#x27;utf8&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> Utils.connection</span><br><span class="line"></span><br><span class="line"><span class="meta">@staticmethod</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_cursor</span>():</span><br><span class="line">    <span class="keyword">if</span> Utils.cursor <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span> Utils.cursor</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> Utils.connection <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            Utils.connection = Utils.get_connection()</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            Utils.cursor = Utils.connection.cursor()</span><br><span class="line">            <span class="keyword">return</span> Utils.cursor</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的开启<br>开启时机: 与数据库建立链接之后</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 开启事务</span></span><br><span class="line">cursor.execute(<span class="string">&quot;BEGIN&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的提交<br>提交时机: 点击提交按钮</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).commit()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事务的回滚<br>回滚时机</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Utils.get_connection(<span class="variable language_">self</span>).rollback()</span><br></pre></td></tr></table></figure>
+
+<h3 id="增加美化包"><a href="#增加美化包" class="headerlink" title="增加美化包"></a>增加美化包</h3><blockquote>
+<p>原本的 QT 样式不怎么好看, 集成一下美化包</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install qdarkstyle -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装插件时, 不能使用豆瓣源, 豆瓣源没有这个依赖</p>
+<blockquote>
+<p>main.py 入口文件给实例设置浅色样式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>切换主题样式的实现</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215163133407.png"></p>
+<p>监控下拉框数据改变的信号, 链接对应的槽函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 为主题切换的信号和槽函数简历链接</span></span><br><span class="line"><span class="variable language_">self</span>.ui.themeComboBox.currentIndexChanged.connect(<span class="variable language_">self</span>.change_theme)</span><br></pre></td></tr></table></figure>
+
+<p>切换主题的方法实现, 与启动项目时需要添加一步获取应用实例的操作 <code>Utils.get_app_self()</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">change_theme</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="variable language_">self</span>.ui.themeComboBox.currentText() == <span class="string">&quot;Dark&quot;</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=DarkPalette()))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Utils.get_app_self().setStyleSheet(qdarkstyle.load_stylesheet(qt_api=<span class="string">&#x27;pyqt5&#x27;</span>, palette=LightPalette()))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🔍 qt-material 有更丰富的样式</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install qt-material</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>应用样式</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 动态加载qt-material主题</span></span><br><span class="line"><span class="keyword">import</span> site</span><br><span class="line"><span class="comment"># venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">site_packages_path = site.getsitepackages()[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># self.ui.themeComboBox.addItems(&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  venv/Lib/site-packages/qt_material/themes 读取该路径下的文件名</span></span><br><span class="line">apply_stylesheet(app, theme=<span class="string">&#x27;light_blue_500.xml&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增窗口增加滚动条"><a href="#新增窗口增加滚动条" class="headerlink" title="新增窗口增加滚动条"></a>新增窗口增加滚动条</h3><blockquote>
+<p>参考资料 <a href="https://blog.csdn.net/weixin_43749427/article/details/114883239">Qt designer + ScrollArea 实现滚动界面_qt designer scrollarea-CSDN 博客</a></p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215235502027.png"></p>
+<h3 id="虚拟环境-Venv-同步"><a href="#虚拟环境-Venv-同步" class="headerlink" title="虚拟环境 Venv 同步"></a>虚拟环境 Venv 同步</h3><blockquote>
+<p>参考资料: <a href="https://blog.csdn.net/pearl8899/article/details/113877334">python 项目自动生成环境配置文件 requirements.txt_如何生成 requirements.txt-CSDN 博客</a></p>
+</blockquote>
+<blockquote>
+<p>生成 requirements.txt 文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装依赖,根据 requirements.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="异常问题记录"><a href="#异常问题记录" class="headerlink" title="异常问题记录"></a>异常问题记录</h2><h3 id="QSqlDatabase-无法加载-MYSQL-驱动-未解决"><a href="#QSqlDatabase-无法加载-MYSQL-驱动-未解决" class="headerlink" title="QSqlDatabase 无法加载 MYSQL 驱动 (未解决)"></a>QSqlDatabase 无法加载 MYSQL 驱动 (未解决)</h3><blockquote>
+<p>问题现象</p>
+</blockquote>
+<p>QSqlDatabase 无法链接 MYSQL 数据库, 提示无法加载驱动问题</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213155858030.png"></p>
+<blockquote>
+<p>参考资料:</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_34769196/article/details/103898208">PyQt5 使用 QSqlDatabase 类连接 Mysql 的坑</a></p>
+<blockquote>
+<p>问题原因:</p>
+</blockquote>
+<p>最新版本的 QT 缺失 MYSQL 驱动的相关文件</p>
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<p>根据以上的参考文章操作后问题也没有解决, 最后该问题选择通过 pymysql 链接数据库, 获取数据, 使用标准的 model 来展示</p>
+<h3 id="获取-MYSQL-数据库链接报加密异常-已解决"><a href="#获取-MYSQL-数据库链接报加密异常-已解决" class="headerlink" title="获取 MYSQL 数据库链接报加密异常 (已解决)"></a>获取 MYSQL 数据库链接报加密异常 (已解决)</h3><blockquote>
+<p>问题现象</p>
+</blockquote>
+<p>链接 MYSQL 在密码, 端口等信息均正确的情况下, 报如下异常</p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231214101243230.png"></p>
+<blockquote>
+<p>参考资料</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/coco56/article/details/107948413">RuntimeError: ‘cryptography‘ package is required for sha256_password or caching_sha2_password auth m-CSDN 博客</a></p>
+<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><h3 id="项目基础环境"><a href="#项目基础环境" class="headerlink" title="项目基础环境"></a>项目基础环境</h3><blockquote>
+<p>已安装 Python3, 可使用以下版本查看 python 版本</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222735318.png"></p>
+<blockquote>
+<p>已安装 MySql8.0 及以上版本</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215913574.png"></p>
+<h3 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h3><blockquote>
+<p>首先从 GITHUB 拉取项目, GIT 命令行或者下图方式均可<br>项目地址: <a href="https://github.com/lei-ctyh/sqlManger.git">https://github.com/lei-ctyh/sqlManger.git</a></p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213215158278.png"></p>
+<h3 id="配置项目解释器"><a href="#配置项目解释器" class="headerlink" title="配置项目解释器"></a>配置项目解释器</h3><blockquote>
+<p>按照自己需求配置项目解释器即可<br><code>ctrl</code> + <code>alt</code> + <code>s</code> 进入设置 , 具体操作如下图</p>
+</blockquote>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220223107.png"></p>
+<p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213220436985.png"></p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><blockquote>
+<p>安装依赖,根据 requirements.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231213222023427.png"></p>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="/assets/SqlManger%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/image-20231215170946953.png"></p>
+]]></content>
+      <tags>
+        <tag>其他/技术文档</tag>
       </tags>
   </entry>
   <entry>
@@ -5097,6 +5097,449 @@
 ]]></content>
       <tags>
         <tag>其他/技术文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利息计算方式</title>
+    <url>/2024/12/09/archive/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<blockquote>
+<p>😀不会算就上科技 <a href="https://daikuan.bmcx.com/">贷款计算器最新2024 - 贷款利息计算 (bmcx.com)</a></p>
+</blockquote>
+<h2 id="还款方式的划分"><a href="#还款方式的划分" class="headerlink" title="还款方式的划分"></a>还款方式的划分</h2><ul>
+<li><strong>等额本息 (常见)</strong>  等额本息还款是指<span style="background:rgba(240, 107, 5, 0.2)">借款人每月偿还的月供是相等的</span>，每月月供&#x3D;（贷款本金 + 贷款总利息）÷贷款期限（月），由于每月剩余未还本金不同，所以每月月供中的利息不同，还款初期，月供中利息占比多，本金占比少，随着每月还款，月供中的本金占比越来越多，利息占比越来越少，这种还款方式适合收入稳定的群体。</li>
+<li><strong>等额本金 (常见)</strong>  等额本金还款是指借款人每月偿还的本金是相同的，每月月供中利息随着本金的减少而逐月减少，因此等额本金还款方式下，月供是呈递减状态的，等额本金与等额本息还款相比，等额本金产生的贷款总利息会少一些，但是等额本金还款方式下，还款初期压力比较到，这种还款方式适合目前高收入人群。</li>
+<li><strong>按期还本付息</strong>  按期还本付息是借款人与银行协商制定的不同还款时间单位，例如按月、按季、按年还款，实际上就是借款人根据不同的财务状况将每月要还款的钱分成几个月一起来偿还，这种还款方式适合收入不稳定的人群</li>
+<li><strong>一次性还本付息</strong>  一次性还本付息就是借款人在贷款贷款日，一次性将贷款本金和利息全部还清，这种还款方式通常在短期贷款当中会比较常见，但这种还款方式在审批方面会比较严格。</li>
+<li><strong>先息后本</strong>  先息后本就是指借款人在还款前期每月只需要偿还利息，到了最后还款期限时，将借款本金及当月的利息一次性还清。</li>
+</ul>
+<h2 id="等额-本-息-还款法"><a href="#等额-本-息-还款法" class="headerlink" title="等额 (本 + 息) 还款法"></a>等额 (本 + 息) 还款法</h2><h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>每月还款额 $M$ 的计算公式为：</p>
+<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215350001.png"></p>
+<p> 其中：</p>
+<ul>
+<li>$P$ 是贷款总额（本金）。</li>
+<li>$r$ 是月利率（年利率除以 12）。</li>
+<li>$n$ 是总月份数（贷款年数乘以 12）。</li>
+</ul>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><blockquote>
+<p>假设某人贷款总额为 $P &#x3D; 100,000$ 元，年利率为 $5%$（转化为小数形式为 0.05），贷款期限为 2 年。我们需要计算他每月需要还多少钱。</p>
+</blockquote>
+<ol>
+<li><p>首先，将年利率转化为月利率：<br><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215416901.png"></p>
+</li>
+<li><p>然后，计算总月份数：<br><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215437935.png"></p>
+</li>
+<li><p>接下来，代入公式计算每月还款额：</p>
+</li>
+</ol>
+<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215453068.png"></p>
+<p>这个公式可以通过计算器或编程来求解。为了简化，这里不直接给出计算结果的小数点后很多位，但通常银行会提供一个精确到小数点后两位的数值。</p>
+<p>假设计算结果为 $M \approx 4387.14$ 元（这个数值是近似的，实际计算时可能会有轻微差异，取决于计算精度和使用的工具）。</p>
+<p>因此，在这个案例中，借款人每月需要还大约 4387.14 元，这个金额在 2 年的贷款期限内是固定的。</p>
+<h3 id="计算结果"><a href="#计算结果" class="headerlink" title="计算结果"></a>计算结果</h3><table>
+<thead>
+<tr>
+<th>累计支付利息</th>
+<th>累计还款总额</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5291.34</td>
+<td>105291.34</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>期次</th>
+<th>偿还本息 (元)</th>
+<th>偿还利息 (元)</th>
+<th>偿还本金 (元)</th>
+<th>剩余本金 (元)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>4387.14</td>
+<td>416.67</td>
+<td>3970.47</td>
+<td>96029.53</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4387.14</td>
+<td>400.12</td>
+<td>3987.02</td>
+<td>92042.51</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4387.14</td>
+<td>383.51</td>
+<td>4003.63</td>
+<td>88038.88</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4387.14</td>
+<td>366.83</td>
+<td>4020.31</td>
+<td>84018.57</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4387.14</td>
+<td>350.08</td>
+<td>4037.06</td>
+<td>79981.51</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4387.14</td>
+<td>333.26</td>
+<td>4053.88</td>
+<td>75927.63</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4387.14</td>
+<td>316.37</td>
+<td>4070.77</td>
+<td>71856.85</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4387.14</td>
+<td>299.4</td>
+<td>4087.74</td>
+<td>67769.12</td>
+</tr>
+<tr>
+<td>9</td>
+<td>4387.14</td>
+<td>282.37</td>
+<td>4104.77</td>
+<td>63664.35</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4387.14</td>
+<td>265.27</td>
+<td>4121.87</td>
+<td>59542.48</td>
+</tr>
+<tr>
+<td>11</td>
+<td>4387.14</td>
+<td>248.09</td>
+<td>4139.05</td>
+<td>55403.44</td>
+</tr>
+<tr>
+<td>12</td>
+<td>4387.14</td>
+<td>230.85</td>
+<td>4156.29</td>
+<td>51247.14</td>
+</tr>
+<tr>
+<td>13</td>
+<td>4387.14</td>
+<td>213.53</td>
+<td>4173.61</td>
+<td>47073.54</td>
+</tr>
+<tr>
+<td>14</td>
+<td>4387.14</td>
+<td>196.14</td>
+<td>4191</td>
+<td>42882.54</td>
+</tr>
+<tr>
+<td>15</td>
+<td>4387.14</td>
+<td>178.68</td>
+<td>4208.46</td>
+<td>38674.07</td>
+</tr>
+<tr>
+<td>16</td>
+<td>4387.14</td>
+<td>161.14</td>
+<td>4226</td>
+<td>34448.08</td>
+</tr>
+<tr>
+<td>17</td>
+<td>4387.14</td>
+<td>143.53</td>
+<td>4243.61</td>
+<td>30204.47</td>
+</tr>
+<tr>
+<td>18</td>
+<td>4387.14</td>
+<td>125.85</td>
+<td>4261.29</td>
+<td>25943.18</td>
+</tr>
+<tr>
+<td>19</td>
+<td>4387.14</td>
+<td>108.1</td>
+<td>4279.04</td>
+<td>21664.14</td>
+</tr>
+<tr>
+<td>20</td>
+<td>4387.14</td>
+<td>90.27</td>
+<td>4296.87</td>
+<td>17367.27</td>
+</tr>
+<tr>
+<td>21</td>
+<td>4387.14</td>
+<td>72.36</td>
+<td>4314.78</td>
+<td>13052.5</td>
+</tr>
+<tr>
+<td>22</td>
+<td>4387.14</td>
+<td>54.39</td>
+<td>4332.75</td>
+<td>8719.74</td>
+</tr>
+<tr>
+<td>23</td>
+<td>4387.14</td>
+<td>36.33</td>
+<td>4350.81</td>
+<td>4368.94</td>
+</tr>
+<tr>
+<td>24</td>
+<td>4387.14</td>
+<td>18.2</td>
+<td>4368.94</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h2 id="等额本金还款法"><a href="#等额本金还款法" class="headerlink" title="等额本金还款法"></a>等额本金还款法</h2><h3 id="计算公式-1"><a href="#计算公式-1" class="headerlink" title="计算公式"></a>计算公式</h3><p>每月还款额 $M_t$ 的计算公式为：</p>
+<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215509932.png"></p>
+<p>其中：</p>
+<ul>
+<li>$P$ 是贷款总额（本金）。</li>
+<li>$n$ 是总月份数（贷款年数乘以 12）。</li>
+<li>$r$ 是月利率（年利率除以 12）。</li>
+<li>$t$ 是当前月份数（从 1 开始计数）。</li>
+</ul>
+<p>注意：这个公式中的 $\frac{P}{n}$ 是每月应还的本金部分，而 $(P - \frac{P \times (t-1)}{n}) \times r$ 是当月应还的利息部分。</p>
+<h3 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h3><p>假设某人贷款总额为 $P &#x3D; 100,000$ 元，年利率为 $5%$（转化为小数形式为 0.05），贷款期限为 10 年。我们需要计算他第一个月和最后一个月需要还多少钱。</p>
+<p>首先，将年利率转化为月利率，并计算总月份数：</p>
+<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215530644.png"></p>
+<h4 id="第一个月还款额"><a href="#第一个月还款额" class="headerlink" title="第一个月还款额"></a>第一个月还款额</h4><p>第一个月 $t &#x3D; 1$，代入公式：</p>
+<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215551021.png"></p>
+<p>（注意：这里的计算结果为了简化而进行了四舍五入，实际计算时可能会有轻微差异）</p>
+<h4 id="最后一个月还款额"><a href="#最后一个月还款额" class="headerlink" title="最后一个月还款额"></a>最后一个月还款额</h4><p>最后一个月 $t &#x3D; 24$，代入公式：</p>
+<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215608079.png"></p>
+<p>（同样，这里的计算结果为了简化而进行了四舍五入）</p>
+<p>因此，在这个案例中，借款人第一个月需要还约 1250 元，而最后一个月需要还约 836.80 元。由于等额本金还款法的特点，每月还款额会逐渐减少。</p>
+<h3 id="计算结果-1"><a href="#计算结果-1" class="headerlink" title="计算结果"></a>计算结果</h3><table>
+<thead>
+<tr>
+<th>累计支付利息</th>
+<th>累计还款总额</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5208.33</td>
+<td>105208.33</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>期次</th>
+<th>偿还本息 (元)</th>
+<th>偿还利息 (元)</th>
+<th>偿还本金 (元)</th>
+<th>剩余本金 (元)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>4583.34</td>
+<td>416.67</td>
+<td>4166.67</td>
+<td>95833.33</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4565.98</td>
+<td>399.31</td>
+<td>4166.67</td>
+<td>91666.67</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4548.61</td>
+<td>381.94</td>
+<td>4166.67</td>
+<td>87500</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4531.25</td>
+<td>364.58</td>
+<td>4166.67</td>
+<td>83333.33</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4513.89</td>
+<td>347.22</td>
+<td>4166.67</td>
+<td>79166.67</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4496.53</td>
+<td>329.86</td>
+<td>4166.67</td>
+<td>75000</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4479.17</td>
+<td>312.5</td>
+<td>4166.67</td>
+<td>70833.33</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4461.81</td>
+<td>295.14</td>
+<td>4166.67</td>
+<td>66666.67</td>
+</tr>
+<tr>
+<td>9</td>
+<td>4444.45</td>
+<td>277.78</td>
+<td>4166.67</td>
+<td>62500</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4427.09</td>
+<td>260.42</td>
+<td>4166.67</td>
+<td>58333.33</td>
+</tr>
+<tr>
+<td>11</td>
+<td>4409.73</td>
+<td>243.06</td>
+<td>4166.67</td>
+<td>54166.67</td>
+</tr>
+<tr>
+<td>12</td>
+<td>4392.36</td>
+<td>225.69</td>
+<td>4166.67</td>
+<td>50000</td>
+</tr>
+<tr>
+<td>13</td>
+<td>4375</td>
+<td>208.33</td>
+<td>4166.67</td>
+<td>45833.33</td>
+</tr>
+<tr>
+<td>14</td>
+<td>4357.64</td>
+<td>190.97</td>
+<td>4166.67</td>
+<td>41666.67</td>
+</tr>
+<tr>
+<td>15</td>
+<td>4340.28</td>
+<td>173.61</td>
+<td>4166.67</td>
+<td>37500</td>
+</tr>
+<tr>
+<td>16</td>
+<td>4322.92</td>
+<td>156.25</td>
+<td>4166.67</td>
+<td>33333.33</td>
+</tr>
+<tr>
+<td>17</td>
+<td>4305.56</td>
+<td>138.89</td>
+<td>4166.67</td>
+<td>29166.67</td>
+</tr>
+<tr>
+<td>18</td>
+<td>4288.2</td>
+<td>121.53</td>
+<td>4166.67</td>
+<td>25000</td>
+</tr>
+<tr>
+<td>19</td>
+<td>4270.84</td>
+<td>104.17</td>
+<td>4166.67</td>
+<td>20833.33</td>
+</tr>
+<tr>
+<td>20</td>
+<td>4253.48</td>
+<td>86.81</td>
+<td>4166.67</td>
+<td>16666.67</td>
+</tr>
+<tr>
+<td>21</td>
+<td>4236.11</td>
+<td>69.44</td>
+<td>4166.67</td>
+<td>12500</td>
+</tr>
+<tr>
+<td>22</td>
+<td>4218.75</td>
+<td>52.08</td>
+<td>4166.67</td>
+<td>8333.33</td>
+</tr>
+<tr>
+<td>23</td>
+<td>4201.39</td>
+<td>34.72</td>
+<td>4166.67</td>
+<td>4166.67</td>
+</tr>
+<tr>
+<td>24</td>
+<td>4184.03</td>
+<td>17.36</td>
+<td>4166.67</td>
+<td>0</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>其他</tag>
       </tags>
   </entry>
   <entry>
@@ -5570,449 +6013,6 @@
       </tags>
   </entry>
   <entry>
-    <title>利息计算方式</title>
-    <url>/2024/12/09/archive/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<blockquote>
-<p>😀不会算就上科技 <a href="https://daikuan.bmcx.com/">贷款计算器最新2024 - 贷款利息计算 (bmcx.com)</a></p>
-</blockquote>
-<h2 id="还款方式的划分"><a href="#还款方式的划分" class="headerlink" title="还款方式的划分"></a>还款方式的划分</h2><ul>
-<li><strong>等额本息 (常见)</strong>  等额本息还款是指<span style="background:rgba(240, 107, 5, 0.2)">借款人每月偿还的月供是相等的</span>，每月月供&#x3D;（贷款本金 + 贷款总利息）÷贷款期限（月），由于每月剩余未还本金不同，所以每月月供中的利息不同，还款初期，月供中利息占比多，本金占比少，随着每月还款，月供中的本金占比越来越多，利息占比越来越少，这种还款方式适合收入稳定的群体。</li>
-<li><strong>等额本金 (常见)</strong>  等额本金还款是指借款人每月偿还的本金是相同的，每月月供中利息随着本金的减少而逐月减少，因此等额本金还款方式下，月供是呈递减状态的，等额本金与等额本息还款相比，等额本金产生的贷款总利息会少一些，但是等额本金还款方式下，还款初期压力比较到，这种还款方式适合目前高收入人群。</li>
-<li><strong>按期还本付息</strong>  按期还本付息是借款人与银行协商制定的不同还款时间单位，例如按月、按季、按年还款，实际上就是借款人根据不同的财务状况将每月要还款的钱分成几个月一起来偿还，这种还款方式适合收入不稳定的人群</li>
-<li><strong>一次性还本付息</strong>  一次性还本付息就是借款人在贷款贷款日，一次性将贷款本金和利息全部还清，这种还款方式通常在短期贷款当中会比较常见，但这种还款方式在审批方面会比较严格。</li>
-<li><strong>先息后本</strong>  先息后本就是指借款人在还款前期每月只需要偿还利息，到了最后还款期限时，将借款本金及当月的利息一次性还清。</li>
-</ul>
-<h2 id="等额-本-息-还款法"><a href="#等额-本-息-还款法" class="headerlink" title="等额 (本 + 息) 还款法"></a>等额 (本 + 息) 还款法</h2><h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>每月还款额 $M$ 的计算公式为：</p>
-<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215350001.png"></p>
-<p> 其中：</p>
-<ul>
-<li>$P$ 是贷款总额（本金）。</li>
-<li>$r$ 是月利率（年利率除以 12）。</li>
-<li>$n$ 是总月份数（贷款年数乘以 12）。</li>
-</ul>
-<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><blockquote>
-<p>假设某人贷款总额为 $P &#x3D; 100,000$ 元，年利率为 $5%$（转化为小数形式为 0.05），贷款期限为 2 年。我们需要计算他每月需要还多少钱。</p>
-</blockquote>
-<ol>
-<li><p>首先，将年利率转化为月利率：<br><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215416901.png"></p>
-</li>
-<li><p>然后，计算总月份数：<br><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215437935.png"></p>
-</li>
-<li><p>接下来，代入公式计算每月还款额：</p>
-</li>
-</ol>
-<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215453068.png"></p>
-<p>这个公式可以通过计算器或编程来求解。为了简化，这里不直接给出计算结果的小数点后很多位，但通常银行会提供一个精确到小数点后两位的数值。</p>
-<p>假设计算结果为 $M \approx 4387.14$ 元（这个数值是近似的，实际计算时可能会有轻微差异，取决于计算精度和使用的工具）。</p>
-<p>因此，在这个案例中，借款人每月需要还大约 4387.14 元，这个金额在 2 年的贷款期限内是固定的。</p>
-<h3 id="计算结果"><a href="#计算结果" class="headerlink" title="计算结果"></a>计算结果</h3><table>
-<thead>
-<tr>
-<th>累计支付利息</th>
-<th>累计还款总额</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>5291.34</td>
-<td>105291.34</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>期次</th>
-<th>偿还本息 (元)</th>
-<th>偿还利息 (元)</th>
-<th>偿还本金 (元)</th>
-<th>剩余本金 (元)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>4387.14</td>
-<td>416.67</td>
-<td>3970.47</td>
-<td>96029.53</td>
-</tr>
-<tr>
-<td>2</td>
-<td>4387.14</td>
-<td>400.12</td>
-<td>3987.02</td>
-<td>92042.51</td>
-</tr>
-<tr>
-<td>3</td>
-<td>4387.14</td>
-<td>383.51</td>
-<td>4003.63</td>
-<td>88038.88</td>
-</tr>
-<tr>
-<td>4</td>
-<td>4387.14</td>
-<td>366.83</td>
-<td>4020.31</td>
-<td>84018.57</td>
-</tr>
-<tr>
-<td>5</td>
-<td>4387.14</td>
-<td>350.08</td>
-<td>4037.06</td>
-<td>79981.51</td>
-</tr>
-<tr>
-<td>6</td>
-<td>4387.14</td>
-<td>333.26</td>
-<td>4053.88</td>
-<td>75927.63</td>
-</tr>
-<tr>
-<td>7</td>
-<td>4387.14</td>
-<td>316.37</td>
-<td>4070.77</td>
-<td>71856.85</td>
-</tr>
-<tr>
-<td>8</td>
-<td>4387.14</td>
-<td>299.4</td>
-<td>4087.74</td>
-<td>67769.12</td>
-</tr>
-<tr>
-<td>9</td>
-<td>4387.14</td>
-<td>282.37</td>
-<td>4104.77</td>
-<td>63664.35</td>
-</tr>
-<tr>
-<td>10</td>
-<td>4387.14</td>
-<td>265.27</td>
-<td>4121.87</td>
-<td>59542.48</td>
-</tr>
-<tr>
-<td>11</td>
-<td>4387.14</td>
-<td>248.09</td>
-<td>4139.05</td>
-<td>55403.44</td>
-</tr>
-<tr>
-<td>12</td>
-<td>4387.14</td>
-<td>230.85</td>
-<td>4156.29</td>
-<td>51247.14</td>
-</tr>
-<tr>
-<td>13</td>
-<td>4387.14</td>
-<td>213.53</td>
-<td>4173.61</td>
-<td>47073.54</td>
-</tr>
-<tr>
-<td>14</td>
-<td>4387.14</td>
-<td>196.14</td>
-<td>4191</td>
-<td>42882.54</td>
-</tr>
-<tr>
-<td>15</td>
-<td>4387.14</td>
-<td>178.68</td>
-<td>4208.46</td>
-<td>38674.07</td>
-</tr>
-<tr>
-<td>16</td>
-<td>4387.14</td>
-<td>161.14</td>
-<td>4226</td>
-<td>34448.08</td>
-</tr>
-<tr>
-<td>17</td>
-<td>4387.14</td>
-<td>143.53</td>
-<td>4243.61</td>
-<td>30204.47</td>
-</tr>
-<tr>
-<td>18</td>
-<td>4387.14</td>
-<td>125.85</td>
-<td>4261.29</td>
-<td>25943.18</td>
-</tr>
-<tr>
-<td>19</td>
-<td>4387.14</td>
-<td>108.1</td>
-<td>4279.04</td>
-<td>21664.14</td>
-</tr>
-<tr>
-<td>20</td>
-<td>4387.14</td>
-<td>90.27</td>
-<td>4296.87</td>
-<td>17367.27</td>
-</tr>
-<tr>
-<td>21</td>
-<td>4387.14</td>
-<td>72.36</td>
-<td>4314.78</td>
-<td>13052.5</td>
-</tr>
-<tr>
-<td>22</td>
-<td>4387.14</td>
-<td>54.39</td>
-<td>4332.75</td>
-<td>8719.74</td>
-</tr>
-<tr>
-<td>23</td>
-<td>4387.14</td>
-<td>36.33</td>
-<td>4350.81</td>
-<td>4368.94</td>
-</tr>
-<tr>
-<td>24</td>
-<td>4387.14</td>
-<td>18.2</td>
-<td>4368.94</td>
-<td>0</td>
-</tr>
-</tbody></table>
-<h2 id="等额本金还款法"><a href="#等额本金还款法" class="headerlink" title="等额本金还款法"></a>等额本金还款法</h2><h3 id="计算公式-1"><a href="#计算公式-1" class="headerlink" title="计算公式"></a>计算公式</h3><p>每月还款额 $M_t$ 的计算公式为：</p>
-<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215509932.png"></p>
-<p>其中：</p>
-<ul>
-<li>$P$ 是贷款总额（本金）。</li>
-<li>$n$ 是总月份数（贷款年数乘以 12）。</li>
-<li>$r$ 是月利率（年利率除以 12）。</li>
-<li>$t$ 是当前月份数（从 1 开始计数）。</li>
-</ul>
-<p>注意：这个公式中的 $\frac{P}{n}$ 是每月应还的本金部分，而 $(P - \frac{P \times (t-1)}{n}) \times r$ 是当月应还的利息部分。</p>
-<h3 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h3><p>假设某人贷款总额为 $P &#x3D; 100,000$ 元，年利率为 $5%$（转化为小数形式为 0.05），贷款期限为 10 年。我们需要计算他第一个月和最后一个月需要还多少钱。</p>
-<p>首先，将年利率转化为月利率，并计算总月份数：</p>
-<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215530644.png"></p>
-<h4 id="第一个月还款额"><a href="#第一个月还款额" class="headerlink" title="第一个月还款额"></a>第一个月还款额</h4><p>第一个月 $t &#x3D; 1$，代入公式：</p>
-<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215551021.png"></p>
-<p>（注意：这里的计算结果为了简化而进行了四舍五入，实际计算时可能会有轻微差异）</p>
-<h4 id="最后一个月还款额"><a href="#最后一个月还款额" class="headerlink" title="最后一个月还款额"></a>最后一个月还款额</h4><p>最后一个月 $t &#x3D; 24$，代入公式：</p>
-<p><img src="/assets/%E5%88%A9%E6%81%AF%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F/file-20241210215608079.png"></p>
-<p>（同样，这里的计算结果为了简化而进行了四舍五入）</p>
-<p>因此，在这个案例中，借款人第一个月需要还约 1250 元，而最后一个月需要还约 836.80 元。由于等额本金还款法的特点，每月还款额会逐渐减少。</p>
-<h3 id="计算结果-1"><a href="#计算结果-1" class="headerlink" title="计算结果"></a>计算结果</h3><table>
-<thead>
-<tr>
-<th>累计支付利息</th>
-<th>累计还款总额</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>5208.33</td>
-<td>105208.33</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>期次</th>
-<th>偿还本息 (元)</th>
-<th>偿还利息 (元)</th>
-<th>偿还本金 (元)</th>
-<th>剩余本金 (元)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>4583.34</td>
-<td>416.67</td>
-<td>4166.67</td>
-<td>95833.33</td>
-</tr>
-<tr>
-<td>2</td>
-<td>4565.98</td>
-<td>399.31</td>
-<td>4166.67</td>
-<td>91666.67</td>
-</tr>
-<tr>
-<td>3</td>
-<td>4548.61</td>
-<td>381.94</td>
-<td>4166.67</td>
-<td>87500</td>
-</tr>
-<tr>
-<td>4</td>
-<td>4531.25</td>
-<td>364.58</td>
-<td>4166.67</td>
-<td>83333.33</td>
-</tr>
-<tr>
-<td>5</td>
-<td>4513.89</td>
-<td>347.22</td>
-<td>4166.67</td>
-<td>79166.67</td>
-</tr>
-<tr>
-<td>6</td>
-<td>4496.53</td>
-<td>329.86</td>
-<td>4166.67</td>
-<td>75000</td>
-</tr>
-<tr>
-<td>7</td>
-<td>4479.17</td>
-<td>312.5</td>
-<td>4166.67</td>
-<td>70833.33</td>
-</tr>
-<tr>
-<td>8</td>
-<td>4461.81</td>
-<td>295.14</td>
-<td>4166.67</td>
-<td>66666.67</td>
-</tr>
-<tr>
-<td>9</td>
-<td>4444.45</td>
-<td>277.78</td>
-<td>4166.67</td>
-<td>62500</td>
-</tr>
-<tr>
-<td>10</td>
-<td>4427.09</td>
-<td>260.42</td>
-<td>4166.67</td>
-<td>58333.33</td>
-</tr>
-<tr>
-<td>11</td>
-<td>4409.73</td>
-<td>243.06</td>
-<td>4166.67</td>
-<td>54166.67</td>
-</tr>
-<tr>
-<td>12</td>
-<td>4392.36</td>
-<td>225.69</td>
-<td>4166.67</td>
-<td>50000</td>
-</tr>
-<tr>
-<td>13</td>
-<td>4375</td>
-<td>208.33</td>
-<td>4166.67</td>
-<td>45833.33</td>
-</tr>
-<tr>
-<td>14</td>
-<td>4357.64</td>
-<td>190.97</td>
-<td>4166.67</td>
-<td>41666.67</td>
-</tr>
-<tr>
-<td>15</td>
-<td>4340.28</td>
-<td>173.61</td>
-<td>4166.67</td>
-<td>37500</td>
-</tr>
-<tr>
-<td>16</td>
-<td>4322.92</td>
-<td>156.25</td>
-<td>4166.67</td>
-<td>33333.33</td>
-</tr>
-<tr>
-<td>17</td>
-<td>4305.56</td>
-<td>138.89</td>
-<td>4166.67</td>
-<td>29166.67</td>
-</tr>
-<tr>
-<td>18</td>
-<td>4288.2</td>
-<td>121.53</td>
-<td>4166.67</td>
-<td>25000</td>
-</tr>
-<tr>
-<td>19</td>
-<td>4270.84</td>
-<td>104.17</td>
-<td>4166.67</td>
-<td>20833.33</td>
-</tr>
-<tr>
-<td>20</td>
-<td>4253.48</td>
-<td>86.81</td>
-<td>4166.67</td>
-<td>16666.67</td>
-</tr>
-<tr>
-<td>21</td>
-<td>4236.11</td>
-<td>69.44</td>
-<td>4166.67</td>
-<td>12500</td>
-</tr>
-<tr>
-<td>22</td>
-<td>4218.75</td>
-<td>52.08</td>
-<td>4166.67</td>
-<td>8333.33</td>
-</tr>
-<tr>
-<td>23</td>
-<td>4201.39</td>
-<td>34.72</td>
-<td>4166.67</td>
-<td>4166.67</td>
-</tr>
-<tr>
-<td>24</td>
-<td>4184.03</td>
-<td>17.36</td>
-<td>4166.67</td>
-<td>0</td>
-</tr>
-</tbody></table>
-]]></content>
-      <tags>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>相对路径的使用</title>
     <url>/2024/12/10/archive/%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><code>./</code> 和 <code>../</code> 都是用于表示文件路径的相对路径标记。</p>
@@ -6312,13 +6312,13 @@
       </tags>
   </entry>
   <entry>
-    <title>标签</title>
-    <url>/tags/index.html</url>
+    <title>友情链接</title>
+    <url>/link/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>友情链接</title>
-    <url>/link/index.html</url>
+    <title>标签</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
